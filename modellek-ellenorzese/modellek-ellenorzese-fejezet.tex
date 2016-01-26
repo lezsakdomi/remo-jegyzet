@@ -1,5 +1,5 @@
 % !TeX spellcheck = hu_HU
-\chapter{Modellek ellenőrzése}
+\topic{Modellek ellenőrzése}
 
 A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel járhat.
 
@@ -48,10 +48,35 @@ A modellek vagy rendszerek ellenőrzésére többféle módszer is rendelkezésr
 
 
 \section{Statikus ellenőrzés}\label{sec:statikus-ellenorzes}
+Statikus ellenőrzés során a vizsgált rendszert vagy modellt annak végrehajtása nélkül elemezzük. Bizonyos hibák ``ránézésre látszanak'', könnyen felismerhetők, ezekre célszerű statikus ellenőrzési módszereket alkalmazni. Ráadásul ezek gyakran a hiba helyét is pontosan behatárolják, míg például tesztelésnél a hiba felismerése és annak okának megtalálása két külön feladat. Statikus ellenőrzési technikákat akkor is használunk, amikor szintaktikai hibákat keresünk, ilyenkor a rendszer tipikusan nem is futtatható.
 
-\subsection{Szintaktikai hibák vizsgálata}
-\subsection{Szemantikai hibák vizsgálata}
-\subsection{Tervezési szabályoknak megfelelés}
+Az alábbiakban részletesen foglalkozunk a statikus ellenőrzés technikáival és használatával. Először a szintaktikai hibák vizsgálatát tekintjük át (\ref{sec:statikus-ellenorzes-szintaktikai-hibak}.~szakasz), majd a szemantikai hibák vizsgálatára koncentrálunk (\ref{sec:statikus-ellenorzes-szemantikai-hibak}.~szakasz). 
+
+\subsection{Szintaktikai hibák vizsgálata}\label{sec:statikus-ellenorzes-szintaktikai-hibak}
+
+Szintaktikai hibáknak nevezzük azokat a hibákat, amelyek következtében egy modell nem felel meg a metamodelljének, vagy egy program nem felel meg a használt programozási nyelv formai megkötéseinek. Ilyen lehet például egy állapotokhoz nem kötött állapotátmenet egy állapotgépben vagy egy hiányzó zárójel egy programban.
+
+Grafikus modellek esetén tipikus, hogy a szerkesztő megakadályozza a szintaktikai hibák elkövetését és betartatja a strukturális helyességet, de szöveges leírások esetén ezek elkerülhetetlenek. A modern fejlesztőeszközök általában már a beírás során jelzik ezeket a hibákat a fejlesztő számára, így az azonnal javítható. Ilyenkor az eszköz beépített szintaktikai statikus ellenőrzőjét láthatjuk működni. Más esetekben (például egyszerű szöveges szerkesztő használata esetén) az esetleges szintaktikai hibákra csak fordítás vagy végrehajtás során derül fény.
+
+Általánosan igaz a szintaktikai hibákra, hogy ezek nagy biztonsággal kimutathatók (legkésőbb futtatás vagy végrehajtás során) és ritka, hogy egy statikus ellenőrző helyes kódot vagy modellt szintaktikailag hibásnak értékelne.
+
+\subsection{Szemantikai hibák vizsgálata}\label{sec:statikus-ellenorzes-szemantikai-hibak}
+
+Szemantikai hibákról akkor beszélünk, ha a fejlesztés alatt álló rendszer szintaktikailag helyes, ugyanakkor valószínűsíthetően nem értelmes vagy nem az elvárt módon fog viselkedni. Ha egy C programban leírjuk, hogy \code{x = y / 0;}, akkor az szintaktikailag helyes (feltéve, hogy az \code{x} és \code{y} változók definiáltak és megfelelő kontextusban szerepel a fenti értékadás), ugyanakkor triviálisan nullával való osztáshoz vezet, amely a legritkábban kívánatos egy programban. 
+
+(todo: állapotgépes példák a diasorból)
+
+Gyakran a szemantikai problémák nem olyan egyértelműek, mint a fenti nullával osztás. Például az \code{if (x = 1) { ... }} C kódban gyanús az értékadás, feltehetően a fejlesztő szándéka az \code{x} változó értékétől függő feltételes elágazás implementálása volt, ugyanakkor ezt biztosan nem tudhatjuk. Az ilyen gyanús kódrészleteket angolul \emph{code smell}nek hívjuk, és a statikus ellenőrző eszközök tipikusan ezekre is felhívják a figyelmet.
+
+Hasonló probléma állapotgépek esetén ... 
+
+
+--- kódolási szabályok és jólformált modellek -- szabályok megkötése, lehet nyelv, domain, alkalmazás-specifikus
+
+
+Tervezési szabályoknak megfelelés
+
+szimbolikus végrehajtás
 
 \section{Tesztelés}\label{sec:teszteles}
 
