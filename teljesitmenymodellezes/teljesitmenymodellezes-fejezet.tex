@@ -1,0 +1,155 @@
+\topic{Teljesítménymodellezés}
+
+\section{Alapfogalmak}
+
+Teljesítménymodellezéskor egy \fogalomragozva{rendszer}{rendszert} vizsgálunk, amely \fogalomragozva{felhasznaloi-keres}{felhasználói kérések} kiszolgálásához illetve feldolgozásához különböző (véges) \fogalomragozva{eroforras}{erőforrásokat} használ. Vizsgálatunk fókusza elsősorban az egyes tranzakciók feldolgozási ideje (\fogalom{valaszido}), az egységnyi idő alatt feldolgozott tranzakciók száma (\fogalom{atbocsatas}), illetve az erőforrások \fogalomragozva{kihasznaltsag}{kihasználtásága}, mindez a rendszer \fogalomragozva{egyensulyi-allapot}{egyensúlyi állapotában}, tehát \fogalomragozva{atlag}{átlagos} értékeket mérve.
+
+Egy rendszert sokszor alrendszerek együtteseként modellezünk (ilyen alrendszernek tekinthetők az erőforrások is), ilyenkor az egyes fogalmak több szinten is megjelenhetnek. A továbbiakban a teljes rendszer felé érkező felhasználói kéréseket \fogalomragozva{tranzakcio}{tranzakcióknak} fogjuk hívni (darabszámának mértékegysége $\mathrm{tr}$), az ezek feldolgozása során a rendszer által az alrendszereknek továbbított feladatrészeket pedig \fogalom{keres}{kéréseknek} (darabszámának mértékegysége $\mathrm{k}$). Fontos megjegyezni, hogy valójában ugyanarról a fogalomról van szó, de \emph{más rendszerekre nézve}.\footnote{Ezért sem tesz különbséget a fogalmak között a tárgyhoz kiadott diasor.}
+
+Általában is fontos, hogy mindig pontosan definiáljuk az éppen vizsgált rendszert. A továbbiakban bemutatásra kerülő képletek szempontjából is fontos a \fogalomragozva{rendszer-hatara}{rendszer határa}. Egy rendszeren belül lehet várakozási sor, illetve feldolgozó egység, utóbbi állhat több alrendszerből is.\footnote{A rendszer részének tekinthetjük még a hálózati kapcsolatot, és bármi mást, ami késleltetést okozhat, de ettől ebben a segédletben most eltekintünk.} Ha egy rendszerben nincs átlapolódás, akkor minden pillanatban (tehát átlagosan is) legfeljebb egy tranzakció lehet a rendszerben. Ha van várakozási sor, vagy több feldolgozó egység is van, akkor definíció szerint van átlapolódás is.
+
+\section{Rendszerszintű tulajdonságok és a Little-törvény}
+
+\begin{definicio}
+	Fogalmak:   
+	
+	\begin{itemize}
+		\item \Fogalom{erkezesi-rata} (jele: $\lambda$): A vizsgált rendszer határához egységnyi idő alatt \emph{érkező} felhasználói kérések átlagos száma.\footnote{A felhasználói kérés itt lehet tranzakció vagy kérés is, attól függ, honnan nézzük. Ennek megfelelően a darab, mint mértékegység is specializálandó az adott esetnek megfelelően.} Mértékegysége: db/s.
+		\item \Fogalom{atbocsatas} (jele: $X$, mint ,,throughput''): A vizsgált rendszert egységnyi idő alatt \emph{elhagyó} feldolgozott felhasználói kérések átlagos száma. Mértékegysége: db/s.
+		\item \Fogalom{valaszido} (jele: $R$, mint ,,\textbf{r}ound-trip time''): A felhasználói kérések által a rendszer határain belül töltött átlagos idő. Mértékegysége: s.
+		\item \Fogalom{rendszerben-levo-keresek-atlagos-szama} (jele: $N$): Nevezhetnénk az átlapolódás mértékének is. Mértékegység: db.
+	\end{itemize}
+\end{definicio}
+
+Azt mondjuk, hogy egy rendszer \fogalomragozva{egyensulyi-allapot}{egyensúlyi állapotban} van, ha $\lambda = X$, vagyis egységnyi idő alatt ugyanannyi új felhasználói kérés érkezik a rendszerbe, mint amennyit ezalatt az idő alatt feldolgozott. Egyensúlyi állapotban igaz a \fogalom{Little-torveny}:
+
+$$N = X \times R$$
+
+Szavakkal, a rendszerben tartózkodó kérések átlagos száma megegyezik az átbocsátás és az átlagos rendszerben töltött idő szorzatával. A rendszert például egy futószalagként elképzelve ez azt jelenti, hogy ha a szalagon $R$ ideig tart végighaladni, de $1/X = 1/\lambda$ időnként ráteszünk egy-egy újabb elemet, akkor $R$ idő múlva az első elem levételének pillanatában $R/(1/X) = R \times X$ elem lesz a szalagon, vagyis a rendszer határain belül.
+
+\section{Erőforrások tulajdonságai}
+
+A rendszer tulajdonságai elsősorban a belső szerkezetétől, az alrendszerektől és főképp az erőforrásoktól függ. A rendszerszintű teljesítményjellemzőket ezek tulajdonságaiból kell levezetni. A továbbiakban nullás index jelöli a rendszerszintű tulajdonságokat, míg az $i.$ alrendszer (erőforrás) tulajdonságait $i$-vel indexeljük.
+
+\subsection{Rendszerek és alrendszereik kapcsolata}
+
+Az egyes alrendszerek és erőforrások teljesítményjellemzőit a következő mértéket felhasználva tudjuk átváltani a rendszer jellemzőire, illetve fordítva:
+
+\begin{definicio}
+\Fogalom{latogatasok-atlagos-szama} (jele: $V_i$, mint "visits"): Megadja, hogy egy tranzakció átlagosan hány kérést generál az $i.$ alrendszer (erőforrás) felé. Mértékegysége: k/tr (kérés/tranzakció).
+\end{definicio}
+
+\subsection{Felhasználói kérések szolgáltatásigénye}
+
+Egy tranzakció ,,terhelését'' a rendszerre nézve a \fogalom{szolgaltatasigeny} fogalmával ragadjuk meg. A szolgáltatásigény az az átlagos időtartam, amíg a tranzakció feldolgozása közben a rendszer egy adott erőforrást használ (az egyes kérések során összesen), tehát minden erőforráshoz külön érték tartozik. Az alábbiakban feltételezzük, hogy az alrendszerek erőforrások.\footnote{Ez bizonyos szempontból csak formaság, annyi a jelentősége, hogy erőforrás szint alatt nem foglalkozunk a további alrendszerekkel, itt húzzuk meg vizsgálódásaink határát.}
+
+
+\begin{definicio}
+	\Fogalom{szolgaltatasigeny} (jele: $D_i$, mint ,,service \textbf{d}emand''): Megadja, hogy egy \fogalom{tranzakcio} átlagosan mennyi ideig használja az adott erőforrást (alrendszert). Mértékegysége: $\frac{\mathrm{s}}{\mathrm{tr}}$.
+\end{definicio}
+
+\begin{definicio}
+	\Fogalom{eroforrasigeny} (jele: $S_i$, mint ,,re\textbf{s}ource demand''): Megadja, hogy egy \fogalom{keres} átlagosan mennyi ideig használja az adott erőforrást (alrendszert). Mértékegysége: $\frac{\mathrm{s}}{\mathrm{k}}$.
+\end{definicio}
+
+Látható, hogy a két fogalom gyakorlatilag ugyanazt takarja, de az egyik a rendszer szintjén, a másik pedig az erőforrás (alrendszer) szintjén.\footnote{Az elnevezés is csak azért különbözik, hogy külön tudjunk hivatkozni a két értékre, az "Erőforrásigény" név pedig kihasználja, hogy most csak az erőforrásokat tekintjük alrendszernek.} A két mennyiség közötti kapcsolatot a látogatások átlagos számának ($V_i$) segítségével a következő képlet adja meg:
+
+$$D_i = V_i \times S_i$$
+
+Látható, hogy itt sem történik semmi meglepő -- ha egy kérés átlagosan $S_i$ ideig foglalja az erőforrást, egy tranzakció pedig átlagosan $V_i$ kérést generál, akkor a tranzakció átlagosan $D_i$ ideig fogja használni az erőforrást, tehát az erőforrásra vonatkozó szolgáltatásigénye $D_i$.
+
+\subsection{Erőforrások kihasználtásga}
+
+Véges készletű erőforrások esetén a teljesítmény szempontjából fontos tulajdonság az erőforrások átlagos \fogalomragozva{kihasznaltsag}{kihasználtsága} (jele: $U$, mint \textbf{u}tilization), ugyanis ez mutatja meg, hogy a globális teljesítménykorlátoktól nagyjából milyen távol működik a rendszer.
+
+Vegyük észre, hogy az erőforrás, mint alrendszer önmagában is egy rendszert alkot, ezért \az+\autoref{}. szakaszban leírtak itt is alkalmazhatók. A felhasználói kérés ekkor a tranzakció által generált kérés, a kérés által a rendszerben töltött átlagos idő ($R$) pedig az erőforrásigénynek ($S_i$) felel meg. Az erőforrás, mint alrendszer átbocsátását az ún. \fogalom{forced-flow-torveny} segítségével számíthatjuk ki a teljes rendszer átbocsátásából:\footnote{Figyelem! A mértékegység az alrendszerek átbocsátása esetén k/s, a teljes rendszer esetén pedig tr/s!}
+
+$$X_i = V_i \times X_0$$
+
+Ezzel felírva a Little-törvényt, az alábbi képletet kapjuk:
+
+$$N_i = S_i \times X_i$$
+
+Az $N$ érték tehát szokás szerint megadja, hogy átlagosan hány kérés tartózkodik a rendszerben, ezesetben az erőforráson belül. Az egyes erőforrásokból több példány is rendelkezésre állhat, ezeken belül feltételezzük, hogy nincs átlapolódás. Az erőforrás tehát egyszerre legfeljebb $n_i$ kérést képes kiszolgálni, ahol $n_i$ az $i.$ erőforrásból elérhető példányok száma. Ha az $i.$ erőforrásban, mint rendszerben átlagosan $N_i$ kérés tartózkodik, és ez kevesebb, mint a maximális $n_i$, akkor a rendszer nem használja ki az erőforrást. Gyakorlatilag ezzel definiáltuk is a kihasználtság fogalmát, amire a \fogalom{kihasznaltsag-torvenye} ad képletet:
+
+$$U_i = \frac{N_i}{n_i} = \frac{S_i \times X_i}{n_i}$$
+
+Az is látható, hogy két darabszámot osztunk el egymással, tehát az eredmény dimenzió nélküli, százalékban kifejezhető arányszám. Az $n = 1$ speciális esetben $N$ értéke közvetlenül megadja a kihasználtság értékét:
+
+$$U_i = S_i \times X_i$$
+
+Ilyenkor a kihasználtság úgy is értelmezhető, mint az egységnyi időnek azon hányada, amelyben átlagosan az erőforrás munkát végez. Ez az értelmezés bizonyos szempontból analóg a fizikából ismert hatásfok fogalmával, az erőforrás a vizsgált 1s időben $X_i$ alkalommal $S_i$ ideig hasznos munkát végzett, ez összesen $S_i \times X_i$ idő hasznos munkát jelent, ami tehát $\frac{S_i \times X_i}{1} = U$ hatásfokot, itt \fogalomragozva{kihasznaltsag}{kihasználtságot} jelent. Több erőforrás példány esetén is hasonló a helyzet, de ilyenkor az egységnyi időt mindegyik példányhoz fel kell számolni.
+
+\subsection{Az átbocsátóképesség és a szűk keresztmetszet}
+
+Az imént láttuk, hogy az erőforráskészlet felső határt szab az elvégezhető munka mennyiségének, ezáltal az egységnyi idő alatt kiszolgálható kéréseknek, vagyis az átbocsátásnak. Ezt a felső határt hívjuk \fogalomragozva{atbocsatokepesseg}{átbocsátóképességnek}.
+
+Meghatározásához az egyes erőforrásokból kell kiindulnunk. Feltételezzük, hogy az erőforrásokat maximálisan kihasználjuk, vagyis $U_i^{max} = 1$. A kihasználtság képletéből az átlagos erőforrásigény ($S_i$) ismeretében kiszámolhatjuk az adott erőforrás átbocsátóképességét:
+
+$$X_i^{max} = n_i \times \frac{U_i^{max}}{S_i} = n_i \times \frac{1}{S_i}$$
+
+Az $n_i=1$ esetben ismét egyszerűbben:
+
+$$X_i^{max} = \frac{U_i^{max}}{S_i} = \frac{1}{S_i}$$
+
+Következő lépésként ki kellene számolnunk a teljes rendszer átbocsátását, de míg a teljes rendszerből az erőforrásra következtetni a többi erőforrástól függetlenül is tudtunk \az\autoref{sec-utilization} szakaszban, visszafelé ez most nem lesz igaz. Az egyes erőforrásokat a teljes rendszer ugyanis különböző mértékben használja, így csak az egyikük (esetleg néhányuk, nagyon ritkán mindegyik) korlátozza ténylegesen a rendszer tényleges átbocsátóképességét. Ezt az erőforrást nevezzük \fogalomragozva{szuk-keresztmetszet}{szűk keresztmetszetnek}.
+
+Ki kell tehát számolnunk az egyes erőforrások átbocsátásából a rendszer átbocsátásának elméleti maximumát, majd az így kapott értékek legkisebbikét kell kiválasztanunk, ez lesz a rendszer átbocsátóképessége, az értékhez tartozó erőforrás(ok) pedig a rendszer szűk keresztmetszete(i):
+
+$$X_0^{max} = \min_i\left(\frac{X_i^{max}}{V_i}\right)$$
+
+Az átbocsátóképességgel felírva a Little-törvényt megkaphatjuk $N_{max}$-ot, vagyis az átlapolódás maximális mértékét a rendszerben. Abban a speciális esetben, amikor tudjuk, hogy a rendszer (erőforrás) mindig rendelkezésre áll, és nincs benne átlapolódás, vagyis $N_{max} = 1~\mathrm{tr}$, az átbocsátóképesség (de nem az átbocsátás!) és a rendszer átlagos válaszideje között fordított arányosság áll fenn:\footnote{Lényegében ugyanez az összefüggés jelenik meg az erőforrás átbocsátóképességének meghatározásakor $R = S_i \times 1k$ választással.}
+
+$$X_0^{max} = \frac{1~\mathrm{tr}}{R}$$
+
+\subsection{A szolgáltatásigény törvénye}
+
+Az eddigiekből levezethető még egy összefüggés, ami sokszor jól használható. A \fogalom{szolgaltatasigeny-torvenye} egy adott erőforrásra vonatkozó szolgáltatásigény meghatározását teszi lehetővé az erőforrás kihasználtsága és a rendszer átbocsátóképessége segítségével, egyetlen erőforráspéldány ($n_i = 1$) esetén:
+
+$$D_i = \frac{U_i}{X_0}$$
+
+A levezetés a forced flow törvény és a kihasználtság törvényének $n_i = 1$ feltétel melletti egyszerűbb alakja szerint:
+
+$$\underbrace{D_i = V_i \times S_i}_\textrm{Szolgáltatásigény def.} =
+\underbrace{\frac{X_i}{X_0}}_\textrm{Forced flow tv.} \times
+\underbrace{\frac{U_i}{X_i}}_\textrm{Kihasználtság tv.} = \frac{U_i}{X_0}$$
+
+A szolgáltatásigény törvénye lényegében a kihasználtság törvényének olyan átalakítása, hogy az erőforrás-szintű tulajdonságok helyett rendszerszintű tulajdonságokkal számoljon. Az alábbi levezetés ezt az elvet mutatja be, itt lényegében a $V_i$ váltószám segítségével mindkét oldalon áttérünk az erőforrás szintjéről a rendszer szintjére:
+
+$$U_i = \frac{S_i \times X_i}{n_i}$$
+
+$$S_i = n_i \times \frac{U_i}{X_i}$$
+
+$$\underbrace{V_i \times S_i}_\mathrm{D_i} = n_i \times \underbrace{V_i \times \frac{1}{X_i}}_\mathrm{\frac{1}{X_0}} \times U_i$$
+
+$$D_i = n_i \times \frac{U_i}{X_0}$$
+
+Itt is jól látható, hogy a törvény eredeti formája az $n_i = 1$ esetre érvényes, minden más esetben megjelenik egy $n_i$-s szorzó is. A kihasználtság törvényénél látott személtető magyarázat ismét alkalmazható: Ha egy tranzakció $D_i$ ideig használja az adott erőforrást, és egy egységnyi idő alatt $X_0$ ilyen tranzakció történik, akkor az erőforrás az egységnyi idő $\frac{D_i \times X_0}{1}$ részéig volt foglalt.
+
+\section{Átlagos mértékek számítása mérési eredményekből }
+
+A fenti értékeket jellemzően mérések vagy szimulációk eredményeképp kapjuk. Ilyen mérések során a rendszert állandósult egyensúlyi állapotban vizsgáljuk, amikor tehát $\lambda = X_0$. Ilyenkor az alábbi fogalmak jelennek meg, ezek segítségével tudjuk kiszámolni a rendszer és az erőforrások tulajdonságait:
+
+\begin{definicio}
+\begin{itemize}
+	\item \Fogalom{meresi-ido} (jele: $T$, mint ,,\textbf{t}ime''). Mértékegysége: s.
+	\item \Fogalom{tranzakciok-szama} (jele: $C_0$, mint ,,\textbf{c}ount''): A mérési idő alatt elvégzett tranzakciók száma. $C_i$-vel jelölhetjük az egyes alrendszerekre vonatkozó értékeket, ha ez szükséges. Mértékegysége: tr (vagy alrendszerek esetén k).
+	\item \Fogalom{foglaltsagi-ido} (jele: $B_i$, mint ,,\textbf{b}usy time''): Az egyes erőforrások foglaltási ideje a mért időtartamon belül. Mértékegysége: s.
+\end{itemize}
+\end{definicio}
+
+Ezekből a fogalmakből könnyedén kiszámítható például egy egypéldányos, átlapolódás nélküli erőforrás ($n_i = 1$) átlagos kihasználtsága a mérés ideje alatt, csupán a foglaltásgi idő és a mért idő arányát kell kiszámítanunk:
+
+$$U_i = \frac{B_i}{T}$$
+
+A mérés ideje alatt az átlagos átbocsátás (és a rendszer egyensúlya miatt az érkezési ráta is) megkapható a mérési időből és az elvégzett tranzakciók számából:\footnote{Értelemszerűen az egyes alrendszerek vizsgálata esetén az $i$ index használandó a 0 helyett.}
+
+$$X_0 = \frac{C_0}{T}$$
+
+A tranzakciók átlagos szolgáltatásigénye is megkapható az egyes erőforrásokhoz, ha a foglaltásági időket leosztjuk a tranzakciók számával:
+
+$$D_i = \frac{B_i}{C_0}$$
+
+Érdekességképp megjegyezzük, hogy a szolgáltatásigény törvénye ($n_i = 1$ esetre) akár ebből a három összefüggésből is levezethető:
+
+$$U_i = \frac{B_i}{T} = \frac{B_i}{\frac{C_0}{X_0}} = \frac{B_i}{C_0} \times X_0 = D_i \times X_0$$

@@ -1,0 +1,9 @@
+\bibliographystyle{bib/huplain}
+\bibliography{bib/remo}	
+\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+
+\IfFileExists{./use-xindy}{
+	\printglossary[title=Tárgymutató]
+}{
+	\printnoidxglossary[title=Tárgymutató]
+}

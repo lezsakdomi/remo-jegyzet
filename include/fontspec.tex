@@ -1,0 +1,39 @@
+\usepackage{mathspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+
+
+\setmonofont[ Path=fonts/,
+    BoldFont=SourceCodePro-Bold.ttf,
+    ItalicFont=SourceCodePro-Medium.ttf,
+    BoldItalicFont=SourceCodePro-Bold.ttf]{SourceCodePro-Medium.ttf}
+
+\setmainfont[ Ligatures=TeX,
+    Path=fonts/,
+    BoldFont=PT_Serif-Web-Bold.ttf,
+    ItalicFont=PT_Serif-Web-Italic.ttf,
+    BoldItalicFont=PT_Serif-Web-BoldItalic.ttf]{PT_Serif-Web-Regular.ttf}
+    
+    
+\setallmainfonts(Digits,Latin,Greek)[
+	Numbers={Lining,Proportional},
+	Path=fonts/,
+	BoldFont=PT_Serif-Web-Bold.ttf,
+	ItalicFont=PT_Serif-Web-Italic.ttf,
+	BoldItalicFont=PT_Serif-Web-BoldItalic.ttf]{PT_Serif-Web-Regular.ttf}
+ 
+%\setmathrm[
+%	Numbers={Lining,Proportional},
+%	Path=fonts/,
+%	BoldFont=PT_Serif-Web-Bold.ttf,
+%	ItalicFont=PT_Serif-Web-Italic.ttf,
+%	BoldItalicFont=PT_Serif-Web-BoldItalic.ttf]{PT_Serif-Web-Regular.ttf}
+    
+\setsansfont[ Ligatures=TeX,
+ Path=fonts/,
+ BoldFont=PT_Sans-Web-Bold.ttf,
+ ItalicFont=PT_Sans-Web-Italic.ttf,
+ BoldItalicFont=PT_Sans-Web-BoldItalic.ttf]{PT_Sans-Web-Regular.ttf}
+ 
+\newfontfamily\clearsanslight[ Ligatures=TeX,
+Path=fonts/,
+BoldFont=ClearSans-Bold.ttf]{ClearSans-Light.ttf}

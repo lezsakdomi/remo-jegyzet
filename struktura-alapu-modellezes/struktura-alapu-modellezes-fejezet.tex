@@ -1,0 +1,368 @@
+\topic{Struktúra alapú modellezés}
+
+\section{Bevezetés}
+
+A modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
+
+Jelen anyag témája a \fogalom{struktura-alapu-modellezes}. Célja, hogy bemutassa a strukturális modellezés matematikai alapjait, a hierarchikus modellezés ötletét stb.
+
+\section{Strukturális modell}
+
+\begin{definicio}
+A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
+\end{definicio}
+
+A strukturális modell alkalmas arra, hogy az alábbi kérdéseikre nyújtson valamilyen (nem feltétlenül kimerítő) választ:
+
+\begin{itemize}
+\item Milyen elemekből áll a rendszer?
+\item Hogyan kapcsolódnak egymáshoz az elemek?
+\item Milyen tulajdonságúak az elemek?
+\end{itemize}
+
+Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható elő.
+
+\begin{definicio}
+	A \fogalom{dekompozicio} (\fogalom{faktoring}) egy összetett probléma vagy rendszer kisebb részekre bontása, amelyek könnyebben érthetők, fejleszthetők és karbantarthatók.
+\end{definicio}
+
+Természetesen a dekompozíció során ügyelnünk kell arra, hogy az egyes részekből visszaállítható legyen az eredeti rendszer, különben a kapott strukturális modellünk hiányos.
+
+\begin{definicio}
+	Egy dekompozíció \fogalomragozva{helyes-dekompozicio}{helyes}, ha a dekompozícióval kapott rendszer minden elemének megfeleltethető az eredeti rendszer valamelyik eleme, és az eredeti rendszer minden eleméhez hozzárendelhető a dekompozícióval kapott rendszer egy vagy több eleme.
+\end{definicio}
+
+\begin{definicio}
+	\Fogalomangolul{top-down} modellezés során a rendszert felülről lefelé építjük. A modellezés alaplépése a \fogalom{dekompozicio}.
+\end{definicio}
+
+A top-down modellezés jellemzői:
+
+\begin{itemize}
+\item[$\oplus$] Részrendszer tervezésekor a szerepe már ismert
+\item[$\ominus$] ,,Félidőben'' még nincsenek működő részek
+\item[$\ominus$] Részek problémái, igényei későn derülnek ki
+\end{itemize}
+
+\begin{definicio}
+	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé építjük. A modellezés alaplépése a \fogalom{kompozicio}.
+\end{definicio}
+
+A bottom-up modellezés jellemzői:
+
+\begin{itemize}
+\item[$\oplus$] Alrendszer önmagában kipróbálható, tesztelhető
+\item[$\oplus$] Részleges készültségnél is összeépíthető valami
+\item[$\ominus$] Nem látszik előre a rész szerepe az egészben
+\end{itemize}
+
+\section{Fogalmak}
+
+Az alábbiakban összefoglaljuk a szükséges fogalmakat és definíciókat. Nem mindenhol célunk a teljes matematikai precizitás, ill. az egyes fogalmakhoz tartozó különböző definíciók felsorolása (pl. a *gráf* fogalomra sok különböző, némileg eltérő jelentésű definíció létezik).
+
+\subsection{Gráf}
+
+\begin{definicio}
+A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén $E$ csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
+\end{definicio}
+
+Bár a gráf meglehetősen egyszerű fogalom, rendkívül sok szakterület modelljei jól ábrázolhatók benne. Ennek egyik fő oka, hogy az emberek gondolkodás közben a világot gyakran úgy írják le, mint ,,dolgok'' (csomópontok), amelyek egymással valamilyen ,,viszonyban'' vannak (élek).
+
+\begin{megjegyzes}
+Irányítatlan gráffal ábrázolhatjuk emberek között az \emph{ismerőse} relációt, ilyen pl. a Facebook \emph{friendship} relációja.
+\end{megjegyzes}
+
+\begin{megjegyzes}
+Irányított gráffal ábrázolhatjuk emberek között a \emph{követi} relációt, ilyen pl. a Twitter \emph{follows} relációja. Szintén irányított gráffal ábrázolhatók az interneten egymásra mutató weboldalak.
+\end{megjegyzes}
+
+Természetesen irányítatlan gráfok ábrázolhatók irányítottként is, ha minden $\{v_1, v_2\}$ irányítatlan élet lecserélünk. (Érdekesség: megfelelő transzformációval irányított gráfok is ábrázolhatók irányítatlan gráfként~\cite{rodriguez2008mapping}.)
+
+Gyakran nincs szükségünk a teljes gráfra.
+
+\begin{definicio}
+Egy $G = (V, E)$ gráfnak $G' = (V', E')$ \fogalomragozva{reszgraf}{részgráfja}, ha $G'$ megkapható úgy, hogy $G$-ből elhagyunk néhány csomópontot és azok éleit, ill. néhány további élet. Formálisan: ha $V' \subseteq V$ és $E' \subseteq V' \times V'$.
+\end{definicio}	
+
+\subsubsection{Gráftípusok}
+
+Tulajdonságaik alapján többféle gráftípust különböztethetünk meg, pl. a \fogalomragozva{teljes-graf}{teljes}, a \fogalomragozva{paros-graf}{páros}, a \fogalomragozva{perfekt-graf}{perfekt}, az \fogalomragozva{intervallumgraf}{intervallum-} és a \fogalom{sikbarajzolhato-graf}{síkbarajzolgató} gráfok. Ezekkel bővebben a \emph{Bevezetés a számításelméletbe 2.} tantárgy foglalkozik.
+
+A strukturális modellezés szempontjából kiemelt szerepet játszanak a \fogalomragozva{fa-graf}{fa} gráfok.
+
+\begin{definicio}
+A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük.
+\end{definicio}
+
+\begin{definicio}
+A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük. Az \fogalom{erdo} gráfot egyes források \emph{ligetnek} nevezik.
+\end{definicio}
+
+A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak.
+
+\begin{definicio}
+\Fogalom{gyoker-csomopont}: a fa egy megkülönböztetett csomópontja.
+\end{definicio}
+
+\begin{definicio}
+\Fogalom{gyokeres-fa}: olyan fa, ami rendelkezik gyökér csomóponttal.
+\end{definicio}
+
+\begin{definicio}
+\Fogalom{gyokeres-szintezett-fa}: a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat.
+\end{definicio}
+
+\subsubsection{Navigáció gráfokban}
+
+Irányított és irányítatlan gráfokban is gyakran szükség van arra, hogy az egyes élek mentén ,,lépkedjünk''.
+
+\begin{definicio}
+\Fogalom{seta}: szomszédos csúcsok és élek váltakozó sorozata.
+\end{definicio}
+
+\begin{definicio}
+\Fogalom{ut}: olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik.
+\end{definicio}
+
+\begin{definicio}
+\Fogalom{kor}: olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik.
+\end{definicio}
+
+\subsubsection{Kiterjesztések}
+
+A gráf adatmodellnek többféle kiterjesztése is létezik. Ezek közül az alábbiak ismeretére építünk:
+
+\begin{itemize}
+\item *Címkézett gráf*: a gráf elemeit (csomópontjait és/vagy éleit) *címkékkel* láthatjuk el. A címkézés célja lehet *egyedi azonosító* hozzárendelése vagy bizonyos tulajdonság leírása (pl. csomópontok kapacitása, élek típusa).
+  * *Csúcscímkézett gráf:* az egyes csomópontokat címkézzük.
+  * *Élcímkézett gráf:* az egyes (irányított vagy irányítatlan) éleket címkézzük.
+\item *Típusos gráfok*: a gráf elemei *típusokkal* rendelkeznek. A típusos gráfok a *címkézett gráfok* speciális esetei.
+\item *Tulajdonsággráf:* az egyes csomópontokat és éleket tulajdonságokkal látjuk el. A tulajdonságok kulcs-érték párok, pl. "neve = Gipsz Jakab", "életkora = 20", "színe = zöld".
+\end{itemize}
+
+További kiterjesztések:
+
+\begin{itemize}
+\item *Súlyozott gráfok*: a gráf elemeit (csomópontjait és/vagy éleit) súlyokkal látjuk el, pl. kapacitást vagy költséget rendelünk hozzájuk. A *súlyozott gráfok* a címkézett gráfok speciális esetei.
+\item *Multigráfok:* a csomópontok között *többszörös élek* is futhatnak.
+\item *Hipergráfok:* egy él több csomópont között is futhat. A hipergráf éleit *hiperéleknek* nevezzük.
+\end{itemize}
+
+\subsubsection{Műveletek gráfokon}
+
+\paragraph{Elérhetőségvizsgálat}
+
+Egy $v_i$ csomópontból egy $v_j$ csomópont elérhető, ha létezik $v_i$-ből $v_j$-be irányított út.
+
+Ez elérhetőségvizsgálatra gyakran elemi bejáróalgoritmusokat használunk:
+
+\begin{itemize}
+\item Szélességi bejárás (BFS)
+\item Mélységi bejárás (DFS)
+\end{itemize}
+
+\paragraph{Útkereső algoritmusok}
+
+\begin{itemize}
+\item Dijsktra-algoritmus
+\item A* keresés
+\item Bellman--Ford algoritmus
+\item Floyd algoritmus
+\end{itemize}
+
+A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gist.neo4j.org/?6d2a1a1c6325043d09a0}.
+
+\paragraph{Transzformációk}
+
+* *Szűrés éltípusra:* gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
+
+\section{Tulajdonságmodellezés}
+
+Egy modellelem (gráfok esetén tipikusan a modell csomópontjai) tulajdonságait *jellemzőkkel* vagy más néven *attribútumokkal* jellemezzük. Különböző modellelemekre az egyes jellemzők más-más vehetnek fel (de nem szükségszerűen térnek el).
+
+A jellemzők között gyakran kitüntetünk egyet:
+
+\begin{definicio}
+A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
+\end{definicio}
+
+Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
+
+\subsection{Táblázatos ábrázolás}
+
+A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomragozva{relacio}{relációkban}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \emph{Adatbázisok} c. tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
+
+\begin{definicio}
+A \fogalom{relacio} (fogalom{tablazat}) a modellelemeket és azok jellemzőit tárolja. A táblázat egy sora a modell egy elemének, egy oszlopa egy jellemzőjének felel meg.
+\end{definicio}
+
+Példaként használjuk az alábbi táblázatot!
+
+\begin{verbatim}
+| név            | fénykard színe | nem    | holdak száma | keringési idő |
+|----------------|----------------|--------|--------------|---------------|
+| Alderaan       |                |        | 1            | 364           |
+| Coruscant      |                |        | 4            | 368           |
+| Darth Vader    | piros          | férfi  |              |               |
+| Jabba          |                | hímnős |              |               |
+| Leia Organa    |                | nő     |              |               |
+| Luke Skywalker | zöld           | férfi  |              |               |
+| Mace Windu     | lila           | férfi  |              |               |
+| Tatooine       |                |        | 3            | 304           |
+| Yoda           | zöld           | férfi  |              |               |
+\end{verbatim}
+
+Látható, hogy a táblázatnak nem minden celláját töltöttük ki. Ezeket a cellákat gyakran az \textsf{NA} (not applicable, not available) rövidítéssel vagy (különösen az adatbázisokban) \textsf{null} értékkel jellemezzük.
+
+\subsubsection{Műveletek}
+
+A relációkon most két alapműveletet definiálunk, ezek a \fogalom{szures} (relációalgebrában \fogalom{szelekcio}) és a \fogalom{vetites} (relációalgebrában \fogalom{projekcio}). Ezekkel a műveletekkel a modellünknek egy-egy nézetét állíthatjuk elő.
+
+\paragraph{Szűrt nézet}
+
+Szűrés során egy feltétel mentén bizonyos sorokat elhagyunk a relációból:
+
+Szűrés a $\mathsf{fénykard színe\: zöld}$ feltételre:
+
+\begin{verbatim}
+| név            | fénykard színe | nem   | holdak száma | keringési idő |
+|----------------|----------------|-------|--------------|---------------|
+| Luke Skywalker | zöld           | férfi |              |               |
+| Yoda           | zöld           | férfi |              |               |
+\end{verbatim}
+
+Szűrés a $\mathsf{holdak\: száma} > 2$ feltételre:
+
+\begin{verbatim}
+| név       | fénykard színe | nem | holdak száma | keringési idő |
+|-----------|----------------|-----|--------------|---------------|
+| Coruscant |                |     | 4            | 368           |
+| Tatooine  |                |     | 3            | 304           |
+\end{verbatim}
+
+\paragraph{Vetített nézet}
+
+Vetítés során a modell egyes jellemzőit elhagyjuk a relációból. Fontos, hogy az esetleg létrejövő üres sorokat is elhagyjuk.
+
+Vetítés a $\{\mathsf{holdak\: száma, keringési\: idő\}}$ jellemzőkre.
+
+\begin{verbatim}
+| holdak száma | keringési idő |
+|--------------|---------------|
+| 1            | 364           |
+| 4            | 368           |
+| 3            | 304           |
+\end{verbatim}
+
+Vetítés a $\{\mathsf{név, fénykard\: színe\}}$ jellemzőkre.
+
+\begin{verbatim}
+| név            | fénykard színe |
+|----------------|----------------|
+| Alderaan       |                |
+| Coruscant      |                |
+| Darth Vader    | piros          |
+| Jabba          |                |
+| Leia Organa    |                |
+| Luke Skywalker | zöld           |
+| Mace Windu     | lila           |
+| Tatooine       |                |
+| Yoda           | zöld           |
+\end{verbatim}
+
+\subsection{Típusgráf}
+
+\begin{definicio}
+A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
+\end{definicio}
+
+Az elsőre talán furcsának ható definíció tulajdonképpen egy egyszerű fogalmat vezet be: a típusgráfban a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel (pl. ,,person'', ,,warrior'', ,,planet''), az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. Példa: ld. diasor, Star Wars szereplők, bolygók és kapcsolataik.
+
+A típusgráf egy rendszer \fogalom{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
+
+A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból (pl. ,,Mace Windu'') a típusgráf csomópontjaira (pl. ,,Jedi'') \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
+
+Az \fogalom{peldanya} viszony helyett/mellett gyakran annak inverzét alkalmazzák, a \fogalomangolul{tipusa} (\fogalom{tipusa}) viszony is. Gráfban ábrázolva az \fogalomangolul{peldanya} és \fogalomangolul{tipusa} élek adott csomópontok között egymással ellentétes irányúak: pl. \emph{,,Mace Windu'' instance of ,,Jedi''} és \emph{,,Jedi'' type of ,,Mace Windu''}.
+
+\section{Kitekintés}
+
+Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez kapcsolódó gyakorlati technológiát, specifikációt és eszközt. Az itt felsorolt fogalmak nem részei a számonkérésnek -- viszont gyakran előkerülnek a későbbi tanulmányok és munka során, ezért mindenképpen érdemes legalább névről ismerni őket.
+
+\subsection{Modellezési nyelvek}
+
+\subsubsection{UML (Unified Modeling Language)}
+
+Az UML egy általános célú modellezési nyelv az~\cite{UML}. Az UML három fő diagramtípust definiál:
+
+\begin{itemize}
+	\item \emph{Structure Diagram:} strukturális modellek leírására. A \emph{Class Diagram} az osztályok (metamodell), míg az \emph{Object diagram} a példányok (modell) leíárásra alkalmas. A \emph{Composite Structure Diagram} egy rendszer struktúráját és a rendszer komponenseinek kapcsolatát mutatja be.
+	\item \emph{Behaviour Diagram:} viselkedési modellek leírására, pl. a \emph{State Machine Diagram} segítségével állapotgépekm az \emph{Activity Diagramon} folyamatok ábrázolhatók.
+	\item \emph{Interaction Diagram:} a \emph{Behaviour Diagram} altípusa. Ennek megfelelően szintén a viselkedés leírása a célja, de a hangsúly a vezérlés- és adatáramlás bemutatásán van. Ilyen pl. a \emph{Sequence Diagram} (szekvenciadiagram), amely az egyes objektumok közötti interakciót mutatja be üzenetek formájában.
+\end{itemize}
+
+\remofigscale{struktura-alapu-modellezes/UML-diagram}{UML diagram}{0.6}
+
+Az UML nyelvvel részletesen foglalkozik a \emph{Szoftvertechnológia} c. tárgy.
+
+\subsubsection{AADL (Architecture Analysis and Design Language)}
+
+Az AADL eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv.
+
+\subsubsection{SysML (Systems Modeling Language)}
+
+A SysML egy UML-alapú általános modellezési nyelv rendszertervezési célokra. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
+
+\subsubsection{EMF (Eclipse Modeling Framework)}
+
+Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az *Eclipse Modeling Framework (EMF)*. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. szakterület-specifikus nyelv (domain-specific language, DSL) definiálását. Az EMF mára több területen is *de facto* modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
+
+Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiák} c. szabadon választható tárgy.
+
+\subsubsection{AUTOSAR (AUTomotive Open System ARchitecture)}
+
+Az AUTOSAR~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
+
+\subsection{Refaktoring}
+
+A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a *refaktoring* (refactoring) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszerek, programkódok (vagy modellek) olyan átalakítását értjük, amelynek sorána megfigyelhető működés változatlan marad, de a kapott programkód (modell) olvashatóbb, érthetőbb, karbantarthatóbb lesz.
+
+\subsection{Eszközök}
+
+Gráfok automatikus megjelenítésére alkalmas pl. a GraphViz~\cite{graphviz} programcsomag. Gráfok feldolgozására gyakran alkalmazzák az igraph~\cite{igraph} programcsomagot. Manapság több gráfadatbázis-kezelő rendszer is elterjedt, pl. a Neo4j~\cite{Neo4j} és a Titan~\cite{Titan} rendszerek.
+
+Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io~\cite{drawio} és az Arrow Tools~\cite{arrowtool}. Komolyabb célokra a yEd~\cite{yed} eszközt érdemes használni. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. Microsoft Visio vagy Microsoft PowerPoint alkalmazása.
+%
+\subsection{Relációk tulajdonságai}
+
+A *tranzitív lezárás* fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a *tranzitivitást*.
+
+\subsubsection{Tranzitivitás}
+
+Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}, ha bármely $a,b,c \in A$ esetén $r(a, b)$ és $r(b, c)$ teljesülése esetén $r(a, c)$ is teljesül.
+
+\begin{itemize}
+	\item Az egyenlőség ($=$) és a kisebb ($<$) reláció tranzitívak, mert $a = b$ és $b = c$ esetén $a = c$, ill. $a < b$, $b < c$ esetén $a < c$.
+	\item Az emberek közötti $\mathit{őse}(x_1, x_2)$ reláció tranzitív, mert ha $őse(a, b)$ és $őse(b, c)$, akkor $őse(a, c)$ is fennáll. 
+	\item A nemegyenlő reláció ($\neq$) nem tranzitív, mert $a \neq b$ és $b \neq c$ esetén $a \neq c$ nem mindig áll fenn, pl. $1 \neq 2$ és $2 \neq 1$ esetén $1 \neq 1$ nem teljesül.
+	\item Az emberek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
+\end{itemize}
+
+\subsubsection{További tulajdonságok}
+
+A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: *reflexivitás*, *szimmetria*, *rendezés* stb.~\cite{relaciok}. 
+
+\subsection{Ontológia}
+
+Az ontológia egy nem egyértelmű, nehezen definiálható kifejezés. Az informatikában általában az alábbihoz hasonló módon definiálják:
+
+\begin{definicio}
+Az \fogalom{ontologia} egy olyan taxonómia, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
+\end{definicio}
+
+\section{Ajánlott irodalom}
+
+A tulajdonsággráfokról egy jól érthető cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
+
+Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex hálózatok elméletének. Behálózva c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
+
+Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőkének 1996-os cikke~\cite{taivalsaari1996classes}.

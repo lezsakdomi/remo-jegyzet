@@ -1,0 +1,42 @@
+%\usepackage{soul}
+\definecolor{lightgray}{gray}{0.95}
+
+
+\usepackage{listings}
+%\usepackage{color}
+\definecolor{listinggray}{rgb}{0.9,0.9,0.9}
+\definecolor{keywordcolor}{rgb}{0.5,0,0.1}
+\definecolor{commentcolor}{rgb}{0,0.3,0.1}
+\definecolor{stringcolor}{rgb}{0,0,1}
+\definecolor{lightgray}{rgb}{0.985,0.985,0.985}
+\lstset{
+	basicstyle=\footnotesize\ttfamily, % print whole listing small
+	keywordstyle=\bfseries, % bold black keywords
+	identifierstyle=, 					% nothing happens
+	commentstyle=\color{gray},
+	stringstyle=\footnotesize, 			
+	showstringspaces=false,     % no special string spaces
+	aboveskip=0.5em,
+	belowskip=0.5em,
+	columns=flexible,
+	backgroundcolor=\color{lightgray},
+	escapeinside={(*@}{@*)},
+	inputencoding=ansinew,
+	extendedchars=true,
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'I}}1
+	{ö}{{\"o}}1 {ő}{{\H{o}}}1 {ü}{{\"u}}1 {ű}{{\H{u}}}1
+	{Ö}{{\"O}}1 {Ő}{{\H{O}}}1 {Ü}{{\"U}}1 {Ű}{{\H{U}}}1,
+}
+\lstset{
+	xleftmargin=1em,
+	framexleftmargin=1em,
+	framextopmargin=1em,
+	framexbottommargin=1em,
+	frame=tb,
+	framerule=0pt
+	}
+\lstset{escapeinside={(*@}{@*)}}
+\def\lstlistingname{Forrás}	
+
+\newcommand{\alignListing}{\lstset{xleftmargin=5mm, framexleftmargin=5mm, numbers=left}}

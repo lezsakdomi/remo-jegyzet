@@ -1,0 +1,148 @@
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usetikzlibrary{decorations}
+
+\newtcolorbox{definicioTCB}[1][]
+{
+    enhanced jigsaw,
+%    show bounding box,
+    parbox=false,
+    colframe=black,
+    opacityframe=1.0,
+    opacityback=0.0,
+    boxrule=0.1pt,
+    leftrule=5pt,
+    grow to left by=20pt,
+    grow to right by=15pt,
+    right=15pt,
+    left=12pt,
+    top=-0.6\parskip,
+    enlarge bottom by=\parskip,
+%    bottom=3\parskip,
+    breakable,
+    #1,
+}
+
+\newtcolorbox{megjegyzesTCB}[1][]
+{
+    enhanced jigsaw,
+    parbox=false,
+    colframe=black,
+    opacityframe=1.0,
+    opacityback=0.0,
+    boxrule=0.1pt,
+    grow to left by=15pt,
+    grow to right by=15pt,
+    right=15pt,
+    left=15pt,
+    top=-0.6\parskip,
+    enlarge bottom by=\parskip,
+    breakable,
+    #1,
+}
+
+\newtcolorbox{tetelTCB}[1][]
+{
+	enhanced jigsaw,
+	parbox=false,
+	colframe=black,
+	opacityframe=1.0,
+	opacityback=0.0,
+	boxrule=0.1pt,
+	toprule=3pt,
+	bottomrule=3pt,
+	grow to left by=15pt,
+	grow to right by=15pt,
+	right=15pt,
+	left=12pt,
+    top=0pt, %\parskip,
+    enlarge bottom by=\parskip,
+	breakable,
+	toprule at break=0pt,
+	bottomrule at break=0pt,
+	#1,
+}
+
+\makeatletter
+\newtheoremstyle
+	{dbdef} % name
+	{0pt} % spaceabove
+	{0pt} % spacebelow
+	{} % bodyfont
+	{0pt} % indentamt
+	{} % headfont
+	{.} % headpunct
+	{5pt plus 1pt minus 1pt} % headspace
+	{\textbf{\thmname{#1}}{\@ifnotempty{#3}{ }}\thmnote{{-- \emph{#3}}}%\textbf{.}\hspace{1em} % Definíció, szóköz, ha kell (definiált fogalom).
+	}
+\newtheoremstyle
+	{dbmegj} % name
+	{0pt} % spaceabove
+	{0pt} % spacebelow
+	{} % bodyfont
+	{0pt} % indentamt
+	{} % headfont
+	{.} % headpunct
+	{5pt plus 1pt minus 1pt} % headspace
+	{\textbf{\thmname{#1}}{\@ifnotempty{#3}{ }}\thmnote{{\emph{(#3)}}}%\textbf{.}\hspace{1em} % Definíció, szóköz, ha kell (definiált fogalom).
+	}
+\newtheoremstyle
+	{dbpl} % name
+	{\parskip} %\parskip} % spaceabove
+	{1.5\parskip} % spacebelow
+	{} %\sffamily} % bodyfont
+	{0pt} % indentamt
+	{} % headfont
+	{.} % headpunct
+	{5pt plus 1pt minus 1pt} % headspace
+	{\textbf{\thmname{#1}}{\@ifnotempty{#3}{ }}\thmnote{{\emph{(#3)}}}%\textbf{.}\hspace{1em} % Definíció, szóköz, ha kell (definiált fogalom).
+	}
+\newtheoremstyle
+	{dbbiz} % name
+	{1.5\parskip} % spaceabove
+	{\parskip} % spacebelow
+	{} % bodyfont
+	{0pt} % indentamt
+	{} % headfont
+	{.} % headpunct
+	{5pt plus 1pt minus 1pt} % headspace
+	{\textbf{\thmname{#1}}{\@ifnotempty{#3}{ }}\thmnote{{-- \emph{#3}}}%\textbf{.}\hspace{1em} % Definíció, szóköz, ha kell (definiált fogalom).
+	}
+\makeatother
+
+\theoremstyle{dbdef}
+\newtheorem{definicioT}{Definíció}
+\newtheorem{algoritmusT}{Algoritmus}
+\newtheorem{tetelT}{Tétel}
+
+\theoremstyle{dbbiz}
+\newtheorem{bizonyitas}{Bizonyítás}
+
+\theoremstyle{dbmegj}
+\newtheorem{megjegyzesT}{Megjegyzés}
+\newtheorem{megjegyzesekT}{Megjegyzések}
+
+\theoremstyle{dbpl}
+\newtheorem{pelda}{Példa}
+
+\newenvironment{definicio}[1][]%
+	{\begin{definicioTCB}\begin{definicioT}[#1]}%
+	{\end{definicioT}\end{definicioTCB}}
+
+\newenvironment{algoritmus}[1][]%
+{\begin{definicioTCB}\begin{algoritmusT}[#1]}%
+		{\end{algoritmusT}\end{definicioTCB}}
+
+\newenvironment{tetel}[1][]%
+	{\begin{tetelTCB}\begin{tetelT}[#1]}%
+	{\end{tetelT}\end{tetelTCB}}
+
+\newenvironment{megjegyzes}[1][]%
+	{\begin{megjegyzesTCB}\begin{megjegyzesT}[#1]}%
+	{\end{megjegyzesT}\end{megjegyzesTCB}}
+
+\newenvironment{megjegyzesek}[1][]%
+	{\begin{megjegyzesTCB}\begin{megjegyzesekT}[#1]}%
+	{\end{megjegyzesekT}\end{megjegyzesTCB}}
+
+\newenvironment{aprobetu}[1]{\begin{footnotesize}}{\end{footnotesize}}

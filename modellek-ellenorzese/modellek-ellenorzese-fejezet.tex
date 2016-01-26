@@ -1,0 +1,114 @@
+% !TeX spellcheck = hu_HU
+\chapter{Modellek ellenőrzése}
+
+A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel járhat.
+
+Fontos megjegyezni, hogy a modellek ``helyessége'' önmagában nem egy értelmes, vizsgálható kérdés. Ennek vizsgálatához fontos tudni, hogy mi a modell célja, kontextusa, mik a követelmények vele szemben.
+
+\begin{megjegyzes}
+	Gondoljunk a BKK egyszerűsített, sematikus metróhálózati térképére\footnote{\url{http://www.bkk.hu/apps/docs/terkep/metro.pdf}}! Ha a követelményünk a metróhálózat sematikus ábrázolása, ami alatt például az állomások megfelelő sorrendjét, illetve a helyes átszállási kapcsolatokat értjük, akkor ez a térkép helyes. Hibás akkor lenne, ha például a Nyugati pályaudvar az M4-es metró egyik állomásaként lenne feltüntetve. Ha viszont a követelmény az, hogy a térképről leolvashatók legyenek a metróállomások közti távolságok, ez a térkép hibás, hiszen a térkép alapján az Újbuda-központ és Móricz Zsigmond körtér állomások és a Móricz Zsigmond körtér és Szent Gellért tér állomások közti távolság azonos, míg a valóságban az egyik távolság a másiknak közel a duplája. 
+\end{megjegyzes}
+
+
+%\section{Követelmények modellekkel szemben}
+Látható, hogy önmagában nincs értelme egy modell helyességéről beszélni, csak arról beszélhetünk, hogy bizonyos meghatározott követelményeknek megfelel-e vagy sem.
+Ebben a fejezetben áttekintjük, milyen követelményeket támaszthatunk a modellekkel szemben és azt, hogy hogyan csoportosíthatjuk ezen követelményeket.
+
+\paragraph{Követelmények funkcionalitás szerint.}
+Az egyik leggyakoribb felosztás a követelményeket aszerint különbözteti meg, hogy a rendszer elsődleges funkcióját írják le vagy sem. \fogalomragozva{funkcionalis-kovetelmeny}{Funkcionális követelményeknek} nevezzük azokat a követelményeket, amelyek egy rendszer(összetevő) által ellátandó funkciót definiálnak \cite{IEEE-24765}.
+\fogalomragozva{nemfunkcionalis-kovetelmeny}{Nemfunkcionális követelményeknek} (vagy extrafunkcionális követelményeknek) nevezzük az ezeken kívül eső követelményeket, amelyek a rendszer minőségére vonatkoznak, például megbízhatóságra, teljesítményre vonatkozó kritériumok \cite{IEEE-24765}.
+
+\begin{megjegyzes}
+Tehát a \fogalomragozva{funkcionalis-kovetelmeny}{funkcionális követelmények} meghatározzák, \emph{mit} fog a rendszer csinálni. A \fogalomragozva{nemfunkcionalis-kovetelmeny}{nemfunkcionális követelmények} arról szólnak, \emph{hogyan} kell a rendszernek ezeket a funkciókat ellátnia.
+\end{megjegyzes}
+
+\paragraph{Biztonsági és élőségi követelmények.}
+A követelmények egy másik klasszikus kategorizálása alapján biztonsági és élőségi követelményeket különböztetünk meg \cite{Lamport:1977}.
+A \fogalomragozva{biztonsagi-kovetelmeny}{biztonsági követelmények} a megengedett viselkedést definiálják: megadják, hogy milyen viselkedés engedélyezett és mely viselkedések tiltottak. Ezek univerzális követelmények, melyeknek a rendszerre minden időpillanatban teljesülniük kell.
+Az \fogalomragozva{elosegi-kovetelmeny}{élőségi követelmények} az elvárt viselkedést definiálják.
+Ezek egzisztenciális követelmények, amelyek teljesülésére előbb-utóbb lehetőség nyílik.
+
+\begin{megjegyzes}
+Biztonsági követelmény például az, hogy egy jelzőlámpán egyszerre sosem világíthat a piros és a zöld fény. Élőségi követelmény, hogy a lámpa (előbb-utóbb) képes legyen zöldre váltani.
+%Biztonsági követelmény például az, hogy egy jegyautomatánál a visszajáró összeg mindig nemnegatív. Élőségi követelmény, hogy folyamatban lévő tranzakció esetén a tranzakció mindig megszakítható és az addig bedobott pénz visszaadásra kerül.
+\end{megjegyzes}
+
+
+\paragraph{Vizsgálatok fajtái.}
+Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ``helyességvizsgálat'' nem egy precíz fogalom. 
+
+\begin{megjegyzes}
+Képzeljük el, hogy egy kereszteződést szerelünk fel jelzőlámpákkal. A leszállított rendszert ellenőriztük, megfelel a specifikációnak: a fények megfelelő sorrendben, megfelelő időzítéssel követik egymást és mindig csak az engedélyezett irányok kapnak egyidejűleg szabad jelzést. Az átadáskor a megrendelő megkérdezi: ``-- És hol lehet átkapcsolni villogó sárgára?'' Mivel ez nem volt a specifikáció része, ilyen funkció nem is került a jelzőlámpák vezérlésébe. Mi meg vagyunk győződve arról, hogy a rendszer helyes, mivel teljesíti a specifikáció minden elemét. Ugyanakkor a megrendelő biztos abban, hogy a rendszer hibás, hiszen nem megfelelő a számára.
+\end{megjegyzes}
+
+Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be. \fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak. \fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e. Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval.
+
+A modellek vagy rendszerek ellenőrzésére többféle módszer is rendelkezésre áll, ezeket mutatjuk be a fejezet hátralévő részében. Először a fontosabb statikus ellenőrzési technikákat ismertetjük (\ref{sec:statikus-ellenorzes}.~szakasz), amelyekhez a rendszert nem szükséges futtatni. Utána a tesztelést mutatjuk be (\ref{sec:teszteles}.~szakasz), amely egy dinamikus, a rendszert működés közben megfigyelő módszer. A fejezetet a formális ellenőrzési módszerekre történő kitekintéssel zárjuk (\ref{sec:formalis-verifikacio}.~szakasz).
+
+
+
+\section{Statikus ellenőrzés}\label{sec:statikus-ellenorzes}
+
+\subsection{Szintaktikai hibák vizsgálata}
+\subsection{Szemantikai hibák vizsgálata}
+\subsection{Tervezési szabályoknak megfelelés}
+
+\section{Tesztelés}\label{sec:teszteles}
+
+\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert bizonyos meghatározott körülmények közt futtatjuk, majd az eredményeket összehasonlítjuk az elvárásainkkal
+\footnote{``[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component'' \cite{IEEE-24765}}\cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk. 
+
+Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus ellenőrzés közt: utóbbi esetben a vizsgált rendszert nem futtatjuk, nem hajtjuk végre. Ugyanakkor attól, hogy a rendszert annak vizsgálata céljából végrehajtjuk, még nem beszélünk tesztelésről. Ahogyan a definíció is mutatja, meghatározott körülmények közt futtatjuk a rendszert, azaz nem ``próbálgatásról'' van szó, hanem a fejlesztés egy alaposan megtervezett részfolyamatáról.
+
+
+\subsection{A tesztelés alapfogalmai}
+Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagában a rendszer. Tesztek végrehajtásához legalább a következő komponensek szükségesek: 
+\begin{itemize}
+\item a tesztelendő rendszer (system under test), amelyet a teszt során futtatni fogunk;
+\item a \fogalomragozva{tesztbemenet}{tesztbemenetek}, amelyek megadják a tesztelendő rendszer számára biztosítandó bemeneti adatokat; és
+\item a \fogalomragozva{tesztorakulum}{tesztorákulumra}, amely alapján a végrehajtott tesztről eldönthető annak eredménye. A tesztorákulum tipikusan 
+\end{itemize}
+
+Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amely egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ``bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
+
+A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem.
+Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
+
+\subsection{A tesztek kategorizálása}
+Tesztelést a szoftverfejlesztési életciklus számos fázisában használhatunk. Attól függően, hogy a rendszer mekkora részét vizsgáljuk, különböző tesztelési módszereket különböztethetünk meg.
+
+\begin{itemize}
+\item \fogalomragozva{modulteszt}{Modultesztnek} (másként \fogalom{komponensteszt} vagy \fogalom{egysegteszt}) nevezzük azt a tesztet, amely csak egyes izolált komponenseket tesztelnek \cite{HTB-glossary}.
+\item \fogalomragozva{integracios-teszt}{Integrációs tesztnek} nevezzük azt a tesztet, ``amelynek célja az integrált egységek közötti
+interfészekben, illetve kölcsönhatásokban lévő hibák megtalálása''  \cite{HTB-glossary}.
+\item \fogalomragozva{rendszerteszt}{Rendszertesztnek} hívjuk azt a tesztet, amelyben a teljes, integrált rendszert vizsgáljuk annak érdekében, hogy ellenőrizzük a követelményeknek való megfelelőséget \cite{HTB-glossary}.
+\end{itemize}
+
+
+\subsection{Tesztelés fejlesztési időben}
+a tesztelés alapvető elrendezése; regressziós tesztelés
+
+\subsection{Tesztelés futásidőben}
+"öntesztelő program", contracts, assertions, monitorok
+
+\subsection{A tesztelés metrikái}
+Ahogyan a fejezet elején írtuk, a tesztelés általános célja a vizsgált rendszer minőségének javítása hibák megtalálásán és javításán keresztül. Nyilvánvaló, hogy ez a végtelenségig nem folytatható, egy idő után az összes hibát megtaláljuk és kijavítjuk. Ennél az utópisztikus nézetnél kissé pragmatikusabban azt is mondhatjuk, hogy egy idő után a tesztelés folytatása nem célszerű (nem gazdaságos), mert a vizsgált rendszer minősége már ``elég jó''. % Igen, az utópisztikust tényleg így írják.
+De honnan tudhatjuk, hogy elértük ezt a szintet?
+
+Az egyik gyakran használt módszer a tesztkészlet fedésének mérése. A tesztfedettség alapötlete az, hogy a tesztkészlet egyik tesztesete sem látogat meg egy adott állapotot, akkor az az állapot biztosan nem lesz vizsgálva, így annak minőségéről következtetést nem vonhatunk le. Ugyanez elmondható például egy metódus hívásával kapcsolatban is.
+
+Ha viszont a tesztkészletünk meglátogat minden állapotot vagy meghív minden metódust, elmondhatjuk, hogy mindent megvizsgáltunk? Sajnos korántsem. Például abból, hogy minden állapotot bejár egy tesztkészlet nem következik, hogy minden állapotátmenetet is érint. Attól, hogy egy tesztkészlet minden metódust meghív, nem feltétlenül érint minden utasítást. Látható, hogy számos fedettségi metrikát lehet bevezetni. Mi itt mindössze három alapvető fedettségi metrikára szorítkozunk:
+\begin{itemize}
+	\item Egy állapotgépben az \fogalom{allapotlefedettseg} egy adott tesztkészlet által érintett (bejárt) állapotok és az összes állapotok arányát adja meg.
+	\item Egy állapotgépben az \fogalom{atmenetlefedettseg} egy adott tesztkészlet által érintett (bejárt) állapotátmenetek és az összes átmenetek arányát adja meg.
+	\item Egy vezérlési folyamban (programban) az \fogalom{utasitasfedettseg} egy adott tesztkészlet által érintett (bejárt) utasítások és az összes utasítások arányát adja meg.	
+\end{itemize}
+
+\begin{megjegyzes}
+Példa.
+\end{megjegyzes}
+
+A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak szükséges, de nem elégséges feltétele a jó minőségű rendszerhez. Gyakran ez a szám félrevezető is lehet, illetve rossz irányba viheti a teszttervezést.
+
+
+\section{Formális verifikáció}\label{sec:formalis-verifikacio}

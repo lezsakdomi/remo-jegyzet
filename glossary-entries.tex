@@ -1,0 +1,248 @@
+% http://mirror.math.ku.edu/tex-archive/macros/latex/contrib/glossaries/
+
+\newcommand{\fogalomcim}[1]{\gls{#1} (\glsdesc{#1})}
+\newcommand{\Fogalomcim}[1]{\Gls{#1} (\glsdesc{#1})}
+\newcommand{\Fogalomcimtsz}[1]{\Glspl{#1} (\glsdescplural{#1})}
+
+\newcommand{\fogalom}[1]{\emph{\gls{#1}}}
+\newcommand{\Fogalom}[1]{\emph{\Gls{#1}}}
+
+\newcommand{\fogalomangolul}[1]{\emph{\glsdesc{#1}}}
+\newcommand{\Fogalomangolul}[1]{\emph{\Glsdesc{#1}}}
+
+\newcommand{\fogalomzarojelben}[1]{\emph{\gls{#1}}, \glsdesc{#1}}
+
+\newcommand{\fogalomtsz}[1]{\emph{\glspl{#1}}}
+\newcommand{\Fogalomtsz}[1]{\emph{\Glspl{#1}}}
+
+\newcommand{\fogalomragozva}[2]{\emph{\glslink{#1}{#2}}} 
+
+\newcommand{\angolrovidites}[1]{(\glsdesc{#1}, \acrshort{#1})}
+\newcommand{\angolroviditestsz}[1]{(\glsdescplural{#1}, \acrshortpl{#1})}
+
+\newcommand{\rovidites}[1]{\acrshort{#1} (\glsdesc{#1}, \acrlong{#1})}
+
+\newcommand{\roviditeszarojelben}[1]{\emph{\acrlong{#1}}, \acrshort{#1}}
+
+\newcommand{\Rovidites}[1]{\emph{\Acrlong{#1}} \angolrovidites{#1}}
+\newcommand{\Roviditestsz}[1]{\emph{\Acrlongpl{#1}} \angolroviditestsz{#1}}
+
+\IfFileExists{./use-xindy}{
+	\makeglossaries
+}{
+\makenoidxglossaries
+}
+
+% a rövidítések megjelenítése a Tárgymutatóban
+\newacronymstyle{db-long-short-desc}%
+{%
+	\GlsUseAcrEntryDispStyle{long-short}%
+}%
+{%
+	\GlsUseAcrStyleDefs{long-short}%
+	\renewcommand*{\GenericAcronymFields}{}%
+	\renewcommand*{\acronymsort}[2]{##1}%
+	\renewcommand*{\acronymentry}[1]{%
+		\glsentryshort{##1} \textnormal{\glsentrylong{##1};}}%
+}
+\setacronymstyle{db-long-short-desc}
+
+% roviditesek
+\newacronym[description={Unified Modeling Language}]{UML}{UML}{egységesített modellező nyelv}
+\newacronym[description={Business Process Model and Notation}]{BPMN}{BPMN}{üzleti folyamatmodell és jelölés}
+
+
+% fogalmak
+\newglossaryentry{formalizmus}{name=formalizmus, description=formalism}
+\newglossaryentry{modszertan}{name=módszertan, description=methodology}
+\newglossaryentry{viselkedes}{name=viselkedés, description=behaviour}
+\newglossaryentry{metamodell}{name=metamodell, description=metamodel}
+\newglossaryentry{modell}{name=modell, description=model}
+\newglossaryentry{szemantika}{name=szemantika, description=semantics}
+\newglossaryentry{szintaxis}{name=szintaxis, description=syntax}
+
+% struktura alapu modellezes
+\newglossaryentry{rendszer}{name=rendszer, description=system}
+\newglossaryentry{faktoring}{name=faktoring, description=factoring}
+\newglossaryentry{helyes-dekompozicio}{name=helyes dekompozíció, description=??}
+\newglossaryentry{top-down}{name=felülről lefelé, description=top-down}
+\newglossaryentry{bottom-up}{name=alulról felfelé, description=bottom-up}
+\newglossaryentry{struktura}{name=struktúra, description=structure}
+\newglossaryentry{strukturalis-modell}{name=strukturális modell, description=structural model}
+\newglossaryentry{dekompozicio}{name=dekompozíció, description=decomposition}
+\newglossaryentry{kompozicio}{name=kompozíció, description=composition}
+\newglossaryentry{graf}{name=gráf, description=graph}
+\newglossaryentry{csomopont}{name=csomópont, description={node, vertex}}
+\newglossaryentry{el}{name=él, description={edge, relationship}}
+\newglossaryentry{cimke}{name=címke, description=label}
+\newglossaryentry{fa-graf}{name=fa gráf, description=tree graph}
+\newglossaryentry{erdo}{name=erdő, description=forest}
+\newglossaryentry{kormentes}{name=körmentes, description=acyclic}
+\newglossaryentry{reszgraf}{name=részgráf, description=subgraph}
+\newglossaryentry{iranyitott-graf}{name=irányított gráf, description=directed graph}
+\newglossaryentry{iranyitatlan-graf}{name=irányítatlan gráf, description=undirected graph}
+\newglossaryentry{hipergraf}{name=hipergráf, description=hypergraph}
+\newglossaryentry{relacio}{name=reláció, description=relation}
+\newglossaryentry{attributum}{name=attribútum, description=attribute}
+\newglossaryentry{jellemzo}{name=jellemző, description=property}
+\newglossaryentry{projekcio}{name=projekció, description=projection}
+\newglossaryentry{vetites}{name=vetítés, description=projection}
+\newglossaryentry{szelekcio}{name=szelekció, description=selection}
+\newglossaryentry{szures}{name=szűrés, description=filtering}
+\newglossaryentry{tipus}{name=típus, description=type}
+\newglossaryentry{osztaly}{name=osztály, description=class}
+\newglossaryentry{objektum}{name=objektum, description=object}
+\newglossaryentry{referencia}{name=referencia, description=reference}
+\newglossaryentry{mezo}{name=mező, description=field}
+\newglossaryentry{metodus}{name=metódus, description=method}
+\newglossaryentry{peldany}{name=példány, description=instance}
+\newglossaryentry{peldanya}{name=példánya, description=instance of}
+\newglossaryentry{tipusa}{name=típusa, description=type of}
+\newglossaryentry{orokles}{name=öröklés, description=inheritance}
+\newglossaryentry{alosztaly}{name=alosztály, description=subtype}
+\newglossaryentry{ososztaly}{name=ősosztály, description=supertype}
+\newglossaryentry{leszarmazott}{name=leszármazott, description=descendant}
+\newglossaryentry{os}{name=ős, description=ancestor}
+\newglossaryentry{tranzitiv}{name=tranzitív, description=transitive}
+\newglossaryentry{tranzitiv-lezaras}{name=tranzitív lezárás, description=transitive closure}
+\newglossaryentry{taxonomia}{name=taxonómia, description=taxonomy}
+\newglossaryentry{ontologia}{name=ontológia, description=ontology}
+\newglossaryentry{struktura-alapu-modellezes}{name=struktúra alapú modellezés, description=structural modeling}
+\newglossaryentry{teljes-graf}{name=teljes gráf, description=complete graph}
+\newglossaryentry{paros-graf}{name=páros gráf, description=bipartite graph}
+\newglossaryentry{perfekt-graf}{name=perfekt gráf, description=perfect graph}
+\newglossaryentry{intervallumgraf}{name=intervallumgráf, description=interval graph}
+\newglossaryentry{sikbarajzolhato-graf}{name=síkbarajzolható gráf, description=planar graph}
+\newglossaryentry{gyoker-csomopont}{name=gyökér csomópont, description=root note}
+\newglossaryentry{gyokeres-fa}{name=gyökeres fa, description=rooted tree}
+\newglossaryentry{gyokeres-szintezett-fa}{name={gyökeres, szintezett fa}, description=leveled tree}
+\newglossaryentry{kor}{name=kör, description=cycle}
+\newglossaryentry{ut}{name=út, description=path}
+\newglossaryentry{seta}{name=séta, description={walk, chain}}
+\newglossaryentry{tipusgraf}{name=típusgráf, description=type graph}
+\newglossaryentry{relacioalgebra}{name=relációalgebra, description=relational algebra}
+\newglossaryentry{tulajdonsag}{name=tulajdonság, description=property}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+%\newglossaryentry{}{name=, description=}
+
+
+
+% allapot alapu modellezes
+\newglossaryentry{determinisztikus}{name=determinisztikus, description=deterministic}
+\newglossaryentry{allapot}{name=állapot, description=state}
+\newglossaryentry{allapotter}{name=állapottér, description=state space}
+\newglossaryentry{allapot-alapu-modellezes}{name=állapot alapú modellezés, description=state modeling}
+\newglossaryentry{mealy-automata}{name=Mealy-automata, description=Mealy automaton}
+\newglossaryentry{teljesseg}{name=teljesség, description=completeness}
+\newglossaryentry{kizarolagossag}{name=kizárólagosság, description=(mutual) exclusiveness}
+\newglossaryentry{kezdoallapot}{name=kezdőállapot, description=initial state}
+\newglossaryentry{tranzicio}{name=tranzíció, description=transition}
+\newglossaryentry{allapotatmenet}{name=állapotátmenet, description=state transition}
+\newglossaryentry{tuzeles}{name=tüzelés, description=firing}
+\newglossaryentry{akcio}{name=akció, description=action}
+\newglossaryentry{diszkret-allapotter}{name=diszkrét állapottér, description=discrete state space}
+\newglossaryentry{regio}{name=regió, description=region}
+\newglossaryentry{osszetett-allapot}{name=összetett állapot, description=composite state}
+\newglossaryentry{allapotmentes}{name=állapotmentes, description=stateless}
+\newglossaryentry{allapotos}{name=állapotos, description=stateful}
+\newglossaryentry{szinkron}{name=szinkron, description=synchronous}
+\newglossaryentry{aszinkron}{name=aszinkron, description=asynchronous}
+\newglossaryentry{ortogonalis-allapot}{name=ortogonális állapot, description=orthogonal state}
+\newglossaryentry{aszinkron-szorzas}{name=aszinkron szorzás, description=asynchronous product}
+\newglossaryentry{szorzatautomata}{name=szorzatautomata, description=product automaton}
+\newglossaryentry{allapotter-robbanas}{name=állapottér-robbanás, description=state space explosion}
+\newglossaryentry{ortogonalis-regio}{name=ortogonális régió, plural=ortogonális régiók, description=orthogonal region, descriptionplural=orthogonal regions}
+\newglossaryentry{versenyhelyzet}{name=versenyhelyzet, description=race condition}
+\newglossaryentry{determinizmus}{name=determinizmus, description=determinism}
+\newglossaryentry{nemdeterminizmus}{name=nemdeterminizmus, description=nondeterminism}
+\newglossaryentry{teljesen-specifikalt}{name=teljesen specifikált, description=fully specified}
+\newglossaryentry{holtpontmentes}{name=holtpontmentes, description=deadlock-free}
+\newglossaryentry{szimulacio}{name=szimuláció, description=simulation}
+\newglossaryentry{allapotcsomopont}{name=állapotcsomópont, description=state node}
+\newglossaryentry{szintaktikai-jelentes}{name=szintaktikai jelentés, description=syntactic meaning}
+\newglossaryentry{szemantikai-jelentes}{name=szemantikai jelentés, description=semantic meaning}
+\newglossaryentry{pillanatnyi-allapot}{name=pillanatnyi állapot, description=current state}
+\newglossaryentry{vegrehajtasi-szekvencia}{name=végrehajtási szekvenciái,description=execution trace?}
+\newglossaryentry{elerheto}{name=elérhető, description=reachable}
+\newglossaryentry{allapotkonfiguracio}{name=állapotkonfiguráció, description=state configuration}
+\newglossaryentry{finomitas}{name=finomítás, description=refinement}
+\newglossaryentry{absztrakcio}{name=absztrakció, description=abstraction}
+\newglossaryentry{valtozo}{name=változó, plural=változók, description=variable, descriptionplural=variables}
+\newglossaryentry{valtozoertekeles}{name=változóértékelés, description=variable interpretation ?}
+\newglossaryentry{utasitas}{name=utasítás, description=instruction}
+\newglossaryentry{interfeszvaltozo}{name=interfészváltozó, plural=interfészváltozók, description=interface variable, descriptionplural=interface variables}
+\newglossaryentry{interfesz}{name=interfész, description=interface}
+
+% folyamatmodellezes
+\newglossaryentry{folyamatmodell}{name=folyamatmodell, description=business process model}
+\newglossaryentry{esemeny}{name=esemény, description=event}
+\newglossaryentry{konfliktus}{name=konfliktus, description=conflict}
+
+% modellek ellenőrzése
+\newglossaryentry{funkcionalis-kovetelmeny}{name=funkcionális követelmény, description=functional requirement}
+\newglossaryentry{nemfunkcionalis-kovetelmeny}{name=nemfunkcionális követelmény, description=non-functional requirement}
+\newglossaryentry{biztonsagi-kovetelmeny}{name=biztonsági követelmény, description=safety requirement}
+\newglossaryentry{elosegi-kovetelmeny}{name=élőségi követelmény, description=liveness requirement}
+%\newglossaryentry{megengedett-viselkedes}{name=megengedett viselkedés, description=permitted behaviour}
+%\newglossaryentry{elvart-viselkedes}{name=elvárt viselkedés, description=required behaviour}
+\newglossaryentry{verifikacio}{name=verifikáció, description=verification}
+\newglossaryentry{validacio}{name=validáció, description=validation}
+\newglossaryentry{teszteles}{name=tesztelés, description=testing}
+\newglossaryentry{tesztbemenet}{name=tesztbemenet, description=test input}
+\newglossaryentry{teszteset}{name=teszteset, description=test case}
+\newglossaryentry{tesztfuttatas}{name=tesztfuttatás, description=test execution}
+\newglossaryentry{tesztkeszlet}{name=tesztkészlet, description=test suite}
+\newglossaryentry{tesztorakulum}{name=tesztorákulum, description=test oracle}
+\newglossaryentry{modulteszt}{name=modulteszt, description=module testing}
+\newglossaryentry{komponensteszt}{name=komponensteszt, description=component testing}
+\newglossaryentry{egysegteszt}{name=egységteszt, description=unit testing}
+\newglossaryentry{integracios-teszt}{name=integrációs teszt, description=integration testing}
+\newglossaryentry{rendszerteszt}{name=rendszerteszt, description=system testing}
+\newglossaryentry{allapotlefedettseg}{name=állapotlefedettség, description=state coverage}
+\newglossaryentry{atmenetlefedettseg}{name=átmenetlefedettség, description=transition coverage}
+\newglossaryentry{utasitasfedettseg}{name=utasításfedettség, description=statement coverage}
+
+
+% teljesitmenymodellezes
+\newglossaryentry{felhasznaloi-keres}{name=felhasználói kérés, description=}
+\newglossaryentry{eroforras}{name=erőforrás, description=}
+\newglossaryentry{atlag}{name=átlag, description={average, mean}}
+\newglossaryentry{tranzakcio}{name=tranzakció, description=transaction}
+\newglossaryentry{keres}{name=kérés, description=request}
+\newglossaryentry{rendszer-hatara}{name=rendszer határa, description=}
+\newglossaryentry{erkezesi-rata}{name=érkezési ráta, description=arrival rate}
+\newglossaryentry{atbocsatas}{name=átbocsátás, description=throughput}
+\newglossaryentry{valaszido}{name=válaszidő, description=service time}
+\newglossaryentry{rendszerben-levo-keresek-atlagos-szama}{name=rendszerben lévő kérések átlagos száma, description=??}
+\newglossaryentry{egyensulyi-allapot}{name=egyensúlyi állapot, description=}
+\newglossaryentry{Little-torveny}{name=Little-törvény, description=Little's Law}
+\newglossaryentry{szolgaltatasigeny}{name=szolgáltatásigény, description=}
+\newglossaryentry{kihasznaltsag}{name=kihasználtság, description=}
+\newglossaryentry{kihasznaltsag-torvenye}{name=kihasználtság törvénye, description=}
+\newglossaryentry{forced-flow-torveny}{name=Forced Flow törvény, description=Forced Flow Law}
+\newglossaryentry{atbocsatokepesseg}{name=átbocsátóképesség, description=}
+\newglossaryentry{szuk-keresztmetszet}{name=szűk keresztmetszet, description=bottleneck}
+\newglossaryentry{szolgaltatasigeny-torvenye}{name=szolgáltatásigény törvénye, description=}
+\newglossaryentry{meresi-ido}{name=mérési idő, description=}
+\newglossaryentry{tranzakciok-szama}{name=tranzakciók száma, description=}
+\newglossaryentry{foglaltsagi-ido}{name=foglaltsági idő, description=busy time}
+\newglossaryentry{latogatasok-atlagos-szama}{name=látogatások átlagos száma, description=}
+\newglossaryentry{eroforrasigeny}{name=erőforrásigény, description=}
+
+% EDA
+\newglossaryentry{szoras}{name=szórás, description=standard deviation}
+\newglossaryentry{szorasnegyzet}{name=szórásnégyzet, description=variance}
+\newglossaryentry{median}{name=medián, description=median}
+\newglossaryentry{varhato-ertek}{name=várható érték, description=expected value}
+\newglossaryentry{valoszinusegi-valtozo}{name=valószínűségi változó, description=random variable}
+\newglossaryentry{megfigyeles}{name=megfigyelés, description=sample}
+\newglossaryentry{tapasztalati-atlag}{name=tapasztalati átlag, description=sample mean}
+\newglossaryentry{korrigalt-tapasztalati-szoras}{name=korrigált tapasztalati szórás, description=unbiased sample standard deviation}
+
+%\newglossaryentry{}{name=, description=}

@@ -1,0 +1,91 @@
+\newcommand{\remofigscale}[3]{
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[scale=#3]{#1}
+		\caption{#2.}
+		\label{fig:#1}
+	\end{figure}}
+	
+\newcommand{\halalfejes}{$\skull$}
+\newcommand{\allapot}[1]{\textsf{#1}}
+\newcommand{\esemeny}[1]{\textsf{#1}}
+\newcommand{\regio}[1]{\textsf{#1}}
+\newcommand{\valtozo}[1]{\textsf{#1}}
+\newcommand{\tipus}[1]{\textsf{#1}}
+
+
+
+%\newcommand{\egyedhalmaznev}[1]{{\ttfamily #1}}
+%\newcommand{\kapcsolat}[1]{{\ttfamily\itshape #1}}
+%\newcommand{\kapcsolategyedek}[2]{{\ttfamily\itshape #1}\texttt{:} \egyedhalmaznev{#2}}
+%\newcommand{\kulcs}[1]{{\ttfamily \uline{#1}}}
+%\newcommand{\ekattributum}[1]{{\ttfamily #1}}
+%\newcommand{\egyedhalmaz}[2]{{\ttfamily #1}\ekattributum{(#2)}}
+%\newcommand{\idegenkulcs}[1]{{\ttfamily \uline{\uline{#1}}}}
+%
+%\mathchardef\breakingcomma\mathcode`\,
+%{\catcode`,=\active
+%	\gdef,{\breakingcomma\discretionary{}{}{}}
+%}
+%
+%\newcommand{\nev}[1]{\mathit{#1}}
+%\newcommand{\sema}[2]{#1(#2)}
+%\newcommand{\semanev}[1]{\nev{#1}}
+%
+%% kapcsolódó linkek:
+%% - http://tex.stackexchange.com/questions/19094/allowing-line-break-at-in-inline-math-mode-breaks-citations/
+%% - http://tex.stackexchange.com/questions/1959/allowing-line-break-at-in-inline-math-mode
+%\newcommand{\mathlist}[1]{\mathcode`\,=\string"8000 #1}
+%
+%\newcommand{\attr}[1]{\it \mathlist{#1}}
+%\newcommand{\relacio}[1]{\mathit{#1}}
+%\newcommand{\felbontas}[2]{#1(\mathlist{#2})}
+%\newcommand{\semakulcs}[1]{\underline{\smash{\textit{#1}}}}
+%\newcommand{\semaidegenkulcs}[1]{\underline{\underline{\smash{\textit{#1}}}}}
+%
+%\newcommand{\ureshalmaz}{\emptyset}
+%\newcommand{\unio}{\cup}
+%\newcommand{\metszet}{\cap}
+%\newcommand{\minusz}{\setminus}
+%\newcommand{\join}{\Join}
+%\newcommand{\vagy}{\vee}
+%\newcommand{\es}{\wedge}
+%\newcommand{\nem}{\neg}
+%
+%% kalkulus
+%% kvantor: kvantor, valtozo, predikatum
+%\newcommand{\kvantor}[2]{\left(#1 #2\right) \!} % \! hogy surubb legyen a kifejezes
+%\newcommand{\letezik}[2]{\kvantor{\exists}{#1}}
+%\newcommand{\minden}[2]{\kvantor{\forall}{#1}}
+%\newcommand{\sorv}[2]{\mathit{#1}^{(#2)}}
+%\newcommand{\krel}[4]{\relacio{#1}^{(#2)}\left( \sorv{#3}{#4} \right)}
+%\newcommand{\kalkulus}[2]{\left\{#1 \Big| #2\right\}}
+%
+%% relacios tervezes
+%% project-join mapping
+%\newcommand{\pjm}[2]{m_{#1} \left(#2\right)}
+%% $a \implikacio b$ jelentése: "a" implikálja "b"-t
+%\newcommand{\implikacio}{\Rightarrow}
+%% $X \ff Y$ jelentése: X-től funkcionálisan függ Y
+%\newcommand{\ff}{\rightarrow}
+%% $X \ff Y$ jelentése: X-től nem függ funkcionálisan Y
+%\newcommand{\nff}{\not\rightarrow}
+%% $X \tf Y$ jelentése: X-től többértékűen függ Y
+%\newcommand{\tf}{\twoheadrightarrow}
+%
+%\newcommand{\lezart}[1]{\left(#1\right)^+}
+%\newcommand{\lezartf}[2]{#1^+\left(#2\right)}
+%
+%\renewcommand{\models}{\vDash}
+%\newcommand{\yields}{\vdash}
+%
+%% példatár
+%\newcommand{\reszletesmegoldas}{$\CIRCLE$\xspace}
+%\newcommand{\csakvegeredmeny}{$\LEFTcircle$\xspace}
+%\newcommand{\nincsmegoldas}{$\Circle$\xspace}
+%
+%\newcommand{\exercisefigure}[1]{
+%\begin{figure}[H] 
+%	\centering
+%	\includegraphics[scale=0.65]{figures/#1}
+%\end{figure}}

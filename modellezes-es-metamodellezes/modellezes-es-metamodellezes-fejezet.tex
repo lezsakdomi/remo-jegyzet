@@ -1,0 +1,79 @@
+\topic{Modellezés és metamodellezés}
+
+Az alábbi dokumentum a rendszermodellezés tárgy első előadásához kapcsolódó segédanyag, mely tartalmazza az elhangzott definíciókat és a hozzájuk tartozó egyszerűbb magyarázazokat.
+
+\section{Modellezés}
+
+Mi értelme van modellezni? Fejben szinte mindig modellezünk bármilyen probléma kerül elénk. Legyen az egy szoftver fejlesztése (tervezése), leírása. Legfőbb szerepe a kommunikáció:
+
+\begin{definicio}
+	\Fogalom{modell}: egy valós vagy hipotetikus világ (a ,,rendszer'') egy részének egyszerűsített képe, amely a rendszert helyettesíti bizonyos megfontolásokban.
+\end{definicio}
+
+Egy adott probléma modellé történő leképezésének általában két fontos előnye van: \emph{áttekinthetőbb}, \emph{kisebb (véges)}.
+
+\begin{itemize}
+	\item \emph{kisebb}, hiszen a problémához nem kapcsolódó, elhanyagolható információk nem jelennek meg benne.
+	\item \emph{áttekinthetőbb}, hiszen csak az adott problémával kapcsolatos, releváns információkat kell vizsgálni.
+\end{itemize}
+
+Fontos azt is megjegyezni, hogy nem minden modell, ami modellnek látszik.
+
+\begin{itemize}
+	\item \emph{A modell nem a valóság}: az általunk definiált modellen bizonyos állítások igazak lehetnek, amik a valóságban nem állják meg a helyüket.
+	\item \emph{A modell nem a diagram}: A diagram csak egy ábrázolás módja a modellnek, amivel olvashatóvá tesszük. 
+\end{itemize}
+
+\section{Modellezési nyelvek}
+
+Segítségükkel modelleket építhetünk, amik lehetnek szöveges (pl.: Verilog, VHDL, Java stb.), vagy grafikusak is (pl.: webes konyhatervező, UML diagrammok, UPPAAL stb.). Céljuk a kommunikáció gép-gép, ember-gép vagy akár ember-ember között is. A nyelveknek két fő aspektusa van:
+
+\begin{itemize}
+	\item \fogalom{szintaxis}: hogyan írom a le a modellt? Egy szabályrendszer, ami meghatározza, hogy a nyelv milyen elemekből épül fel és azok hogyan kombinálhatóak.
+	\item \fogalom{szemantika}: mit jelent a modell? A szintaxis által definált nyelvi elemek jelentését definiáló szabályrendszer.
+\end{itemize}
+
+\begin{megjegyzes}
+	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy a \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
+\end{megjegyzes}
+
+\begin{megjegyzes}
+	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol a nyelvi elemek a dobozok, nyilak (a részletes leírás a később előadásokon fog elhangozni a Yakindu nyelvvel kapcsolatban). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig, hogy a dobozok állapotok, a nyilak pedig megmutatják, hogy az alkalmazásunk mely állapotból mely állapotba kerülhet.
+\end{megjegyzes}
+
+\begin{megjegyzes}
+	Szintaktikailag leírhatunk olyan kifejezéseket a nyelvben, aminek szemantikailag nincs értelme.	
+\end{megjegyzes}
+
+
+\section{Metamodellezés}
+
+\begin{definicio}
+	A \fogalom{metamodell} egy modellezési nyelv modellje. Meghatározza, hogy a nyelvnek milyen típusú elemei vannak, milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz.
+\end{definicio}
+
+Tipikus, a későbbi tanulmányokban előkerülő illusztrációk:
+
+\begin{itemize}
+	\item Egyed-kapcsolat, EK modell (entity-relationship, ER)
+	\item UML~\cite{UML} objektum diagram (modell) $\leftrightarrow$ osztálydiagram (metamodell)
+	\item Adatbázis tábla (modell) $\leftrightarrow$ relációs adatbázisséma
+	\item XML dokumentum (modell) $\leftrightarrow$ XML séma (metamodell)
+\end{itemize}
+
+\section{Alapfogalmak}
+
+\begin{definicio}
+	Rendszer és külvilág: a külvilág a rendszerre ható tényezők összessége. A rendszer pedig a komponensei és a közöttük lévő kapcsolatok. (Fehér doboz: ismerjük a rendszer belső működését; fekete doboz: nem ismerjük a belső működés, csak a kimenetei alapján vizsgálhatjuk a működését.)
+\end{definicio}
+
+\todo{kulvilag micsoda? environment}
+
+\begin{definicio}
+	\Fogalom{finomitas}: a modell gazdagítása részletekkel úgy, hogy az eredeti modell absztrakció megmaradjon. (Nem irreleváns adatokkal bővítjük, hanem pontosítjuk a modellünket)
+\end{definicio}
+
+\begin{definicio}
+	\Fogalom{absztrakcio}: a finomítás inverz művelete. (Nem a releváns dolgokról találjuk ki, hogy most már nem relevánsak, hanem a releváns részleteket egyszerűsítjük)
+\end{definicio}
+

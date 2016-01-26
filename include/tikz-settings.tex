@@ -1,0 +1,20 @@
+\usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,trees,fit}
+\tikzset{
+	%Define standard arrow tip
+	>=stealth',
+	%Define style for boxes
+	punkt/.style={
+		rectangle,
+		rounded corners,
+		draw=black,
+		%		text width=6.5em,
+		minimum height=2.5em,
+		text centered},
+	% Define arrow style
+	pil/.style={
+		->,>=stealth',shorten >=1pt,
+		text width = 2.5cm,
+		align=center,},
+	%font=\clearsanslight,
+}

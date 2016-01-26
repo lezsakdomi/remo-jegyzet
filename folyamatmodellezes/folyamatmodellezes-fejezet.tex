@@ -1,0 +1,33 @@
+\topic{Folyamatmodellezés}
+
+\section{Jólstrukturált folyamatok}
+
+A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. 
+
+Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak. Jólstrukturáltnak nevezzük azokat a részfolyamatokat, amelyek egyféleképpen kezdődnek el, egyféleképpen fejeződnek be; továbbá ha összetett részfolyamatról van szó (több elemből áll), akkor az alkotórészei hasonlóan jólstrukuráltak, és megengedett módon vannak összekapcsolva. Egy teljes folyamat pedig akkor jólstrukturált, ha az egész ilyen módon épül fel.
+
+\subsection{Jólstrukturált blokk}
+
+A következő (egy belépési és egy kilépési pontú) részfolyamatokat tekintjük jólstrukturált blokknak (más néven jólstruktuált részfolyamatnak):
+
+\begin{itemize}
+\item egyetlen elemi tevékenység önmagában;
+\item egyetlen folyamathivatkozás/hívás (máshol definiált folyamatmodell újrafelhasználása);
+\item üres vezérlési élszakasz;
+\item ,,soros kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok szekvenciája (egyszerű vezérlési éllel egymás után kötve őket);
+\item ,,\emph{Fork-Join} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Fork} és egy $n$ ágú \emph{Join} közé zárva; 
+\item ,,\emph{Decision-Merge} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Decision} és egy $n$ ágú \emph{Merge} közé zárva;
+\item ,,Ciklus": egy kétágú \emph{Merge} csomóponttal kezdődik, amely után a jólstrukturált $P_1$ blokkok következik, majd egy kétágú \emph{Decision}, melynek egyik ága a részfolyamat vége, a másik a $P_2$ jólstrukturált blokkokon keresztül az előbbi \emph{Merge}-be tér vissza.
+\end{itemize}
+
+\subsection{Jólstrukturált folyamatmodell}
+
+Egy teljes folyamatmodell jólstrukturált, ha egyetlen belépési pontja (\emph{Flow begin}) és kilépési pontja (\emph{Flow end}) egy jólstrukturált blokkot zár közre.
+
+Amint az a definícióból látszik, egy teljes folyamat lehet úgy jólstrukturált, hogy pl. egy egyszerű elemi tevékenység, egy fork-join blokk és egy ciklus szekvenciájából áll, de csak ha a fork-join blokk és a ciklus maga is kisebb jólstrukturált blokkokból van felépítve.
+
+A jólstrukturáltság célja, hogy áttekinthetőbbé tegye a folyamatot, és hogy bizonyos hibalehetőségeket (pl. holtpont) eleve kizárjon. A folyamatmodellekre jellemző hibamintákról később lesz szó; ezek egy jó része jólstrukturált modellnél elő sem fordulhat. Ha a folyamat nem jólstrukturált, akkor külön ellenőrzési eljárásokkal kell kizárni a hibalehetőségeket. Mindemellett nem csak a jólstrukturált folyamatmodellek lehetnek értelmesek; előadáson volt példa nem jólstrukturált, de értelmes folyamatra (ld. "Jólstrukturált folyamatok" c. dia, vagy a gyártósoros példához tartozó "Együttes nézet" c. dia).
+
+Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőleges gráfként megalkotni a vezérlési folyamot, hanem kizárólag jólstrukturált blokkokat lehet létrehozni és más jólstrukturált blokkokból felépíteni. Ilyen nyelv pl. a \rovidites{BPMN} (alap jelkészlete), vagy a programozásoktatásból ismeről Nassi-Shneiderman-féle struktogram. Ezeken a nyelveken a megkötések miatt bizonyos folyamatokat csak körülményesebben lehet megfogalmazni; cserébe az adott nyelven készített összes folyamatról külön ellenőrzés nélkül tudható, hogy rendelkezik a jólstrukturáltság fent tárgyalt összes előnyével.
+
+A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.

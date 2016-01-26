@@ -1,0 +1,150 @@
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+%add the twoside option for printig
+
+% http://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters
+\usepackage[raggedright]{titlesec}
+%\titlespacing*{\chapter} {0pt}{50pt}{40pt}
+\titlespacing*{\chapter} {0pt}{36pt}{0pt}
+%\titlespacing*{\section} {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\section} {0pt}{3ex plus 0.5ex minus 1ex}{1ex plus .5ex minus .5ex}
+%\titlespacing*{\subsection} {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection} {0pt}{2.4ex plus 0.5ex minus 1ex}{.8ex plus .5ex minus .5ex}
+%\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{2ex plus 0.5ex minus 1ex}{.6ex plus .5ex minus .5ex}
+%\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+%\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+
+\usepackage[hang]{caption}
+%\captionsetup{belowskip=0ex,aboveskip=0.5ex}
+
+\usepackage{wrapfig}
+\usepackage{changes}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{graphicx,xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[magyar]{babel}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage{algorithm2e}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage{enumitem}
+%\usepackage{wasysym}
+\usepackage{hhline}
+\usepackage{tabto}
+\usepackage{needspace}
+\usepackage{lscape}
+%\IfFileExists{./use-xindy}{
+	\usepackage[xindy,acronym,nopostdot,shortcuts,nomain,toc]{glossaries}
+%}{
+%	\usepackage[acronym,nopostdot,shortcuts,nomain,toc]{glossaries}
+%}
+\usepackage{skull}
+\usepackage{fancyhdr}
+\usepackage{todonotes}
+
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{glossary-mcols}
+\renewcommand*{\glsmcols}{2}
+\setglossarystyle{mcolindex}
+
+% Valtozasok kovetesehez:
+% \added[id=szarnyas]{szoveg}
+% \deleted[id=szarnyas]{szoveg}
+% \replaced[id=szarnyas,remark={megjegyzest is irhatsz mindharom parancsba}]{new}{old}
+\definechangesauthor[name={Gabor Szarnyas}, color=purple]{szarnyas}
+\definechangesauthor[name={Vince Molnar}, color=brown]{molnar}
+\definechangesauthor[name={Gabor Bergmann}, color=blue{bergmann}
+\definechangesauthor[name={Andras Voros}, color=red]{voros}
+\definechangesauthor[name={Daniel Darvas}, color=orange]{darvas}
+\definechangesauthor[name={Laszlo Gonczy}, color=orange]{gonczy}
+\definechangesauthor[name={Agnes Salanki}, color=orange]{salanki}
+\definechangesauthor[name={Csaba Debreceni}, color=orange]{debreceni}
+\definechangesauthor[name={Marton Bur}, color=orange]{bur}
+\definechangesauthor[name={Tamas Toth}, color=orange]{toth}
+
+\setlist{itemsep=0.2ex,topsep=0ex,parsep=0.2ex}
+
+% nagyobb sorköz
+\setstretch{1.15}
+\singlespacing
+
+\sloppy % margón túllógó sorok tiltása
+%\brokenpenalty10000\relax % oldalhatáron átnyúló elválasztás elkerülése
+%\widowpenalty10000 \clubpenalty10000 % a fattyú- és árvasorok elkerülése
+%\def\hyph{-\penalty0\hskip0pt\relax} % kötőjeles szavak elválasztásának engedélyezése
+
+% http://tex.stackexchange.com/questions/4152/how-do-i-prevent-widow-orphan-lines
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
+
+% http://tex.stackexchange.com/questions/2644/how-to-prevent-a-page-break-before-an-itemize-list
+\makeatletter
+\@beginparpenalty=7000
+ 
+\newcommand\mynobreakpar{\par\nobreak\@afterheading} 
+\makeatother
+
+%\usepackage[hang]{footmisc}
+%\setlength{\footnotemargin}{3ex}
+
+%\setcounter{chapter}{0}
+%\setcounter{secnumdepth}{5}
+
+\graphicspath{ {./figures/}, {./sources/} }
+
+\pagestyle{plain}
+\setlength{\parindent}{0pt} % angol nyelvű dokumentumokban jellemző
+\setlength{\parskip}{0.5em}    % angol nyelvű dokumentumokban jellemző
+%\nofrenchspacing
+%\setlength{\parindent}{2em} % magyar nyelvű dokumentumokban jellemző
+%\setlength{\parskip}{0em}   % magyar nyelvű dokumentumokban jellemző
+\frenchspacing
+
+
+
+\setlist[enumerate,2]{label=\alph*),before=\normalfont,after=\normalfont}
+\setlist[itemize,1]{label={--}}
+\setlist[itemize,2]{label={$\circ$}}%\textperiodcentered}}
+
+\setlength{\itemsep}{0em}
+
+%\usepackage{tocloft}
+%\setlength{\cftchapnumwidth}{1.8em}
+%\setlength{\cftsecnumwidth}{2.8em}
+%\setlength{\cftsecindent}{1.8em}
+%\setlength{\cftsubsecindent}{4.6em}
+	
+\newcommand{\code}[1]{{\footnotesize\ttfamily #1}}
+
+\input{include/listings-settings}	% forráskódok stílusai
+\input{include/remo-commands}
+%\input{include/theorem-settings}	% definíciók, tételek stílusai -- előtte szükséges tcolorbox import
+\input{include/tikz-settings}
+\input{include/hypersetup}
+
+\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=gray!20] }{\end{mdframed}}
+\newenvironment{tipp}{\begin{mdframed}[backgroundcolor=green!20] }{\end{mdframed}}
+\newenvironment{feladat}{\begin{mdframed}[backgroundcolor=red!20] }{\end{mdframed}}
+\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=yellow!20] }{\end{mdframed}}
+
+\loadglsentries{glossary-entries.tex}
+
+\title{Rendszermodellezés}
+\author{Hibatűrő Rendszerek Kutatócsoport}
+\date{2016}
