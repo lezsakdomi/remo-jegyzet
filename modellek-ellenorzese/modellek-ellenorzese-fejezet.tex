@@ -1,5 +1,5 @@
 % !TeX spellcheck = hu_HU
-\topic{Modellek ellenőrzése}
+\topic{Modellek ellenőrzése}\label{sec:modellek-ellenorzese}
 
 \newcommand{\modellekEllenorzeseAllapotgepScale}{0.5}
 
@@ -97,7 +97,7 @@ Két egyszerűbb módszert ismertetünk itt a fenti hibák kivédése érdekébe
 \begin{itemize}
 	\item Ha azonosítottuk a fenti szituációk közül a leggyakrabban előfordulókat, \emph{hibamintákat} fogalmazhatunk meg rájuk. Ez után a statikus ellenőrző eszköz ezeket a hibamintákat keresi a modellben vagy a forráskódban. Például ha egy decision elem egy join elemmel áll párban egy folyamatmodell vagy a kódban egy \code{if (<változó> = <érték>)} minta található, erre felhívhatja a felhasználó figyelmét, aki ezután javíthatja a modellt vagy figyelmen kívül hagyhatja a jelzést.
 
-	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag \aref{fig:jolstrukturalt-folyamatmodellek-mintai}.~ábrán látható öt mintából állítható elő: üres folyamat, elemi tevékenység, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \aref{sec:jolstrukturalt-folyamatok}.~szakaszban szólunk.
+	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag \aref{fig:jolstrukturalt-folyamatmodellek-mintai}.~ábrán látható öt mintából állítható elő: üres folyamat, elemi tevékenység, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
 \end{itemize}
 
 \begin{figure}[h]
