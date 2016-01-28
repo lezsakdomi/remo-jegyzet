@@ -1,6 +1,8 @@
 % !TeX spellcheck = hu_HU
 \topic{Modellek ellenőrzése}
 
+\newcommand{\modellekEllenorzeseAllapotgepScale}{0.5}
+
 A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel járhat.
 
 Fontos megjegyezni, hogy a modellek ``helyessége'' önmagában nem egy értelmes, vizsgálható kérdés. Ennek vizsgálatához fontos tudni, hogy mi a modell célja, kontextusa, mik a követelmények vele szemben.
@@ -34,6 +36,10 @@ Biztonsági követelmény például az, hogy egy jelzőlámpán egyszerre sosem 
 \end{megjegyzes}
 
 
+\paragraph{Holtpontmentesség.}
+Itt kitérünk egy speciális követelményre, a holtpontmentességre. \fogalomragozva{holtpont}{Holtpontnak} nevezzük azt az állapotot egy rendszerben, amelyben a futás megáll, mert két vagy több folyamat egymásra várakozik \cite{IEEE-24765}. Ez egy olyan állapot, amelyből külső beavatkozás nélkül nem lehet kilépni. Emiatt párhuzamos rendszereknél egy gyakori követelmény a holtpontmentesség, a holtpontok lehetőségének hiánya. Sajnos ez egy olyan probléma, amely igen nehezen vizsgálható, gyakran a holtpont létrejöttéhez körülmények ritka, különleges együttállása szükséges.
+
+
 \paragraph{Vizsgálatok fajtái.}
 Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ``helyességvizsgálat'' nem egy precíz fogalom. 
 
@@ -41,9 +47,17 @@ Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyess
 Képzeljük el, hogy egy kereszteződést szerelünk fel jelzőlámpákkal. A leszállított rendszert ellenőriztük, megfelel a specifikációnak: a fények megfelelő sorrendben, megfelelő időzítéssel követik egymást és mindig csak az engedélyezett irányok kapnak egyidejűleg szabad jelzést. Az átadáskor a megrendelő megkérdezi: ``-- És hol lehet átkapcsolni villogó sárgára?'' Mivel ez nem volt a specifikáció része, ilyen funkció nem is került a jelzőlámpák vezérlésébe. Mi meg vagyunk győződve arról, hogy a rendszer helyes, mivel teljesíti a specifikáció minden elemét. Ugyanakkor a megrendelő biztos abban, hogy a rendszer hibás, hiszen nem megfelelő a számára.
 \end{megjegyzes}
 
-Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be. \fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak. \fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e. Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval.
+Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be. \fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak. \fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e. Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval. A verifikáció és a validáció közti különbséget illusztrálja \aref{fig:verifikacio_vs_validacio}.~ábra.
 
-A modellek vagy rendszerek ellenőrzésére többféle módszer is rendelkezésre áll, ezeket mutatjuk be a fejezet hátralévő részében. Először a fontosabb statikus ellenőrzési technikákat ismertetjük (\ref{sec:statikus-ellenorzes}.~szakasz), amelyekhez a rendszert nem szükséges futtatni. Utána a tesztelést mutatjuk be (\ref{sec:teszteles}.~szakasz), amely egy dinamikus, a rendszert működés közben megfigyelő módszer. A fejezetet a formális ellenőrzési módszerekre történő kitekintéssel zárjuk (\ref{sec:formalis-verifikacio}.~szakasz).
+\begin{figure}
+	\centering
+	\input{modellek-ellenorzese/figures/verifikacio_vs_validacio.pdf_tex}
+	
+	\caption{A verifikáció és a validáció közti különbség illusztrációja}
+	\label{fig:verifikacio_vs_validacio}
+\end{figure}
+
+A modellek vagy rendszerek ellenőrzésére többféle módszer is rendelkezésre áll, ezeket mutatjuk be a fejezet hátralévő részében. Először a fontosabb statikus ellenőrzési technikákat ismertetjük (\ref{sec:statikus-ellenorzes}.~szakasz), amelyekhez a rendszert nem szükséges futtatni. Utána a tesztelést mutatjuk be (\ref{sec:teszteles}.~szakasz), amely egy dinamikus, a rendszert futás közben, de még fejlesztési időben megfigyelő módszer. Ha a rendszert normál üzemű futás közben is meg szeretnénk figyelni, futásidejű verifikációról beszélünk, amelyről a \ref{sec:futasideju-verifikacio}.~szakaszban szólunk. A fejezetet a formális ellenőrzési módszerekre történő kitekintéssel zárjuk (\ref{sec:formalis-verifikacio}.~szakasz).
 
 
 
@@ -64,19 +78,65 @@ Grafikus modellek esetén tipikus, hogy a szerkesztő megakadályozza a szintakt
 
 Szemantikai hibákról akkor beszélünk, ha a fejlesztés alatt álló rendszer szintaktikailag helyes, ugyanakkor valószínűsíthetően nem értelmes vagy nem az elvárt módon fog viselkedni. Ha egy C programban leírjuk, hogy \code{x = y / 0;}, akkor az szintaktikailag helyes (feltéve, hogy az \code{x} és \code{y} változók definiáltak és megfelelő kontextusban szerepel a fenti értékadás), ugyanakkor triviálisan nullával való osztáshoz vezet, amely a legritkábban kívánatos egy programban. 
 
-(todo: állapotgépes példák a diasorból)
-
 Gyakran a szemantikai problémák nem olyan egyértelműek, mint a fenti nullával osztás. Például az \code{if (x = 1) { ... }} C kódban gyanús az értékadás, feltehetően a fejlesztő szándéka az \code{x} változó értékétől függő feltételes elágazás implementálása volt, ugyanakkor ezt biztosan nem tudhatjuk. Az ilyen gyanús kódrészleteket angolul \emph{code smell}nek hívjuk, és a statikus ellenőrző eszközök tipikusan ezekre is felhívják a figyelmet.
 
-Hasonló probléma állapotgépek esetén ... 
+Hasonló probléma folyamatmodellek esetén az alábbi ábrán látható:
+
+\remofigscale{modellek-ellenorzese/figures/folyamatmodell-decision-join}{Folyamatmodell decision és join elemmel \textbf{TODO: kicserélni egy konzisztens stílusú ábrára}}{\modellekEllenorzeseAllapotgepScale}
+
+A fenti folyamatmodell szintaktikailag helyes, azonban ha közelebbről megvizsgáljuk látszik, hogy valószínűleg szemantikailag helytelen. A decision elem miatt vagy a \allapot{Kártyás fizetés}, vagy a \allapot{Kasszakezelés} tevékenység lesz aktív. Mivel a join mindkét bemeneten tokent fog várni, sosem léphet tovább, és így a \allapot{Készletcsökkentés} tevékenység sosem fut le.
+
+Hasonló a helyzet az alábbi folyamatmodellnél.
+\remofigscale{modellek-ellenorzese/figures/folyamatmodell-ket-terminalo}{Folyamatmodell két termináló csomóponttal \textbf{TODO: kicserélni egy konzisztens stílusú ábrára}}{\modellekEllenorzeseAllapotgepScale}
+
+A fenti folyamatmodell szintén helyes szintaktikailag, viszont amint a \allapot{Pontokat kihirdet} vagy a \allapot{Jegyeket beír} tevékenység befejeződik, a termináló csomópont leállítja a \emph{teljes} folyamatot, így a másik tevékenység nem fog tudni lefutni.
+
+\paragraph{Védekezés szemantikai hibák ellen.}
+Két egyszerűbb módszert ismertetünk itt a fenti hibák kivédése érdekében. Az egyik módszerrel a hibák felismerhetők, a másik módszerrel pedig megelőzhetők.
+
+\begin{itemize}
+	\item Ha azonosítottuk a fenti szituációk közül a leggyakrabban előfordulókat, \emph{hibamintákat} fogalmazhatunk meg rájuk. Ez után a statikus ellenőrző eszköz ezeket a hibamintákat keresi a modellben vagy a forráskódban. Például ha egy decision elem egy join elemmel áll párban egy folyamatmodell vagy a kódban egy \code{if (<változó> = <érték>)} minta található, erre felhívhatja a felhasználó figyelmét, aki ezután javíthatja a modellt vagy figyelmen kívül hagyhatja a jelzést.
+
+	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag \aref{fig:jolstrukturalt-folyamatmodellek-mintai}.~ábrán látható öt mintából állítható elő: üres folyamat, elemi tevékenység, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\textbf{TODO -- megrajzolni a többivel egységes formában}
+	
+	\caption{Jólstrukturált folyamatmodellek megengedett mintái}
+	\label{fig:jolstrukturalt-folyamatmodellek-mintai}
+\end{figure}
+
+Az, hogy mit tartunk szemantikai hibának függ a használt modellezési vagy programozási nyelvtől, de függhet az alkalmazási területtől vagy a konkrét felhasználástól is. Bizonyos alkalmazási területeken további tervezési szabályokat definiálunk, amelyek tovább korlátozhatják a modellezés vagy programozás szabadságát. Például biztonságkritikus programok esetén gyakran tiltott a dinamikus memóriafoglalás. Ilyen esetekben kiegészíthetjük a hibaminták készletét a \code{malloc} és hasonló konstrukciókkal.
+
+\paragraph{Szimbolikus végrehajtás.}
+Bizonyos esetekben a szemantikai hibák kiszűrése bonyolultabb feladat. Gondoljunk például az \code{x = y / z;} kódrészletre. Előfordulhat itt nullával osztás? A válasz nem egyértelmű, függ \code{z} értékétől. Tekintsük például az alábbi C kódot:
+\begin{lstlisting}[language=C]
+int foo(int z) {
+	int y;
+	
+	y = z + 10;
+	if (y != 10) {
+		x = y / z;
+	} else {
+		x = 2;
+	}
+	return x;
+}
+\end{lstlisting}
+
+Lehet \code{z} értéke 0? Természetesen, hiszen \code{z} egy bementi változó. Vizsgáljuk a \code{z}-vel osztás előtt annak az értékét? Nem, csak \code{y} változót vizsgáljuk. Lehetséges a nullával osztás a kódban? Nem. Amikor \code{z} értéke nulla lenne, akkor \code{y} értéke 10 lesz, és így az osztást tartalmazó utasítás nem fut le.
+
+Amikor végrehajtunk egy programot, mindig a változók bizonyos konkrét értékei mellett tesszük ezt (pl. \code{foo(5)}). \Fogalom{szimbolikus-vegrehajtas} esetén konkrét értékek helyett szimbolikus értékekkel végezzük a végrehajtást, azaz a változókat matematikai változóként fogjuk fel. Emellett a belső elágazások által támasztott feltételeket is összegyűjtjük.
+
+Ha \code{z}-t egy $z$ matematikai változónak tekintjük, akkor tudjuk, hogy a feltételes elágazás \emph{igaz} ágában a \code{y = z + 10;} utasítás miatt $y = z + 10$ igaz, valamint az elágazási feltételben szereplő \code{y != 10} miatt $y \neq 10$ igaz. A kettőből együttesen $z + 10 \neq 10$, azaz $z \neq 0$. Így bizonyíthatjuk, hogy sosem osztunk nullával a fenti példakódban.
+
+Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ kaphatunk szimbolikus végrehajtás segítségével, míg konkrét végrehajtással minden egyes lehetséges \code{z}-re le kellene futtatnunk a függvényt. Ha az elágazás feltétele teljesült tudjuk, hogy a program végére $x = \frac{z+10}{z} \wedge z \neq 0$, azaz \code{x} akkor lesz 2, ha \code{z} értéke 10. Ha az elágazás feltétele nem teljesült, akkor tudjuk, hogy a program végére $x = 2 \wedge z = 0$, azaz ha \code{z} értéke 0, a kimenet $2$ lesz. Tehát \code{z=0} és \code{z=10} esetén kaphatunk eredményként 2-t.
 
 
---- kódolási szabályok és jólformált modellek -- szabályok megkötése, lehet nyelv, domain, alkalmazás-specifikus
 
 
-Tervezési szabályoknak megfelelés
-
-szimbolikus végrehajtás
 
 \section{Tesztelés}\label{sec:teszteles}
 
@@ -89,15 +149,38 @@ Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus elle
 \subsection{A tesztelés alapfogalmai}
 Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagában a rendszer. Tesztek végrehajtásához legalább a következő komponensek szükségesek: 
 \begin{itemize}
-\item a tesztelendő rendszer (system under test), amelyet a teszt során futtatni fogunk;
+\item a \fogalom{tesztelendo-rendszer} (system under test, SUT), amelyet a teszt során futtatni fogunk;
 \item a \fogalomragozva{tesztbemenet}{tesztbemenetek}, amelyek megadják a tesztelendő rendszer számára biztosítandó bemeneti adatokat; és
-\item a \fogalomragozva{tesztorakulum}{tesztorákulumra}, amely alapján a végrehajtott tesztről eldönthető annak eredménye. A tesztorákulum tipikusan 
+\item a \fogalomragozva{tesztorakulum}{tesztorákulumra}, amely alapján a végrehajtott tesztről eldönthető annak eredménye.
 \end{itemize}
 
 Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amely egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ``bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
 
 A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem.
 Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
+
+A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-orakulum}.~ábrán.
+
+\begin{figure}
+	\centering
+	\input{modellek-ellenorzese/figures/teszteles-elrendezes-orakulum.pdf_tex}
+	
+	\caption{A tesztelés általános elrendezése}
+	\label{fig:teszteles-elrendezes-orakulum}
+\end{figure}
+
+Legegyszerűbb esetben a teszteset explicite tartalmazza az adott tesztbemenetekre elvárt kimeneteket, így a feladat mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az az alábbi ábrán is látható:
+
+\begin{figure}[h]
+	\centering
+	\input{modellek-ellenorzese/figures/teszteles-elrendezes-elvart-kimenet.pdf_tex}
+	
+	\caption{A tesztelés általános elrendezése}
+	\label{fig:teszteles-elrendezes-orakulum}
+\end{figure}
+
+\Aref{fig:teszteles-elrendezes-orakulum}.~ábrán vázolt elrendezésről van szó például akkor, ha állapotgépeket tesztelünk, és a teszteset tartalmazza a bemeneti eseménysort (tesztbemenetként) és az elvárt akciókat, eseményeket (elvárt kimenetként). 
+
 
 \subsection{A tesztek kategorizálása}
 Tesztelést a szoftverfejlesztési életciklus számos fázisában használhatunk. Attól függően, hogy a rendszer mekkora részét vizsgáljuk, különböző tesztelési módszereket különböztethetünk meg.
@@ -109,12 +192,9 @@ interfészekben, illetve kölcsönhatásokban lévő hibák megtalálása''  \ci
 \item \fogalomragozva{rendszerteszt}{Rendszertesztnek} hívjuk azt a tesztet, amelyben a teljes, integrált rendszert vizsgáljuk annak érdekében, hogy ellenőrizzük a követelményeknek való megfelelőséget \cite{HTB-glossary}.
 \end{itemize}
 
+Ezek a különféle tesztelési módszerek általában egymást követik a fejlesztési ciklusban: először az egyes modulok tesztelése történik meg, később a modulok integrációja után az integrációs tesztek, majd végül a rendszerteszt kerül elvégzésre.
 
-\subsection{Tesztelés fejlesztési időben}
-a tesztelés alapvető elrendezése; regressziós tesztelés
-
-\subsection{Tesztelés futásidőben}
-"öntesztelő program", contracts, assertions, monitorok
+Amennyiben módosítást végzünk a rendszerünkön, a korábbi tesztek eredményeit már nem fogadhatjuk el, hiszen a rendszer megváltozott. Ha ismerjük, hogy az egyes tesztesetek a rendszer mely részeit vizsgálják, elegendő azokat újrafuttatnunk, amelyek a megváltoztatott részt (is) vizsgálják. Az ilyen, változtatások utáni (szelektív) újratesztelést hívjuk \fogalomragozva{regresszios-teszt}{regressziós tesztnek}. Fontos megjegyezni, hogy ez a korábbiakhoz képest egy ortogonális kategória, és egységeket vagy teljes rendszert is vizsgálhatunk regressziós teszttel. 
 
 \subsection{A tesztelés metrikái}
 Ahogyan a fejezet elején írtuk, a tesztelés általános célja a vizsgált rendszer minőségének javítása hibák megtalálásán és javításán keresztül. Nyilvánvaló, hogy ez a végtelenségig nem folytatható, egy idő után az összes hibát megtaláljuk és kijavítjuk. Ennél az utópisztikus nézetnél kissé pragmatikusabban azt is mondhatjuk, hogy egy idő után a tesztelés folytatása nem célszerű (nem gazdaságos), mert a vizsgált rendszer minősége már ``elég jó''. % Igen, az utópisztikust tényleg így írják.
@@ -130,10 +210,45 @@ Ha viszont a tesztkészletünk meglátogat minden állapotot vagy meghív minden
 \end{itemize}
 
 \begin{megjegyzes}
-Példa.
+Példa. \textbf{TODO -- ábra, a többivel egységes formában}
 \end{megjegyzes}
 
 A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak szükséges, de nem elégséges feltétele a jó minőségű rendszerhez. Gyakran ez a szám félrevezető is lehet, illetve rossz irányba viheti a teszttervezést.
 
 
+\section{Tesztelés futásidőben (futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
+Ebben a fejezetben a futásidejű ``öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét magában a megvalósított rendszerben elhelyezzük és folyamatosan vizsgáljuk.
+
+A monitorozás általános elrendezését szemlélteti a következő ábra.
+
+\begin{figure}[h]
+	\centering
+	\input{modellek-ellenorzese/figures/monitorozas-elrendezes.pdf_tex}
+	
+	\caption{A monitorozás általános elrendezése}
+	\label{fig:monitorozas-elrendezes}
+\end{figure}
+
+A monitorozás két fő lépésből áll:
+\begin{itemize}
+\item A \emph{bemenetek ellenőrzéséből}, amely során a bemeneti adatok megfelelőségét vizsgáljuk a definiált bemeneti invariánsok (előfeltételek) alapján, és/vagy
+\item A \emph{hihetőségvizsgálatból}, amely során a kimeneti adatok megfelelőségét vizsgáljuk a bemeneti adatok és a definiált kimeneti invariánsok (utófeltételek) alapján.
+\end{itemize}
+
+Egyes esetekben az invariánsok igen egyszerűek (például egy valós számok négyzetre emelést megvalósító függvény végén vizsgálhatjuk, hogy a kapott eredmény negatív-e; a negatív eredményt hibásnak minősítjük), de komplex monitorok is elképzelhetők. Például állapotgépek esetén készíthetünk egy monitor régiót, ami a rendszer megvalósításával párhuzamosan fut és detektálja a hibás vagy tiltott állapotokat, akciókat.
+
+
 \section{Formális verifikáció}\label{sec:formalis-verifikacio}
+\Fogalom{formalis-verifikacio} alatt olyan módszereket értünk, amelyek segítségével adott modellek vagy programok helyességét matematikailag precíz eszközökkel bizonyíthatjuk. Három fontosabb formális verifikációs módszert (családot) említünk meg:
+\begin{itemize}
+\item Modellellenőrzés,
+\item Automatikus helyességbizonyítás, amely során axiómarendszerek alapján tételbizonyítás segítségével próbáljuk a helyességet belátni;
+\item Konformanciavizsgálat, amely során adott modellek közt bizonyos konformanciarelációk teljesülését vizsgáljuk, így beláthatjuk, hogy különböző modellek viselkedése megegyező vagy eltérő az adott relációk szerint.
+\end{itemize}
+
+Jelen jegyzetben kitekintésként a modellellenőrzést mutatjuk be röviden. Bővebben a formális verifikációról a Formális Módszerek (BMEVIMIM100) tárgy keretei közt szólunk.
+
+\paragraph{Modellellenőrzés.}
+A \fogalom{modellellenorzes} egy olyan módszer, amelynek során egy adott modellen vagy implementáción egy követelmény teljesülését vizsgáljuk. A modellellenőrzés előnye, hogy egy automatikus módszer, valamint amennyiben a követelmény nem teljesül, lehetséges egy ellenpéldát adni. Az ellenpélda egy olyan futási szekvencia, amely megmutatja, hogyan lehetséges a vizsgált követelményt megsérteni. Ez nagyban segíthet a hibás működés okának meghatározásában.
+
+A modellellenőrzés -- a teszteléssel szemben -- egy teljes módszer, azaz az adott modell vizsgálata kimerítő. Ennek következtében lehetőség van a helyes működés bizonyítására is, míg ez teszteléssel nem lehetséges. Ugyanakkor a modellellenőrzés igen nagy számítási igényű, ezért használhatósága korlátozott.
