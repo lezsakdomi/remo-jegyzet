@@ -52,6 +52,7 @@
 \usepackage{skull}
 \usepackage{fancyhdr}
 \usepackage{todonotes}
+\usepackage{etoolbox}
 
 \usepackage{xcolor}
 \usepackage{mdframed}
@@ -142,6 +143,10 @@
 \newenvironment{tipp}{\begin{mdframed}[backgroundcolor=green!20] }{\end{mdframed}}
 \newenvironment{feladat}{\begin{mdframed}[backgroundcolor=red!20] }{\end{mdframed}}
 \newenvironment{definicio}{\begin{mdframed}[backgroundcolor=yellow!20] }{\end{mdframed}}
+
+% \iflabeldef parancs
+\newcommand{\iflabeldef}[3]{\makeatletter\ifcsdef{r@#1}{#2}{#3}\makeatother}
+% Használata: \iflabeldef{sec:whatever}{Erről bővebben \aref{sec:whatever}.~fejezetben írunk.}{Erről bővebben a Whatever leírásban írunk.}
 
 \loadglsentries{glossary-entries.tex}
 
