@@ -41,7 +41,7 @@ A jegyzet elérhető a <http://docs.inf.mit.bme.hu/remo-jegyzet/> címen.
 **Az alábbi lépés opcionális.** Akkor érdemes elvégezni, ha a build időn szeretnénk gyorsítani vagy lokálisan szeretnénk a végleges tárgymutatót tartalmazó PDF-et legenerálni. A build szerveren mindenképpen helyesen generálódik a tárgymutató.
 
 **A probléma:** a tárgymutatót alapértelmezés szerint `glossaries` csomag beépített eszköze rendezi. Ez sajnos meglehetősen lassú, valamint nem tudja megfelelően kezelni a magyar ékezetes karaktereket.
-**A megoldás:** mindkét problémára megoldást kínál a Xindy (A Flexible Indexing System). A használatához hozzunk létre a repository könyvtárában egy üres állományt `use-xindy.tex` néven (vagy használjuk erre a `use-xindy.sh` szkriptet. Ezután TeXstudióban fordítás után a **Tools** | **Glossary** paranccsal (F10) generálhatjuk le a megfelelő fájlokat. Ismételten fordítva a dokumentumot megkapjuk a tárgymutatót.
+**A megoldás:** mindkét problémára megoldást kínál a Xindy (A Flexible Indexing System). A használatához hozzunk létre a repository könyvtárában egy üres állományt `use-xindy.tex` néven vagy használjuk erre a `use-xindy.sh` szkriptet. Ezután TeXstudióban fordítás után a **Tools** | **Glossary** paranccsal (F10) generálhatjuk le a megfelelő fájlokat. Ismételten fordítva a dokumentumot megkapjuk a tárgymutatót.
 
 A Xindy használata Linux alatt nincs külön teendőnk, Windows alatt viszont igényel némi pluszmunkát:
 
