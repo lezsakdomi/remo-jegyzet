@@ -1,6 +1,7 @@
 % !TeX spellcheck = hu_HU
 \topic{Modellek ellenőrzése}\label{sec:modellek-ellenorzese}
 
+\newcommand{\kiegeszitoanyag}{\textsuperscript{($\ast$)}}
 \newcommand{\modellekEllenorzeseAllapotgepScale}{0.5}
 
 A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel is járhat.
@@ -158,7 +159,7 @@ Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ 
 
 \section{Tesztelés}\label{sec:teszteles}
 
-\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert bizonyos meghatározott körülmények közt futtatjuk, majd az eredményeket összehasonlítjuk az elvárásainkkal\footnote{Ennél a nagyon általános és gyakran használt fogalomnál kivételesen érdemes az eredeti, angol nyelvű, az IEEE által adott definíciót is elolvasni: ``[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component''. \cite{IEEE-24765}} \cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk. 
+\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert (vagy egy futtatható modelljét) bizonyos meghatározott körülmények közt futtatjuk (vagy szimuláljuk), majd az eredményeket összehasonlítjuk az elvárásainkkal\footnote{Ennél a nagyon általános és gyakran használt fogalomnál kivételesen érdemes az eredeti, angol nyelvű, az IEEE által adott definíciót is elolvasni: ``[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component''. \cite{IEEE-24765}} \cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk. 
 
 Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus ellenőrzés közt: utóbbi esetben a vizsgált rendszert nem futtatjuk, nem hajtjuk végre. Ugyanakkor attól, hogy a rendszert annak vizsgálata céljából végrehajtjuk, még nem beszélünk tesztelésről. Ahogyan a definíció is mutatja, meghatározott körülmények közt futtatjuk a rendszert, azaz nem ``próbálgatásról'' van szó, hanem a fejlesztés egy alaposan megtervezett részfolyamatáról.
 
@@ -173,7 +174,7 @@ Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagá
 
 Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ``bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
 
-A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem.
+A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni. 
 Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
 
 A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-orakulum}.~ábrán.
@@ -182,24 +183,26 @@ A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-o
 	\centering
 	\input{modellek-ellenorzese/figures/teszteles-elrendezes-orakulum.pdf_tex}
 	
-	\caption{A tesztelés általános elrendezése}
+	\caption{A tesztelés általános sémája}
 	\label{fig:teszteles-elrendezes-orakulum}
 \end{figure}
 
-Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket, így a feladat mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az az alábbi ábrán is látható:
+Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az az alábbi ábrán is látható:
 
 \begin{figure}[h]
 	\centering
 	\input{modellek-ellenorzese/figures/teszteles-elrendezes-elvart-kimenet.pdf_tex}
 	
-	\caption{A tesztelés általános elrendezése}
+	\caption{A tesztelés menete ismert referenciakimenet esetén}
 	\label{fig:teszteles-elrendezes-elvart-kimenet}
 \end{figure}
 
 \Aref{fig:teszteles-elrendezes-elvart-kimenet}.~ábrán vázolt elrendezésről van szó például akkor, ha állapotgépeket tesztelünk, és a teszteset tartalmazza a bemeneti eseménysort (tesztbemenetként) és az elvárt akciókat, eseményeket (elvárt kimenetként). 
 
+Nincs feltétlen lehetőség azonban referenciakimenet megadására olyan teszteseteknél, amelyek deklaratív követelményeket ellenőriznek, vagy többféle kimenetet is megengednek. Ilyenkor speciális orákulum szükséges. Például egy prímtesztelő eljárással szembeni követelmény lehet, hogy amennyiben a bemeneten kapott szám összetett, akkor bizonyítékul a kimeneten be kell mutatni a bemenetként kapott szám egyik valódi osztóját. Ilyenkor a tesztorákulumnak többféle kimenetet is el kell fogadnia. Ehhez például megvizsgálhatja a bemenet oszthatóságát a SUT által adott kimenettel.
 
-\subsection{A tesztek kategorizálása}
+
+\subsection{A tesztek kategorizálása\kiegeszitoanyag}
 Tesztelést a szoftverfejlesztési életciklus számos fázisában használhatunk. Attól függően, hogy a rendszer mekkora részét vizsgáljuk, különböző tesztelési módszereket különböztethetünk meg.
 
 \begin{itemize}
@@ -221,9 +224,9 @@ Az egyik gyakran használt módszer a tesztkészlet fedésének mérése. A tesz
 
 Ha viszont a tesztkészletünk meglátogat minden állapotot vagy meghív minden metódust, elmondhatjuk, hogy mindent megvizsgáltunk? Sajnos korántsem. Például abból, hogy minden állapotot bejár egy tesztkészlet nem következik, hogy minden állapotátmenetet is érint. Attól, hogy egy tesztkészlet minden metódust meghív, nem feltétlenül érint minden utasítást. Látható, hogy számos fedettségi metrikát lehet bevezetni. Mi itt mindössze az alábbi három alapvető fedettségi metrikára szorítkozunk.
 \begin{itemize}
-	\item Egy állapotgépben az \fogalom{allapotlefedettseg} egy adott tesztkészlet által érintett (bejárt) állapotok és az összes állapotok arányát adja meg.
-	\item Egy állapotgépben az \fogalom{atmenetlefedettseg} egy adott tesztkészlet által érintett (bejárt) állapotátmenetek és az összes átmenetek arányát adja meg.
-	\item Egy vezérlési folyamban (programban) az \fogalom{utasitasfedettseg} egy adott tesztkészlet által érintett (bejárt) utasítások és az összes utasítások arányát adja meg.	
+	\item Egy állapotgépben az \fogalom{allapotfedettseg} (vagy állapotlefedettség) egy adott tesztkészlet által érintett (bejárt) állapotok és az összes állapotok arányát adja meg.
+	\item Egy állapotgépben az \fogalom{atmenetfedettseg} (vagy átmenetlefedettség) egy adott tesztkészlet által érintett (bejárt) állapotátmenetek és az összes átmenetek arányát adja meg.
+	\item Egy vezérlési folyamban (programban) az \fogalom{utasitasfedettseg} (vagy utasításlefedettség) egy adott tesztkészlet által érintett (bejárt) utasítások és az összes utasítások arányát adja meg.	
 \end{itemize}
 
 \begin{megjegyzes}
@@ -252,16 +255,61 @@ A monitorozás két fő lépésből áll:
 \item \emph{hihetőségvizsgálatból}, amely során a kimeneti adatok megfelelőségét vizsgáljuk a bemeneti adatok és a definiált kimeneti invariánsok (utófeltételek) alapján.
 \end{itemize}
 
-Egyes esetekben az invariánsok igen egyszerűek (például egy valós számok négyzetre emelést megvalósító függvény végén vizsgálhatjuk, hogy a kapott eredmény negatív-e; a negatív eredményt hibásnak minősítjük), de komplex monitorok is elképzelhetők. Például állapotgépek esetén készíthetünk egy monitor régiót, ami a rendszer megvalósításával párhuzamosan fut és detektálja a hibás vagy tiltott állapotokat, akciókat.
+Egyes esetekben az invariánsok igen egyszerűek (például egy valós számok négyzetre emelést megvalósító függvény végén vizsgálhatjuk, hogy a kapott eredmény negatív-e; a negatív eredményt hibásnak minősítjük). Ilyenkor tipikusan az implementáció is három részre tagolódik, követve \aref{fig:monitorozas-elrendezes}.~ábrán látható elrendezést:
+\begin{itemize}
+\item Először az \emph{előfeltételt} vizsgáljuk. Ha ez nem teljesül, kivételről beszélünk. Ez egy normálistól eltérő, váratlan helyzet, aminek a kezelését máshol valósítjuk meg (ilyen körülmények közt az implementációnk helyességét nem követeljük meg). Ha az előfeltétel nem teljesül, annak oka a rendszer hibás használata (nem megfelelő bemeneti adatokat kapott).
+\item Amennyiben az előfeltétel teljesült, megtörténik az érdemi logika \emph{végrehajtása}.
+\item A végrehajtás után az utófeltétel vizsgálatára kerül sor. Amennyiben az utófeltétel nem teljesül, olyan hibás állapotba került a rendszer, amely kezelésére nincs felkészítve. Ennek oka lehet a hibás implementáció vagy futásidejű hiba.
+\end{itemize}
 
 \begin{megjegyzes}
-\textbf{TODO: példa a diasorból (\code{Roots} és \code{RootsMonitor})?}
+Az alábbi példakód egy másodfokú egyenlet gyökeit számolja ki:
+
+\begin{lstlisting}[language=C++]
+void Roots(float a, b, c, float &x1, &x2) {
+    float d = sqrt(b*b-4*a*c);
+
+    x1 = (-b+d)/(2*a);
+    x2 = (-b-d)/(2*a);
+}
+\end{lstlisting}
+
+Tudhatjuk, hogy ez a kód nem működik helyesen minden esetben. Feltételezzük, hogy a diszkrimináns ($D=b^2-4\cdot a\cdot c$) nemnegatív, különben a gyökvonást negatív számon végezzük el. Tudjuk azt is, hogy a kiszámított $x_1$ és $x_2$ értékeknek zérushelyeknek kell lennie, azaz elvárt, hogy $ax_1^2 + bx_1 + c = 0$ és $ax_2^2 + bx_2 + c = 0$. Ezekkel az elő- és utófeltételekkel kiegészíthetjük az implementációt is az alábbiak szerint:
+
+\lstset{literate=*{[Ho]}{ő}{1}}
+\lstset{literate=*{[guilleft]}{oooooo}{1}{[guilright]}{\guillemotright{}}{1},}
+
+\lstset{
+    inputencoding=utf8,
+    extendedchars=true,
+    literate={ő}{{\Ho}}1 {ã}{{\~a}}1 {é}{{\'e}}1,
+}
+
+\begin{lstlisting}[language=C++]
+void RootsMonitor(float a, b, c, float &x1, &x2) {
+    // elofeltétel
+    float D = b*b-4*a*c;
+    if (D < 0)
+        throw "Invalid input!";
+
+    // végrehajtás
+    Roots(a, b, c, x1, x2);
+
+    // utófeltétel
+    assert(a*x1*x1+b*x1+c == 0 && a*x2*x2+b*x2+c == 0);
+}
+\end{lstlisting}
 \end{megjegyzes}
 
+Monitorozást nem csak ilyen egyszerű esetekben lehet használni, összetett monitorok is elképzelhetők. Például állapotgépek esetén készíthetünk egy monitor régiót, ami a rendszer megvalósításával párhuzamosan fut és detektálja a hibás vagy tiltott állapotokat, akciókat.
 
 
 
-\section{Formális verifikáció}\label{sec:formalis-verifikacio}
+
+
+
+
+\section{Formális verifikáció\kiegeszitoanyag}\label{sec:formalis-verifikacio}
 \Fogalom{formalis-verifikacio} alatt olyan módszereket értünk, amelyek segítségével adott modellek vagy programok helyességét matematikailag precíz eszközökkel vizsgálhatjuk. Három fontosabb formális verifikációs módszert (családot) említünk meg:
 \begin{itemize}
 \item Modellellenőrzés;
