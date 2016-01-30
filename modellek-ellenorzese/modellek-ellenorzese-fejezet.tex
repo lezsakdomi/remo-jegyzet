@@ -129,15 +129,15 @@ Bizonyos esetekben a szemantikai hibák kiszűrése bonyolultabb feladat. Gondol
 Tekintsük például az alábbi C kódot:
 \begin{lstlisting}[language=C]
 int foo(int z) {
-	int y;
+    int y;
 	
-	y = z + 10;
-	if (y != 10) {
-		x = y / z;
-	} else {
-		x = 2;
-	}
-	return x;
+    y = z + 10;
+    if (y != 10) {
+        x = y / z;
+    } else {
+        x = 2;
+    }
+    return x;
 }
 \end{lstlisting}
 
@@ -285,7 +285,7 @@ Tudhatjuk, hogy ez a kód nem működik helyesen minden esetben. Feltételezzük
     literate={ő}{{\Ho}}1 {ã}{{\~a}}1 {é}{{\'e}}1,
 }
 
-\begin{lstlisting}[language=C++]
+\begin{lstlisting}[language=C++,morekeywords={assert}]
 void RootsMonitor(float a, b, c, float &x1, &x2) {
     // elofeltétel
     float D = b*b-4*a*c;

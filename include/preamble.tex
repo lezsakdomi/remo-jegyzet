@@ -148,6 +148,40 @@
 \newcommand{\iflabeldef}[3]{\makeatletter\ifcsdef{r@#1}{#2}{#3}\makeatother}
 % Használata: \iflabeldef{sec:whatever}{Erről bővebben \aref{sec:whatever}.~fejezetben írunk.}{Erről bővebben a Whatever leírásban írunk.}
 
+% listings beállításai
+\definecolor{backgroundcolor}{HTML}{F5F5F5}
+\definecolor{keywordcolor}{HTML}{295F94}
+\definecolor{commentcolor}{HTML}{AD95AF}
+\definecolor{stringcolor}{HTML}{317ECC}
+
+\lstset{
+	numbers=none,
+	numberstyle=\footnotesize\ttfamily,
+	stepnumber=1,
+	numbersep=5pt,
+	%
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor=\color{backgroundcolor},
+	keywordstyle=\color{keywordcolor}\bfseries,
+	commentstyle=\color{commentcolor},
+	stringstyle=\color{stringcolor},
+	identifierstyle=, % nothing happens
+	%
+	showstringspaces=false, % no special string spaces
+	aboveskip=3pt,
+	belowskip=3pt,
+	columns=flexible,
+	keepspaces=true,
+	breaklines=true,	
+	frameround=tttt,
+	captionpos=b,
+	tabsize=2,
+	frame=tb,
+	framerule=0pt,
+%	framexleftmargin=0.25em,
+}
+
+
 \loadglsentries{glossary-entries.tex}
 
 \title{Rendszermodellezés}
