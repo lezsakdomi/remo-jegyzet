@@ -9,6 +9,7 @@ title:
 
 A jegyzet fejezetei külön is letölthetők:
 
+* [Bevezető](bevezeto.pdf)
 * [Modellezés és metamodellezés](modellezes-es-metamodellezes.pdf)
 * [Állapot alapú modellezes](allapot-alapu-modellezes.pdf)
 * [Struktúra alapú modellezes](struktura-alapu-modellezes.pdf)
