@@ -19,26 +19,19 @@
 \begin{document}
 \renewcommand{\thepage}{}
 
-%\maketitle
-
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[figures/ftsrg-logo]{width=5cm}
-%\end{figure}}
-
 \include{include/titlepage}
 
 %\include{colophon}
 \raggedbottom
 
 \renewcommand{\thepage}{\roman{page}}
-%\include{preface}
 
 \cleardoublepage
 \tableofcontents
 \cleardoublepage
 \renewcommand{\thepage}{\arabic{page}}
 
+\include{bevezeto/bevezeto-fejezet}
 \include{modellezes-es-metamodellezes/modellezes-es-metamodellezes-fejezet}
 \include{struktura-alapu-modellezes/struktura-alapu-modellezes-fejezet}
 \include{allapot-alapu-modellezes/allapot-alapu-modellezes-fejezet}
