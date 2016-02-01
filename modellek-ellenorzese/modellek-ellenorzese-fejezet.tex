@@ -188,7 +188,7 @@ A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-o
 	\label{fig:teszteles-elrendezes-orakulum}
 \end{figure}
 
-Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az az alábbi ábrán is látható:
+Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az \aref{fig:teszteles-elrendezes-elvart-kimenet}.~ábrán is látható.
 
 \begin{figure}[h]
 	\centering
@@ -277,14 +277,6 @@ void Roots(float a, b, c, float &x1, &x2) {
 
 Tudhatjuk, hogy ez a kód nem működik helyesen minden esetben. Feltételezzük, hogy a diszkrimináns ($D=b^2-4\cdot a\cdot c$) nemnegatív, különben a gyökvonást negatív számon végezzük el. Tudjuk azt is, hogy a kiszámított $x_1$ és $x_2$ értékeknek zérushelyeknek kell lennie, azaz elvárt, hogy $ax_1^2 + bx_1 + c = 0$ és $ax_2^2 + bx_2 + c = 0$. Ezekkel az elő- és utófeltételekkel kiegészíthetjük az implementációt is az alábbiak szerint:
 
-\lstset{literate=*{[Ho]}{ő}{1}}
-\lstset{literate=*{[guilleft]}{oooooo}{1}{[guilright]}{\guillemotright{}}{1},}
-
-\lstset{
-    inputencoding=utf8,
-    extendedchars=true,
-    literate={ő}{{\Ho}}1 {ã}{{\~a}}1 {é}{{\'e}}1,
-}
 
 \begin{lstlisting}[language=C++,morekeywords={assert}]
 void RootsMonitor(float a, b, c, float &x1, &x2) {
