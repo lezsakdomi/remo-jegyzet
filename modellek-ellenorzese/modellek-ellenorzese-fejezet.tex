@@ -59,7 +59,7 @@ Hasonló fogalom a livelock. \Fogalom{livelock} esetén az érdemi végrehajtás
 A klasszikus példa livelock-ra a való életből az, amikor két ember szembetalálkozik, és mindketten udvariasan kitérnének egymás elől, de azt mindig megegyező irányba teszik. Ilyenkor az emberek tudnak mozogni (``képesek állapotot váltani''), de nem haladnak előre (``nem végeznek hasznos tevékenységet''). Holtpontról akkor beszélnénk, ha kölcsönösen nem tudnának megmozdulni a másik személy miatt. Tehát a holtpont esetén a problémát az ``örök várakozás'', livelock esetén pedig egy végtelen ciklus okozza.
 \end{megjegyzes}
 
-Állapotgépek esetén gyakori általános követelmények például a determinizmus és a teljesen specifikált működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az Állapotalapú modellezés c. segédanyagban} szólunk.
+Állapotgépek esetén gyakori általános követelmények például a \emph{determinizmus} és a \emph{teljesen specifikált} működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az Állapotalapú modellezés c. segédanyagban} szólunk. A determinizmus és teljesen specifikált működés hasonlóan értelmezhető más viselkedésmodellezési formalizmusok, pl. folyamatmodellek esetén is. Ha a folyamatmodell minden döntési pontjára (``decision'' csomópont) olyan őrfeltételeket írunk, hogy mindig legfeljebb ág legyen engedélyezett, akkor determinisztikus a folyamat; teljesen specifikáltnak pedig akkor nevezzük, ha mindig legalább egy ág engedélyezett.
 
 \paragraph{Vizsgálatok fajtái.}
 Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ``helyességvizsgálat'' nem egy precíz fogalom. 
