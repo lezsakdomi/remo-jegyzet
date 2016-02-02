@@ -13,7 +13,16 @@ A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. F�
 Fontos megjegyezni, hogy a modellek ``helyessége'' önmagában nem egy értelmes, vizsgálható kérdés. Ennek vizsgálatához fontos tudni, hogy mi a modell célja, kontextusa, mik a követelmények vele szemben.
 
 \begin{megjegyzes}
-	Gondoljunk a BKK egyszerűsített, sematikus metróhálózati térképére\footnote{\url{http://www.bkk.hu/apps/docs/terkep/metro.pdf}}! Ez tekinthető a metróhálózat egy (gráfalapú) modelljének. Ha a követelményünk a metróhálózat sematikus reprezentálása, ami alatt például az állomások megfelelő sorrendjét, illetve a helyes átszállási kapcsolatokat értjük, akkor ez a térkép (gráf) helyes. Hibás akkor lenne, ha például a Nyugati pályaudvar az M4-es metró egyik állomásaként lenne feltüntetve. Ha viszont a követelmény az, hogy a térképről leolvashatók legyenek a metróállomások közti távolságok, ez a térkép hibás, hiszen a térkép alapján az Újbuda-központ és Móricz Zsigmond körtér állomások és a Móricz Zsigmond körtér és Szent Gellért tér állomások közti távolság azonos, míg a valóságban az egyik távolság a másiknak közel a duplája. 
+	Gondoljunk a BKK alábbi egyszerűsített, sematikus metróhálózati térképére\footnote{Forrás: \url{http://www.bkk.hu/apps/docs/terkep/metro.pdf}}!
+	\begin{center}
+		\colorbox{white}{
+			\includegraphics[scale=0.7]{modellek-ellenorzese/figures/metrohev-terkep-reszlet}
+		}
+	\end{center}
+	% A szerzői jogról szóló 1999. évi LXXVI. törvény IV. fejezetében felsorolt főbb szabad felhasználási esetek a következők: ...
+	% átvétel: nyilvánosságra hozott irodalmi vagy zenei mű, film részlete, vagy kisebb terjedelmű ilyen önálló mű, továbbá képzőművészeti, építészeti, iparművészeti és ipari tervezőművészeti alkotás képe, valamint fotóművészeti alkotás szemléltetés érdekében iskolai oktatási célra, valamint tudományos kutatás céljára a forrás és az ott megjelölt szerző megnevezésével a cél által indokolt terjedelemben átvehető, feltéve, hogy az átvevő művet nem használják fel üzletszerűen. Átvételnek minősül a mű olyan mértékű felhasználása más műben, amely az idézést meghaladja. [Szjt. 35. § (2) bek.]
+	
+	Ez tekinthető a metróhálózat egy (gráfalapú) modelljének. Ha a követelményünk a metróhálózat sematikus reprezentálása, ami alatt például az állomások megfelelő sorrendjét, illetve a helyes átszállási kapcsolatokat értjük, akkor ez a térkép (gráf) helyes. Hibás akkor lenne, ha például a Nyugati pályaudvar az M4-es metró egyik állomásaként lenne feltüntetve. Ha viszont a követelmény az, hogy a térképről leolvashatók legyenek a metróállomások közti távolságok, ez a térkép hibás, hiszen a térkép alapján az Újbuda-központ és Móricz Zsigmond körtér állomások és a Móricz Zsigmond körtér és Szent Gellért tér állomások közti távolság azonos, míg a valóságban az egyik távolság a másiknak közel a duplája. 
 \end{megjegyzes}
 
 Látható, hogy önmagában nincs értelme egy modell helyességéről beszélni, csak arról beszélhetünk, hogy bizonyos meghatározott követelményeknek megfelel-e vagy sem.
@@ -50,7 +59,7 @@ Hasonló fogalom a livelock. \Fogalom{livelock} esetén az érdemi végrehajtás
 A klasszikus példa livelock-ra a való életből az, amikor két ember szembetalálkozik, és mindketten udvariasan kitérnének egymás elől, de azt mindig megegyező irányba teszik. Ilyenkor az emberek tudnak mozogni (``képesek állapotot váltani''), de nem haladnak előre (``nem végeznek hasznos tevékenységet''). Holtpontról akkor beszélnénk, ha kölcsönösen nem tudnának megmozdulni a másik személy miatt. Tehát a holtpont esetén a problémát az ``örök várakozás'', livelock esetén pedig egy végtelen ciklus okozza.
 \end{megjegyzes}
 
-Állapotgépek esetén gyakori általános követelmények például a determinizmus és a teljesen specifikált működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az Állapotalapú modellezés c. segédanyagban} szólunk.
+Állapotgépek esetén gyakori általános követelmények például a \emph{determinizmus} és a \emph{teljesen specifikált} működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az Állapotalapú modellezés c. segédanyagban} szólunk. A determinizmus és teljesen specifikált működés hasonlóan értelmezhető más viselkedésmodellezési formalizmusok, pl. folyamatmodellek esetén is. Ha a folyamatmodell minden döntési pontjára (``decision'' csomópont) olyan őrfeltételeket írunk, hogy mindig legfeljebb ág legyen engedélyezett, akkor determinisztikus a folyamat; teljesen specifikáltnak pedig akkor nevezzük, ha mindig legalább egy ág engedélyezett.
 
 \paragraph{Vizsgálatok fajtái.}
 Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ``helyességvizsgálat'' nem egy precíz fogalom. 
@@ -84,7 +93,7 @@ Szintaktikai hibáknak nevezzük azokat a hibákat, amelyek következtében egy 
 
 Grafikus modellek esetén tipikus, hogy a szerkesztő megakadályozza a szintaktikai hibák elkövetését és betartatja a strukturális helyességet, de szöveges leírások esetén ezek elkerülhetetlenek a fejlesztés folyamán. A modern fejlesztőeszközök általában már a beírás során jelzik a szintaktikai hibákat a fejlesztő számára, így azok azonnal javíthatók. Ilyenkor az eszköz beépített szintaktikai statikus ellenőrzőjét láthatjuk működni. Más esetekben (például egyszerű szöveges szerkesztő használata esetén) az esetleges szintaktikai hibákra csak fordítás vagy végrehajtás során derül fény.
 
-Általánosan igaz a szintaktikai hibákra, hogy ezek nagy biztonsággal kimutathatók (legkésőbb futtatás vagy végrehajtás során) és ritka, hogy egy statikus ellenőrző helyes kódot vagy modellt szintaktikailag hibásnak értékelne.
+Általánosan igaz a szintaktikai hibákra, hogy ezek nagy biztonsággal kimutathatók (legkésőbb futtatás vagy végrehajtás során) és ritka, hogy egy statikus ellenőrző helyes kódot vagy modellt szintaktikailag hibásnak értékelne\footnote{Általánosságban hamis pozitívnak (false positive) találatnak nevezzük azt, ha egy ellenőrző eszköz olyan dolgot jelez hibásnak, amely a valóságban helyes. Ennek fordítottját, azaz amikor az ellenőrző eszköz helyesnek tart valamit, ami valójában hibás, hamis negatív (false negative) találatnak hívjuk.\kiegeszitoanyag}.
 
 \subsection{Szemantikai hibák vizsgálata}\label{sec:statikus-ellenorzes-szemantikai-hibak}
 
@@ -109,7 +118,7 @@ Két egyszerűbb módszert ismertetünk itt a fenti hibák kivédése érdekébe
 \begin{itemize}
 	\item Ha azonosítottuk a fenti szituációk közül a leggyakrabban előfordulókat, \emph{hibamintákat} fogalmazhatunk meg rájuk. Ez után a statikus ellenőrző eszköz ezeket a hibamintákat keresi a modellben vagy a forráskódban. Például ha egy decision elem egy join elemmel áll párban egy folyamatmodell vagy a kódban egy \code{if (<változó> = <érték>)} minta található, erre felhívhatja a felhasználó figyelmét, aki ezután javíthatja a modellt vagy figyelmen kívül hagyhatja a jelzést.
 
-	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag \aref{fig:jolstrukturalt-folyamatmodellek-mintai}.~ábrán látható mintákból állítható elő: üres folyamat, elemi tevékenység, szekvencia, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
+	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok\footnote{Az egyik leghíresebb kódolási szabálygyűjtemény a C nyelvhez a \emph{MISRA C}. Eredetileg közúti járművek beágyazott rendszereihez fejlesztették, de valójában bármilyen beágyazott rendszer esetén használható. Ilyen felhasználási területen a hibák komoly következményekkel járhatnak, ráadásul javításuk igen nehéz. Ezért olyan megkötéseket alkalmaznak a szoftverek fejlesztésekor, amelyek a kódot átláthatóbbá, egyértelműbbé teszik, amely írása közben nehezebb hibát véteni. Például a száznál több MISRA C szabály egyike megtiltja az \code{if (x == 0 \&\& ishigh)} kódrészlet használatát, helyette az \code{if ((x == 0) \&\& ishigh)} formátum használandó. Bár ez a két kódrészlet nyilvánvalóan ekvivalens, ha a logikai műveletek operandusai csak atomi kifejezések (pl. \code{ishigh}) vagy zárójelezett részkifejezések lehetnek, kisebb egy hibás precedencia feltételezésének valószínűsége \cite{Wong:2003}.\kiegeszitoanyag} (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag \aref{fig:jolstrukturalt-folyamatmodellek-mintai}.~ábrán látható mintákból állítható elő: üres folyamat, elemi tevékenység, szekvencia, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
 \end{itemize}
 
 \begin{figure}[h]
@@ -163,6 +172,7 @@ Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ 
 
 Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus ellenőrzés közt: utóbbi esetben a vizsgált rendszert nem futtatjuk, nem hajtjuk végre. Ugyanakkor attól, hogy a rendszert annak vizsgálata céljából végrehajtjuk, még nem beszélünk tesztelésről. Ahogyan a definíció is mutatja, meghatározott körülmények közt futtatjuk a rendszert, azaz nem ``próbálgatásról'' van szó, hanem a fejlesztés egy alaposan megtervezett részfolyamatáról.
 
+Azt is érdemes megjegyezni, hogy a tesztelés és a ``debugolás'' is két külön fogalom. Tesztelés esetén hibajelenségek meglétét vagy hiányát vizsgáljuk. \Fogalom{debugolas} esetén ismert egy bizonyos hibajelenség (pl. egy teszt kimutatta vagy egy felhasználó jelezte), a célunk pedig ennek a helyének, a kiváltó okának megkeresése, lokalizálása.
 
 \subsection{A tesztelés alapfogalmai}
 Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagában a rendszer. Tesztek végrehajtásához legalább a következő komponensek szükségesek: 
@@ -187,7 +197,7 @@ A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-o
 	\label{fig:teszteles-elrendezes-orakulum}
 \end{figure}
 
-Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az az alábbi ábrán is látható:
+Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az \aref{fig:teszteles-elrendezes-elvart-kimenet}.~ábrán is látható.
 
 \begin{figure}[h]
 	\centering
@@ -237,9 +247,9 @@ A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak 
 
 
 \section{Tesztelés futásidőben (futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
-Ebben a fejezetben a futásidejű ``öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét elhelyezzük magában a megvalósított rendszerben és folyamatosan vizsgáljuk.
+Ebben a fejezetben a futásidejű ``öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét elhelyezzük magában a megvalósított rendszerben és folyamatosan vizsgáljuk. Azokat a követelményeket, amelyek teljesülését folyamatosan, minden állapotban elvárjuk, \fogalomragozva{invarians}{invariánsoknak} nevezzük.
 
-A monitorozás általános elrendezését szemlélteti a következő ábra.
+A monitorozás általános elrendezését szemlélteti \aref{fig:monitorozas-elrendezes}.~ábra.
 
 \begin{figure}[h]
 	\centering
@@ -276,18 +286,10 @@ void Roots(float a, b, c, float &x1, &x2) {
 
 Tudhatjuk, hogy ez a kód nem működik helyesen minden esetben. Feltételezzük, hogy a diszkrimináns ($D=b^2-4\cdot a\cdot c$) nemnegatív, különben a gyökvonást negatív számon végezzük el. Tudjuk azt is, hogy a kiszámított $x_1$ és $x_2$ értékeknek zérushelyeknek kell lennie, azaz elvárt, hogy $ax_1^2 + bx_1 + c = 0$ és $ax_2^2 + bx_2 + c = 0$. Ezekkel az elő- és utófeltételekkel kiegészíthetjük az implementációt is az alábbiak szerint:
 
-\lstset{literate=*{[Ho]}{ő}{1}}
-\lstset{literate=*{[guilleft]}{oooooo}{1}{[guilright]}{\guillemotright{}}{1},}
-
-\lstset{
-    inputencoding=utf8,
-    extendedchars=true,
-    literate={ő}{{\Ho}}1 {ã}{{\~a}}1 {é}{{\'e}}1,
-}
 
 \begin{lstlisting}[language=C++,morekeywords={assert}]
 void RootsMonitor(float a, b, c, float &x1, &x2) {
-    // elofeltétel
+    // el(*@\textcolor{commentcolor}{ő}@*)feltétel
     float D = b*b-4*a*c;
     if (D < 0)
         throw "Invalid input!";
@@ -326,21 +328,30 @@ A modellellenőrzés -- a teszteléssel szemben -- egy \emph{teljes} módszer, a
 
 
 
-\section*{Kapcsolódó témák}
+\section{Kapcsolódó témák}
 \textbf{TODO}
 
-\section*{Gyakorlati jelentőség}
+\section{Gyakorlati jelentőség}
 \textbf{TODO}
 
-\section*{Tanulást segítő anyagok}
+\subsection{Kapcsolódó eszközök}
+Ebben a szakaszban néhány olyan (többnyire jól ismert és ingyenes) eszközt sorolunk fel, amely a gyakorlatban megvalósítja a bemutatott módszerek némelyikét.
 
-\subsection*{Ellenőrző kérdések}
+Egyszerűbb statikus analízis eszközöket beépítve találhatunk a fejlettebb fejlesztőeszközökben (pl. Eclipse\footnote{\url{http://eclipse.org}}) és modellező eszközökben (pl. Yakindu). Ezeken kívül számos, mélyebb analízist lehetővé tevő eszköz létezik. C esetén gyakran használatos a Lint, C++ nyelv esetén a Cppcheck\footnote{\url{http://cppcheck.sourceforge.net/}} és cpplint\footnote{\url{https://github.com/google/styleguide/tree/gh-pages/cpplint}} eszközök. Java nyelvű programok statikus ellenőrzésére használható például a FindBugs\footnote{\url{http://findbugs.sourceforge.net/}} vagy a PMD\footnote{\url{http://pmd.github.io/}} eszköz.
+
+\textbf{TODO: C, C++ tesztelés}. Java programok modultesztelését segítheti például a JUnit\footnote{\url{http://junit.org/}} keretrendszer.
+
+C és C++ nyelvű szoftverek modellellenőrzésre jól használható például a CBMC\footnote{\url{http://www.cprover.org/cbmc/}} eszköz. ``Állapotgép-jellegű'' modellek esetén jó választás lehet az UPPAAL\footnote{\url{http://www.uppaal.org/}} vagy a nuXmv\footnote{\url{https://nuxmv.fbk.eu/}} eszközök használata.
+
+\section{Tanulást segítő anyagok}
+
+\subsection{Ellenőrző kérdések}
 \begin{itemize}
 	\item 
 	\item
 	\item
 \end{itemize}
 
-\subsection*{Kulcsfogalmak}
+\subsection{Kulcsfogalmak}
 
-\subsection*{Szójegyzék}
+\subsection{Szójegyzék}

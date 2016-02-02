@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="verifikacio_vs_validacio.svg">
+   sodipodi:docname="C:\Repositories\remo-jegyzet\modellek-ellenorzese\figures\verifikacio_vs_validacio.svg">
   <defs
      id="defs4">
     <marker
@@ -88,8 +88,8 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1058"
-     inkscape:window-x="1912"
+     inkscape:window-height="1018"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
@@ -104,7 +104,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
