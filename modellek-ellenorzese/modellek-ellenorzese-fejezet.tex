@@ -289,7 +289,7 @@ Tudhatjuk, hogy ez a kód nem működik helyesen minden esetben. Feltételezzük
 
 \begin{lstlisting}[language=C++,morekeywords={assert}]
 void RootsMonitor(float a, b, c, float &x1, &x2) {
-    // elofeltétel
+    // el(*@\textcolor{commentcolor}{ő}@*)feltétel
     float D = b*b-4*a*c;
     if (D < 0)
         throw "Invalid input!";
