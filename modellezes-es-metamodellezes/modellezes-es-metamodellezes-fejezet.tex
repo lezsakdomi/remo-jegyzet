@@ -24,36 +24,56 @@ Egy adott probléma modellé történő leképezésének általában két fontos
 \begin{pelda}
 	Modellekre sok példát láthatunk a hétköznapokban is. Nem csak gyerekek körében népszerű játék a modellvasút. Itt valóban modellről beszélhetünk, hiszen a játékvonatok számos tekintetben hűen reprezentálják a valódi vonatokat, azonban például ``szemet hunyunk'' a méretükkel, tömegükkel, a bennük lévő villanymotor paramétereivel, és még sok egyéb hasonló tulajdonságukkal kapcsolatban.
 	
-	Az informatika egyik leggazdagabb modellforrása a matematika. Amikor gráfelméletet tanulunk, valójában rengeteg, bizonyos szempontból hasonló probléma közös modelljét vizsgáljuk. Valóban, a matematika egyik célja az ilyen modellek azonosítása, és minél hatékonyabb eszköztárak kidolgozása a rajtuk megfogalmazott problémák megoldására. A gráfoknál maradva (gráfokról bővebben a \ref{sec:graf} fejezetban és a \emph{Bevezetés a számításelméletbe} című tárgyban lehet tájékozódni) egy város úthálózata jól reprezentálható egy élsúlyokkal ellátott gráffal, ahol a csomópontok a kereszteződések, az élek az útszakaszok, az élsúlyok pedig a szakaszok hosszait jelölik. Ez a modell kiválóan alkalmas legrövidebb útvonalak tervezésére (mi kellene még a \emph{leggyorsabb} útvonal tervezéséhez?), de figyelmen kívül hagy számos egyéb paramétert, például az utakon lévő kanyarulatokat, a legnagyobb megengedett sebességet, stb.
+	Az informatika egyik leggazdagabb modellforrása a matematika. Amikor gráfelméletet tanulunk, valójában rengeteg, bizonyos szempontból hasonló probléma közös modelljét vizsgáljuk. Valóban, a matematika egyik célja az ilyen modellek azonosítása, és minél hatékonyabb eszköztárak kidolgozása a rajtuk megfogalmazott problémák megoldására. A gráfoknál maradva (gráfokról bővebben a \ref{sec:graf} fejezetben és a \emph{Bevezetés a számításelméletbe} című tárgyban lehet tájékozódni) egy város úthálózata jól reprezentálható egy élsúlyokkal ellátott gráffal, ahol a csomópontok a kereszteződések, az élek az útszakaszok, az élsúlyok pedig a szakaszok hosszait jelölik. Ez a modell kiválóan alkalmas legrövidebb útvonalak tervezésére (mi kellene még a \emph{leggyorsabb} útvonal tervezéséhez?), de figyelmen kívül hagy számos egyéb paramétert, például az utakon lévő kanyarulatokat, a legnagyobb megengedett sebességet, stb.
 \end{pelda}
 
 \begin{megjegyzes}
-	Az, hogy a modell kisebb, nem mindig ``kényelmi'' szempont. Gyakran lehet olyan problémával találkozni, aminek a mérete bizonyos szempontból végtelen (például végtelen sok állapota van, vagy folytonos változók vannak benne), viszont egy alkalmas \emph{véges} modellen a számunkra releváns tulajdonságok továbbra is jól vizsgálhatók maradnak.
+	Az, hogy a modell kisebb, nem mindig ``kényelmi'' szempont. Gyakran lehet olyan problémával találkozni, aminek a mérete bizonyos szempontból végtelen (például végtelen sok állapota van, vagy folytonos változók vannak benne), viszont egy alkalmas \emph{véges} modellen a számunkra releváns tulajdonságok továbbra is jól vizsgálhatók maradnak. Egy autót fizikai szempontból modellezhet a pillanatnyi sebességvektora, ami három valós szám, tehát a modellünk így végtelen. Ha viszont feltételezzük, hogy a sebesség nagysága nem lehet $200$ $km/h$-nál több, és két tizedesjegy pontossággal adjuk meg a vektor koordinátáit, akkor máris véges modellt kapunk. Természetesen ez a modell kicsit torzítani fog a valósághoz képest, de számos problémánál ez a hiba elhanyagolhatóan kicsi lesz (ráadásul végtelen modellen lehet, hogy nem is tudnánk megoldást adni).
 \end{megjegyzes}
 
-Fontos azt is megjegyezni, hogy nem minden modell, ami modellnek látszik.
+Fontos kérdés, hogy hogyan lehet ábrázolni egy modellt. Maga a modell ugyanis többnyire egy hipotetikus struktúra, nem kézzel fogható, és nem is mindig célszerű teljes részletességgel ábrázolni.
+
+\begin{definicio}
+	\Fogalom{diagram}: A modell egy nézete, amely a modell bizonyos aspektusait grafikusan ábrázolja.
+\end{definicio}
+
+\begin{megjegyzes}
+Fontos megjegyezni, hogy nem minden modell, ami modellnek látszik.
 
 \begin{itemize}
 	\item \emph{A modell nem a valóság}: az általunk definiált modellen bizonyos állítások igazak lehetnek, amik a valóságban nem állják meg a helyüket.
 	\item \emph{A modell nem a diagram}: A diagram csak egy ábrázolás módja a modellnek, amivel olvashatóvá tesszük. 
 \end{itemize}
+\end{megjegyzes}
 
 \section{Modellezési nyelvek}
 
-Segítségükkel modelleket építhetünk, amik lehetnek szöveges (pl.: Verilog, VHDL, Java stb.), vagy grafikusak is (pl.: webes konyhatervező, UML diagrammok, UPPAAL stb.). Céljuk a kommunikáció gép-gép, ember-gép vagy akár ember-ember között is. A nyelveknek két fő aspektusa van:
+A modellek leírásához nem elég, ha diagramokat rajzolunk. Egy modell precíz megadásához szükség van egy \fogalomragozva{modellezesi nyelv}{modellezési nyelvre}. Egy modellezési nyelv lehet \emph{szöveges} (pl. Verilog, VHDL, Java, stb.) vagy \emph{grafikus} (pl. webes konyhatervező, UML diagramok, stb.). Gyakori, hogy egy modellezési nyelv szöveges és grafikus jelölésrendszert is definiál, ugyanis mindkettőnek megvannak a saját előnyei és hátrányai: Jellemzően modellt építeni könnyebb szöveges nyelv használatával, míg a modell olvasása grafikus nyelvek (diagramok) segítségével egyszerűbb.
 
-\begin{itemize}
-	\item \fogalom{szintaxis}: hogyan írom a le a modellt? Egy szabályrendszer, ami meghatározza, hogy a nyelv milyen elemekből épül fel és azok hogyan kombinálhatóak.
-	\item \fogalom{szemantika}: mit jelent a modell? A szintaxis által definált nyelvi elemek jelentését definiáló szabályrendszer.
-\end{itemize}
+A modellezési nyelvek legfőbb célja a kommunikáció gép-gép, ember-gép, vagy akár ember-ember között is. Egy nyelv megadásához két dolgot kell definiálni: a \emph{szintaxist} és a \emph{szemantikát}.
 
-\begin{megjegyzes}
-	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy a \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
-\end{megjegyzes}
+%Segítségükkel modelleket építhetünk, amik lehetnek szöveges (pl.: Verilog, VHDL, Java stb.), vagy grafikusak is (pl.: webes konyhatervező, UML diagrammok, UPPAAL stb.). Céljuk a kommunikáció gép-gép, ember-gép vagy akár ember-ember között is. A nyelveknek két fő aspektusa van:
 
-\begin{megjegyzes}
-	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol a nyelvi elemek a dobozok, nyilak (a részletes leírás a később előadásokon fog elhangozni a Yakindu nyelvvel kapcsolatban). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig, hogy a dobozok állapotok, a nyilak pedig megmutatják, hogy az alkalmazásunk mely állapotból mely állapotba kerülhet.
-\end{megjegyzes}
+\begin{definicio}
+	\Fogalom{szintaxis}: Egy szabályrendszer, ami meghatározza, hogy a modell milyen elemekből épül fel, ezeknek mi a (szöveges vagy grafikus) reprezentációja, és a különböző elemek milyen módon kombinálhatók.
+\end{definicio}
+
+\begin{definicio}
+	\Fogalom{szemantika}: A szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
+\end{definicio}
+
+%\begin{itemize}
+%	\item \fogalom{szintaxis}: hogyan írom a le a modellt? Egy szabályrendszer, ami meghatározza, hogy a nyelv milyen elemekből épül fel és azok hogyan kombinálhatóak.
+%	\item \fogalom{szemantika}: mit jelent a modell? A szintaxis által definált nyelvi elemek jelentését definiáló szabályrendszer.
+%\end{itemize}
+
+A szintaxis tehát definiálja, hogy hogyan írhatjuk le a modellt az adott nyelv segítségével, a szemantika pedig megadja, hogy az így leírt modell pontosan mit jelent.
+
+\begin{pelda}
+	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
+
+	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét a \ref{sec:allapot-alapu-modellezes} fejezet mutatja be). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
+\end{pelda}
 
 \begin{megjegyzes}
 	Szintaktikailag leírhatunk olyan kifejezéseket a nyelvben, aminek szemantikailag nincs értelme.	
