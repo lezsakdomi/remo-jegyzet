@@ -1,21 +1,35 @@
 \topic{Modellezés és metamodellezés}
 
-Az alábbi dokumentum a rendszermodellezés tárgy első előadásához kapcsolódó segédanyag, mely tartalmazza az elhangzott definíciókat és a hozzájuk tartozó egyszerűbb magyarázazokat.
+Ebben a fejezetben a modellezés alapfogalmaival fogunk megismerkedni. Az itt bevezetett fogalmak újra és újra megjelennek majd a későbbi fejezetekben, ahol részletesen ki fogunk térni az adott területen történő értelmezésükre.
+
+%Az alábbi dokumentum a rendszermodellezés tárgy első előadásához kapcsolódó segédanyag, mely tartalmazza az elhangzott definíciókat és a hozzájuk tartozó egyszerűbb magyarázatokat.
 
 \section{Modellezés}
 
-Mi értelme van modellezni? Fejben szinte mindig modellezünk bármilyen probléma kerül elénk. Legyen az egy szoftver fejlesztése (tervezése), leírása. Legfőbb szerepe a kommunikáció:
+Mi értelme van modellezni? Fejben szinte mindig modellezünk, bármilyen probléma kerül elénk. Nincs ez másképp egy szoftver fejlesztésekor sem. Lássuk hát, miről beszélünk, amikor a modell szót használjuk.
+% Legfőbb szerepe a kommunikáció:
 
 \begin{definicio}
 	\Fogalom{modell}: egy valós vagy hipotetikus világ (a ,,rendszer'') egy részének egyszerűsített képe, amely a rendszert helyettesíti bizonyos megfontolásokban.
 \end{definicio}
 
-Egy adott probléma modellé történő leképezésének általában két fontos előnye van: \emph{áttekinthetőbb}, \emph{kisebb (véges)}.
+A modell tehát egy többnyire bonyolult dolog egyszerűsített reprezentációja, amiben csak a számunkra lényeges vonásokat szerepeltetjük.
+Egy adott probléma modellé történő leképezésének általában két fontos előnye van: %\emph{áttekinthetőbb}, \emph{kisebb (véges)}.
 
 \begin{itemize}
-	\item \emph{kisebb}, hiszen a problémához nem kapcsolódó, elhanyagolható információk nem jelennek meg benne.
-	\item \emph{áttekinthetőbb}, hiszen csak az adott problémával kapcsolatos, releváns információkat kell vizsgálni.
+	\item A modell a problémánál \emph{kisebb}, hiszen a problémához nem (vagy lazábban) kapcsolódó, elhanyagolható információk nem jelennek meg benne.
+	\item A modell a problémánál \emph{áttekinthetőbb}, hiszen csak az adott megfontolásban érdekes, releváns információkat és kapcsolatokat kell vizsgálni.
 \end{itemize}
+
+\begin{pelda}
+	Modellekre sok példát láthatunk a hétköznapokban is. Nem csak gyerekek körében népszerű játék a modellvasút. Itt valóban modellről beszélhetünk, hiszen a játékvonatok számos tekintetben hűen reprezentálják a valódi vonatokat, azonban például ``szemet hunyunk'' a méretükkel, tömegükkel, a bennük lévő villanymotor paramétereivel, és még sok egyéb hasonló tulajdonságukkal kapcsolatban.
+	
+	Az informatika egyik leggazdagabb modellforrása a matematika. Amikor gráfelméletet tanulunk, valójában rengeteg, bizonyos szempontból hasonló probléma közös modelljét vizsgáljuk. Valóban, a matematika egyik célja az ilyen modellek azonosítása, és minél hatékonyabb eszköztárak kidolgozása a rajtuk megfogalmazott problémák megoldására. A gráfoknál maradva (gráfokról bővebben a \ref{sec:graf} fejezetban és a \emph{Bevezetés a számításelméletbe} című tárgyban lehet tájékozódni) egy város úthálózata jól reprezentálható egy élsúlyokkal ellátott gráffal, ahol a csomópontok a kereszteződések, az élek az útszakaszok, az élsúlyok pedig a szakaszok hosszait jelölik. Ez a modell kiválóan alkalmas legrövidebb útvonalak tervezésére (mi kellene még a \emph{leggyorsabb} útvonal tervezéséhez?), de figyelmen kívül hagy számos egyéb paramétert, például az utakon lévő kanyarulatokat, a legnagyobb megengedett sebességet, stb.
+\end{pelda}
+
+\begin{megjegyzes}
+	Az, hogy a modell kisebb, nem mindig ``kényelmi'' szempont. Gyakran lehet olyan problémával találkozni, aminek a mérete bizonyos szempontból végtelen (például végtelen sok állapota van, vagy folytonos változók vannak benne), viszont egy alkalmas \emph{véges} modellen a számunkra releváns tulajdonságok továbbra is jól vizsgálhatók maradnak.
+\end{megjegyzes}
 
 Fontos azt is megjegyezni, hogy nem minden modell, ami modellnek látszik.
 
