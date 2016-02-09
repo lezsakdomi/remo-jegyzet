@@ -182,7 +182,7 @@ Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagá
 \item a \fogalom{tesztorakulum}, amely alapján a végrehajtott tesztről eldönthető annak eredménye.
 \end{itemize}
 
-Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ``bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
+Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ``bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
 
 A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni. 
 Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
@@ -210,6 +210,28 @@ Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemen
 \Aref{fig:teszteles-elrendezes-elvart-kimenet}.~ábrán vázolt elrendezésről van szó például akkor, ha állapotgépeket tesztelünk, és a teszteset tartalmazza a bemeneti eseménysort (tesztbemenetként) és az elvárt akciókat, eseményeket (elvárt kimenetként). 
 
 Nincs feltétlen lehetőség azonban referenciakimenet megadására olyan teszteseteknél, amelyek deklaratív követelményeket ellenőriznek, vagy többféle kimenetet is megengednek. Ilyenkor speciális orákulum szükséges. Például egy prímtesztelő eljárással szembeni követelmény lehet, hogy amennyiben a bemeneten kapott szám összetett, akkor bizonyítékul a kimeneten be kell mutatni a bemenetként kapott szám egyik valódi osztóját. Ilyenkor a tesztorákulumnak többféle kimenetet is el kell fogadnia. Ehhez például megvizsgálhatja a bemenet oszthatóságát a SUT által adott kimenettel.
+
+\begin{pelda}
+Tekintsük például az alábbi függvényt szignatúrájú függvényt: 
+
+\codeEsc{void find_nontrivial_divisor(int n, bool& is_prime, int& divisor)}.
+
+A függvény a megadott \code{n} egész számra visszadja, hogy prím-e (\code{is\_prime}). Amennyiben a szám nem prím, ennek igazolására megadja egy valódi (1-től és \code{n}-től eltérő) osztóját (\code{divisor}).
+
+Egy összetett számnak számos valódi osztója lehet, emiatt a függvény megvalósításának tesztelésénél nem adhatunk meg konkrét elvárt értékeket. Ehelyett azt vizsgálhatjuk, hogy a visszaadott szám (\code{divisor}) tényleg osztója-e \code{n}-nek és tényleg 1-től és \code{n}-től eltérő. Így például az alábbi teszteseteket tervezhetjük meg a \codeEsc{find_nontrivial_divisor} függvény vizsgálatára:
+
+\begin{center}
+\begin{tabular}{l|l|l}
+Teszteset & Bemenet (\code{n}) & Elfogadási kritérium \\ \hline
+1 & 997 & \codeEsc{is_prime==true} \\
+2 & 998 & \codeEsc{is_prime==false && divisor>1 && divisor<998 && }\code{998\%divisor==0} \\
+3 & 999 & \codeEsc{is_prime==false && divisor>1 && divisor<999 && }\code{999\%divisor==0} \\
+4 & 1 & \textit{kivétel dobása} \\
+\end{tabular}
+\end{center}
+
+Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véletlenszerűen, hanem gondos tervezés alapján határozzuk meg. Például fontos, hogy a különleges, \code{n==1} esetet is megvizsgáljuk. A teszttervezéssel bővebben a Szoftver- és Rendszermodellezés (BMEVIMIMA01) MSc tárgyban\footnote{\url{https://inf.mit.bme.hu/edu/courses/szore}} foglalkozunk.
+\end{pelda}
 
 
 \subsection{A tesztek kategorizálása\kiegeszitoanyag}

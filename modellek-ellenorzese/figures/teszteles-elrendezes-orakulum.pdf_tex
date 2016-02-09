@@ -48,7 +48,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.25546027)%
+  \begin{picture}(1,0.26197701)%
     \put(0,0){\includegraphics[width=\unitlength]{modellek-ellenorzese/figures/teszteles-elrendezes-orakulum.pdf}}%
     \put(0.09682749,0.16773235){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{teszteset}}}%
     \put(0.52561831,0.08865205){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{SUT}}}%
@@ -57,6 +57,7 @@
     \put(0.63423914,0.00049369){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{kimenet}}}%
     \put(0.86889505,0.16366829){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{teszteredmény}}}%
     \put(0.31961985,0.07332414){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{tesztbemenet}}}%
-    \put(0.31961985,0.20983849){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{teszteset}}}%
+    \put(0.31961985,0.2369045){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{elfogadási}}}%
+    \put(0.31961985,0.20403872){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{kritérium}}}%
   \end{picture}%
 \endgroup%
