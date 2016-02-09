@@ -197,7 +197,7 @@ A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-o
 	\label{fig:teszteles-elrendezes-orakulum}
 \end{figure}
 
-Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel, ahogyan az \aref{fig:teszteles-elrendezes-elvart-kimenet}.~ábrán is látható.
+Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemenetekre elvárt kimeneteket (referenciakimeneteket), ahogyan az \aref{fig:teszteles-elrendezes-elvart-kimenet}.~ábrán látható. Így az orákulum feladata mindössze a SUT kimenetének összevetése a tesztesetben leírt elvárt kimenetekkel.
 
 \begin{figure}[h]
 	\centering
@@ -212,7 +212,7 @@ Legegyszerűbb esetben a teszteset közvetlenül tartalmazza az adott tesztbemen
 Nincs feltétlen lehetőség azonban referenciakimenet megadására olyan teszteseteknél, amelyek deklaratív követelményeket ellenőriznek, vagy többféle kimenetet is megengednek. Ilyenkor speciális orákulum szükséges. Például egy prímtesztelő eljárással szembeni követelmény lehet, hogy amennyiben a bemeneten kapott szám összetett, akkor bizonyítékul a kimeneten be kell mutatni a bemenetként kapott szám egyik valódi osztóját. Ilyenkor a tesztorákulumnak többféle kimenetet is el kell fogadnia. Ehhez például megvizsgálhatja a bemenet oszthatóságát a SUT által adott kimenettel.
 
 \begin{pelda}
-Tekintsük például az alábbi függvényt szignatúrájú függvényt: 
+Tekintsük például az alábbi szignatúrájú függvényt: 
 
 \codeEsc{void find_nontrivial_divisor(int n, bool& is_prime, int& divisor)}.
 
@@ -230,7 +230,7 @@ Teszteset & Bemenet (\code{n}) & Elfogadási kritérium \\ \hline
 \end{tabular}
 \end{center}
 
-Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véletlenszerűen, hanem gondos tervezés alapján határozzuk meg. Például fontos, hogy a különleges, \code{n==1} esetet is megvizsgáljuk. A teszttervezéssel bővebben a Szoftver- és Rendszermodellezés (BMEVIMIMA01) MSc tárgyban\footnote{\url{https://inf.mit.bme.hu/edu/courses/szore}} foglalkozunk.
+Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véletlenszerűen, hanem gondos tervezés alapján határozzuk meg. Például fontos, hogy a különleges, \code{n==1} esetet is megvizsgáljuk. A teszttervezéssel bővebben a Szoftver- és rendszerellenőrzés (BMEVIMIMA01) MSc tárgyban\footnote{\url{https://inf.mit.bme.hu/edu/courses/szore}} foglalkozunk.
 \end{pelda}
 
 
@@ -341,7 +341,7 @@ Monitorozást nem csak ilyen egyszerű esetekben lehet használni, összetett mo
 \item Konformanciavizsgálat, amely során adott modellek közt bizonyos konformanciarelációk teljesülését vizsgáljuk, így beláthatjuk, hogy különböző modellek viselkedése megegyező vagy eltérő az adott relációk szerint.
 \end{itemize}
 
-Jelen jegyzetben kitekintésként a modellellenőrzést mutatjuk be röviden. Bővebben a formális verifikációról a Formális Módszerek (BMEVIMIM100) MSc tárgy\footnote{\url{https://inf.mit.bme.hu/edu/courses/form}} keretei közt szólunk.
+Jelen jegyzetben kitekintésként a modellellenőrzést mutatjuk be röviden. Bővebben a formális verifikációról a Formális módszerek (BMEVIMIM100) MSc tárgy\footnote{\url{https://inf.mit.bme.hu/edu/courses/form}} keretei közt szólunk.
 
 \paragraph{Modellellenőrzés.}
 A \fogalom{modellellenorzes} egy olyan módszer, amelynek során egy adott modellen vagy implementáción egy követelmény teljesülését vizsgáljuk. A modellellenőrzés egyik előnye, hogy amennyiben a követelmény nem teljesül, lehetséges egy ellenpéldát adni. Az \fogalom{ellenpelda} egy olyan futási szekvencia, amely megmutatja, hogyan lehetséges a vizsgált követelményt megsérteni. Ez nagyban segíthet a hibás működés okának meghatározásában.
