@@ -12,7 +12,7 @@ A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. F�
 
 Fontos megjegyezni, hogy a modellek ``helyessége'' önmagában nem egy értelmes, vizsgálható kérdés. Ennek vizsgálatához fontos tudni, hogy mi a modell célja, kontextusa, mik a követelmények vele szemben.
 
-\begin{megjegyzes}
+\begin{pelda}
 	Gondoljunk a BKK alábbi egyszerűsített, sematikus metróhálózati térképére\footnote{Forrás: \url{http://www.bkk.hu/apps/docs/terkep/metro.pdf}}!
 	\begin{center}
 		\colorbox{white}{
@@ -23,7 +23,7 @@ Fontos megjegyezni, hogy a modellek ``helyessége'' önmagában nem egy értelme
 	% átvétel: nyilvánosságra hozott irodalmi vagy zenei mű, film részlete, vagy kisebb terjedelmű ilyen önálló mű, továbbá képzőművészeti, építészeti, iparművészeti és ipari tervezőművészeti alkotás képe, valamint fotóművészeti alkotás szemléltetés érdekében iskolai oktatási célra, valamint tudományos kutatás céljára a forrás és az ott megjelölt szerző megnevezésével a cél által indokolt terjedelemben átvehető, feltéve, hogy az átvevő művet nem használják fel üzletszerűen. Átvételnek minősül a mű olyan mértékű felhasználása más műben, amely az idézést meghaladja. [Szjt. 35. § (2) bek.]
 	
 	Ez tekinthető a metróhálózat egy (gráfalapú) modelljének. Ha a követelményünk a metróhálózat sematikus reprezentálása, ami alatt például az állomások megfelelő sorrendjét, illetve a helyes átszállási kapcsolatokat értjük, akkor ez a térkép (gráf) helyes. Hibás akkor lenne, ha például a Nyugati pályaudvar az M4-es metró egyik állomásaként lenne feltüntetve. Ha viszont a követelmény az, hogy a térképről leolvashatók legyenek a metróállomások közti távolságok, ez a térkép hibás, hiszen a térkép alapján az Újbuda-központ és Móricz Zsigmond körtér állomások és a Móricz Zsigmond körtér és Szent Gellért tér állomások közti távolság azonos, míg a valóságban az egyik távolság a másiknak közel a duplája. 
-\end{megjegyzes}
+\end{pelda}
 
 Látható, hogy önmagában nincs értelme egy modell helyességéről beszélni, csak arról beszélhetünk, hogy bizonyos meghatározott követelményeknek megfelel-e vagy sem.
 Ebben a fejezetben áttekintjük, milyen követelményeket támaszthatunk a modellekkel szemben, hogyan csoportosíthatjuk és hogyan ellenőrizhetjük ezen követelményeket.
@@ -55,18 +55,18 @@ Az egyik ilyen általános követelmény a holtpontmentesség. \fogalomragozva{h
 
 Hasonló fogalom a livelock. \Fogalom{livelock} esetén az érdemi végrehajtás ugyanúgy megáll, mint holtpont esetén. Ennek viszont nem az az oka, hogy a rendszer nem képes állapotot váltani, hanem az, hogy a livelockban résztvevő komponensek egy végtelen ciklusba ragadnak, amelyben nem végeznek hasznos tevékenységet.
 
-\begin{megjegyzes}
+\begin{pelda}
 A klasszikus példa livelock-ra a való életből az, amikor két ember szembetalálkozik, és mindketten udvariasan kitérnének egymás elől, de azt mindig megegyező irányba teszik. Ilyenkor az emberek tudnak mozogni (``képesek állapotot váltani''), de nem haladnak előre (``nem végeznek hasznos tevékenységet''). Holtpontról akkor beszélnénk, ha kölcsönösen nem tudnának megmozdulni a másik személy miatt. Tehát a holtpont esetén a problémát az ``örök várakozás'', livelock esetén pedig egy végtelen ciklus okozza.
-\end{megjegyzes}
+\end{pelda}
 
 Állapotgépek esetén gyakori általános követelmények például a \emph{determinizmus} és a \emph{teljesen specifikált} működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az Állapotalapú modellezés c. segédanyagban} szólunk. A determinizmus és teljesen specifikált működés hasonlóan értelmezhető más viselkedésmodellezési formalizmusok, pl. folyamatmodellek esetén is. Ha a folyamatmodell minden döntési pontjára (``decision'' csomópont) olyan őrfeltételeket írunk, hogy mindig legfeljebb ág legyen engedélyezett, akkor determinisztikus a folyamat; teljesen specifikáltnak pedig akkor nevezzük, ha mindig legalább egy ág engedélyezett.
 
 \paragraph{Vizsgálatok fajtái.}
 Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ``helyességvizsgálat'' nem egy precíz fogalom. 
 
-\begin{megjegyzes}
+\begin{pelda}
 Képzeljük el, hogy egy kereszteződést szerelünk fel jelzőlámpákkal. A leszállított rendszert ellenőriztük, megfelel a specifikációnak: a fények megfelelő sorrendben, megfelelő időzítéssel követik egymást és mindig csak az engedélyezett irányok kapnak egyidejűleg szabad jelzést. Az átadáskor a megrendelő megkérdezi: ``-- És hol lehet átkapcsolni villogó sárgára?'' Mivel ez nem volt a specifikáció része, ilyen funkció nem is került a jelzőlámpák vezérlésébe. Mi meg vagyunk győződve arról, hogy a rendszer helyes, mivel teljesíti a specifikáció minden elemét. Ugyanakkor a megrendelő biztos abban, hogy a rendszer hibás, hiszen nem megfelelő a számára.
-\end{megjegyzes}
+\end{pelda}
 
 Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be. \fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak. \fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e. Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval. A verifikáció és a validáció közti különbséget illusztrálja \aref{fig:verifikacio_vs_validacio}.~ábra.
 
@@ -134,7 +134,7 @@ Az, hogy mit tartunk szemantikai hibának függ a használt modellezési vagy pr
 \paragraph{Szimbolikus végrehajtás.}
 Bizonyos esetekben a szemantikai hibák kiszűrése bonyolultabb feladat. Gondoljunk például az \code{x = y / z;} kódrészletre. Előfordulhat itt nullával osztás? A válasz nem egyértelmű, függ \code{z} értékétől.
 
-\begin{megjegyzes}
+\begin{pelda}
 Tekintsük például az alábbi C kódot:
 \begin{lstlisting}[language=C]
 int foo(int z) {
@@ -151,17 +151,17 @@ int foo(int z) {
 \end{lstlisting}
 
 Lehet \code{z} értéke 0? Természetesen, hiszen \code{z} egy bementi változó. Vizsgáljuk a \code{z}-vel osztás előtt annak az értékét? Nem, csak \code{y} változót vizsgáljuk. Lehetséges a nullával osztás a kódban? Nem. Amikor \code{z} értéke nulla lenne, akkor \code{y} értéke 10 lesz, és így az osztást tartalmazó utasítás nem fut le.
-\end{megjegyzes}
+\end{pelda}
 
 Amikor végrehajtunk egy programot, mindig a változók bizonyos konkrét értékei mellett tesszük ezt (pl. \code{foo(5)}). \Fogalom{szimbolikus-vegrehajtas} esetén konkrét értékek helyett szimbolikus értékekkel ``imitáljuk'' a végrehajtást, azaz a változókat matematikai változóként fogjuk fel. Emellett a belső elágazások által támasztott feltételeket is összegyűjtjük, majd ezen információk alapján következtetünk az egyes változók értékeire a program adott pontjain, vagy egyes programrészek elérhetőségére.
 
-\begin{megjegyzes}
+\begin{pelda}
 Ha \code{z}-t egy $z$ matematikai változónak tekintjük, akkor tudjuk, hogy a feltételes elágazás \emph{igaz} ágában a \code{y = z + 10;} utasítás miatt $y = z + 10$ igaz, valamint az elágazási feltételben szereplő \code{y != 10} miatt $y \neq 10$ igaz. A kettőből együttesen $z + 10 \neq 10$, azaz $z \neq 0$. Így bizonyíthatjuk, hogy sosem osztunk nullával a fenti példakódban.
-\end{megjegyzes}
+\end{pelda}
 
-\begin{megjegyzes}
+\begin{pelda}
 Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ kaphatunk szimbolikus végrehajtás segítségével, míg konkrét végrehajtással minden egyes lehetséges \code{z}-re le kellene futtatnunk a függvényt. Ha az elágazás feltétele teljesült tudjuk, hogy a program végére $x = \frac{z+10}{z} \wedge z \neq 0$, azaz \code{x} akkor lesz 2, ha \code{z} értéke 10. Ha az elágazás feltétele nem teljesült, akkor tudjuk, hogy a program végére $x = 2 \wedge z = 0$, azaz ha \code{z} értéke 0, a kimenet $2$ lesz. Tehát \code{z=0} és \code{z=10} esetén kaphatunk eredményként 2-t.
-\end{megjegyzes}
+\end{pelda}
 
 
 
@@ -261,9 +261,9 @@ Ha viszont a tesztkészletünk meglátogat minden állapotot vagy meghív minden
 	\item Egy vezérlési folyamban (programban) az \fogalom{utasitasfedettseg} (vagy utasításlefedettség) egy adott tesztkészlet által érintett (bejárt) utasítások és az összes utasítások arányát adja meg.	
 \end{itemize}
 
-\begin{megjegyzes}
-Példa. \textbf{TODO -- ábra, a többivel egységes formában. Vezérpélda?}
-\end{megjegyzes}
+\begin{pelda}
+\textbf{TODO -- ábra, a többivel egységes formában. Vezérpélda?}
+\end{pelda}
 
 A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak szükséges, de nem elégséges feltétele a jó minőségű rendszer fejlesztésének. Gyakran ez a szám félrevezető is lehet, illetve rossz irányba viheti a teszttervezést.
 
@@ -294,7 +294,7 @@ Egyes esetekben az invariánsok igen egyszerűek (például egy valós számok n
 \item A végrehajtás után az utófeltétel vizsgálatára kerül sor. Amennyiben az utófeltétel nem teljesül, olyan hibás állapotba került a rendszer, amely kezelésére nincs felkészítve. Ennek oka lehet a hibás implementáció vagy futásidejű hiba.
 \end{itemize}
 
-\begin{megjegyzes}
+\begin{pelda}
 Az alábbi példakód egy másodfokú egyenlet gyökeit számolja ki:
 
 \begin{lstlisting}[language=C++]
@@ -323,7 +323,7 @@ void RootsMonitor(float a, b, c, float &x1, &x2) {
     assert(a*x1*x1+b*x1+c == 0 && a*x2*x2+b*x2+c == 0);
 }
 \end{lstlisting}
-\end{megjegyzes}
+\end{pelda}
 
 Monitorozást nem csak ilyen egyszerű esetekben lehet használni, összetett monitorok is elképzelhetők. Például állapotgépek esetén készíthetünk egy monitor régiót, ami a rendszer megvalósításával párhuzamosan fut és detektálja a hibás vagy tiltott állapotokat, akciókat.
 
