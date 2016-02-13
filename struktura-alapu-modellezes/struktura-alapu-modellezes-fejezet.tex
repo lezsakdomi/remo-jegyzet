@@ -58,7 +58,7 @@ A bottom-up modellezés jellemzői:
 
 \section{Fogalmak}
 
-Az alábbiakban összefoglaljuk a szükséges fogalmakat és definíciókat. Nem mindenhol célunk a teljes matematikai precizitás, ill. az egyes fogalmakhoz tartozó különböző definíciók felsorolása (pl. a *gráf* fogalomra sok különböző, némileg eltérő jelentésű definíció létezik).
+Az alábbiakban összefoglaljuk a szükséges fogalmakat és definíciókat. Nem mindenhol célunk a teljes matematikai precizitás, ill. az egyes fogalmakhoz tartozó különböző definíciók felsorolása (pl. a \fogalom{graf} fogalomra sok különböző, némileg eltérő jelentésű definíció létezik).
 
 \subsection{Gráf}
 \label{sec:graf}
@@ -166,7 +166,7 @@ Ez elérhetőségvizsgálatra gyakran elemi bejáróalgoritmusokat használunk:
 
 \begin{itemize}
 \item Dijsktra-algoritmus
-\item A* keresés
+\item A* keresés (ejtsd: ,,a-csillag keresés'')
 \item Bellman--Ford algoritmus
 \item Floyd algoritmus
 \end{itemize}
@@ -175,11 +175,13 @@ A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gi
 
 \paragraph{Transzformációk}
 
-* *Szűrés éltípusra:* gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
+\begin{itemize}
+\item *Szűrés éltípusra:* gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
+\end{itemize}
 
 \section{Tulajdonságmodellezés}
 
-Egy modellelem (gráfok esetén tipikusan a modell csomópontjai) tulajdonságait *jellemzőkkel* vagy más néven *attribútumokkal* jellemezzük. Különböző modellelemekre az egyes jellemzők más-más vehetnek fel (de nem szükségszerűen térnek el).
+Egy modellelem (gráfok esetén tipikusan a modell csomópontjai) tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} jellemezzük. Különböző modellelemekre az egyes jellemzők más-más vehetnek fel (de nem szükségszerűen térnek el).
 
 A jellemzők között gyakran kitüntetünk egyet:
 
@@ -291,6 +293,8 @@ Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez 
 
 \subsection{Modellezési nyelvek}
 
+A gyakorlatban rengeteg különböző modellezési nyelvet használnak, ezek közül mutatunk be most néhány elterjedtebbet.
+
 \subsubsection{UML (Unified Modeling Language)}
 
 Az UML egy általános célú modellezési nyelv az~\cite{UML}. Az UML három fő diagramtípust definiál:
@@ -315,7 +319,7 @@ A SysML egy UML-alapú általános modellezési nyelv rendszertervezési célokr
 
 \subsubsection{EMF (Eclipse Modeling Framework)}
 
-Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az *Eclipse Modeling Framework (EMF)*. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. szakterület-specifikus nyelv (domain-specific language, DSL) definiálását. Az EMF mára több területen is *de facto* modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
+Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \rovidites{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. szakterület-specifikus nyelv (domain-specific language, DSL) definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
 
 Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiák} c. szabadon választható tárgy.
 
@@ -335,7 +339,7 @@ Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen ha
 %
 \subsection{Relációk tulajdonságai}
 
-A *tranzitív lezárás* fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a *tranzitivitást*.
+A \fogalom{tranzitiv-lezaras} fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a \fogalomragozva{tranzitiv}{tranzitivitást}.
 
 \subsubsection{Tranzitivitás}
 
@@ -350,7 +354,7 @@ Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}
 
 \subsubsection{További tulajdonságok}
 
-A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: *reflexivitás*, *szimmetria*, *rendezés* stb.~\cite{relaciok}. 
+A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: \fogalom{reflexivitas}, \fogalom{szimmetria} stb.~\cite{relaciok}. 
 
 \subsection{Ontológia}
 
