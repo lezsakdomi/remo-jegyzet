@@ -26,7 +26,8 @@ Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható
 	A \fogalom{dekompozicio} (\fogalom{faktoring}) egy összetett probléma vagy rendszer kisebb részekre bontása, amelyek könnyebben érthetők, fejleszthetők és karbantarthatók.
 \end{definicio}
 
-Természetesen a dekompozíció során ügyelnünk kell arra, hogy az egyes részekből visszaállítható legyen az eredeti rendszer, különben a kapott strukturális modellünk hiányos.
+
+A rendszer így kapott egyes komponensei (részrendszerei) gyakran további dekompozícióval még kisebb részekre bonthatóak. Természetesen a dekompozíció során ügyelnünk kell arra, hogy az egyes részekből visszaállítható legyen az eredeti rendszer, különben a kapott strukturális modellünk hiányos.
 
 \begin{definicio}
 	Egy dekompozíció \fogalomragozva{helyes-dekompozicio}{helyes}, ha a dekompozícióval kapott rendszer minden elemének megfeleltethető az eredeti rendszer valamelyik eleme, és az eredeti rendszer minden eleméhez hozzárendelhető a dekompozícióval kapott rendszer egy vagy több eleme.
@@ -45,13 +46,13 @@ A top-down modellezés jellemzői:
 \end{itemize}
 
 \begin{definicio}
-	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé építjük. A modellezés alaplépése a \fogalom{kompozicio}.
+	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé építjük. A modellezés alaplépése a \fogalom{kompozicio}: az egész rendszer összeszerkesztése külön modellezett vagy fejlesztett részrendszerekből.
 \end{definicio}
 
 A bottom-up modellezés jellemzői:
 
 \begin{itemize}
-\item[$\oplus$] Alrendszer önmagában kipróbálható, tesztelhető
+\item[$\oplus$] Részrendszer önmagában kipróbálható, tesztelhető
 \item[$\oplus$] Részleges készültségnél is összeépíthető valami
 \item[$\ominus$] Nem látszik előre a rész szerepe az egészben
 \end{itemize}
@@ -67,7 +68,7 @@ Az alábbiakban összefoglaljuk a szükséges fogalmakat és definíciókat. Nem
 A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén $E$ csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
 \end{definicio}
 
-Bár a gráf meglehetősen egyszerű fogalom, rendkívül sok szakterület modelljei jól ábrázolhatók benne. Ennek egyik fő oka, hogy az emberek gondolkodás közben a világot gyakran úgy írják le, mint ,,dolgok'' (csomópontok), amelyek egymással valamilyen ,,viszonyban'' vannak (élek).
+Bár a gráf meglehetősen egyszerű fogalom, rendkívül sok szakterület modelljei jól ábrázolhatók benne. Ennek egyik fő oka, hogy az emberek gondolkodás közben a világot gyakran úgy írják le, mint ,,dolgok'' (csomópontok), amelyek egymással valamilyen ,,viszonyban'', ,,kapcsolatban'' vannak (élek).
 
 \begin{pelda}
 Irányítatlan gráffal ábrázolhatjuk emberek között az \emph{ismerőse} relációt, ilyen pl. a Facebook \emph{friendship} relációja.
@@ -85,11 +86,11 @@ Gyakran nincs szükségünk a teljes gráfra.
 Egy $G = (V, E)$ gráfnak $G' = (V', E')$ \fogalomragozva{reszgraf}{részgráfja}, ha $G'$ megkapható úgy, hogy $G$-ből elhagyunk néhány csomópontot és azok éleit, ill. néhány további élet. Formálisan: ha $V' \subseteq V$ és $E' \subseteq V' \times V'$.
 \end{definicio}	
 
-\subsubsection{Gráftípusok}
+\subsubsection{Körmentes gráfok}
 
-Tulajdonságaik alapján többféle gráftípust különböztethetünk meg, pl. a \fogalomragozva{teljes-graf}{teljes}, a \fogalomragozva{paros-graf}{páros}, a \fogalomragozva{perfekt-graf}{perfekt}, az \fogalomragozva{intervallumgraf}{intervallum-} és a \fogalom{sikbarajzolhato-graf}{síkbarajzolgató} gráfok. Ezekkel bővebben a \emph{Bevezetés a számításelméletbe 2.} tantárgy foglalkozik.
+Tulajdonságaik alapján többféle gráftípust különböztethetünk meg, pl. a \fogalomragozva{teljes-graf}{teljes}, a \fogalomragozva{paros-graf}{páros}, a \fogalomragozva{perfekt-graf}{perfekt}, az \fogalomragozva{intervallumgraf}{intervallum-} és a \fogalomragozva{sikbarajzolhato-graf}{síkbarajzolgató} gráfok. Ezekkel bővebben a \emph{Bevezetés a számításelméletbe 2.} tantárgy foglalkozik.
 
-A strukturális modellezés szempontjából kiemelt szerepet játszanak a \fogalomragozva{fa-graf}{fa} gráfok.
+A strukturális modellezés szempontjából kiemelt szerepet játszanak azok a gráfok, amelyekben nem található bizonyos értelemben vett kört alkotó élsorozat: ezek az \fogalom{erdo}, \fogalomragozva{fa-graf}{fa} gráfok.
 
 \begin{definicio}
 A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük.
@@ -183,7 +184,7 @@ A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gi
 
 \section{Tulajdonságmodellezés}
 
-Egy modellelem (gráfok esetén tipikusan a modell csomópontjai) tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} jellemezzük. Különböző modellelemekre az egyes jellemzők más-más vehetnek fel (de nem szükségszerűen térnek el).
+Egy modellelem (gráfok esetén tipikusan a modell csomópontjai) tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} jellemezzük. Különböző modellelemekre az egyes jellemzők más-más értéket vehetnek fel (de nem szükségszerűen térnek el). A jellemzők nem is feltétlenül értelmezettek minden modellelemre (ún. parciális függvényként írhatóak le a matematika nyelvén).
 
 A jellemzők között gyakran kitüntetünk egyet:
 
@@ -201,8 +202,8 @@ A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomrag
 A \fogalom{relacio} (fogalom{tablazat}) a modellelemeket és azok jellemzőit tárolja. A táblázat egy sora a modell egy elemének, egy oszlopa egy jellemzőjének felel meg.
 \end{definicio}
 
-Példaként használjuk az alábbi táblázatot!
-
+\begin{pelda}
+Vegyük az alábbi táblázatot.
 \begin{verbatim}
 | név            | fénykard színe | nem    | holdak száma | keringési idő |
 |----------------|----------------|--------|--------------|---------------|
@@ -216,8 +217,8 @@ Példaként használjuk az alábbi táblázatot!
 | Tatooine       |                |        | 3            | 304           |
 | Yoda           | zöld           | férfi  |              |               |
 \end{verbatim}
-
-Látható, hogy a táblázatnak nem minden celláját töltöttük ki. Ezeket a cellákat gyakran az \textsf{NA} (not applicable, not available) rövidítéssel vagy (különösen az adatbázisokban) \textsf{null} értékkel jellemezzük.
+\end{pelda}
+Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \textsf{NA} (not applicable, not available) rövidítéssel vagy (különösen az adatbázisokban) \textsf{null} értékkel jellemezzük.
 
 \subsubsection{Műveletek}
 
@@ -307,7 +308,7 @@ Az UML egy általános célú modellezési nyelv az~\cite{UML}. Az UML három f�
 	\item \emph{Interaction Diagram:} a \emph{Behaviour Diagram} altípusa. Ennek megfelelően szintén a viselkedés leírása a célja, de a hangsúly a vezérlés- és adatáramlás bemutatásán van. Ilyen pl. a \emph{Sequence Diagram} (szekvenciadiagram), amely az egyes objektumok közötti interakciót mutatja be üzenetek formájában.
 \end{itemize}
 
-\remofigscale{struktura-alapu-modellezes/UML-diagram}{UML diagram}{0.6}
+\remofigscale{struktura-alapu-modellezes/UML-diagram}{UML diagramok fajtái}{0.6}
 
 Az UML nyelvvel részletesen foglalkozik a \emph{Szoftvertechnológia} c. tárgy.
 
@@ -327,7 +328,7 @@ Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiá
 
 \subsubsection{AUTOSAR (AUTomotive Open System ARchitecture)}
 
-Az AUTOSAR~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
+Az AUTOSAR~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
 
 \subsection{Refaktoring}
 
