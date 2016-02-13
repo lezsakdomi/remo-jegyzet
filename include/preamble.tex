@@ -39,16 +39,15 @@
 \usepackage{float}
 \usepackage[normalem]{ulem}
 \usepackage{enumitem}
-%\usepackage{wasysym}
 \usepackage{hhline}
 \usepackage{tabto}
 \usepackage{needspace}
 \usepackage{lscape}
-%\IfFileExists{./use-xindy}{
+\IfFileExists{./use-xindy}{
 	\usepackage[xindy,acronym,nopostdot,shortcuts,nomain,toc]{glossaries}
-%}{
-%	\usepackage[acronym,nopostdot,shortcuts,nomain,toc]{glossaries}
-%}
+}{
+	\usepackage[acronym,nopostdot,shortcuts,nomain,toc]{glossaries}
+}
 \usepackage{skull}
 \usepackage{fancyhdr}
 \usepackage{todonotes}
@@ -66,7 +65,7 @@
 % \replaced[id=szarnyas,remark={megjegyzest is irhatsz mindharom parancsba}]{new}{old}
 \definechangesauthor[name={Gabor Szarnyas}, color=purple]{szarnyas}
 \definechangesauthor[name={Vince Molnar}, color=brown]{molnar}
-\definechangesauthor[name={Gabor Bergmann}, color=blue{bergmann}
+\definechangesauthor[name={Gabor Bergmann}, color=blue]{bergmann}
 \definechangesauthor[name={Andras Voros}, color=red]{voros}
 \definechangesauthor[name={Daniel Darvas}, color=orange]{darvas}
 \definechangesauthor[name={Laszlo Gonczy}, color=orange]{gonczy}
