@@ -19,6 +19,7 @@ A jegyzet elérhető a <http://docs.inf.mit.bme.hu/remo-jegyzet/> címen.
 * Előnézethez: [Sumatra PDF](http://www.sumatrapdfreader.org/free-pdf-reader.html)
 * Tárgymutató generálásához:
     * Alapértelmezés szerint hiányolja a `tracklang` csomagot. Ennek javításához  a **Start menü** | **MiKTeX**-ben a **Package Manager** alkalmazásban fel kell rakni a hiányolt csomagot. Amennyiben az nem található a listában, akkor a **Repository** | **Synchronize**-ra kattintva frissíteni kell a csomagok listáját, utána feltelepíteni a `tracklang` csomagot és újrafordítani a dokumentumot.
+* `mfirstuc.sty` hiba: `! LaTeX Error: File 'mfirstuc.sty' not found.` Megoldás: a MikTeX újratelepítése.
 * `fontspec` hiba: némelyik MikTeX disztribúcióban rossz verziós `fontspec` csomag van, ezért előfordulhat, hogy a fordításkor errort kapunk. [Megoldás](http://tex.stackexchange.com/questions/257336/fontspec-kernel-property-unknown): a **Start menü** | **MikTeX** | **Update** alatt frissítsük az összes csomagunkat. Fontos, hogy elsőre nem mindig frissíti jól, győződjünk meg róla, hogy a `fontspec`-ből **2.4-es** verzió van fenn. (Remélhetőleg ez a hiba el fog tűnni egy új release-zel.)
 * Tippek:
     * Első fordításkor fel kell még rakni pár csomagot, így az első fordítás kb. 5 perc lesz telepítéssel együtt.
