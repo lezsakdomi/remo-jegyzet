@@ -69,13 +69,13 @@ A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópont
 
 Bár a gráf meglehetősen egyszerű fogalom, rendkívül sok szakterület modelljei jól ábrázolhatók benne. Ennek egyik fő oka, hogy az emberek gondolkodás közben a világot gyakran úgy írják le, mint ,,dolgok'' (csomópontok), amelyek egymással valamilyen ,,viszonyban'' vannak (élek).
 
-\begin{megjegyzes}
+\begin{pelda}
 Irányítatlan gráffal ábrázolhatjuk emberek között az \emph{ismerőse} relációt, ilyen pl. a Facebook \emph{friendship} relációja.
-\end{megjegyzes}
+\end{pelda}
 
-\begin{megjegyzes}
+\begin{pelda}
 Irányított gráffal ábrázolhatjuk emberek között a \emph{követi} relációt, ilyen pl. a Twitter \emph{follows} relációja. Szintén irányított gráffal ábrázolhatók az interneten egymásra mutató weboldalak.
-\end{megjegyzes}
+\end{pelda}
 
 Természetesen irányítatlan gráfok ábrázolhatók irányítottként is, ha minden $\{v_1, v_2\}$ irányítatlan élet lecserélünk. (Érdekesség: megfelelő transzformációval irányított gráfok is ábrázolhatók irányítatlan gráfként~\cite{rodriguez2008mapping}.)
 
@@ -283,7 +283,7 @@ A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy t
 
 Az elsőre talán furcsának ható definíció tulajdonképpen egy egyszerű fogalmat vezet be: a típusgráfban a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel (pl. ,,person'', ,,warrior'', ,,planet''), az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. Példa: ld. diasor, Star Wars szereplők, bolygók és kapcsolataik.
 
-A típusgráf egy rendszer \fogalom{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
+A típusgráf egy rendszer \fogalomragozva{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
 
 A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból (pl. ,,Mace Windu'') a típusgráf csomópontjaira (pl. ,,Jedi'') \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
 

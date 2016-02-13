@@ -3,7 +3,6 @@
 
 \newcommand{\fogalomcim}[1]{\gls{#1} (\glsdesc{#1})}
 \newcommand{\Fogalomcim}[1]{\Gls{#1} (\glsdesc{#1})}
-\newcommand{\Fogalomcimtsz}[1]{\Glspl{#1} (\glsdescplural{#1})}
 
 \newcommand{\fogalom}[1]{\emph{\gls{#1}}}
 \newcommand{\Fogalom}[1]{\emph{\Gls{#1}}}
@@ -11,22 +10,12 @@
 \newcommand{\fogalomangolul}[1]{\emph{\glsdesc{#1}}}
 \newcommand{\Fogalomangolul}[1]{\emph{\Glsdesc{#1}}}
 
-\newcommand{\fogalomzarojelben}[1]{\emph{\gls{#1}}, \glsdesc{#1}}
-
-\newcommand{\fogalomtsz}[1]{\emph{\glspl{#1}}}
-\newcommand{\Fogalomtsz}[1]{\emph{\Glspl{#1}}}
-
 \newcommand{\fogalomragozva}[2]{\emph{\glslink{#1}{#2}}} 
 
-\newcommand{\angolrovidites}[1]{(\glsdesc{#1}, \acrshort{#1})}
-\newcommand{\angolroviditestsz}[1]{(\glsdescplural{#1}, \acrshortpl{#1})}
-
 \newcommand{\rovidites}[1]{\acrshort{#1} (\glsdesc{#1}, \acrlong{#1})}
+\newcommand{\angolrovidites}[1]{(\glsdesc{#1}, \acrshort{#1})}
 
-\newcommand{\roviditeszarojelben}[1]{\emph{\acrlong{#1}}, \acrshort{#1}}
 
-\newcommand{\Rovidites}[1]{\emph{\Acrlong{#1}} \angolrovidites{#1}}
-\newcommand{\Roviditestsz}[1]{\emph{\Acrlongpl{#1}} \angolroviditestsz{#1}}
 
 \IfFileExists{./use-xindy}{
 	\makeglossaries
@@ -183,7 +172,7 @@
 \newglossaryentry{aszinkron-szorzas}{name=aszinkron szorzás, description=asynchronous product}
 \newglossaryentry{szorzatautomata}{name=szorzatautomata, description=product automaton}
 \newglossaryentry{allapotter-robbanas}{name=állapottér-robbanás, description=state space explosion}
-\newglossaryentry{ortogonalis-regio}{name=ortogonális régió, plural=ortogonális régiók, description=orthogonal region, descriptionplural=orthogonal regions}
+\newglossaryentry{ortogonalis-regio}{name=ortogonális régió, description=orthogonal region}
 \newglossaryentry{versenyhelyzet}{name=versenyhelyzet, description=race condition}
 \newglossaryentry{determinizmus}{name=determinizmus, description=determinism}
 \newglossaryentry{nemdeterminizmus}{name=nemdeterminizmus, description=nondeterminism}
@@ -199,10 +188,10 @@
 \newglossaryentry{allapotkonfiguracio}{name=állapotkonfiguráció, description=state configuration}
 \newglossaryentry{finomitas}{name=finomítás, description=refinement}
 \newglossaryentry{absztrakcio}{name=absztrakció, description=abstraction}
-\newglossaryentry{valtozo}{name=változó, plural=változók, description=variable, descriptionplural=variables}
+\newglossaryentry{valtozo}{name=változó, description=variable}
 \newglossaryentry{valtozoertekeles}{name=változóértékelés, description=variable interpretation ?}
 \newglossaryentry{utasitas}{name=utasítás, description=instruction}
-\newglossaryentry{interfeszvaltozo}{name=interfészváltozó, plural=interfészváltozók, description=interface variable, descriptionplural=interface variables}
+\newglossaryentry{interfeszvaltozo}{name=interfészváltozó, description=interface variable}
 \newglossaryentry{interfesz}{name=interfész, description=interface}
 
 % folyamatmodellezes

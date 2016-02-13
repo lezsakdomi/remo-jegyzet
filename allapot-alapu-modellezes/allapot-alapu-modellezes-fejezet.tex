@@ -222,7 +222,7 @@ Abban az esetben azonban, ha csak minden századik eseményre kellene váltani \
 
 \subsection{Belső változók}
 
-A probléma megoldható \fogalomtsz{valtozo} alkalmazásával. A változó típussal rendelkezik, ez Yakinduban lehet \tipus{boolean}, \tipus{integer}, \tipus{real} vagy \tipus{string}, ezek a programozási nyelveknél megszokott logikai, egész, lebegőpontos, illetve karakterlánc típusoknak felelnek meg. Változók jelenlétében a rendszer állapotát már nemcsak a vezérlés állapota (állapot csomópontok), hanem az éppen érvényes \fogalom{valtozoertekeles} is meghatározza.
+A probléma megoldható \fogalom{valtozo}{változók} alkalmazásával. A változó típussal rendelkezik, ez Yakinduban lehet \tipus{boolean}, \tipus{integer}, \tipus{real} vagy \tipus{string}, ezek a programozási nyelveknél megszokott logikai, egész, lebegőpontos, illetve karakterlánc típusoknak felelnek meg. Változók jelenlétében a rendszer állapotát már nemcsak a vezérlés állapota (állapot csomópontok), hanem az éppen érvényes \fogalom{valtozoertekeles} is meghatározza.
 
 \begin{megjegyzes}
 A bekövetkezett \allapot{tick} események számlálására a rendszer interfészdefinícióját kiegészítjük a \allapot{counter} egész típusú változóval:
@@ -260,7 +260,7 @@ Hogyan módosul őrfeltételek jelenlétében a \fogalomragozva{determinisztikus
 
 \subsection{Interfészváltozók}
 
-A vörös, sárga ill. zöld színű fények állapotának nyilvántartására felvesszük \valtozo{red}, \valtozo{yellow} és \valtozo{green} logikai változókat. A korábban bevezetett \valtozo{counter} változóval ellentétben ezek a változók nem csak az állapotgéppel leírt vezérlő belső működésében játszanak szerepet; úgy tekintjük, hogy a különböző színű fények villanyégőit közvetlenül ezek az \fogalomtsz{interfeszvaltozo} kapcsolják. Általánosságban a be- és kimeneti események mellett interfészváltozókon keresztül kommunikálhat az állapotgép a külvilággal. 
+A vörös, sárga ill. zöld színű fények állapotának nyilvántartására felvesszük \valtozo{red}, \valtozo{yellow} és \valtozo{green} logikai változókat. A korábban bevezetett \valtozo{counter} változóval ellentétben ezek a változók nem csak az állapotgéppel leírt vezérlő belső működésében játszanak szerepet; úgy tekintjük, hogy a különböző színű fények villanyégőit közvetlenül ezek az \fogalom{interfeszvaltozo}{interfészváltozók} kapcsolják. Általánosságban a be- és kimeneti események mellett interfészváltozókon keresztül kommunikálhat az állapotgép a külvilággal. 
 
 Mivel a vezérlési állapotokat úgy vettük fel, hogy egyértelműen meghatározzák a fényeket leíró változók értékét, ezen változóknak értéket adó utasításokat \valtozo{entry} triggerhez rendeljük -- ez egy tömör jelölése annak, hogy az adott állapotba lépő összes állapotátmenet végrehajtson egy adott akciót.
 
@@ -298,7 +298,7 @@ A fent vázolt művelet az állapotgépeken értelmezett \fogalom{aszinkron-szor
 
 \subsection{Ortogonális állapot}
 
-Ilyen esetekben alkalmazható eszköz az \fogalom{ortogonalis-allapot}. Az ortogonális állapot egy olyan összetett állapot, mely több régióval rendelkezik. Az ortogonális állapot régiói \fogalomtsz{ortogonalis-regio}, melyek -- az egyrégiós összetett állapottal megegyező módon -- akkor aktívak, ha a tartalmazó állapot aktív.
+Ilyen esetekben alkalmazható eszköz az \fogalom{ortogonalis-allapot}. Az ortogonális állapot egy olyan összetett állapot, mely több régióval rendelkezik. Az ortogonális állapot régiói \fogalom{ortogonalis-regio}{ortogonális régiók}, melyek -- az egyrégiós összetett állapottal megegyező módon -- akkor aktívak, ha a tartalmazó állapot aktív.
 
 Az így elkészített állapotgépet az alábbi ábra szemlélteti.
 
