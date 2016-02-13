@@ -134,19 +134,21 @@ Irányított és irányítatlan gráfokban is gyakran szükség van arra, hogy a
 A gráf adatmodellnek többféle kiterjesztése is létezik. Ezek közül az alábbiak ismeretére építünk:
 
 \begin{itemize}
-\item *Címkézett gráf*: a gráf elemeit (csomópontjait és/vagy éleit) *címkékkel* láthatjuk el. A címkézés célja lehet *egyedi azonosító* hozzárendelése vagy bizonyos tulajdonság leírása (pl. csomópontok kapacitása, élek típusa).
-  * *Csúcscímkézett gráf:* az egyes csomópontokat címkézzük.
-  * *Élcímkézett gráf:* az egyes (irányított vagy irányítatlan) éleket címkézzük.
-\item *Típusos gráfok*: a gráf elemei *típusokkal* rendelkeznek. A típusos gráfok a *címkézett gráfok* speciális esetei.
-\item *Tulajdonsággráf:* az egyes csomópontokat és éleket tulajdonságokkal látjuk el. A tulajdonságok kulcs-érték párok, pl. "neve = Gipsz Jakab", "életkora = 20", "színe = zöld".
+\item \Fogalom{cimkezett-graf}: a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. csomópontok kapacitása, élek típusa).
+  \begin{itemize}
+  \item \Fogalom{csucscimkezett-graf} az egyes csomópontokat címkézzük.
+  \item \Fogalom{elcimkezett-graf} az egyes (irányított vagy irányítatlan) éleket címkézzük.
+  \end{itemize}
+\item \fogalom{tipusos-graf}: a gráf elemei \fogalomragozva{tipus}{típusokkal} rendelkeznek. A típusos gráfok a \fogalom{cimkezett-graf}{címkézett gráfok} speciális esetei.
+\item \fogalom{tulajdonsaggraf}: az egyes csomópontokat és éleket tulajdonságokkal látjuk el. A tulajdonságok kulcs-érték párok, pl. "neve = Gipsz Jakab", "életkora = 20", "színe = zöld".
 \end{itemize}
 
 További kiterjesztések:
 
 \begin{itemize}
-\item *Súlyozott gráfok*: a gráf elemeit (csomópontjait és/vagy éleit) súlyokkal látjuk el, pl. kapacitást vagy költséget rendelünk hozzájuk. A *súlyozott gráfok* a címkézett gráfok speciális esetei.
-\item *Multigráfok:* a csomópontok között *többszörös élek* is futhatnak.
-\item *Hipergráfok:* egy él több csomópont között is futhat. A hipergráf éleit *hiperéleknek* nevezzük.
+\item \fogalom{sulyozott-graf}: a gráf elemeit (csomópontjait és/vagy éleit) súlyokkal látjuk el, pl. kapacitást vagy költséget rendelünk hozzájuk. A \fogalom{sulyozott-graf}{súlyozott gráfok} a címkézett gráfok speciális esetei.
+\item \fogalom{multigraf}: a csomópontok között \fogalomragozva{tobbszoros-el}{többszörös élek} is futhatnak.
+\item \fogalom{hipergraf}: egy él több csomópont között is futhat. A hipergráf éleit \fogalomragozva{hiperel}{hiperéleknek} nevezzük.
 \end{itemize}
 
 \subsubsection{Műveletek gráfokon}
@@ -158,17 +160,17 @@ Egy $v_i$ csomópontból egy $v_j$ csomópont elérhető, ha létezik $v_i$-ből
 Ez elérhetőségvizsgálatra gyakran elemi bejáróalgoritmusokat használunk:
 
 \begin{itemize}
-\item Szélességi bejárás (BFS)
-\item Mélységi bejárás (DFS)
+\item \rovidites{BFS}
+\item \rovidites{DFS}
 \end{itemize}
 
 \paragraph{Útkereső algoritmusok}
 
 \begin{itemize}
-\item Dijsktra-algoritmus
-\item A* keresés (ejtsd: ,,a-csillag keresés'')
-\item Bellman--Ford algoritmus
-\item Floyd algoritmus
+\item \fogalom{Dijsktra-algoritmus}
+\item \fogalom{A-csillag-kereses} (ejtsd: ,,á-csillag keresés'')
+\item \fogalom{Bellman-Ford-algoritmus}
+\item \fogalom{Floyd-algoritmus}
 \end{itemize}
 
 A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gist.neo4j.org/?6d2a1a1c6325043d09a0}.
@@ -176,7 +178,7 @@ A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gi
 \paragraph{Transzformációk}
 
 \begin{itemize}
-\item *Szűrés éltípusra:* gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
+\item \Fogalom{szures-eltipusra}: gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
 \end{itemize}
 
 \section{Tulajdonságmodellezés}
@@ -329,7 +331,7 @@ Az AUTOSAR~\cite{autosar} nagy autóipari gyártók és beszállítóik által f
 
 \subsection{Refaktoring}
 
-A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a *refaktoring* (refactoring) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszerek, programkódok (vagy modellek) olyan átalakítását értjük, amelynek sorána megfigyelhető működés változatlan marad, de a kapott programkód (modell) olvashatóbb, érthetőbb, karbantarthatóbb lesz.
+A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszerek, programkódok (vagy modellek) olyan átalakítását értjük, amelynek sorána megfigyelhető működés változatlan marad, de a kapott programkód (modell) olvashatóbb, érthetőbb, karbantarthatóbb lesz.
 
 \subsection{Eszközök}
 
