@@ -14,8 +14,7 @@ DOCUMENTS = \
 	rendszermodellezes
 
 build:
-	@$(foreach DOCUMENT, \
-		$(DOCUMENTS),\
+	@$(foreach DOCUMENT, $(DOCUMENTS),\
 		echo ============================== $(DOCUMENT) ==============================; \
 		xelatex -interaction=batchmode $(DOCUMENT); \
 		bibtex $(DOCUMENT); \
