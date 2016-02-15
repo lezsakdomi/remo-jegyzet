@@ -74,7 +74,7 @@ A szintaxis tehát definiálja, hogy hogyan írhatjuk le a modellt az adott nyel
 \begin{pelda}
 	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
 
-	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét a \ref{sec:allapot-alapu-modellezes} fejezet mutatja be). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
+	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét a \ref{sec:allapot-alapu-modellezes}. fejezet mutatja be). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
 \end{pelda}
 
 \begin{megjegyzes}
@@ -104,7 +104,7 @@ A metamodell tehát modellezési nyelveket modellez, a konkrét jelölölésrend
 \end{pelda}
 
 \begin{tipp}
-	Minden fejezetben, ahol modellezési formalizmusokkal ismerkedünk meg, szerepelni fog az adott adott modelltípus metamodellje is..
+	Minden fejezetben, ahol modellezési formalizmusokkal ismerkedünk meg, szerepelni fog az adott adott modelltípus metamodellje is.
 \end{tipp}
 
 \todo{</első alternatíva>}
@@ -140,9 +140,9 @@ Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hí
 	Modellekre és metamodellekre számos példa kerül majd elő a későbbi tanulmányok során:
 	\begin{itemize}
 		%\item Egyed-kapcsolat, EK modell (entity-relationship, ER)
-		\item AZ UML~\cite{UML} (Unified Modeling Language) objektum diagramján ábrázolt objektummodelleket az osztálydiagramokon ábrázolt metamodelljeik szerint adhatjuk meg.
+		\item Az \rovidites{UML}~\cite{UML} objektum diagramján ábrázolt objektummodelleket az osztálydiagramokon ábrázolt metamodelljeik szerint adhatjuk meg.
+		\item Az \rovidites{XML} dokumentumok metamodelljét az XML sémák adják.
 		\item Egy adatbázis tábla metamodellje a relációs adatbázisséma.
-		\item Az XML dokumentumok metamodelljét az XML sémák adják.
 	\end{itemize}
 	A konkrét szintaxist (jelölésrendszert) mindegyik esetben külön határozzák meg, az UML esetében többféle grafikus és szöveges szintaxis is definiált.
 \end{pelda}
@@ -155,12 +155,12 @@ Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hí
 
 \section{Absztrakció és finomítás}
 
-A modell definíciójának szerves része az \emph{egyszerűsítés}, az adott probléma szempontjából irreleváns információs elhanyagolása. Ugyanannak a rendszernek több modelljét is elkészíthetjük más-más részletek kihagyásával. Ráadásul egy elkészített modellből további részleteket hagyhatunk el, vagy éppen újabb részleteket vehetünk bele, így a modellek a részletgazdagság szerint egyfajta hierarchiába rendezhetők.
+A modell definíciójának szerves része az \emph{egyszerűsítés}, az adott probléma szempontjából irreleváns információk elhanyagolása. Ugyanannak a rendszernek több modelljét is elkészíthetjük más-más részletek kihagyásával. Ráadásul egy elkészített modellből további részleteket hagyhatunk el, vagy éppen újabb részleteket vehetünk bele, így a modellek a részletgazdagság szerint egyfajta hierarchiába rendezhetők.
 
 Különbséget kell tennünk azonban egy modell részletekkel gazdagítása és megváltoztatása között. Ehhez segít, ha megkülönböztetjük a modellt (illetve a modellezett rendszert) és a környezetét.
 
 \begin{definicio}
-	Rendszer és \fogalomragozva{kornyezet}{környezete}: A környezet (vagy kontextus) a rendszerre ható tényezők összessége. Modellezéskor a modellezett rendszernek mindig egyértelműen definiálni kell a \emph{határait}. A határon belül eső dolgokat a rendszer részének tekintjük, az azon kívül esők adják a környezetet. Szokás még a környezet elemeit két csoportba sorolni: \emph{releváns} környezeti elemek azok a dolgok, amik a rendszerrel közvetve vagy közvetett módon kapcsolatban állnak, míg \emph{irreleváns} környezeti elem ami a rendszerrel nincs kapcsolatban.
+	\Fogalom{rendszer} és \fogalomragozva{kornyezet}{környezete}: a környezet (vagy kontextus) a rendszerre ható tényezők összessége. Modellezéskor a modellezett rendszernek mindig egyértelműen definiálni kell a \emph{határait}. A határon belül eső dolgokat a rendszer részének tekintjük, az azon kívül esők adják a környezetet. Szokás még a környezet elemeit két csoportba sorolni: \emph{releváns} környezeti elemek azok a dolgok, amik a rendszerrel közvetve vagy közvetett módon kapcsolatban állnak, míg \emph{irreleváns} környezeti elem, ami a rendszerrel nincs kapcsolatban.
 \end{definicio}
 
 \begin{megjegyzes}
