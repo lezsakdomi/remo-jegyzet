@@ -354,10 +354,18 @@ A \fogalom{tranzitiv-lezaras} fogalom megértését segítheti, ha ismerjük a r
 Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}, ha bármely $a,b,c \in A$ esetén $r(a, b)$ és $r(b, c)$ teljesülése esetén $r(a, c)$ is teljesül.
 
 \begin{itemize}
-	\item Az egyenlőség ($=$) és a kisebb ($<$) reláció tranzitívak, mert $a = b$ és $b = c$ esetén $a = c$, ill. $a < b$, $b < c$ esetén $a < c$.
-	\item Az emberek közötti $\mathit{őse}(x_1, x_2)$ reláció tranzitív, mert ha $őse(a, b)$ és $őse(b, c)$, akkor $őse(a, c)$ is fennáll. 
-	\item A nemegyenlő reláció ($\neq$) nem tranzitív, mert $a \neq b$ és $b \neq c$ esetén $a \neq c$ nem mindig áll fenn, pl. $1 \neq 2$ és $2 \neq 1$ esetén $1 \neq 1$ nem teljesül.
-	\item Az emberek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
+	\item Az egyenlőség ($=$) és a kisebb ($<$) reláció tranzitívak, mert
+	\begin{itemize}
+		\item $a = b$ és $b = c$ esetén $a = c$,
+		\item $a < b$ és $b < c$ esetén $a < c$.
+	\end{itemize}
+	\item A nemegyenlő reláció ($\neq$) nem tranzitív, mert 
+	\begin{itemize}
+		\item $a \neq b$ és $b \neq c$ esetén $a \neq c$ nem mindig áll fenn, például
+		\item $1 \neq 2$ és $2 \neq 1$ esetén $1 \neq 1$ nem teljesül.
+	\end{itemize}
+	\item Személyek közötti $\mathit{őse}$ reláció tranzitív, mert $\mathit{őse}(a, b)$ és $\mathit{őse}(b, c)$ esetén $\mathit{őse}(a, c)$ is fennáll. 
+	\item Személyek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
 \end{itemize}
 
 \subsubsection{További tulajdonságok}
@@ -374,8 +382,8 @@ Az \fogalom{ontologia} egy olyan taxonómia, amely tartalmazza a benne szereplő
 
 \section{Ajánlott irodalom}
 
-A tulajdonsággráfokról egy jól érthető cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
+A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
 
-Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex hálózatok elméletének. Behálózva c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
+Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex hálózatok elméletének. Barabási ,,Behálózva'' c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
 
-Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőkének 1996-os cikke~\cite{taivalsaari1996classes}.
+Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
