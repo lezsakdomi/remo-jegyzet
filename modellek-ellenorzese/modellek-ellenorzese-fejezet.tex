@@ -1,7 +1,8 @@
 % !TeX spellcheck = hu_HU
 \topic{Modellek ellenőrzése}\label{sec:modellek-ellenorzese}
 
-\newcommand{\kiegeszitoanyag}{\textsuperscript{($\ast$)}}
+\newcommand{\kiegeszitoanyag}{\ (kiegészítő anyag)} %lábjegyzetek, "bónusz bekezdések" végére  % \textsuperscript{($\ast$)}
+\newcommand{\kieg}{\ (kieg.)} % cím végére szánt megjegyzés
 \newcommand{\modellekEllenorzeseAllapotgepScale}{0.5}
 
 A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel is járhat.
@@ -234,7 +235,7 @@ Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véle
 \end{pelda}
 
 
-\subsection{A tesztek kategorizálása\kiegeszitoanyag}
+\subsection{A tesztek kategorizálása\kieg}
 Tesztelést a szoftverfejlesztési életciklus számos fázisában használhatunk. Attól függően, hogy a rendszer mekkora részét vizsgáljuk, különböző tesztelési módszereket különböztethetünk meg.
 
 \begin{itemize}
@@ -333,7 +334,7 @@ Monitorozást nem csak ilyen egyszerű esetekben lehet használni, összetett mo
 
 
 
-\section{Formális verifikáció\kiegeszitoanyag}\label{sec:formalis-verifikacio}
+\section{Formális verifikáció\kieg}\label{sec:formalis-verifikacio}
 \Fogalom{formalis-verifikacio} alatt olyan módszereket értünk, amelyek segítségével adott modellek vagy programok helyességét matematikailag precíz eszközökkel vizsgálhatjuk. Három fontosabb formális verifikációs módszert (családot) említünk meg:
 \begin{itemize}
 \item Modellellenőrzés;
