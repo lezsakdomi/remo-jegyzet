@@ -374,12 +374,18 @@ A modellellenőrzés -- a teszteléssel szemben -- egy \emph{teljes} módszer, a
 \textbf{TODO}
 
 \section{Gyakorlati jelentőség}
-\textbf{TODO}
+Mint azt már a fejezet elején említettük, az informatikának, mint mérnöki diszciplínának kulcsfontosságú része az elkészített munka ellenőrzése, legyen az specifikáció vagy implementáció. Minél nagyobb az elkészített rendszer kritikussága, annál nagyobb a fejlesztés folyamán az ellenőrzése szerepe.
+
+Manapság már szinte elképzelhetetlen egy modern fejlesztőkörnyezet beépített statikus ellenőrzés nélkül. Elérhetők további, igen kifinomult eszközök, amelyek statikus ellenőrzés segítségével felhívhatják a figyelmet hibákra vagy veszélyes konstrukciókra. 
+
+Az általunk írt implementáció nem tekinthető befejezettnek, amíg nem terveztünk és implementáltunk hozzá egy megfelelő tesztkészletet. Természetesen nem csak a megfelelően releváns tesztkészlet megvalósítása az elvárás: az implementációnkon a teszteknek sikeresnek kell lenniük ahhoz, hogy a fejlesztés következő fázisára továbbléphessünk, legyen az akár az integráció, akár a megrendelőnek történő átadás.
+
+Különösen kritikus esetekben, például egy repülő vagy egy atomerőmű vezérlőrendszerénél, netán orvosi eszközök beágyazott szoftvereinél a tesztelés ismertetett hibái túlzott kockázatot hordozhatnak, ezért gyakran kiegészül a tervek és a megvalósítás vizsgálata formális módszerek használatával.
 
 \subsection{Kapcsolódó eszközök}
 Ebben a szakaszban néhány olyan (többnyire jól ismert és ingyenes) eszközt sorolunk fel, amely a gyakorlatban megvalósítja a bemutatott módszerek némelyikét.
 
-Egyszerűbb statikus analízis eszközöket beépítve találhatunk a fejlettebb fejlesztőeszközökben (pl. Eclipse\footnote{\url{http://eclipse.org}}) és modellező eszközökben (pl. Yakindu). Ezeken kívül számos, mélyebb analízist lehetővé tevő eszköz létezik. C esetén gyakran használatos a Lint, C++ nyelv esetén a Cppcheck\footnote{\url{http://cppcheck.sourceforge.net/}} és cpplint\footnote{\url{https://github.com/google/styleguide/tree/gh-pages/cpplint}} eszközök. Java nyelvű programok statikus ellenőrzésére használható például a FindBugs\footnote{\url{http://findbugs.sourceforge.net/}} vagy a PMD\footnote{\url{http://pmd.github.io/}} eszköz.
+Egyszerűbb statikus analízis eszközöket beépítve találhatunk a fejlettebb fejlesztőeszközökben (pl. Eclipse\footnote{\url{http://eclipse.org}}) és modellező eszközökben (pl. Yakindu). Ezeken kívül számos, mélyebb analízist lehetővé tevő eszköz létezik. C esetén gyakran használatos a Lint, C++ nyelv esetén a Cppcheck\footnote{\url{http://cppcheck.sourceforge.net/}} és cpplint\footnote{\url{https://github.com/google/styleguide/tree/gh-pages/cpplint}} eszközök. Java nyelvű programok statikus ellenőrzésére használható például a FindBugs\footnote{\url{http://findbugs.sourceforge.net/}} vagy a PMD\footnote{\url{http://pmd.github.io/}} eszköz. A Coverity cég C, C++ és Java nyelvű programok statikus ellenőrzésére kínál megoldást, amelyek közül például a Coverity Scan\footnote{http://www.coverity.com/products/coverity-scan/} nyílt forráskódú programokra ingyenesen használható.
 
 C és C++ nyelvű programokhoz használható tesztfuttató keretrendszer például a Google Test\footnote{\url{https://github.com/google/googletest}}. Java programok modultesztelését segítheti például a JUnit\footnote{\url{http://junit.org/}} keretrendszer.
 
@@ -389,11 +395,13 @@ C és C++ nyelvű szoftverek modellellenőrzésre jól használható például a
 
 \subsection{Ellenőrző kérdések}
 \begin{itemize}
-	\item 
+	\item  \textbf{TODO}
 	\item
 	\item
 \end{itemize}
 
-\subsection{Kulcsfogalmak}
+%\subsection{Kulcsfogalmak}
+%\textbf{TODO}
 
-\subsection{Szójegyzék}
+%\subsection{Szójegyzék}
+%\textbf{TODO}
