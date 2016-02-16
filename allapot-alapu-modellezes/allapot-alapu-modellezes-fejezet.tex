@@ -1,8 +1,10 @@
 \topic{Állapotalapú modellezés}\label{sec:allapot-alapu-modellezes}
 
 \newcommand{\allapotgepsmallscale}{0.45}
-\newcommand{\allapotgepmediumscale}{0.55}
+\newcommand{\allapotgepmediumscale}{0.53}
 \newcommand{\allapotgeplargescale}{0.6}
+
+\newenvironment{fektetett}{\begin{landscape}\vspace*{\fill}}{	\vspace*{\fill}\end{landscape}}
 
 Az alábbi dokumentum egy háromfényű közúti jelzőlámpa fokozatosan kidolgozott modelljén keresztül mutatja be az állapot alapú modellezés alapfogalmait.
  
@@ -263,7 +265,7 @@ Mivel a vezérlési állapotokat úgy vettük fel, hogy egyértelműen meghatár
 
 A bővített állapotgépet az alábbi ábra szemlélteti.
 
-\remofigscale{allapot-alapu-modellezes/TrafficLight_5}{Fények állapotának modellezése változókkal}{\allapotgeplargescale}
+\remofigscale{allapot-alapu-modellezes/TrafficLight_5}{Fények állapotának modellezése változókkal}{\allapotgepmediumscale}
 
 \section{Időzítés}
 
@@ -299,13 +301,15 @@ Ilyen esetekben alkalmazható eszköz az \fogalom{ortogonalis-allapot}. Az ortog
 
 Az így elkészített állapotgépet az alábbi ábra szemlélteti.
 
-\remofigscale{allapot-alapu-modellezes/TrafficLight_7}{Járműérzékelős jelzőlámpa állapotgépe ortogonális állapottal}{\allapotgepsmallscale}
+\begin{fektetett}
+\remofigscale{allapot-alapu-modellezes/TrafficLight_7}{Járműérzékelős jelzőlámpa állapotgépe ortogonális állapottal}{\allapotgeplargescale}
+\end{fektetett}
 
 Szemantikailag az ortogonális régiók \fogalom{aszinkron} módon működnek, a tranzíciók külön-külön tüzelnek, szemben a \fogalom{szinkron} működéssel, amikor egy adott esemény bekövetkeztekor az ortogonális régiók tranzíciói egyszerre tüzelnek. Fontos, hogy az ortogonális régiók különböző eseményeket dolgozzanak fel, különben \fogalom{versenyhelyzet} alakulhat ki. A működés összhangolása történhet például megosztott változókon keresztül; egyéb módszerek is léteznek (pl. belső események mentén történő szinkronizálás), amelyekkel itt nem foglalkozunk. 
 
 \begin{megjegyzes}
 	A fenti rendszert szimulálva, majd az (\allapot{onOff}, \allapot{switchPhase}, \regio{trafficAbsent}) eseményeket sorrendben kiváltva a rendszer az alábbi ábrán látható állapotkonfigurációba kerül. Vegyük észre, hogy az aktív ortogonális állapot (\allapot{On}) mindkét ortogonális régiójában (\regio{Control}, \regio{Detect}) pontosan egy közvetlenül tartalmazott állapot aktív.
-
+	
 	\remofigscaleframed{allapot-alapu-modellezes/TrafficLight_7_sim}{Ortogonális állapot aktuális állapotként}{\allapotgepsmallscale}
 \end{megjegyzes}
 
@@ -380,11 +384,9 @@ internal:
 
 Mivel a különböző interfészeknek lehetne azonos nevű eseménye ill. állapotváltozója, ezért Yakinduban mindig az interfész megadásával kell hivatkozni a változókra és eseményekre. A módosított modellt szemlélteti az alábbi ábra:
 
-\begin{landscape}
-	\vspace*{\fill}
+\begin{fektetett}
 	\remofigscale{allapot-alapu-modellezes/TrafficLight_8}{A jelzőlámpa modellje interfészekkel}{\allapotgeplargescale}
-	\vspace*{\fill}
-\end{landscape}
+\end{fektetett}
 
 
 

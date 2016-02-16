@@ -5,9 +5,10 @@
 % - kiszolgáló rendszer top-down, bottom-up tervezése (mobil kliens, tömegközl. integráció, adatbázis stb.)
 % - gráfként reprezentált fuvarok, kocsik, szakaszok, utasok, sofőrök stb.
 
-Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
+Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszer egészével kapcsolatos összetett problémákat megválaszoljunk, fontos, hogy tudjuk ezekre a kérdésekre a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
 
-Jelen anyag témája a \fogalom{struktura-alapu-modellezes}. Célja, hogy bemutassa a strukturális modellezés matematikai alapjait, a hierarchikus modellezés ötletét stb.
+%Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
+
 
 \section{Strukturális modell}
 
@@ -341,9 +342,9 @@ A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a \fogalom{refaktor
 
 \subsection{Eszközök}
 
-Gráfok automatikus megjelenítésére alkalmas pl. a GraphViz~\cite{graphviz} programcsomag. Gráfok feldolgozására gyakran alkalmazzák az igraph~\cite{igraph} programcsomagot. Manapság több gráfadatbázis-kezelő rendszer is elterjedt, pl. a Neo4j~\cite{Neo4j} és a Titan~\cite{Titan} rendszerek.
+Gráfok automatikus megjelenítésére alkalmas pl. a GraphViz\footnote{\url{http://www.graphviz.org/}} programcsomag. Gráfok feldolgozására gyakran alkalmazzák az igraph\footnote{\url{http://igraph.org/}} programcsomagot. Manapság több gráfadatbázis-kezelő rendszer is elterjedt, pl. a Neo4j\footnote{\url{http://neo4j.com/}} és a Titan\footnote{\url{http://thinkaurelius.github.io/titan/}} rendszerek.
 
-Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io~\cite{drawio} és az Arrow Tools~\cite{arrowtool}. Komolyabb célokra a yEd~\cite{yed} eszközt érdemes használni. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. Microsoft Visio vagy Microsoft PowerPoint alkalmazása.
+Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io\footnote{\url{http://draw.io/}} és az Arrow Tools\footnote{\url{http://www.apcjones.com/arrows/}}. Komolyabb célokra a yEd\footnote{\url{https://www.yworks.com/products/yed}} eszközt érdemes használni. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. Microsoft Visio vagy Microsoft PowerPoint alkalmazása.
 %
 \subsection{Relációk tulajdonságai}
 
