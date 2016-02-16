@@ -263,7 +263,26 @@ Ha viszont a tesztkészletünk meglátogat minden állapotot vagy meghív minden
 \end{itemize}
 
 \begin{pelda}
-\textbf{TODO -- ábra, a többivel egységes formában. Vezérpélda?}
+Tekintsük az alábbi egyszerű állapotgépet, amely egy közlekedési lámpát modellez. 
+	\begin{center}
+		\includegraphics[scale=0.7]{modellek-ellenorzese/figures/pic_fedettseg-jelzolampa-pelda.pdf}
+	\end{center}
+	
+Vegyük az alábbi, két tesztesetből álló tesztkészletet (az elfogadási kritérium nem lényeges a fedettség szempontjából, így azt elhagytuk):
+
+\begin{center}
+\begin{tabular}{l|ll}
+Teszteset & Bemenet (\code{n}) \\ \hline
+1 & \code{sw1}, \code{sw2}, \code{sw3}, \code{sw4} \\
+2 & \code{sw1}, \code{sw2}, \code{sw3}, \code{toBlinking}, \code{toRed} \\
+\end{tabular}
+\end{center}
+
+Ez a két teszt az összes állapotot be fogja járni. Így az állapotgépben az \emph{állapotfedettség} $\frac{5}{5} = 1 = 100 \%$.
+
+Ugyanakkor ez a tesztkészlet mégsem érzékeny minden hibára. Nem tudnánk kimutatni például, ha az implementációban kifelejtenénk a \allapot{RedYellow}-ból \allapot{BlinkingYellow}-ba vezető tranzíciót. Ez azért van, mert bár az állapotfedettség teljes, az átmenetfedettség nem. Összesen 9 tranzíció található az állapotgépben, ebből 6-ot fed le a két teszteset együtt (kékkel jelölt átmenetek), így az \emph{átmenetfedettség} $\frac{6}{9} = 0{,}666 = 66{,}6 \%$.
+
+Fontos megjegyezni, hogy ha elérnénk néhány új teszteset definiálásával a teljes átmenetfedettséget, az sem feltétlen lenne képes kimutatni minden lehetséges hibát. Ha például az implementációban -- hibásan -- szerepelne egy \allapot{Green} állapotból \allapot{Red} állapotba vezető átmenet, azt nem feltétlen tudnánk kimutatni egy (a specifikáción) teljes fedettséget elérő tesztkészlettel sem.
 \end{pelda}
 
 A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak szükséges, de nem elégséges feltétele a jó minőségű rendszer fejlesztésének. Gyakran ez a szám félrevezető is lehet, illetve rossz irányba viheti a teszttervezést.
