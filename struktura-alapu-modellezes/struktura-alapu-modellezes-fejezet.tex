@@ -5,10 +5,19 @@
 % - kiszolgáló rendszer top-down, bottom-up tervezése (mobil kliens, tömegközl. integráció, adatbázis stb.)
 % - gráfként reprezentált fuvarok, kocsik, szakaszok, utasok, sofőrök stb.
 
+\todo[inline]{kifejteni azt, hogy lehet logikai és fizikai felépítés alapján is modellezni.
+	
+	- Fizikai/architektúrális egységek --> moduláris struktúra hoz létre, újrahasznosítható részekkel.
+	
+	- Funkcionális egységek --> dedikált struktúrát hoz létre, pl. távirányító -- redundanciamentes, azért, hogy a költség alacsony legyen. Nem újrahasznosíthatók a részei.
+	
+	Pl. dedikált eszközt készítünk, amikor van egy rendszermenedzsment problémám és írok rá egy szkriptet. A másik megoldás lenne, hogy behozunk egy rendszermenedzsment eszközt és annak az újrahasznosítható komponenseit alkalmazzuk.
+	
+	Jó lenne építészeti példát behozni.}
+
 Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszer egészével kapcsolatos összetett problémákat megválaszoljunk, fontos, hogy tudjuk ezekre a kérdésekre a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
 
 %Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
-
 
 \section{Strukturális modell}
 
@@ -64,7 +73,7 @@ A bottom-up modellezés jellemzői:
 \section{Gráfok}
 \label{sec:graf}
 
-Az alábbiakban összefoglaljuk a gráfokkal kapcsolatos fogalmakat és definíciókat. Nem mindenhol célunk a teljes matematikai precizitás, ill. az egyes fogalmakhoz tartozó különböző definíciók felsorolása (pl. a \fogalom{graf} fogalomra sok különböző, némileg eltérő jelentésű definíció létezik).
+Az alábbiakban összefoglaljuk a gráfokkal kapcsolatos fogalmakat és definíciókat. Nem mindenhol célunk a teljes matematikai precizitás, ill. az egyes fogalmakhoz tartozó különböző definíciók felsorolása (pl. a \fogalom{graf} fogalomra több különböző, némileg eltérő jelentésű definíció létezik).
 
 
 \begin{definicio}
@@ -296,9 +305,11 @@ A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány 
 
 Az \fogalom{peldanya} viszony helyett/mellett gyakran annak inverzét alkalmazzák, a \fogalomangolul{tipusa} (\fogalom{tipusa}) viszony is. Gráfban ábrázolva az \fogalomangolul{peldanya} és \fogalomangolul{tipusa} élek adott csomópontok között egymással ellentétes irányúak: pl. \emph{,,Mace Windu'' instance of ,,Jedi''} és \emph{,,Jedi'' type of ,,Mace Windu''}.
 
-\section{Kitekintés}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez kapcsolódó gyakorlati technológiát, specifikációt és eszközt. Az itt felsorolt fogalmak nem részei a számonkérésnek -- viszont gyakran előkerülnek a későbbi tanulmányok és munka során, ezért mindenképpen érdemes legalább névről ismerni őket.
+\section{Gyakorlati alkalmazások (kieg.)}
+
+Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez kapcsolódó gyakorlati technológiát, specifikációt és eszközt. Az itt felsorolt fogalmak nem részei a számonkérésnek, gyakran előkerülnek viszont a későbbi tanulmányok és munkák során, ezért mindenképpen érdemes legalább névről ismerni őket.
 
 \subsection{Modellezési nyelvek}
 
@@ -314,43 +325,49 @@ Az UML egy általános célú modellezési nyelv az~\cite{UML}. Az UML három f�
 	\item \emph{Interaction Diagram:} a \emph{Behaviour Diagram} altípusa. Ennek megfelelően szintén a viselkedés leírása a célja, de a hangsúly a vezérlés- és adatáramlás bemutatásán van. Ilyen pl. a \emph{Sequence Diagram} (szekvenciadiagram), amely az egyes objektumok közötti interakciót mutatja be üzenetek formájában.
 \end{itemize}
 
-\remofigscale{struktura-alapu-modellezes/UML-diagram}{UML diagramok fajtái}{0.6}
+\remofigscale{struktura-alapu-modellezes/UML-diagram}{UML diagramok típusai és a közöttük lévő viszony osztálydiagramként ábrázolva~\cite{wiki:ISE}}{0.6}
 
 Az UML nyelvvel részletesen foglalkozik a \emph{Szoftvertechnológia} c. tárgy.
 
-\subsubsection{AADL (Architecture Analysis and Design Language)}
+\subsubsection{AADL}
 
-Az AADL eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv.
+Az \rovidites{AADL} eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv~\cite{AADL}.
 
-\subsubsection{SysML (Systems Modeling Language)}
+\subsubsection{SysML}
 
-A SysML egy UML-alapú általános modellezési nyelv rendszertervezési célokra. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
+A \rovidites{SysML} egy UML-alapú általános modellezési nyelv rendszertervezési célokra~\cite{SysML}. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
 
-\subsubsection{EMF (Eclipse Modeling Framework)}
+\subsubsection{EMF}
 
 Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \rovidites{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. szakterület-specifikus nyelv (domain-specific language, DSL) definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
 
 Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiák} c. szabadon választható tárgy.
 
-\subsubsection{AUTOSAR (AUTomotive Open System ARchitecture)}
+\subsubsection{AUTOSAR}
 
-Az AUTOSAR~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
+Az \rovidites{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
 
-\subsection{Refaktoring}
+\subsection{Struktúramodellezési technikák}
+
+\subsubsection{Refaktoring}
 
 A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszerek, programkódok (vagy modellek) olyan átalakítását értjük, amelynek sorána megfigyelhető működés változatlan marad, de a kapott programkód (modell) olvashatóbb, érthetőbb, karbantarthatóbb lesz.
 
-\subsection{Eszközök}
+\subsection{Struktúramodellező eszközök és vizualizáció}
 
 Gráfok automatikus megjelenítésére alkalmas pl. a GraphViz\footnote{\url{http://www.graphviz.org/}} programcsomag. Gráfok feldolgozására gyakran alkalmazzák az igraph\footnote{\url{http://igraph.org/}} programcsomagot. Manapság több gráfadatbázis-kezelő rendszer is elterjedt, pl. a Neo4j\footnote{\url{http://neo4j.com/}} és a Titan\footnote{\url{http://thinkaurelius.github.io/titan/}} rendszerek.
 
-Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io\footnote{\url{http://draw.io/}} és az Arrow Tools\footnote{\url{http://www.apcjones.com/arrows/}}. Komolyabb célokra a yEd\footnote{\url{https://www.yworks.com/products/yed}} eszközt érdemes használni. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. Microsoft Visio vagy Microsoft PowerPoint alkalmazása.
-%
-\subsection{Relációk tulajdonságai}
+Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io\footnote{\url{http://draw.io/}} és az Arrow Tools\footnote{\url{http://www.apcjones.com/arrows/}}. Komolyabb célokra a yEd\footnote{\url{https://www.yworks.com/products/yed}} eszközt érdemes használni. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. a Microsoft Visio vagy Microsoft PowerPoint alkalmazás.
 
-A \fogalom{tranzitiv-lezaras} fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a \fogalomragozva{tranzitiv}{tranzitivitást}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Elméleti kitekintés (kieg.)}
+
+A struktúramodellezésnek komoly matematikai eszköztára is van. Az alábbiakban ezekből mutatunk be néhány részletet.
 
 \subsubsection{Tranzitivitás}
+
+A \fogalom{tranzitiv-lezaras} fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a \fogalomragozva{tranzitiv}{tranzitivitást}.
 
 Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}, ha bármely $a,b,c \in A$ esetén $r(a, b)$ és $r(b, c)$ teljesülése esetén $r(a, c)$ is teljesül.
 
@@ -381,10 +398,12 @@ Az ontológia egy nem egyértelmű, nehezen definiálható kifejezés. Az inform
 Az \fogalom{ontologia} egy olyan taxonómia, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
 \end{definicio}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Ajánlott irodalom}
 
 A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
 
-Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex hálózatok elméletének. Barabási ,,Behálózva'' c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
+Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex \fogalomragozva{halozat}{hálózatok} elméletének. Barabási ,,Behálózva'' c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
 
 Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
