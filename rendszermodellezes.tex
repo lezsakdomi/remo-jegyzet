@@ -31,6 +31,11 @@
 \cleardoublepage
 \renewcommand{\thepage}{\arabic{page}}
 
+% Fejezetek közötti hivatkozáshoz sablon:
+%\iflabeldef{sec:}{\aref{sec:}.~szakaszban}{a \emph{}}
+% Példa:
+%\iflabeldef{sec:modellek-ellenorzese}{\aref{sec:modellek-ellenorzese}.~fejezetben}{a \emph{Modellek ellenőrzése}}
+
 \include{bevezeto/bevezeto-fejezet}
 \include{modellezes-es-metamodellezes/modellezes-es-metamodellezes-fejezet}
 \include{struktura-alapu-modellezes/struktura-alapu-modellezes-fejezet}

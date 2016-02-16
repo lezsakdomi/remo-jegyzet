@@ -24,7 +24,7 @@ Egy adott rendszer modellé történő leképezésének általában két fontos 
 \begin{pelda}
 	Modellekre sok példát láthatunk a hétköznapokban is. Nem csak gyerekek körében népszerű játék a modellvasút. Itt valóban modellről beszélhetünk, hiszen a játékvonatok számos tekintetben hűen reprezentálják a valódi vonatokat, azonban például ``szemet hunyunk'' a méretükkel, tömegükkel, a bennük lévő villanymotor paramétereivel és még sok egyéb hasonló tulajdonságukkal kapcsolatban.
 	
-	Az informatika egyik leggazdagabb modellforrása a matematika. Amikor gráfelméletet tanulunk, valójában rengeteg, bizonyos szempontból hasonló probléma közös modelljét vizsgáljuk. Valóban, a matematika egyik célja az ilyen modellek azonosítása és minél hatékonyabb eszköztárak kidolgozása a rajtuk megfogalmazott feladatok megoldására. A gráfoknál maradva (gráfokról bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:graf}.~szakaszban}{a \emph{Struktúra alapú modellezés} c. segédanyagban} és a \emph{Bevezetés a számításelméletbe} című tárgyban lehet tájékozódni) egy város úthálózata jól reprezentálható egy élsúlyokkal ellátott gráffal, ahol a csomópontok a kereszteződések, az élek az útszakaszok, az élsúlyok pedig a szakaszok hosszait jelölik. Ez a modell kiválóan alkalmas legrövidebb útvonalak tervezésére (mi kellene még a \emph{leggyorsabb} útvonal tervezéséhez?), de figyelmen kívül hagy számos egyéb paramétert, például az utakon lévő kanyarulatokat, a legnagyobb megengedett sebességet stb.
+	Az informatika egyik leggazdagabb modellforrása a matematika. Amikor gráfelméletet tanulunk, valójában rengeteg, bizonyos szempontból hasonló probléma közös modelljét vizsgáljuk. Valóban, a matematika egyik célja az ilyen modellek azonosítása és minél hatékonyabb eszköztárak kidolgozása a rajtuk megfogalmazott feladatok megoldására. A gráfoknál maradva (gráfokról bővebben \iflabeldef{sec:graf}{\aref{sec:graf}.~szakaszban}{a \emph{Struktúra alapú modellezés} c. segédanyagban} és a \emph{Bevezetés a számításelméletbe} című tárgyban lehet tájékozódni) egy város úthálózata jól reprezentálható egy élsúlyokkal ellátott gráffal, ahol a csomópontok a kereszteződések, az élek az útszakaszok, az élsúlyok pedig a szakaszok hosszait jelölik. Ez a modell kiválóan alkalmas legrövidebb útvonalak tervezésére (mi kellene még a \emph{leggyorsabb} útvonal tervezéséhez?), de figyelmen kívül hagy számos egyéb paramétert, például az utakon lévő kanyarulatokat, a legnagyobb megengedett sebességet stb.
 \end{pelda}
 
 \begin{megjegyzes}
@@ -57,11 +57,11 @@ A modellezési nyelvek legfőbb célja a kommunikáció gép-gép, ember-gép, v
 %Segítségükkel modelleket építhetünk, amik lehetnek szöveges (pl.: Verilog, VHDL, Java stb.), vagy grafikusak is (pl.: webes konyhatervező, UML diagrammok, UPPAAL stb.). Céljuk a kommunikáció gép-gép, ember-gép vagy akár ember-ember között is. A nyelveknek két fő aspektusa van:
 
 \begin{definicio}
-	\Fogalom{szintaxis}: Egy szabályrendszer, ami meghatározza, hogy a modell milyen elemekből épül fel, ezeknek mi a (szöveges vagy grafikus) reprezentációja, és a különböző elemek milyen módon kombinálhatók.
+	\Fogalom{szintaxis}: egy szabályrendszer, ami meghatározza, hogy a modell milyen elemekből épül fel, ezeknek mi a (szöveges vagy grafikus) reprezentációja, és a különböző elemek milyen módon kombinálhatók.
 \end{definicio}
 
 \begin{definicio}
-	\Fogalom{szemantika}: A szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
+	\Fogalom{szemantika}: a szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
 \end{definicio}
 
 %\begin{itemize}
@@ -74,7 +74,7 @@ A szintaxis tehát definiálja, hogy hogyan írhatjuk le a modellt az adott nyel
 \begin{pelda}
 	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
 
-	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét a \ref{sec:allapot-alapu-modellezes}. fejezet mutatja be). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
+	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.}{az \emph{Állapot alapú módellezés}}). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
 \end{pelda}
 
 \begin{megjegyzes}
@@ -117,9 +117,9 @@ A modellek leírásához nem elég, ha diagramokat rajzolunk. Egy modell precíz
 \begin{definicio}
 	Egy \fogalom{modellezesi nyelv} három részből áll:
 	\begin{itemize}
-		\item \Fogalom{absztrakt szintaxis} (más néven \fogalom{metamodell}): Meghatározza, hogy a nyelvnek milyen típusú elemei vannak, az elemek milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz.
-		\item \Fogalom{konkret szintaxis}: Az absztrakt szintaxis által definiált elemtípusokhoz és kapcsolatokhoz szöveges vagy grafikus jelölésrendszert definiál.
-		\item \Fogalom{szemantika}: Az absztrakt szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
+		\item \Fogalom{absztrakt szintaxis} (más néven \fogalom{metamodell}): meghatározza, hogy a nyelvnek milyen típusú elemei vannak, az elemek milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz.
+		\item \Fogalom{konkret szintaxis}: az absztrakt szintaxis által definiált elemtípusokhoz és kapcsolatokhoz szöveges vagy grafikus jelölésrendszert definiál.
+		\item \Fogalom{szemantika}: az absztrakt szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
 	\end{itemize}
 	Egy modellezési nyelvhez több konkrét szintaxis is adható.
 \end{definicio}
@@ -129,7 +129,7 @@ Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hí
 \begin{pelda}
 	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
 	
-	A Yakindu eszköz szöveges (XML) és grafikus nyelvet is meghatároz, ahol a grafikus szintaxisban például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét a \ref{sec:allapot-alapu-modellezes} fejezet mutatja be). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
+	A Yakindu eszköz szöveges (XML) és grafikus nyelvet is meghatároz, ahol a grafikus szintaxisban például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét  \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.}{az \emph{Állapot alapú módellezés}} fejezet mutatja be). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
 \end{pelda}
 
 \begin{megjegyzes}
@@ -166,7 +166,7 @@ Különbséget kell tennünk azonban egy modell részletekkel gazdagítása és 
 \begin{megjegyzes}
 	Gyakori, hogy egy rendszer környezetéről (is) készítünk modelleket. Ennek haszna a rendszer és a környezet interakcióinak pontosabb megértése, tervezése és analízise. Az elkészült rendszerek tesztelésekor például gyakran nem az éles környezetben tesztelünk, hanem a környezet modellje alapján szimuláljuk az interakciókat.
 	
-	A környezet szempontjából nézve a rendszert tekinthetjük \fogalomragozva{fekete doboz}{fekete doboznak} vagy \fogalomragozva{feher doboz}{fehér doboznak}. Előbbi esetben a rendszer belső felépítését és viselkedését nem ismerjük, míg utóbbi esetben ezek az információk rendelkezésre állnak. Ez a két fogalom főleg tesztek tervezésekor érdekes, erről bővebben \aref{sec:modellek-ellenorzese}. fejezetben lesz szó.
+	A környezet szempontjából nézve a rendszert tekinthetjük \fogalomragozva{fekete doboz}{fekete doboznak} vagy \fogalomragozva{feher doboz}{fehér doboznak}. Előbbi esetben a rendszer belső felépítését és viselkedését nem ismerjük, míg utóbbi esetben ezek az információk rendelkezésre állnak. Ez a két fogalom főleg tesztek tervezésekor érdekes, erről bővebben \iflabeldef{sec:modellek-ellenorzese}{\aref{sec:modellek-ellenorzese}.~fejezetben}{a \emph{Modellek ellenőrzése}} fejezetben lesz szó.
 \end{megjegyzes}
 
 \begin{pelda}
