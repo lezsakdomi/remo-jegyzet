@@ -13,3 +13,6 @@ script:
 - ./use-xindy.sh
 - make
 - ./deploy.sh
+notifications:
+  slack: ftsrg:BtaOO3xw6rmfcFhEFNj6XJ29
+
