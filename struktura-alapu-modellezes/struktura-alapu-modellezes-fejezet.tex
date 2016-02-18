@@ -1,5 +1,7 @@
 \topic{Struktúra alapú modellezés}
 
+\graphicspath{ {./struktura-alapu-modellezes/figures/} }
+
 % vezérpélda lehetőségek
 % - táblázatszerű adatok pl. felhasználókról (preferenciák, van-e jogsija, stb.), kocsikról (férőhely, légkondi stb.)
 % - kiszolgáló rendszer top-down, bottom-up tervezése (mobil kliens, tömegközl. integráció, adatbázis stb.)
@@ -19,21 +21,29 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 
 %Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
 
-\section{Strukturális modell}
+\section{Struktúra a rendszerekben}
 
-\subsection{Táblázatos adatok}
+Mind a természetben előforduló, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Az egyes szabályszerűségek a rendszer elemeinek kapcsolatait, míg mások magukat az elemeket jellemzik.
 
-\subsection{Hálózatok}
+\subsection{Jellemzők}
+
+ötlet:
+
+metró sorszáma, megálló, kerület (extra: koordináták)
+
+
+
+\subsection{Kapcsolatok}
 
 \fogalom{halozat}
 
 \begin{pelda}
 	Vizsgáljuk meg Budapest metróhálózatát! 
 	
-	\remofigscaleframedwhite{modellek-ellenorzese/figures/metrohev-terkep-reszlet}{Budapest metróhálózati térképe}{0.8}
+	\remofigscaleframedwhite{metrohev-terkep-reszlet}{Budapest metróhálózati térképe}{0.8}
 \end{pelda}
 
-\subsection{Hiearchikus rendszerek}
+\subsection{Hierarchikus rendszerek}
 
 \begin{definicio}
 A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
@@ -83,6 +93,12 @@ A bottom-up modellezés jellemzői:
 \item[$\oplus$] Részleges készültségnél is összeépíthető valami
 \item[$\ominus$] Nem látszik előre a rész szerepe az egészben
 \end{itemize}
+
+
+
+\subsection{Struktúramodellek}
+
+
 
 \section{Gráfok}
 \label{sec:graf}
@@ -319,7 +335,7 @@ Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa
 
 \section{Összefoglalás}
 
-\fogalom{struktura-alapu-modellezes}, \fogalom{viselkedes-alapu-modellezes}
+\fogalom{struktura-alapu-modellezes}, . A következő fejezetekben a \fogalom{viselkedes-alapu-modellezes} témakörét fogjuk körüljárni.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -331,9 +347,9 @@ Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez 
 
 A gyakorlatban sokféle modellezési nyelvet használnak, ezek közül mutatunk be most néhány elterjedtebbet.
 
-\subsubsection{UML (Unified Modeling Language)}
+\subsubsection{UML}
 
-Az UML egy általános célú modellezési nyelv az~\cite{UML}. Az UML három fő diagramtípust definiál:
+Az \rovidites{UML} egy általános célú modellezési nyelv az~\cite{UML}. Az UML három fő diagramtípust definiál:
 
 \begin{itemize}
 	\item \emph{Structure Diagram:} strukturális modellek leírására. A \emph{Class Diagram} az osztályok (metamodell), míg az \emph{Object diagram} a példányok (modell) leíárásra alkalmas. A \emph{Composite Structure Diagram} egy rendszer struktúráját és a rendszer komponenseinek kapcsolatát mutatja be.
@@ -341,9 +357,9 @@ Az UML egy általános célú modellezési nyelv az~\cite{UML}. Az UML három f�
 	\item \emph{Interaction Diagram:} a \emph{Behaviour Diagram} altípusa. Ennek megfelelően szintén a viselkedés leírása a célja, de a hangsúly a vezérlés- és adatáramlás bemutatásán van. Ilyen pl. a \emph{Sequence Diagram} (szekvenciadiagram), amely az egyes objektumok közötti interakciót mutatja be üzenetek formájában.
 \end{itemize}
 
-\remofigscale{struktura-alapu-modellezes/UML-diagram}{UML diagramok típusai és a közöttük lévő viszony osztálydiagramként ábrázolva~\cite{wiki:ISE}}{0.6}
+\remofigscale{UML-diagram}{UML diagramok típusai és a közöttük lévő viszony osztálydiagramként ábrázolva~\cite{wiki:ISE}}{0.6}
 
-Az UML nyelvvel részletesen foglalkozik a \emph{Szoftvertechnológia} c. tárgy.
+Az UML nyelvvel részletesen foglalkozik a \szofttech tárgy.
 
 \subsubsection{AADL}
 
@@ -409,18 +425,33 @@ Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-
 
 \todo[inline]{ábra}
 
-\subsection{Tranzitivitás}
+\subsection{Bináris relációk tulajdonságai}
 
-A \fogalom{tranzitiv-lezaras} fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a \fogalomragozva{tranzitiv}{tranzitivitást}.
+A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha ismerjük a kétváltozós relációkon értelmezett tulajdonságokat.
 
-Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}, ha bármely $a,b,c \in A$ esetén $r(a, b)$ és $r(b, c)$ teljesülése esetén $r(a, c)$ is teljesül.
+(\refstruc{fig:tranzitivitas})
+
+%http://math.stackexchange.com/questions/65102/if-a-relation-is-symmetric-and-transitive-will-it-be-reflexive
+
+\begin{definicio}
+	Egy $S$ halmazon értelmezett $r$ kétváltozós reláció \fogalomragozva{reflexivitas}{reflexív}, ha bármely $a \in S$-re $r(a, a)$ teljesül.
+\end{definicio}
+
+\begin{definicio}
+	Egy $S$ halmazon értelmezett $r$ kétváltozós reláció \fogalomragozva{szimmetria}{szimmetrikus}, ha bármely $a,b \in S$-re $r(a, b)$ teljesülése esetén $r(b, a)$ is teljesül. A nem szimmetrikus relációkat \fogalomragozva{aszimmetria}{aszimmetrikusnak} nevezzük.
+\end{definicio}
+
+\begin{definicio}
+	Egy $S$ halmazon értelmezett $r$ kétváltozós reláció \fogalomragozva{tranzitivitas}{tranzititív}, ha bármely $a,b,c \in S$-re $r(a, b)$ és $r(b, c)$ teljesülése esetén $r(a, c)$ is teljesül.
+\end{definicio}
 
 \begin{itemize}
 	\item Az egyenlőség ($=$) és a kisebb ($<$) reláció tranzitívak, mert
 	\begin{itemize}
 		\item $a = b$ és $b = c$ esetén $a = c$,
-		\item $a < b$ és $b < c$ esetén $a < c$.
+		\item $d < e$ és $e < f$ esetén $e < f$.
 	\end{itemize}
+	Fontos, hogy míg az egyenlőség reláció 
 	\item A nemegyenlő reláció ($\neq$) nem tranzitív, mert 
 	\begin{itemize}
 		\item $a \neq b$ és $b \neq c$ esetén $a \neq c$ nem mindig áll fenn, például
@@ -430,7 +461,7 @@ Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}
 	\item Személyek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
 \end{itemize}
 
-\todo[inline]{ezt is lehetne gráffal ábrázolni}
+\remofigscale{tranzitivitas}{Tranzitív tulajdonságok irányítatlan, ill. irányított gráfon}{0.7}
 
 A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: \fogalom{reflexivitas}, \fogalom{szimmetria} stb.~\cite{relaciok}. 
 
@@ -441,6 +472,8 @@ Az ontológia kifejezésre sok különböző definíció létezik. Az informatik
 \begin{definicio}
 Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
 \end{definicio}
+
+\todo{RDF}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -456,4 +489,4 @@ Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a kom
 
 %Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
 
-\rovidites{SQL}
+SQL (\glsdesc{SQL})

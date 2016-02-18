@@ -1,4 +1,5 @@
 DOCUMENTS = \
+	rendszermodellezes \
 	sablon \
 	bevezeto \
 	modellezes-es-metamodellezes \
@@ -10,8 +11,7 @@ DOCUMENTS = \
 	modellek-ellenorzese \
 	felderito-adatelemzes \
 	szimulacio \
-	kodgeneralas \
-	rendszermodellezes
+	kodgeneralas
 
 build:
 	@$(foreach DOCUMENT, $(DOCUMENTS),\

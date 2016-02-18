@@ -15,10 +15,12 @@
 		\end{samepage}
 	\end{center}}
 	
+% for fbox around remofigscaleframedwhite
+\setlength{\fboxsep}{0pt}
 \newcommand{\remofigscaleframedwhite}[3]{
 	\begin{center}
 		\begin{samepage}
-			\colorbox{white}{\includegraphics[scale=#3]{#1}}
+			\fbox{\colorbox{white}{\includegraphics[scale=#3]{#1}}}
 			\captionof{figure}{#2.}
 			\label{fig:#1}
 		\end{samepage}
@@ -45,7 +47,9 @@
 \newcommand{\bszketto}{\targy{Bevezetés a számításelméletbe 2.}}
 \newcommand{\adatblab}{\targy{Adatbázisok laboratórium}}
 \newcommand{\algel}{\targy{Algoritmuselmélet}}
-\newcommand{\halok}{\targy{Kommunikációs hálózatok 1.}}
+\newcommand{\halok}{\targy{Kommunikációs hálózatok}}
+\newcommand{\halokegy}{\targy{Kommunikációs hálózatok 1.}}
+\newcommand{\halokketto}{\targy{Kommunikációs hálózatok 2.}}
 \newcommand{\mestersegesintelligencia}{\targy{Mesterséges intelligencia}}
 \newcommand{\rendszertervezes}{\targy{Informatikai rendszerek tervezése}}
 \newcommand{\mdsd}{\targy{Modellvezérelt rendszertervezés}}
