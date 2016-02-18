@@ -21,9 +21,9 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 
 \section{Strukturális modell}
 
+\subsection{Táblázatos adatok}
 
-
-\subsection{Hálózatok ábrázolása}
+\subsection{Hálózatok}
 
 \fogalom{halozat}
 
@@ -33,6 +33,7 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 	\remofigscaleframedwhite{modellek-ellenorzese/figures/metrohev-terkep-reszlet}{Budapest metróhálózati térképe}{0.8}
 \end{pelda}
 
+\subsection{Hiearchikus rendszerek}
 
 \begin{definicio}
 A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
@@ -133,13 +134,6 @@ A \fogalomragozva{tipusos-graf}{típusos gráfok} a címkézett gráfok speciál
 
 A gráf adatmodellnek többféle kiterjesztése is létezik. A fentiek mellett lehetséges további kiterjesztés például a \fogalom{sulyozott-graf}, amely egy speciális címkézett gráf, ahol a gráf elemeit súlyokkal látjuk el (pl. kapacitást vagy költséget rendelünk hozzájuk); a \fogalom{multigraf}, ahol az egyes csomópontok között \fogalomragozva{tobbszoros-el}{többszörös élek} is futhatnak; vagy 
 
-\subsection{Hipergráfok (kieg.)}
-
-A gráf adatmodell kiterjesztése a \fogalom{hipergraf}, amelyben egy él (ún. \fogalom{hiperel}) több csomópont között is futhat. megkülönböztetünk irányított és irányítatlan hipergráfokat.
-
-Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-graf}{páros gráffá}: a gráf egyik halmazában a hipergráf csomópontjainak, a másik halmazában a hiperéleknek veszünk fel egy pontot.
-
-\todo[inline]{ábra}
 
 
 \subsection{Körmentes gráfok}
@@ -365,6 +359,10 @@ Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszer
 
 Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiák} c. szabadon választható tárgy.
 
+\subsubsection{RDF}
+
+\rovidites{RDF}
+
 \subsubsection{AUTOSAR}
 
 Az \rovidites{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
@@ -400,6 +398,16 @@ Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen ha
 \section{Elméleti kitekintés (kieg.)}
 
 A struktúramodellezésnek komoly matematikai eszköztára is van. Az alábbiakban ezekből mutatunk be néhány részletet.
+
+\subsection{Hipergráfok}
+
+A gráf adatmodell kiterjesztése a \fogalom{hipergraf}, amelyben egy él (ún. \fogalom{hiperel}) több csomópont között is futhat. megkülönböztetünk irányított és irányítatlan hipergráfokat.
+
+Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-graf}{páros gráffá}: a gráf egyik halmazában a hipergráf csomópontjainak, a másik halmazában a hiperéleknek veszünk fel egy pontot.
+
+\fogalom{kenyszer} \rovidites{CSP}
+
+\todo[inline]{ábra}
 
 \subsection{Tranzitivitás}
 
@@ -447,3 +455,5 @@ A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez é
 Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex \fogalomragozva{halozat}{hálózatok} elméletének. Barabási ,,Behálózva'' c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
 
 %Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
+
+\rovidites{SQL}
