@@ -11,15 +11,11 @@ A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. F�
 
 \section{Követelmények modellekkel szemben}
 
-Fontos megjegyezni, hogy a modellek ``helyessége'' önmagában nem egy értelmes, vizsgálható kérdés. Ennek vizsgálatához fontos tudni, hogy mi a modell célja, kontextusa, mik a követelmények vele szemben.
+Fontos megjegyezni, hogy a modellek ,,helyessége'' önmagában nem egy értelmes, vizsgálható kérdés. Ennek vizsgálatához fontos tudni, hogy mi a modell célja, kontextusa, mik a követelmények vele szemben.
 
 \begin{pelda}
 	Gondoljunk a BKK alábbi egyszerűsített, sematikus metróhálózati térképére\footnote{Forrás: \url{http://www.bkk.hu/apps/docs/terkep/metro.pdf}}!
-	\begin{center}
-		\colorbox{white}{
-			\includegraphics[scale=0.7]{modellek-ellenorzese/figures/metrohev-terkep-reszlet}
-		}
-	\end{center}
+	\remofigscaleframedwhite{modellek-ellenorzese/figures/metrohev-terkep-reszlet}{Budapest metróhálózati térképe}{0.8}
 	% A szerzői jogról szóló 1999. évi LXXVI. törvény IV. fejezetében felsorolt főbb szabad felhasználási esetek a következők: ...
 	% átvétel: nyilvánosságra hozott irodalmi vagy zenei mű, film részlete, vagy kisebb terjedelmű ilyen önálló mű, továbbá képzőművészeti, építészeti, iparművészeti és ipari tervezőművészeti alkotás képe, valamint fotóművészeti alkotás szemléltetés érdekében iskolai oktatási célra, valamint tudományos kutatás céljára a forrás és az ott megjelölt szerző megnevezésével a cél által indokolt terjedelemben átvehető, feltéve, hogy az átvevő művet nem használják fel üzletszerűen. Átvételnek minősül a mű olyan mértékű felhasználása más műben, amely az idézést meghaladja. [Szjt. 35. § (2) bek.]
 	
@@ -57,16 +53,16 @@ Az egyik ilyen általános követelmény a holtpontmentesség. \fogalomragozva{h
 Hasonló fogalom a livelock. \Fogalom{livelock} esetén az érdemi végrehajtás ugyanúgy megáll, mint holtpont esetén. Ennek viszont nem az az oka, hogy a rendszer nem képes állapotot váltani, hanem az, hogy a livelockban résztvevő komponensek egy végtelen ciklusba ragadnak, amelyben nem végeznek hasznos tevékenységet.
 
 \begin{pelda}
-A klasszikus példa livelock-ra a való életből az, amikor két ember szembetalálkozik, és mindketten udvariasan kitérnének egymás elől, de azt mindig megegyező irányba teszik. Ilyenkor az emberek tudnak mozogni (``képesek állapotot váltani''), de nem haladnak előre (``nem végeznek hasznos tevékenységet''). Holtpontról akkor beszélnénk, ha kölcsönösen nem tudnának megmozdulni a másik személy miatt. Tehát a holtpont esetén a problémát az ``örök várakozás'', livelock esetén pedig egy végtelen ciklus okozza.
+A klasszikus példa livelock-ra a való életből az, amikor két ember szembetalálkozik, és mindketten udvariasan kitérnének egymás elől, de azt mindig megegyező irányba teszik. Ilyenkor az emberek tudnak mozogni (,,képesek állapotot váltani''), de nem haladnak előre (,,nem végeznek hasznos tevékenységet''). Holtpontról akkor beszélnénk, ha kölcsönösen nem tudnának megmozdulni a másik személy miatt. Tehát a holtpont esetén a problémát az ,,örök várakozás'', livelock esetén pedig egy végtelen ciklus okozza.
 \end{pelda}
 
-Állapotgépek esetén gyakori általános követelmények például a \emph{determinizmus} és a \emph{teljesen specifikált} működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az \emph{Állapotalapú modellezés} c. segédanyagban} szólunk. A determinizmus és teljesen specifikált működés hasonlóan értelmezhető más viselkedésmodellezési formalizmusok, pl. folyamatmodellek esetén is. Ha a folyamatmodell minden döntési pontjára (``decision'' csomópont) olyan őrfeltételeket írunk, hogy mindig legfeljebb ág legyen engedélyezett, akkor determinisztikus a folyamat; teljesen specifikáltnak pedig akkor nevezzük, ha mindig legalább egy ág engedélyezett.
+Állapotgépek esetén gyakori általános követelmények például a \emph{determinizmus} és a \emph{teljesen specifikált} működés. Ezekről bővebben \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.~szakaszban}{az \emph{Állapotalapú modellezés} c. segédanyagban} szólunk. A determinizmus és teljesen specifikált működés hasonlóan értelmezhető más viselkedésmodellezési formalizmusok, pl. folyamatmodellek esetén is. Ha a folyamatmodell minden döntési pontjára (,,decision'' csomópont) olyan őrfeltételeket írunk, hogy mindig legfeljebb ág legyen engedélyezett, akkor determinisztikus a folyamat; teljesen specifikáltnak pedig akkor nevezzük, ha mindig legalább egy ág engedélyezett.
 
 \paragraph{Vizsgálatok fajtái.}
-Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ``helyességvizsgálat'' nem egy precíz fogalom. 
+Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyességének vizsgálata. Azonban a ,,helyességvizsgálat'' nem egy precíz fogalom. 
 
 \begin{pelda}
-Képzeljük el, hogy egy kereszteződést szerelünk fel jelzőlámpákkal. A leszállított rendszert ellenőriztük, megfelel a specifikációnak: a fények megfelelő sorrendben, megfelelő időzítéssel követik egymást és mindig csak az engedélyezett irányok kapnak egyidejűleg szabad jelzést. Az átadáskor a megrendelő megkérdezi: ``-- És hol lehet átkapcsolni villogó sárgára?'' Mivel ez nem volt a specifikáció része, ilyen funkció nem is került a jelzőlámpák vezérlésébe. Mi meg vagyunk győződve arról, hogy a rendszer helyes, mivel teljesíti a specifikáció minden elemét. Ugyanakkor a megrendelő biztos abban, hogy a rendszer hibás, hiszen nem megfelelő a számára.
+Képzeljük el, hogy egy kereszteződést szerelünk fel jelzőlámpákkal. A leszállított rendszert ellenőriztük, megfelel a specifikációnak: a fények megfelelő sorrendben, megfelelő időzítéssel követik egymást és mindig csak az engedélyezett irányok kapnak egyidejűleg szabad jelzést. Az átadáskor a megrendelő megkérdezi: ,,-- És hol lehet átkapcsolni villogó sárgára?'' Mivel ez nem volt a specifikáció része, ilyen funkció nem is került a jelzőlámpák vezérlésébe. Mi meg vagyunk győződve arról, hogy a rendszer helyes, mivel teljesíti a specifikáció minden elemét. Ugyanakkor a megrendelő biztos abban, hogy a rendszer hibás, hiszen nem megfelelő a számára.
 \end{pelda}
 
 Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be. \fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak. \fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e. Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval. A verifikáció és a validáció közti különbséget illusztrálja \aref{fig:verifikacio_vs_validacio}.~ábra.
@@ -84,7 +80,7 @@ A modellek vagy rendszerek ellenőrzésére többféle módszer is rendelkezésr
 
 
 \section{Statikus ellenőrzés}\label{sec:statikus-ellenorzes}
-Statikus ellenőrzés során a vizsgált rendszert vagy modellt annak végrehajtása, szimulációja nélkül elemezzük. Bizonyos hibák ``ránézésre látszanak'', könnyen felismerhetők, ezekre célszerű statikus ellenőrzési módszereket alkalmazni. Ilyenkor a statikus vizsgálat alapvető előnye, hogy gyorsan és könnyen szolgáltat eredményt. Ráadásul a statikus ellenőrzési módszerek gyakran a hiba helyét is pontosan behatárolják, míg például dinamikus módszereknél gyakran a hiba felismerése és annak okának megtalálása két külön feladat. Statikus ellenőrzési technikákat akkor is használunk, amikor szintaktikai hibákat keresünk, ilyenkor a rendszer tipikusan nem is futtatható.
+Statikus ellenőrzés során a vizsgált rendszert vagy modellt annak végrehajtása, szimulációja nélkül elemezzük. Bizonyos hibák ,,ránézésre látszanak'', könnyen felismerhetők, ezekre célszerű statikus ellenőrzési módszereket alkalmazni. Ilyenkor a statikus vizsgálat alapvető előnye, hogy gyorsan és könnyen szolgáltat eredményt. Ráadásul a statikus ellenőrzési módszerek gyakran a hiba helyét is pontosan behatárolják, míg például dinamikus módszereknél gyakran a hiba felismerése és annak okának megtalálása két külön feladat. Statikus ellenőrzési technikákat akkor is használunk, amikor szintaktikai hibákat keresünk, ilyenkor a rendszer tipikusan nem is futtatható.
 
 Az alábbiakban részletesen foglalkozunk a statikus ellenőrzés technikáival és használatával. Először a szintaktikai hibák vizsgálatát tekintjük át (\ref{sec:statikus-ellenorzes-szintaktikai-hibak}.~szakasz), majd a szemantikai hibák vizsgálatára koncentrálunk (\ref{sec:statikus-ellenorzes-szemantikai-hibak}.~szakasz). 
 
@@ -154,7 +150,7 @@ int foo(int z) {
 Lehet \code{z} értéke 0? Természetesen, hiszen \code{z} egy bementi változó. Vizsgáljuk a \code{z}-vel osztás előtt annak az értékét? Nem, csak \code{y} változót vizsgáljuk. Lehetséges a nullával osztás a kódban? Nem. Amikor \code{z} értéke nulla lenne, akkor \code{y} értéke 10 lesz, és így az osztást tartalmazó utasítás nem fut le.
 \end{pelda}
 
-Amikor végrehajtunk egy programot, mindig a változók bizonyos konkrét értékei mellett tesszük ezt (pl. \code{foo(5)}). \Fogalom{szimbolikus-vegrehajtas} esetén konkrét értékek helyett szimbolikus értékekkel ``imitáljuk'' a végrehajtást, azaz a változókat matematikai változóként fogjuk fel. Emellett a belső elágazások által támasztott feltételeket is összegyűjtjük, majd ezen információk alapján következtetünk az egyes változók értékeire a program adott pontjain, vagy egyes programrészek elérhetőségére.
+Amikor végrehajtunk egy programot, mindig a változók bizonyos konkrét értékei mellett tesszük ezt (pl. \code{foo(5)}). \Fogalom{szimbolikus-vegrehajtas} esetén konkrét értékek helyett szimbolikus értékekkel ,,imitáljuk'' a végrehajtást, azaz a változókat matematikai változóként fogjuk fel. Emellett a belső elágazások által támasztott feltételeket is összegyűjtjük, majd ezen információk alapján következtetünk az egyes változók értékeire a program adott pontjain, vagy egyes programrészek elérhetőségére.
 
 \begin{pelda}
 Ha \code{z}-t egy $z$ matematikai változónak tekintjük, akkor tudjuk, hogy a feltételes elágazás \emph{igaz} ágában a \code{y = z + 10;} utasítás miatt $y = z + 10$ igaz, valamint az elágazási feltételben szereplő \code{y != 10} miatt $y \neq 10$ igaz. A kettőből együttesen $z + 10 \neq 10$, azaz $z \neq 0$. Így bizonyíthatjuk, hogy sosem osztunk nullával a fenti példakódban.
@@ -169,21 +165,21 @@ Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ 
 
 \section{Tesztelés}\label{sec:teszteles}
 
-\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert (vagy egy futtatható modelljét) bizonyos meghatározott körülmények közt futtatjuk (vagy szimuláljuk), majd az eredményeket összehasonlítjuk az elvárásainkkal\footnote{Ennél a nagyon általános és gyakran használt fogalomnál kivételesen érdemes az eredeti, angol nyelvű, az IEEE által adott definíciót is elolvasni: ``[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component''. \cite{IEEE-24765}} \cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk. 
+\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert (vagy egy futtatható modelljét) bizonyos meghatározott körülmények közt futtatjuk (vagy szimuláljuk), majd az eredményeket összehasonlítjuk az elvárásainkkal\footnote{Ennél a nagyon általános és gyakran használt fogalomnál kivételesen érdemes az eredeti, angol nyelvű, az IEEE által adott definíciót is elolvasni: ,,[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component''. \cite{IEEE-24765}} \cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk. 
 
-Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus ellenőrzés közt: utóbbi esetben a vizsgált rendszert nem futtatjuk, nem hajtjuk végre. Ugyanakkor attól, hogy a rendszert annak vizsgálata céljából végrehajtjuk, még nem beszélünk tesztelésről. Ahogyan a definíció is mutatja, meghatározott körülmények közt futtatjuk a rendszert, azaz nem ``próbálgatásról'' van szó, hanem a fejlesztés egy alaposan megtervezett részfolyamatáról.
+Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus ellenőrzés közt: utóbbi esetben a vizsgált rendszert nem futtatjuk, nem hajtjuk végre. Ugyanakkor attól, hogy a rendszert annak vizsgálata céljából végrehajtjuk, még nem beszélünk tesztelésről. Ahogyan a definíció is mutatja, meghatározott körülmények közt futtatjuk a rendszert, azaz nem ,,próbálgatásról'' van szó, hanem a fejlesztés egy alaposan megtervezett részfolyamatáról.
 
-Azt is érdemes megjegyezni, hogy a tesztelés és a ``debugolás'' is két külön fogalom. Tesztelés esetén hibajelenségek meglétét vagy hiányát vizsgáljuk. \Fogalom{debugolas} esetén ismert egy bizonyos hibajelenség (pl. egy teszt kimutatta vagy egy felhasználó jelezte), a célunk pedig ennek a helyének, a kiváltó okának megkeresése, lokalizálása.
+Azt is érdemes megjegyezni, hogy a tesztelés és a ,,debugolás'' is két külön fogalom. Tesztelés esetén hibajelenségek meglétét vagy hiányát vizsgáljuk. \Fogalom{debugolas} esetén ismert egy bizonyos hibajelenség (pl. egy teszt kimutatta vagy egy felhasználó jelezte), a célunk pedig ennek a helyének, a kiváltó okának megkeresése, lokalizálása.
 
 \subsection{A tesztelés alapfogalmai}
 Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagában a rendszer. Tesztek végrehajtásához legalább a következő komponensek szükségesek: 
 \begin{itemize}
-\item a \fogalom{tesztelendo-rendszer} (system under test, SUT), amelyet a teszt során futtatni fogunk;
+\item a \fogalom{tesztelendo-rendszer} (\rovidites{SUT}), amelyet a teszt során futtatni fogunk;
 \item a \fogalomragozva{tesztbemenet}{tesztbemenetek}, amelyek megadják a tesztelendő rendszer számára biztosítandó bemeneti adatokat; és
 \item a \fogalom{tesztorakulum}, amely alapján a végrehajtott tesztről eldönthető annak eredménye.
 \end{itemize}
 
-Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ``bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
+Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ,,bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
 
 A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni. 
 Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
@@ -240,7 +236,7 @@ Tesztelést a szoftverfejlesztési életciklus számos fázisában használhatun
 
 \begin{itemize}
 \item \fogalomragozva{modulteszt}{Modultesztnek} (másként \fogalom{komponensteszt} vagy \fogalom{egysegteszt}) nevezzük azt a tesztet, amely csak egyes izolált komponenseket tesztelnek \cite{HTB-glossary}.
-\item \fogalomragozva{integracios-teszt}{Integrációs tesztnek} nevezzük azt a tesztet, ``amelynek célja az integrált egységek közötti
+\item \fogalomragozva{integracios-teszt}{Integrációs tesztnek} nevezzük azt a tesztet, ,,amelynek célja az integrált egységek közötti
 interfészekben, illetve kölcsönhatásokban lévő hibák megtalálása''  \cite{HTB-glossary}.
 \item \fogalomragozva{rendszerteszt}{Rendszertesztnek} hívjuk azt a tesztet, amelyben a teljes, integrált rendszert vizsgáljuk annak érdekében, hogy ellenőrizzük a követelményeknek való megfelelőséget \cite{HTB-glossary}.
 \end{itemize}
@@ -250,7 +246,7 @@ Ezek a különféle tesztelési módszerek általában egymást követik a fejle
 Amennyiben módosítást végzünk a rendszerünkön, a korábbi tesztek eredményeit már nem fogadhatjuk el, hiszen a rendszer megváltozott. Ha ismerjük, hogy az egyes tesztesetek a rendszer mely részeit vizsgálják, elegendő azokat újrafuttatnunk, amelyek a megváltoztatott részt (is) vizsgálják. Az ilyen, változtatások utáni (szelektív) újratesztelést hívjuk \fogalomragozva{regresszios-teszt}{regressziós tesztnek}. Fontos megjegyezni, hogy ez a korábbiakhoz képest egy ortogonális kategória, és egységeket vagy teljes rendszert is vizsgálhatunk regressziós teszttel. 
 
 \subsection{A tesztelés metrikái}
-Ahogyan a fejezet elején írtuk, a tesztelés általános célja a vizsgált rendszer minőségének javítása hibák megtalálásán és javításán keresztül. Nyilvánvaló, hogy ez a végtelenségig nem folytatható, egy idő után az összes hibát megtaláljuk és kijavítjuk. Ennél az utópisztikus nézetnél kissé pragmatikusabban azt is mondhatjuk, hogy egy idő után a tesztelés folytatása nem célszerű (nem gazdaságos), mert a vizsgált rendszer minősége már ``elég jó''. % Igen, az utópisztikust tényleg így írják.
+Ahogyan a fejezet elején írtuk, a tesztelés általános célja a vizsgált rendszer minőségének javítása hibák megtalálásán és javításán keresztül. Nyilvánvaló, hogy ez a végtelenségig nem folytatható, egy idő után az összes hibát megtaláljuk és kijavítjuk. Ennél az utópisztikus nézetnél kissé pragmatikusabban azt is mondhatjuk, hogy egy idő után a tesztelés folytatása nem célszerű (nem gazdaságos), mert a vizsgált rendszer minősége már ,,elég jó''. % Igen, az utópisztikust tényleg így írják.
 De honnan tudhatjuk, hogy elértük ezt a szintet?
 
 Az egyik gyakran használt módszer a tesztkészlet fedésének mérése. A tesztfedettség alapötlete az, hogy a tesztkészlet egyik tesztesete sem látogat meg egy adott állapotot, akkor az az állapot biztosan nem lesz vizsgálva, így annak minőségéről következtetést nem vonhatunk le. Ugyanez elmondható például egy metódus hívásával kapcsolatban is.
@@ -289,7 +285,7 @@ A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak 
 
 
 \section{Tesztelés futásidőben (futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
-Ebben a fejezetben a futásidejű ``öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét elhelyezzük magában a megvalósított rendszerben és folyamatosan vizsgáljuk. Azokat a követelményeket, amelyek teljesülését folyamatosan, minden állapotban elvárjuk, \fogalomragozva{invarians}{invariánsoknak} nevezzük.
+Ebben a fejezetben a futásidejű ,,öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét elhelyezzük magában a megvalósított rendszerben és folyamatosan vizsgáljuk. Azokat a követelményeket, amelyek teljesülését folyamatosan, minden állapotban elvárjuk, \fogalomragozva{invarians}{invariánsoknak} nevezzük.
 
 A monitorozás általános elrendezését szemlélteti \aref{fig:monitorozas-elrendezes}.~ábra.
 
@@ -389,7 +385,7 @@ Egyszerűbb statikus analízis eszközöket beépítve találhatunk a fejlettebb
 
 C és \cpp nyelvű programokhoz használható tesztfuttató keretrendszer például a Google Test\footnote{\url{https://github.com/google/googletest}}. Java programok modultesztelését segítheti például a JUnit\footnote{\url{http://junit.org/}} keretrendszer.
 
-C és \cpp nyelvű szoftverek modellellenőrzésre jól használható például a CBMC\footnote{\url{http://www.cprover.org/cbmc/}} eszköz. ``Állapotgép-jellegű'' modellek esetén jó választás lehet az UPPAAL\footnote{\url{http://www.uppaal.org/}} vagy a nuXmv\footnote{\url{https://nuxmv.fbk.eu/}} eszközök használata.
+C és \cpp nyelvű szoftverek modellellenőrzésre jól használható például a CBMC\footnote{\url{http://www.cprover.org/cbmc/}} eszköz. ,,Állapotgép-jellegű'' modellek esetén jó választás lehet az UPPAAL\footnote{\url{http://www.uppaal.org/}} vagy a nuXmv\footnote{\url{https://nuxmv.fbk.eu/}} eszközök használata.
 
 \section{Tanulást segítő anyagok}
 
