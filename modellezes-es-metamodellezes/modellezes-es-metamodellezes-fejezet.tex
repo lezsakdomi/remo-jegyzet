@@ -10,7 +10,7 @@ Mi értelme van modellezni? Fejben szinte mindig modellezünk, bármilyen probl�
 % Legfőbb szerepe a kommunikáció:
 
 \begin{definicio}
-	\Fogalom{modell}: egy valós vagy hipotetikus világ (a ,,\fogalom{rendszer}'') egy részének egyszerűsített képe, amely a rendszert helyettesíti bizonyos megfontolásokban.
+	\Fogalom{modell}: egy valós vagy hipotetikus világ (a ,,\fogalom{rendszer}'') egy részének egyszerűsített képe, amely a rendszert helyettesíti bizonyos megfontolásokban. Egy modell elkészítésének mindig célja van, például egy adott aspektus vagy tulajdonság jobb megértése.
 \end{definicio}
 
 A modell tehát egy többnyire bonyolult rendszer egyszerűsített reprezentációja, amiben csak az aktuális probléma szempontjából lényeges vonásokat szerepeltetjük.
@@ -28,7 +28,7 @@ Egy adott rendszer modellé történő leképezésének általában két fontos 
 \end{pelda}
 
 \begin{megjegyzes}
-	Az, hogy a modell kisebb, nem mindig ``kényelmi'' szempont. Gyakran lehet olyan problémával találkozni, aminek a mérete bizonyos szempontból \fogalom{vegtelen} (például végtelen sok állapota van, vagy folytonos változók vannak benne), viszont egy alkalmas \fogalom{veges} modellen a számunkra releváns tulajdonságok továbbra is jól vizsgálhatók maradnak. Egy autót fizikai szempontból modellezhet a pillanatnyi sebességvektora, ami három valós szám, tehát a modellünk így végtelen. Ha viszont feltételezzük, hogy a sebesség nagysága nem lehet $200~\textrm{km/h}$-nál több, és két tizedesjegy pontossággal adjuk meg a vektor koordinátáit, akkor máris véges modellt kapunk. Természetesen ez a modell kicsit torzítani fog a valósághoz képest, de számos problémánál ez a hiba elhanyagolhatóan kicsi lesz (ráadásul végtelen modellen lehet, hogy nem is tudnánk megoldást adni).
+	Az, hogy a modell kisebb, nem mindig ``kényelmi'' szempont. Gyakran lehet olyan problémával találkozni, aminek a mérete bizonyos szempontból \fogalom{vegtelen} (például végtelen sok állapota van, folytonos változók vannak benne, esetleg részét képezi az \emph{idő}), viszont egy alkalmas \fogalom{veges} modellen a számunkra releváns tulajdonságok továbbra is jól vizsgálhatók maradnak. Egy autót fizikai szempontból modellezhet a pillanatnyi sebességvektora, ami három valós szám, tehát a modellünk így végtelen. Ha viszont feltételezzük, hogy a sebesség nagysága nem lehet $200~\textrm{km/h}$-nál több, és két tizedesjegy pontossággal adjuk meg a vektor koordinátáit (tehát \emph{diszkrét értékekkel} jellemezzük a rendszert), akkor máris véges modellt kapunk. Természetesen ez a modell kicsit torzítani fog a valósághoz képest, de számos problémánál ez a hiba elhanyagolhatóan kicsi lesz (ráadásul végtelen modellen lehet, hogy nem is tudnánk megoldást adni).
 \end{megjegyzes}
 
 Fontos kérdés, hogy hogyan lehet ábrázolni egy modellt. Maga a modell ugyanis többnyire egy hipotetikus struktúra, nem kézzel fogható és nem is mindig célszerű teljes részletességgel ábrázolni.
@@ -46,85 +46,86 @@ Fontos megjegyezni, hogy nem minden modell, ami modellnek látszik.
 \end{itemize}
 \end{megjegyzes}
 
-\todo{<első alternatíva>}
-
-\section{Modellezési nyelvek}
-
-A modellek leírásához nem elég, ha diagramokat rajzolunk. Egy modell precíz megadásához szükség van egy \fogalomragozva{modellezesi nyelv}{modellezési nyelvre}. Egy modellezési nyelv lehet \emph{szöveges} (pl. Verilog, VHDL, Java stb.) vagy \emph{grafikus} (pl. webes konyhatervező, UML diagramok stb.). Gyakori, hogy egy modell leírásához szöveges és grafikus nyelvet is használunk, ugyanis mindkettőnek megvannak a saját előnyei és hátrányai: jellemzően modellt építeni könnyebb szöveges nyelv használatával, míg a modell olvasása grafikus nyelvek (diagramok) segítségével egyszerűbb.
-
-A modellezési nyelvek legfőbb célja a kommunikáció gép-gép, ember-gép, vagy akár ember-ember között is. Egy nyelv megadásához két dolgot kell definiálni: a \emph{szintaxist} és a \emph{szemantikát}.
-
-%Segítségükkel modelleket építhetünk, amik lehetnek szöveges (pl.: Verilog, VHDL, Java stb.), vagy grafikusak is (pl.: webes konyhatervező, UML diagrammok, UPPAAL stb.). Céljuk a kommunikáció gép-gép, ember-gép vagy akár ember-ember között is. A nyelveknek két fő aspektusa van:
-
-\begin{definicio}
-	\Fogalom{szintaxis}: egy szabályrendszer, ami meghatározza, hogy a modell milyen elemekből épül fel, ezeknek mi a (szöveges vagy grafikus) reprezentációja, és a különböző elemek milyen módon kombinálhatók.
-\end{definicio}
-
-\begin{definicio}
-	\Fogalom{szemantika}: a szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
-\end{definicio}
-
-%\begin{itemize}
-%	\item \fogalom{szintaxis}: hogyan írom a le a modellt? Egy szabályrendszer, ami meghatározza, hogy a nyelv milyen elemekből épül fel és azok hogyan kombinálhatóak.
-%	\item \fogalom{szemantika}: mit jelent a modell? A szintaxis által definált nyelvi elemek jelentését definiáló szabályrendszer.
-%\end{itemize}
-
-A szintaxis tehát definiálja, hogy hogyan írhatjuk le a modellt az adott nyelv segítségével, a szemantika pedig megadja, hogy az így leírt modell pontosan mit jelent.
-
-\begin{pelda}
-	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
-
-	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.}{az \emph{Állapot alapú módellezés}}). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
-\end{pelda}
-
-\begin{megjegyzes}
-	Szintaktikailag leírhatunk olyan kifejezéseket a nyelvben, aminek szemantikailag nincs értelme: jó példa erre a nullával osztás.
-\end{megjegyzes}
-
-
-\section{Metamodellezés}
-
-Az imént bevezetett modellezési nyelvek szerepe az volt, hogy modelljeink leírhatóak, megjeleníthetőek legyenek. Azt is mondtuk, hogy ugyanazt a modellt többféle nyelven is érdemes lehet reprezentálni. Ez viszont azt jelenti, hogy egy adott modelltípus leírására alkalmas nyelvek mögött van egy közös \emph{modell}, ami miatt alkalmasak ugyanannak az ismeretnek a kifejezésére.
-
-\begin{definicio}
-	A \fogalom{metamodell} egy modellezési nyelv modellje. Meghatározza, hogy a nyelvnek milyen típusú elemei vannak, milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz.
-\end{definicio}
-
-A metamodell tehát modellezési nyelveket modellez, a konkrét jelölölésrendszer elhanyagolásával. A metamodellt emiatt szokás \fogalomragozva{absztrakt szintaxis}{absztrakt szintaxisnak} is nevezni, míg a korábbiakban definiált szintaxisra ilyenkor \fogalomragozva{konkret szintaxis}{konkrét szintaxisként} szokás hivatkozni. Ezzel a terminológiával élve egy modellezési formalizmust az absztrakt szintaxisával (más néven egy metamodellel), egy vagy több konkrét szintaxissal (szöveges vagy grafikus jelölésrendszer a metamodell elemeihez) és a szemantikával adhatunk meg.
-
-\begin{pelda}
-	Modellekre és metamodellekre számos példa kerül majd elő a későbbi tanulmányok során:
-	\begin{itemize}
-		%\item Egyed-kapcsolat, EK modell (entity-relationship, ER)
-		\item AZ UML~\cite{UML} (Unified Modeling Language) objektum diagramján ábrázolt objektummodelleket az osztálydiagramokon ábrázolt metamodelljeik szerint adhatjuk meg.
-		\item Egy adatbázis tábla metamodellje a relációs adatbázisséma.
-		\item Az XML dokumentumok metamodelljét az XML sémák adják.
-	\end{itemize}
-	A konkrét szintaxist (jelölésrendszert) mindegyik esetben külön határozzák meg, az UML esetében többféle grafikus és szöveges szintaxis is definiált.
-\end{pelda}
-
-\begin{tipp}
-	Minden fejezetben, ahol modellezési formalizmusokkal ismerkedünk meg, szerepelni fog az adott adott modelltípus metamodellje is.
-\end{tipp}
-
-\todo{</első alternatíva>}
-\todo{<második alternatíva>}
+%\todo{<első alternatíva>}
+%
+%\section{Modellezési nyelvek}
+%
+%A modellek leírásához nem elég, ha diagramokat rajzolunk. Egy modell precíz megadásához szükség van egy \fogalomragozva{modellezesi nyelv}{modellezési nyelvre}. Egy modellezési nyelv lehet \emph{szöveges} (pl. Verilog, VHDL, Java stb.) vagy \emph{grafikus} (pl. webes konyhatervező, UML diagramok stb.). Gyakori, hogy egy modell leírásához szöveges és grafikus nyelvet is használunk, ugyanis mindkettőnek megvannak a saját előnyei és hátrányai: jellemzően modellt építeni könnyebb szöveges nyelv használatával, míg a modell olvasása grafikus nyelvek (diagramok) segítségével egyszerűbb.
+%
+%A modellezési nyelvek legfőbb célja a kommunikáció gép-gép, ember-gép, vagy akár ember-ember között is. Egy nyelv megadásához két dolgot kell definiálni: a \emph{szintaxist} és a \emph{szemantikát}.
+%
+%%Segítségükkel modelleket építhetünk, amik lehetnek szöveges (pl.: Verilog, VHDL, Java stb.), vagy grafikusak is (pl.: webes konyhatervező, UML diagrammok, UPPAAL stb.). Céljuk a kommunikáció gép-gép, ember-gép vagy akár ember-ember között is. A nyelveknek két fő aspektusa van:
+%
+%\begin{definicio}
+%	\Fogalom{szintaxis}: egy szabályrendszer, ami meghatározza, hogy a modell milyen elemekből épül fel, ezeknek mi a (szöveges vagy grafikus) reprezentációja, és a különböző elemek milyen módon kombinálhatók.
+%\end{definicio}
+%
+%\begin{definicio}
+%	\Fogalom{szemantika}: a szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
+%\end{definicio}
+%
+%%\begin{itemize}
+%%	\item \fogalom{szintaxis}: hogyan írom a le a modellt? Egy szabályrendszer, ami meghatározza, hogy a nyelv milyen elemekből épül fel és azok hogyan kombinálhatóak.
+%%	\item \fogalom{szemantika}: mit jelent a modell? A szintaxis által definált nyelvi elemek jelentését definiáló szabályrendszer.
+%%\end{itemize}
+%
+%A szintaxis tehát definiálja, hogy hogyan írhatjuk le a modellt az adott nyelv segítségével, a szemantika pedig megadja, hogy az így leírt modell pontosan mit jelent.
+%
+%\begin{pelda}
+%	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
+%
+%	A Yakindu eszköz bizonyos szinten egy grafikus nyelvet határoz meg, ahol például nyelvi elemek a dobozok és nyilak (az állapottérképek Yakindu által definiált modellezési nyelvét \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.}{az \emph{Állapot alapú módellezés}}). A szintaxis meghatározza, hogy a dobozokból csak nyilakkal lehet összekötni más dobozokat. A szemantikus jelentésük pedig az, hogy a dobozok állapotokat, a nyilak pedig állapotátmeneteket jelölnek (tehát megmutatják, hogy az alkalmazásunk melyik állapotból melyik állapotba kerülhet).
+%\end{pelda}
+%
+%\begin{megjegyzes}
+%	Szintaktikailag leírhatunk olyan kifejezéseket a nyelvben, aminek szemantikailag nincs értelme: jó példa erre a nullával osztás.
+%\end{megjegyzes}
+%
+%
+%\section{Metamodellezés}
+%
+%Az imént bevezetett modellezési nyelvek szerepe az volt, hogy modelljeink leírhatóak, megjeleníthetőek legyenek. Azt is mondtuk, hogy ugyanazt a modellt többféle nyelven is érdemes lehet reprezentálni. Ez viszont azt jelenti, hogy egy adott modelltípus leírására alkalmas nyelvek mögött van egy közös \emph{modell}, ami miatt alkalmasak ugyanannak az ismeretnek a kifejezésére.
+%
+%\begin{definicio}
+%	A \fogalom{metamodell} egy modellezési nyelv modellje. Meghatározza, hogy a nyelvnek milyen típusú elemei vannak, milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz.
+%\end{definicio}
+%
+%A metamodell tehát modellezési nyelveket modellez, a konkrét jelölölésrendszer elhanyagolásával. A metamodellt emiatt szokás \fogalomragozva{absztrakt szintaxis}{absztrakt szintaxisnak} is nevezni, míg a korábbiakban definiált szintaxisra ilyenkor \fogalomragozva{konkret szintaxis}{konkrét szintaxisként} szokás hivatkozni. Ezzel a terminológiával élve egy modellezési formalizmust az absztrakt szintaxisával (más néven egy metamodellel), egy vagy több konkrét szintaxissal (szöveges vagy grafikus jelölésrendszer a metamodell elemeihez) és a szemantikával adhatunk meg.
+%
+%\begin{pelda}
+%	Modellekre és metamodellekre számos példa kerül majd elő a későbbi tanulmányok során:
+%	\begin{itemize}
+%		%\item Egyed-kapcsolat, EK modell (entity-relationship, ER)
+%		\item AZ UML~\cite{UML} (Unified Modeling Language) objektum diagramján ábrázolt objektummodelleket az osztálydiagramokon ábrázolt metamodelljeik szerint adhatjuk meg.
+%		\item Egy adatbázis tábla metamodellje a relációs adatbázisséma.
+%		\item Az XML dokumentumok metamodelljét az XML sémák adják.
+%	\end{itemize}
+%	A konkrét szintaxist (jelölésrendszert) mindegyik esetben külön határozzák meg, az UML esetében többféle grafikus és szöveges szintaxis is definiált.
+%\end{pelda}
+%
+%\begin{tipp}
+%	Minden fejezetben, ahol modellezési formalizmusokkal ismerkedünk meg, szerepelni fog az adott adott modelltípus metamodellje is.
+%\end{tipp}
+%
+%\todo{</első alternatíva>}
+%\todo{<második alternatíva>}
 
 \section{Modellezési nyelvek}
 
 A modellek leírásához nem elég, ha diagramokat rajzolunk. Egy modell precíz megadásához szükség van egy \fogalomragozva{modellezesi nyelv}{modellezési nyelvre}. A modellezési nyelvek legfőbb célja a kommunikáció gép-gép, ember-gép, vagy akár ember-ember között is. Egy modellezési nyelv lehet \emph{szöveges} (pl. Verilog, VHDL, Java stb.) vagy \emph{grafikus} (pl. webes konyhatervező, UML diagramok stb.). Gyakori, hogy egy modellezési nyelv szöveges és grafikus jelölésrendszert is definiál, ugyanis mindkettőnek megvannak a saját előnyei és hátrányai: jellemzően modellt építeni könnyebb szöveges nyelv használatával, míg a modell olvasása grafikus nyelvek (diagramok) segítségével egyszerűbb.
 
 \begin{definicio}
-	Egy \fogalom{modellezesi nyelv} három részből áll:
+	Egy \fogalom{modellezesi nyelv} négy részből áll:
 	\begin{itemize}
-		\item \Fogalom{absztrakt szintaxis} (más néven \fogalom{metamodell}): meghatározza, hogy a nyelvnek milyen típusú elemei vannak, az elemek milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz.
-		\item \Fogalom{konkret szintaxis}: az absztrakt szintaxis által definiált elemtípusokhoz és kapcsolatokhoz szöveges vagy grafikus jelölésrendszert definiál.
+		\item \Fogalom{absztrakt szintaxis} (más néven \fogalom{metamodell}): meghatározza, hogy a nyelvnek milyen típusú elemei vannak, az elemek milyen kapcsolatban állhatnak egymással, és a típusoknak mi a viszonya egymáshoz. Ezt a reprezentációt használják gépek a modell belső tárolására.
+		\item \Fogalom{konkret szintaxis}: az absztrakt szintaxis által definiált elemtípusokhoz és kapcsolatokhoz szöveges vagy grafikus jelölésrendszert definiál. Ezt a reprezentációt használják az emberek a modell olvasására és szerkesztésére.
+		\item \Fogalom{jolformaltsagi kenyszer}: Megadja, hogy egy érvényes modellnek milyen egyéb követelményeknek kell megfelelnie.
 		\item \Fogalom{szemantika}: az absztrakt szintaxis által megadott nyelvi elemek jelentését definiáló szabályrendszer.
 	\end{itemize}
 	Egy modellezési nyelvhez több konkrét szintaxis is adható.
 \end{definicio}
 
-Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hívjuk \emph{metamodellnek} is. A konkrét szintaxis a metamodellhez képest annyival több, hogy a definiált elemekhez megjeleníthető reprezentációkat rendel, ezáltal válik olvashatóvá és szerkeszthetővé egy modell leírása. Ha nem okoz félreértést, akkor a szintaxis szót leggyakrabban az absztrakt és konkrét szintaxis együttes jelölésére használjuk (tehát az elemkészletre és a jelölésekre együtt). Végül a szemantika megadja, hogy az így leírt modell pontosan mit is jelent. 
+Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hívjuk \emph{metamodellnek} is. A konkrét szintaxis a metamodellhez képest annyival több, hogy a definiált elemekhez megjeleníthető reprezentációkat rendel, ezáltal válik olvashatóvá és szerkeszthetővé egy modell leírása. Ha nem okoz félreértést, akkor a szintaxis szót leggyakrabban az absztrakt és konkrét szintaxis együttes jelölésére használjuk (tehát az elemkészletre és a jelölésekre együtt). A jólformáltsági kényszerek tovább szűkítik a lehetséges modellek körét olyan szabályokkal, mint például az azonos nevű elemek tiltása. Végül a szemantika megadja, hogy az így leírt modell pontosan mit is jelent, vagy hogyan ``működik''. A szemantika fogalmát strukturális és viselkedési modellek esetén kissé eltérően értelmezzük majd, erre a későbbi fejezetekben térünk vissza.
 
 \begin{pelda}
 	A C nyelv egy szöveges nyelv, melyben elemeknek tekinthetjük az \code{if}, \code{for}, \code{switch}, \code{változónevek}, \code{metódusnevek}, \code{típusok} stb. részeket. Ezek azonban nem tetszőleges sorrendben állhatnak egymás mellett, hanem egy jól meghatározott szabályrendszer szerint. Ez a szintaxis. Azt, hogy az \code{if} kulcsszóval elágazást, a \code{for} kulcsszóval pedig egy ciklust definiálunk és nem pedig valami teljesen más dolgot, a szemantika határozza meg. Vagyis a szemantika jelentéssel tölti meg a nyelvi elemeket.
@@ -151,7 +152,7 @@ Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hí
 	Minden fejezetben, ahol modellezési formalizmusokkal ismerkedünk meg, szerepelni fog az adott adott modelltípus metamodellje is.
 \end{tipp}
 
-\todo{</második alternatíva>}
+%\todo{</második alternatíva>}
 
 \section{Absztrakció és finomítás}
 
@@ -182,11 +183,19 @@ A környezet segítségével definiálhatjuk, hogy mit jelent a modell részlete
 A finomítás mindig többletismeret bevitelét jelenti a modellbe. A finomítás konkrét módja és a helyettesíthetőség pontos definíciója problémafüggő, amikre sok példát láthatunk majd a későbbi fejezetekben. Természetesen a finomításnak ellentétes művelete is van.
 
 \begin{definicio}
-	\Fogalom{absztrakcio}: a finomítás inverz művelete, vagyis a modell részletezettségének csökkentése, a (továbbra is releváns) ismeretek egyszerűsítése.
+	\Fogalom{absztrakcio}: a finomítás inverz művelete, vagyis a modell részletezettségének csökkentése, a modellezett ismeretek egyszerűsítése.
 \end{definicio}
 
-A szabályos finomítás után az eredeti modell mindig visszakapható egy szabályos absztrakcióval. Érdemes megjegyezni, hogy finomítás során többnyire tervezői döntést hozunk annak tekintetében, hogy egy adott részletet hogyan illesztünk a modellbe, míg az absztrakció során a részlet elhagyása egyértelmű. Következésképpen a finomítási lépésnek általában sokféle eredménye lehet, de az absztrakciónak mindig csak egy.
+A szabályos finomítás után az eredeti modell mindig visszakapható egy szabályos absztrakcióval. Érdemes megjegyezni, hogy finomítás során többnyire tervezői döntést hozunk annak tekintetében, hogy egy adott részletet hogyan illesztünk a modellbe, míg az absztrakció során a részlet elhagyása egyértelmű. Következésképpen egy finomítási lépésnek általában sokféle eredménye lehet, de egy adott absztrakciós lépésnek mindig csak egy.
+
+\begin{pelda}
+	Egy közlekedési lámpának megadható egy absztrakt és egy részletes modellje is. Az absztrakt modellben a lámpának két állása van: \emph{tilos} és \emph{szabad}. A részletesebb modellben a \emph{szabad} állapotnak megfelelhet a \emph{zöld} állapot, a \emph{tilos} állapotban pedig a \emph{sárga}, \emph{piros} és \emph{piros-sárga}.
+	
+	Figyeljük meg, hogy az absztrakt modellből a részletesebbe lépés (finomítás) során többlet ismeretet vittünk a modellbe, mégpedig a lámpákkal kapcsolatban. Ráadásul mivel az új állapotok mindegyike egyértelműen megfeleltethető egy réginek, a környezet számára a rendszer továbbra is leírható az absztrakt modellel.
+	
+	Azt is láthatjuk, hogy a finomítási lépésnek (``bontsuk szét a \emph{tilos} állapotot'') több megoldása is lehetett volna, míg az ennek megfelelő absztrakciós lépésnek (``vonjuk össze a \emph{sárga}, \emph{piros} és \emph{piros-sárga} állapotokat'') csak egyetlen megoldása van (az elnevezésektől eltekintve).
+\end{pelda}
 
 \begin{tipp}
-	Az absztrakció és finomítás illusztrálása most nehéz lenne az általános definíciók miatt, de a későbbi fejezetekben az adott témakör vonatkozásában számos példát adunk majd.
+	A későbbi fejezetekben az adott témakör vonatkozásában számos példát adunk majd absztrakcióra és finomításra.
 \end{tipp}
