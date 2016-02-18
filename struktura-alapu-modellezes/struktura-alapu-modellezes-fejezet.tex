@@ -45,6 +45,10 @@ metró sorszáma, megálló, kerület (extra: koordináták)
 
 \subsection{Hierarchikus rendszerek}
 
+Példa: Budapest kerületei és városrészei % https://hu.wikipedia.org/wiki/Budapest_v%C3%A1rosr%C3%A9szeinek_list%C3%A1ja
+
+Háromszintű gyökeres fa.
+
 \begin{definicio}
 A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
 \end{definicio}
@@ -429,8 +433,6 @@ Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-
 
 A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha ismerjük a kétváltozós relációkon értelmezett tulajdonságokat.
 
-(\refstruc{fig:tranzitivitas})
-
 %http://math.stackexchange.com/questions/65102/if-a-relation-is-symmetric-and-transitive-will-it-be-reflexive
 
 \begin{definicio}
@@ -445,13 +447,21 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 	Egy $S$ halmazon értelmezett $r$ kétváltozós reláció \fogalomragozva{tranzitivitas}{tranzititív}, ha bármely $a,b,c \in S$-re $r(a, b)$ és $r(b, c)$ teljesülése esetén $r(a, c)$ is teljesül.
 \end{definicio}
 
-\begin{itemize}
+\begin{pelda}
+	\remofigscaleframedwhite{tranzitivitas}{Az $=$ és a $<$ tulajdonságok gráfon ábrázolva}{0.7}
+
+	Tranzitív relációk:
+	\begin{itemize}
 	\item Az egyenlőség ($=$) és a kisebb ($<$) reláció tranzitívak, mert
 	\begin{itemize}
 		\item $a = b$ és $b = c$ esetén $a = c$,
 		\item $d < e$ és $e < f$ esetén $e < f$.
 	\end{itemize}
-	Fontos, hogy míg az egyenlőség reláció 
+	\Az+\ref{fig:tranzitivitas} ábrán ábrázoltuk a fenti relációkat. A $=$ reláció szimmetrikus, ezért irányítatlan gráffal, a $<$ reláció aszimmetrikus, ezért irányított gráffal reprezentálható.
+	\end{itemize}
+	
+	Nem tranzitív relációk:
+	\begin{itemize}
 	\item A nemegyenlő reláció ($\neq$) nem tranzitív, mert 
 	\begin{itemize}
 		\item $a \neq b$ és $b \neq c$ esetén $a \neq c$ nem mindig áll fenn, például
@@ -459,9 +469,9 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 	\end{itemize}
 	\item Személyek közötti $\mathit{őse}$ reláció tranzitív, mert $\mathit{őse}(a, b)$ és $\mathit{őse}(b, c)$ esetén $\mathit{őse}(a, c)$ is fennáll. 
 	\item Személyek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
-\end{itemize}
+	\end{itemize}
+\end{pelda}
 
-\remofigscale{tranzitivitas}{Tranzitív tulajdonságok irányítatlan, ill. irányított gráfon}{0.7}
 
 A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: \fogalom{reflexivitas}, \fogalom{szimmetria} stb.~\cite{relaciok}. 
 

@@ -1,7 +1,9 @@
 \newcommand{\topic}[1]{%
 	\newcommand{\remotopic}{#1}%
 	\title{#1}%
-	\maketitle}
+	\maketitle%
+	\tableofcontents
+	}
 
 % page headers
 \pagestyle{fancy}
@@ -9,3 +11,6 @@
 \lhead{\textsc{Rendszermodellezés}}
 \rhead{\remotopic}
 \cfoot{\thepage}
+
+%\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
