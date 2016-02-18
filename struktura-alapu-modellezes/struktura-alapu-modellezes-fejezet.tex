@@ -118,7 +118,15 @@ A \fogalomragozva{tipusos-graf}{típusos gráfok} a címkézett gráfok speciál
 
 \subsubsection{További kiterjesztések}
 
-A gráf adatmodellnek többféle kiterjesztése is létezik. A fentiek mellett lehetséges további kiterjesztés például a \fogalom{sulyozott-graf}, amely egy speciális címkézett gráf, ahol a gráf elemeit súlyokkal látjuk el (pl. kapacitást vagy költséget rendelünk hozzájuk); a \fogalom{multigraf}, ahol az egyes csomópontok között \fogalomragozva{tobbszoros-el}{többszörös élek} is futhatnak; vagy a hipergráf, ahol egy él (ún. \fogalom{hiperel}) több csomópont között is futhat.
+A gráf adatmodellnek többféle kiterjesztése is létezik. A fentiek mellett lehetséges további kiterjesztés például a \fogalom{sulyozott-graf}, amely egy speciális címkézett gráf, ahol a gráf elemeit súlyokkal látjuk el (pl. kapacitást vagy költséget rendelünk hozzájuk); a \fogalom{multigraf}, ahol az egyes csomópontok között \fogalomragozva{tobbszoros-el}{többszörös élek} is futhatnak; vagy 
+
+\subsection{Hipergráfok (kieg.)}
+
+A gráf adatmodell kiterjesztése a \fogalom{hipergraf}, amelyben egy él (ún. \fogalom{hiperel}) több csomópont között is futhat. megkülönböztetünk irányított és irányítatlan hipergráfokat.
+
+Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-graf}{páros gráffá}: a gráf egyik halmazában a hipergráf csomópontjainak, a másik halmazában a hiperéleknek veszünk fel egy pontot.
+
+\todo[inline]{ábra}
 
 
 \subsection{Körmentes gráfok}
@@ -180,14 +188,9 @@ Ez elérhetőségvizsgálatra gyakran elemi bejáróalgoritmusokat használunk:
 
 \paragraph{Útkereső algoritmusok}
 
-\begin{itemize}
-\item \fogalom{Dijsktra-algoritmus}
-\item \fogalom{A-csillag-kereses} (ejtsd: ,,á-csillag keresés'')
-\item \fogalom{Bellman-Ford-algoritmus}
-\item \fogalom{Floyd-algoritmus}
-\end{itemize}
+\fogalom{Dijsktra-algoritmus}, \fogalom{Bellman-Ford-algoritmus}, \fogalom{Floyd-algoritmus}, \fogalom{A-csillag-kereses}
 
-A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gist.neo4j.org/?6d2a1a1c6325043d09a0}.
+%A legrövidebb út keresése kipróbálható az alábbi példán: \url{http://gist.neo4j.org/?6d2a1a1c6325043d09a0}.
 
 \paragraph{Transzformációk}
 
@@ -303,7 +306,13 @@ A típusgráf egy rendszer \fogalomragozva{metamodell}{metamodelljének} típusa
 
 A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból (pl. ,,Mace Windu'') a típusgráf csomópontjaira (pl. ,,Jedi'') \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
 
-Az \fogalom{peldanya} viszony helyett/mellett gyakran annak inverzét alkalmazzák, a \fogalomangolul{tipusa} (\fogalom{tipusa}) viszony is. Gráfban ábrázolva az \fogalomangolul{peldanya} és \fogalomangolul{tipusa} élek adott csomópontok között egymással ellentétes irányúak: pl. \emph{,,Mace Windu'' instance of ,,Jedi''} és \emph{,,Jedi'' type of ,,Mace Windu''}.
+Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak: pl. \emph{,,Mace Windu'' instance of ,,Jedi''} és \emph{,,Jedi'' type of ,,Mace Windu''}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Összefoglalás}
+
+\fogalom{struktura-alapu-modellezes}, \fogalom{viselkedes-alapu-modellezes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -313,7 +322,7 @@ Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez 
 
 \subsection{Modellezési nyelvek}
 
-A gyakorlatban rengeteg különböző modellezési nyelvet használnak, ezek közül mutatunk be most néhány elterjedtebbet.
+A gyakorlatban sokféle modellezési nyelvet használnak, ezek közül mutatunk be most néhány elterjedtebbet.
 
 \subsubsection{UML (Unified Modeling Language)}
 
@@ -349,6 +358,20 @@ Az \rovidites{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállít�
 
 \subsection{Struktúramodellezési technikák}
 
+
+
+\subsubsection{Tervezési minták}
+
+\fogalom{objektum-orientalt}
+
+\fogalomragozva{tervezesi-minta}{tervezési minták} (\fogalomragozva{tervezesi-minta}{design patterns}) 
+
+\fogalomragozva{szerkezeti-minta}{szerkezeti minták} (\fogalomragozva{szerkezeti-minta}{structural patterns})
+
+
+
+A tervezési mintákkal a \sznikak tárgy foglalkozik.
+
 \subsubsection{Refaktoring}
 
 A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszerek, programkódok (vagy modellek) olyan átalakítását értjük, amelynek sorána megfigyelhető működés változatlan marad, de a kapott programkód (modell) olvashatóbb, érthetőbb, karbantarthatóbb lesz.
@@ -365,7 +388,7 @@ Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen ha
 
 A struktúramodellezésnek komoly matematikai eszköztára is van. Az alábbiakban ezekből mutatunk be néhány részletet.
 
-\subsubsection{Tranzitivitás}
+\subsection{Tranzitivitás}
 
 A \fogalom{tranzitiv-lezaras} fogalom megértését segítheti, ha ismerjük a relációkon értelmezett tulajdonságokat, köztük a \fogalomragozva{tranzitiv}{tranzitivitást}.
 
@@ -386,23 +409,23 @@ Egy $S$ halmazon értelmezett $r$ (kétváltozós) reláció \fogalom{tranzitiv}
 	\item Személyek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
 \end{itemize}
 
-\subsubsection{További tulajdonságok}
+\todo[inline]{ezt is lehetne gráffal ábrázolni}
 
 A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: \fogalom{reflexivitas}, \fogalom{szimmetria} stb.~\cite{relaciok}. 
 
 \subsection{Ontológia}
 
-Az ontológia egy nem egyértelmű, nehezen definiálható kifejezés. Az informatikában általában az alábbihoz hasonló módon definiálják:
+Az ontológia kifejezésre sok különböző definíció létezik. Az informatikában általában az alábbihoz hasonló módon definiálják:
 
 \begin{definicio}
-Az \fogalom{ontologia} egy olyan taxonómia, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
+Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
 \end{definicio}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Ajánlott irodalom}
 
-A gráfelmélettel behatóan foglalkozik a \bszketto tantárgy és Fleiner Tamás jegyzete~\cite{FleinerJegyzet}. Különböző gráfalgoritmusokkal -- pl. \fogalom{legrovidebb-ut} és minimális összsúlyú \fogalom{feszitofa} keresésére -- az \algel tárgy foglalkozik.
+A gráfelmélettel behatóan foglalkozik a \bszketto tantárgy és Fleiner Tamás jegyzete~\cite{FleinerJegyzet}. Különböző gráfalgoritmusokkal -- pl. \fogalom{legrovidebb-ut} és minimális összsúlyú \fogalom{feszitofa} keresésére -- az \algel tárgy foglalkozik. További keresőalgoritmusok a \mestersegesintelligencia tárgyban szerepelnek.
 
 Olvasmányos, jól érthető összefoglalót ad az UML nyelvről Martin Fowler ,,UML Distilled'' c. munkája~\cite{fowler1997uml}.
 
@@ -410,4 +433,4 @@ A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez é
 
 Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex \fogalomragozva{halozat}{hálózatok} elméletének. Barabási ,,Behálózva'' c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
 
-Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
+%Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
