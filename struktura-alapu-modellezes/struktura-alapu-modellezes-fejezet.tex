@@ -2,6 +2,8 @@
 
 \graphicspath{ {./struktura-alapu-modellezes/figures/} }
 
+\newcommand{\yedscale}{0.7}
+
 % vezérpélda lehetőségek
 % - táblázatszerű adatok pl. felhasználókról (preferenciák, van-e jogsija, stb.), kocsikról (férőhely, légkondi stb.)
 % - kiszolgáló rendszer top-down, bottom-up tervezése (mobil kliens, tömegközl. integráció, adatbázis stb.)
@@ -31,23 +33,48 @@ Mind a természetben előforduló, mind a mesterséges rendszerekben fellelhető
 
 metró sorszáma, megálló, kerület (extra: koordináták)
 
+közlekedési vonalak típusa ?
 
+járművek típusa
+
+férőhely, hajtáslánc, ...
 
 \subsection{Kapcsolatok}
 
 \fogalom{halozat}
 
 \begin{pelda}
-	Vizsgáljuk meg Budapest metróhálózatát! 
+	Vizsgáljuk meg Budapest metróhálózatát!
 	
 	\remofigscaleframedwhite{metrohev-terkep-reszlet}{Budapest metróhálózati térképe}{0.8}
 \end{pelda}
 
 \subsection{Hierarchikus rendszerek}
 
-Példa: Budapest kerületei és városrészei % https://hu.wikipedia.org/wiki/Budapest_v%C3%A1rosr%C3%A9szeinek_list%C3%A1ja
+Példa: Budapest kerületei és városrészei és a megállók % https://hu.wikipedia.org/wiki/Budapest_v%C3%A1rosr%C3%A9szeinek_list%C3%A1ja
 
-Háromszintű gyökeres fa.
+Négyszintű, gyökeres fa.
+
+Explicit ábrázolás
+
+A struktúramodell egybeesik a fizikai valósággal. Nincs mindig így!
+
+\begin{pelda}
+	Melyik kerületekben nincs metró? Melyik városrészben van a legtöbb metrómegálló? Ahhoz, hogy ilyen kérdésre választ kapjunk, készítsünk \fogalomragozva{hierarchikus-modell}{hierarchikus modellt}.
+	
+	\remofigscaleframedwhite{budapest-keruletek-varosreszek-metromegallok}{Budapest kerületei, városrészei és metrómegállói (részleges modell)}{\yedscale}
+	
+	\Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modell négy szintet tartalmaz:
+	
+	\begin{enumerate}
+		\item Az első szinten egyetlen elem, \emph{Budapest} található.
+		\item A második szinten a város kerületei szerepelnek.	
+		\item A harmadik szinten az egyes városrészek vannak.
+		\item A legalsó szinten a metrómegállók találhatók.
+	\end{enumerate}
+	
+	
+\end{pelda}
 
 \begin{definicio}
 A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
@@ -247,22 +274,7 @@ A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomrag
 A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A táblázat egy sora a modell egy elemének, egy oszlopa egy jellemzőjének felel meg.
 \end{definicio}
 
-\begin{pelda}
-Vegyük az alábbi táblázatot.
-\begin{verbatim}
-| név            | fénykard színe | nem    | holdak száma | keringési idő |
-|----------------|----------------|--------|--------------|---------------|
-| Alderaan       |                |        | 1            | 364           |
-| Coruscant      |                |        | 4            | 368           |
-| Darth Vader    | piros          | férfi  |              |               |
-| Jabba          |                | hímnős |              |               |
-| Leia Organa    |                | nő     |              |               |
-| Luke Skywalker | zöld           | férfi  |              |               |
-| Mace Windu     | lila           | férfi  |              |               |
-| Tatooine       |                |        | 3            | 304           |
-| Yoda           | zöld           | férfi  |              |               |
-\end{verbatim}
-\end{pelda}
+
 Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \textsf{NA} (not applicable, not available) rövidítéssel vagy (különösen az adatbázisokban) \textsf{null} értékkel jellemezzük.
 
 \subsubsection{Műveletek}
@@ -346,7 +358,7 @@ Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiá
 
 \subsubsection{AUTOSAR}
 
-Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
+Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a \emph{Méréstechnika és Információs Rendszerek Tanszék} is tagja~\cite{autosar-attendees}.
 
 \subsection{Struktúramodellezési technikák}
 
@@ -409,7 +421,7 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 \end{definicio}
 
 \begin{pelda}
-	\remofigscaleframedwhite{tranzitivitas}{Az $=$ és a $<$ tulajdonságok gráfon ábrázolva}{0.7}
+	\remofigscaleframedwhite{tranzitivitas}{Az $=$ és a $<$ tulajdonságok gráfon ábrázolva}{\yedscale}
 
 	Tranzitív relációk:
 	\begin{itemize}
@@ -460,4 +472,8 @@ Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a kom
 
 %Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
 
-SQL (\glsdesc{SQL})
+\roviditesangolulkifejtve{SQL}
+
+\fogalom{azonosito} (\fogalomragozva{elsodleges-kulcs}{elsődleges kulcsok})
+
+
