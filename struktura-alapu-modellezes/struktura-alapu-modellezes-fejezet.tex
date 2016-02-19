@@ -209,8 +209,8 @@ Egy $v_i$ csomópontból egy $v_j$ csomópont elérhető, ha létezik $v_i$-ből
 Ez elérhetőségvizsgálatra gyakran elemi bejáróalgoritmusokat használunk:
 
 \begin{itemize}
-\item \rovidites{BFS}
-\item \rovidites{DFS}
+\item \roviditesteljesenkifejtve{BFS}
+\item \roviditesteljesenkifejtve{DFS}
 \end{itemize}
 
 \paragraph{Útkereső algoritmusok}
@@ -271,55 +271,17 @@ A relációkon most két alapműveletet definiálunk, ezek a \fogalom{szures} (r
 
 \paragraph{Szűrt nézet}
 
-Szűrés során egy feltétel mentén bizonyos sorokat elhagyunk a relációból:
+\begin{definicio}
+	\Fogalom{szures} során egy feltétel mentén bizonyos sorokat elhagyunk a relációból. \todo{formalisan is irjuk le}
+\end{definicio}
 
-Szűrés a $\mathsf{fénykard színe\: zöld}$ feltételre:
-
-\begin{verbatim}
-| név            | fénykard színe | nem   | holdak száma | keringési idő |
-|----------------|----------------|-------|--------------|---------------|
-| Luke Skywalker | zöld           | férfi |              |               |
-| Yoda           | zöld           | férfi |              |               |
-\end{verbatim}
-
-Szűrés a $\mathsf{holdak\: száma} > 2$ feltételre:
-
-\begin{verbatim}
-| név       | fénykard színe | nem | holdak száma | keringési idő |
-|-----------|----------------|-----|--------------|---------------|
-| Coruscant |                |     | 4            | 368           |
-| Tatooine  |                |     | 3            | 304           |
-\end{verbatim}
 
 \paragraph{Vetített nézet}
 
-Vetítés során a modell egyes jellemzőit elhagyjuk a relációból. Fontos, hogy az esetleg létrejövő üres sorokat is elhagyjuk.
+\begin{definicio}
+	\Fogalom{vetites} során a modell egyes jellemzőit elhagyjuk a relációból. Fontos, hogy az esetleg létrejövő üres sorokat is elhagyjuk. \todo{formalisan is irjuk le}
+\end{definicio}
 
-Vetítés a $\{\mathsf{holdak\: száma, keringési\: idő\}}$ jellemzőkre.
-
-\begin{verbatim}
-| holdak száma | keringési idő |
-|--------------|---------------|
-| 1            | 364           |
-| 4            | 368           |
-| 3            | 304           |
-\end{verbatim}
-
-Vetítés a $\{\mathsf{név, fénykard\: színe\}}$ jellemzőkre.
-
-\begin{verbatim}
-| név            | fénykard színe |
-|----------------|----------------|
-| Alderaan       |                |
-| Coruscant      |                |
-| Darth Vader    | piros          |
-| Jabba          |                |
-| Leia Organa    |                |
-| Luke Skywalker | zöld           |
-| Mace Windu     | lila           |
-| Tatooine       |                |
-| Yoda           | zöld           |
-\end{verbatim}
 
 \subsection{Típusgráf}
 
@@ -327,19 +289,19 @@ Vetítés a $\{\mathsf{név, fénykard\: színe\}}$ jellemzőkre.
 A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
 \end{definicio}
 
-Az elsőre talán furcsának ható definíció tulajdonképpen egy egyszerű fogalmat vezet be: a típusgráfban a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel (pl. ,,person'', ,,warrior'', ,,planet''), az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. Példa: ld. diasor, Star Wars szereplők, bolygók és kapcsolataik.
+Az elsőre talán furcsának ható definíció tulajdonképpen egy egyszerű fogalmat vezet be: a típusgráfban a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel ..., az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. 
 
 A típusgráf egy rendszer \fogalomragozva{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
 
-A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból (pl. ,,Mace Windu'') a típusgráf csomópontjaira (pl. ,,Jedi'') \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
+A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból a típusgráf csomópontjaira \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
 
-Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak: pl. \emph{,,Mace Windu'' instance of ,,Jedi''} és \emph{,,Jedi'' type of ,,Mace Windu''}.
+Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak: 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Összefoglalás}
 
-\fogalom{struktura-alapu-modellezes}, . A következő fejezetekben a \fogalom{viselkedes-alapu-modellezes} témakörét fogjuk körüljárni.
+\fogalom{struktura-alapu-modellezes}, . A következő fejezetekben a \fogalomragozva{viselkedes-alapu-modellezes}{viselkedés alapú modellezést} és annak formalizmusait mutatjuk be.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -353,12 +315,11 @@ A gyakorlatban sokféle modellezési nyelvet használnak, ezek közül mutatunk 
 
 \subsubsection{UML}
 
-Az \rovidites{UML} egy általános célú modellezési nyelv az~\cite{UML}. Az UML három fő diagramtípust definiál:
+Az \roviditesangolulkifejtve{UML} egy általános célú modellezési nyelv az~\cite{UML}. Az UML három fő diagramtípust definiál:
 
 \begin{itemize}
-	\item \emph{Structure Diagram:} strukturális modellek leírására. A \emph{Class Diagram} az osztályok (metamodell), míg az \emph{Object diagram} a példányok (modell) leíárásra alkalmas. A \emph{Composite Structure Diagram} egy rendszer struktúráját és a rendszer komponenseinek kapcsolatát mutatja be.
-	\item \emph{Behaviour Diagram:} viselkedési modellek leírására, pl. a \emph{State Machine Diagram} segítségével állapotgépekm az \emph{Activity Diagramon} folyamatok ábrázolhatók.
-	\item \emph{Interaction Diagram:} a \emph{Behaviour Diagram} altípusa. Ennek megfelelően szintén a viselkedés leírása a célja, de a hangsúly a vezérlés- és adatáramlás bemutatásán van. Ilyen pl. a \emph{Sequence Diagram} (szekvenciadiagram), amely az egyes objektumok közötti interakciót mutatja be üzenetek formájában.
+	\item \emph{Structure Diagram:} strukturális modellek leírására. A \emph{Class Diagram} az osztályok (metamodell), míg az \emph{Object diagram} a példányok (modell) leírására alkalmas. A \emph{Composite Structure Diagram} egy rendszer struktúráját és a rendszer komponenseinek kapcsolatát mutatja be.
+	\item \emph{Behaviour Diagram:} viselkedési modellek leírására, pl. a \emph{State Machine Diagram} segítségével állapotgépek az \emph{Activity Diagramon} folyamatok ábrázolhatók A \emph{Behaviour Diagramek} között megkülönböztejük az \emph{Interaction Diagrameket}. Ezeknek szintén a viselkedés leírása a célja, de a hangsúly a vezérlés- és adatáramlás bemutatásán van. Ilyen pl. a \emph{Sequence Diagram} (szekvenciadiagram), amely az egyes objektumok közötti interakciót mutatja be üzenetek formájában.
 \end{itemize}
 
 \remofigscale{UML-diagram}{UML diagramok típusai és a közöttük lévő viszony osztálydiagramként ábrázolva~\cite{wiki:ISE}}{0.6}
@@ -367,25 +328,25 @@ Az UML nyelvvel részletesen foglalkozik a \szofttech tárgy.
 
 \subsubsection{AADL}
 
-Az \rovidites{AADL} eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv~\cite{AADL}.
+Az \roviditesangolulkifejtve{AADL} eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv~\cite{AADL}.
 
 \subsubsection{SysML}
 
-A \rovidites{SysML} egy UML-alapú általános modellezési nyelv rendszertervezési célokra~\cite{SysML}. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
+A \roviditesangolulkifejtve{SysML} egy UML-alapú általános modellezési nyelv rendszertervezési célokra~\cite{SysML}. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
 
 \subsubsection{EMF}
 
-Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \rovidites{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. szakterület-specifikus nyelv (domain-specific language, DSL) definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
+Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \roviditesangolulkifejtve{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. \roviditesteljesenkifejtve{DSL} definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
 
 Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiák} c. szabadon választható tárgy.
 
 \subsubsection{RDF}
 
-\rovidites{RDF}
+\roviditesangolulkifejtve{RDF}
 
 \subsubsection{AUTOSAR}
 
-Az \rovidites{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
+Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a Méréstechnika és Információs Rendszerek Tanszék is tagja~\cite{autosar-attendees}.
 
 \subsection{Struktúramodellezési technikák}
 
@@ -425,7 +386,7 @@ A gráf adatmodell kiterjesztése a \fogalom{hipergraf}, amelyben egy él (ún. 
 
 Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-graf}{páros gráffá}: a gráf egyik halmazában a hipergráf csomópontjainak, a másik halmazában a hiperéleknek veszünk fel egy pontot.
 
-\fogalom{kenyszer} \rovidites{CSP}
+\fogalom{kenyszer} + \rovidites{CSP}
 
 \todo[inline]{ábra}
 
