@@ -268,7 +268,7 @@ Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
 
 \subsection{Táblázatos ábrázolás}
 
-A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomragozva{relacio}{relációkban}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb c. tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
+A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomragozva{relacio}{relációkban}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
 
 \begin{definicio}
 A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A táblázat egy sora a modell egy elemének, egy oszlopa egy jellemzőjének felel meg.
@@ -350,7 +350,7 @@ A \roviditesangolulkifejtve{SysML} egy UML-alapú általános modellezési nyelv
 
 Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \roviditesangolulkifejtve{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. \roviditesteljesenkifejtve{DSL} definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
 
-Az Eclipse-szel és az EMF-fel foglalkozik az \emph{Eclipse-alapú technológiák} c. szabadon választható tárgy.
+Az Eclipse-szel és az EMF-fel foglalkozik az \eat szabadon választható tárgy.
 
 \subsubsection{RDF}
 
@@ -404,7 +404,7 @@ Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-
 
 \subsection{Bináris relációk tulajdonságai}
 
-A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha ismerjük a kétváltozós relációkon értelmezett tulajdonságokat.
+A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha ismerjük a kétváltozós relációkon értelmezett tulajdonságokat~\cite{wiki:relacio}.
 
 %http://math.stackexchange.com/questions/65102/if-a-relation-is-symmetric-and-transitive-will-it-be-reflexive
 
@@ -430,7 +430,7 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 		\item $a = b$ és $b = c$ esetén $a = c$,
 		\item $d < e$ és $e < f$ esetén $e < f$.
 	\end{itemize}
-	\Az+\ref{fig:tranzitivitas} ábrán ábrázoltuk a fenti relációkat. A $=$ reláció szimmetrikus, ezért irányítatlan gráffal, a $<$ reláció aszimmetrikus, ezért irányított gráffal reprezentálható.
+	\Az+\ref{fig:tranzitivitas}. ábrán ábrázoltuk a fenti relációkat. A $=$ reláció szimmetrikus, ezért irányítatlan gráffal, a $<$ reláció aszimmetrikus, ezért irányított gráffal reprezentálható.
 	\end{itemize}
 	
 	Nem tranzitív relációk:
@@ -464,11 +464,11 @@ Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne 
 
 A gráfelmélettel behatóan foglalkozik a \bszketto tantárgy és Fleiner Tamás jegyzete~\cite{FleinerJegyzet}. Különböző gráfalgoritmusokkal -- pl. \fogalom{legrovidebb-ut} és minimális összsúlyú \fogalom{feszitofa} keresésére -- az \algel tárgy foglalkozik. További keresőalgoritmusok a \mestersegesintelligencia tárgyban szerepelnek.
 
-Olvasmányos, jól érthető összefoglalót ad az UML nyelvről Martin Fowler ,,UML Distilled'' c. munkája~\cite{fowler1997uml}.
+Olvasmányos, jól érthető összefoglalót ad az UML nyelvről Martin Fowler ,,UML Distilled'' című könyve~\cite{fowler1997uml}.
 
 A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
 
-Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex \fogalomragozva{halozat}{hálózatok} elméletének. Barabási ,,Behálózva'' c. könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
+Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a komplex \fogalomragozva{halozat}{hálózatok} elméletének. Barabási ,,Behálózva'' című könyve közérthető stílusban mutatja be a hálózatok elemzésének elméleti kihívásait a kutatási eredmények gyakorlati jelentőségét~\cite{behalozva}. A szerzővel több interjú is készült~\cite{barabasi1,barabasi2,barabasi3}.
 
 %Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
 
