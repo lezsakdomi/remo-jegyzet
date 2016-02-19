@@ -156,6 +156,26 @@ Az absztrakt szintaxis tekinthető a modellezési nyelv modelljének, ezért hí
 
 %\todo{</második alternatíva>}
 
+\section{Nyílt és zárt világ feltételezés} \label{sec:owacwa}
+
+Egy modell szemantikájának definiálása során több feltételezésből is kiindulhatunk. Ezeket rögzíteni kell, és a modell értelmezésekor döntő szerepük van a különböző állítások igazságtartalmának eldöntésekor.
+
+\begin{definicio}
+	\Fogalom{zart vilag feltetelezes}: Minden állítás, amiről nem ismert, hogy igaz, hamis.
+\end{definicio}
+
+\begin{definicio}
+	\Fogalom{nyilt vilag feltetelezes}: Egy állítás annak ellenére is lehet igaz, hogy ez a tény nem ismert.
+\end{definicio}
+
+A két feltételezés között az egyik legfontosabb különbség, hogy a nyílt világ feltételezés elismeri és használja az \emph{ismeretlen} fogalmát, míg a zárt világban minden tudás ismertnek tekintett. Mindkét feltételezésnek megvan a maga szerepe és helye, ahogy azt a következő két példa is illusztrálja.
+
+\begin{pelda}
+	A zárt világ feltételezést olyankor alkalmazzuk, amikor egy rendszernek a teljes szükséges információ a rendelkezésére áll. Erre példa egy tömegközlekedési adatbázis: ha megkérdezzük, hogy közlekedik-e közvetlen járat a Magyar Tudósok körútja és a Gellért tér között, és ilyen járat nincs az adatbázisban, akkor a válasz egyértelmű ``nem''. Ebben az esetben valóban ez az elvárt és helyes válasz.
+	
+	A nyílt világ szemantika olyankor alkalmazandó, amikor nem feltételezhetjük, hogy minden információ a rendelkezésünkre áll. Például egy orvosi nyilvántartó rendszerben előfordulhat (sőt, számítani kell rá), hogy egy beteg annak ellenére allergiás valamire, hogy ez a nyilvántartásban nem szerepel.
+\end{pelda}
+
 \section{Absztrakció és finomítás}
 
 A modell definíciójának szerves része az \emph{egyszerűsítés}, az adott probléma szempontjából irreleváns információk elhanyagolása. Ugyanannak a rendszernek több modelljét is elkészíthetjük más-más részletek kihagyásával. Ráadásul egy elkészített modellből további részleteket hagyhatunk el, vagy éppen újabb részleteket vehetünk bele, így a modellek a részletgazdagság szerint egyfajta hierarchiába rendezhetők.
