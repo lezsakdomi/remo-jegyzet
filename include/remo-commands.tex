@@ -16,11 +16,10 @@
 	\end{center}}
 	
 % for fbox around remofigscaleframedwhite
-\setlength{\fboxsep}{0pt}
 \newcommand{\remofigscaleframedwhite}[3]{
 	\begin{center}
 		\begin{samepage}
-			\fbox{\colorbox{white}{\includegraphics[scale=#3]{#1}}}
+			\setlength{\fboxsep}{0pt}\fbox{\setlength{\fboxsep}{15pt}\colorbox{white}{\includegraphics[scale=#3]{#1}}}
 			\captionof{figure}{#2.}
 			\label{fig:#1}
 		\end{samepage}
