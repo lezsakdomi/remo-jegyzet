@@ -15,6 +15,15 @@
 		\end{samepage}
 	\end{center}}
 	
+\newcommand{\remofigscaleframedwrapped}[3]{
+	\begin{wrapfigure}{r}{8cm}
+		\begin{center}
+			\includegraphics[scale=#3]{#1}
+			\captionof{figure}{#2.}
+			\label{fig:#1}
+		\end{center}
+	\end{wrapfigure}}
+	
 % for fbox around remofigscaleframedwhite
 \newcommand{\remofigscaleframedwhite}[3]{
 	\begin{center}

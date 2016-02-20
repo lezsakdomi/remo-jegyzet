@@ -35,7 +35,9 @@
 \usepackage{algorithm2e}
 \usepackage{array}
 \usepackage{adjustbox}
-\usepackage{subcaption}
+\usepackage{caption}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
 \usepackage{float}
 \usepackage[normalem]{ulem}
 \usepackage{enumitem}
@@ -148,7 +150,9 @@
 
 \newenvironment{feladat}{\begin{mdframed}[backgroundcolor=blue!20] \textbf{Feladat.}}{\end{mdframed}}
 
-\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=white] \textbf{Definíció.}}{\end{mdframed}}
+\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}}
+
+\newenvironment{kisdefinicio}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíció ($*$).}}{\end{mdframed}}
 
 \newenvironment{pelda}{\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}}
 

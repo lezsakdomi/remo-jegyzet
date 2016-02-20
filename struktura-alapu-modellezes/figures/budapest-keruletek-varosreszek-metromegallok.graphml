@@ -15,10 +15,9 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="605.0" y="147.0"/>
+          <y:Geometry height="16.0" width="16.0" x="345.26636284722224" y="0.984375"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="60.765625" x="-64.765625" y="-0.984375">Budapest</y:NodeLabel>
@@ -27,10 +26,9 @@
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="526.0" y="252.0"/>
+          <y:Geometry height="16.0" width="16.0" x="230.97171999007938" y="69.5580357142857"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="62.130859375" x="-66.130859375" y="-0.984375">V. kerület</y:NodeLabel>
@@ -39,10 +37,9 @@
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="452.0" y="361.0"/>
+          <y:Geometry height="16.0" width="16.0" x="59.931640625" y="152.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="55.931640625" x="-59.931640625" y="-0.984375">Belváros</y:NodeLabel>
@@ -51,10 +48,9 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="452.0" y="468.0"/>
+          <y:Geometry height="16.0" width="16.0" x="59.931640625" y="213.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="90.689453125" x="-37.3447265625" y="20.0">Ferenciek tere</y:NodeLabel>
@@ -63,10 +59,9 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="702.8000000000001" y="252.0"/>
+          <y:Geometry height="16.0" width="16.0" x="407.0717199900794" y="69.5580357142857"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="65.681640625" x="-69.681640625" y="-0.984375">XI. kerület</y:NodeLabel>
@@ -75,10 +70,9 @@
       </data>
     </node>
     <node id="n5">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="805.0" y="361.0"/>
+          <y:Geometry height="16.0" width="16.0" x="403.0717199900794" y="152.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="60.091796875" x="-64.091796875" y="-0.984375">Kelenföld</y:NodeLabel>
@@ -87,10 +81,9 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="805.0" y="468.0"/>
+          <y:Geometry height="16.0" width="16.0" x="403.0717199900794" y="213.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="83.67578125" x="-33.837890625" y="20.0">Kelenföld
@@ -100,10 +93,9 @@ vasútállomás</y:NodeLabel>
       </data>
     </node>
     <node id="n7">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="588.5" y="361.0"/>
+          <y:Geometry height="16.0" width="16.0" x="234.97171999007938" y="152.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="66.666015625" x="-70.666015625" y="-0.984375">Lipótváros</y:NodeLabel>
@@ -112,10 +104,9 @@ vasútállomás</y:NodeLabel>
       </data>
     </node>
     <node id="n8">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="659.0" y="468.0"/>
+          <y:Geometry height="16.0" width="16.0" x="291.4610057043651" y="213.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="79.544921875" x="-31.7724609375" y="20.0">Deák Ferenc
@@ -125,10 +116,9 @@ tér</y:NodeLabel>
       </data>
     </node>
     <node id="n9">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="555.5" y="468.0"/>
+          <y:Geometry height="16.0" width="16.0" x="178.48243427579365" y="213.31805555555553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="86.412109375" x="-35.2060546875" y="20.0">Kossuth Lajos
@@ -137,11 +127,36 @@ tér</y:NodeLabel>
         </y:ShapeNode>
       </data>
     </node>
+    <node id="n10">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="16.0" width="16.0" x="533.1733072916667" y="152.31805555555553"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="w" textColor="#000000" visible="true" width="80.1015625" x="-84.1015625" y="-0.984375">Lágymányos</y:NodeLabel>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n11">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="16.0" width="16.0" x="533.1733072916667" y="213.31805555555553"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="51.859375" x="-17.9296875" y="20.0">Újbuda
+központ</y:NodeLabel>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n1" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="-4.0" ty="6.90625">
+            <y:Point x="238.97171999007938" y="59.558035714285694"/>
+            <y:Point x="349.26636284722224" y="31.984375"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -149,10 +164,12 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e1" source="n2" target="n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="-4.0" ty="6.90625">
+            <y:Point x="67.931640625" y="142.31805555555553"/>
+            <y:Point x="234.97171999007938" y="100.5580357142857"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -160,10 +177,9 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e2" source="n3" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-0.0" sy="-0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="0.0" ty="8.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -171,10 +187,9 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e3" source="n5" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="-4.0" ty="6.90625"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -182,10 +197,9 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e4" source="n6" target="n5">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-0.0" sy="-0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="0.0" ty="8.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -193,10 +207,12 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e5" source="n0" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="4.0" sy="6.90625" tx="0.0" ty="-8.0">
+            <y:Point x="357.26636284722224" y="26.984375"/>
+            <y:Point x="415.0717199900794" y="54.558035714285694"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -204,10 +220,9 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e6" source="n7" target="n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="4.0" ty="6.90625"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -215,10 +230,12 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e7" source="n8" target="n7">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-0.0" sy="-0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="4.0" ty="6.90625">
+            <y:Point x="299.4610057043651" y="203.31805555555553"/>
+            <y:Point x="246.97171999007938" y="183.31805555555553"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -226,10 +243,35 @@ tér</y:NodeLabel>
       </data>
     </edge>
     <edge id="e8" source="n9" target="n7">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-0.0" sy="-0.0" tx="-0.0" ty="-0.0"/>
+          <y:Path sx="0.0" sy="-8.0" tx="-4.0" ty="6.90625">
+            <y:Point x="186.48243427579365" y="203.31805555555553"/>
+            <y:Point x="238.97171999007938" y="183.31805555555553"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="n10" target="n4">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="-8.0" tx="4.0" ty="6.90625">
+            <y:Point x="541.1733072916667" y="142.31805555555553"/>
+            <y:Point x="419.0717199900794" y="100.5580357142857"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="n11" target="n10">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="-8.0" tx="0.0" ty="8.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
