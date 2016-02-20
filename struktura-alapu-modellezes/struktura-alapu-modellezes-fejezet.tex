@@ -27,12 +27,10 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Motiváció: a struktúra formái}
+\section{A struktúramodellezés alkalmazásai}
 \label{sec:motivacio}
 
 Mind a természetben előforduló, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Egyes szabályszerűségek a rendszer elemei közötti kapcsolatokat, míg mások magukat az elemeket jellemzik.
-
-\clearpage
 
 \subsection{Hálózatok}
 
@@ -208,7 +206,7 @@ A modellünk elemei itt a táblázat sorai. A modellelemek tulajdonságait \foga
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Struktúramodellezés}
+\section{A struktúramodellezés elmélete}
 
 Ahogy \az+\refstruc{sec:motivacio} példáiban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze, beleértve az egyes elemek típusát, a közöttük lévő kapcsolatokat és az elemek tulajdonságait.
 
@@ -230,7 +228,7 @@ A struktúramodellezés során meghatározzuk a rendszerünkben található elem
 	\item Milyen tulajdonságúak a rendszer elemei?
 \end{itemize}
 
-\subsection{Dekompozíció}
+\subsection{Hierarchia}
 
 Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható elő.
 
@@ -246,35 +244,10 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 
 %\subsubsection{Hierarchia modellezése}
 
-A gyakorlatban a hierarchia modellezésére két fő megközelítést szoktak alkalmazni: a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} modellezést.
-
-\begin{definicio}
-	\Fogalomangolul{top-down} modellezés során a rendszert felülről lefelé építjük. A modellezés alaplépése a \fogalom{dekompozicio}.
-\end{definicio}
-
-A top-down modellezés jellemzői:
-
-\begin{itemize}
-	\item[$\oplus$] Részrendszer tervezésekor a szerepe már ismert
-	\item[$\ominus$] ,,Félidőben'' még nincsenek működő részek
-	\item[$\ominus$] Részek problémái, igényei későn derülnek ki
-\end{itemize}
-
-\begin{definicio}
-	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé építjük. A modellezés alaplépése a \fogalom{kompozicio}: az egész rendszer összeszerkesztése külön modellezett vagy fejlesztett részrendszerekből.
-\end{definicio}
-
-A bottom-up modellezés jellemzői:
-
-\begin{itemize}
-	\item[$\oplus$] A rendszer részei önmagukban kipróbálhatók, tesztelhetők
-	\item[$\oplus$] Részleges készültségnél könnyebben előállítható a rendszer prototípusa
-	\item[$\ominus$] Nem látszik előre a rész szerepe az egészben
-\end{itemize}
 
 
 
-\subsection{Típusgráf}
+\subsection{Típusok}
 
 \begin{definicio}
 	A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
@@ -309,7 +282,7 @@ A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció 
 
 
 
-\section{Nézetek}
+\subsection{Nézetek}
 
 A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő a \fogalom{szures} és a \fogalom{vetites} műveletekkel.
 
@@ -333,6 +306,61 @@ A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állí
 \begin{megjegyzes}
 	A relációalgebrában a \fogalom{vetites} művelet neve \fogalom{projekcio}.
 \end{megjegyzes}
+
+
+\section{Struktúramodellezési technikák}
+
+\subsection{Hierarchia modellezése}
+
+A gyakorlatban a hierarchia modellezésére két fő megközelítést szoktak alkalmazni: a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} modellezést.
+
+\begin{definicio}
+	\Fogalomangolul{top-down} modellezés során a rendszert felülről lefelé építjük. A modellezés alaplépése a \fogalom{dekompozicio}.
+\end{definicio}
+
+A top-down modellezés jellemzői:
+
+\begin{itemize}
+	\item[$\oplus$] Részrendszer tervezésekor a szerepe már ismert
+	\item[$\ominus$] ,,Félidőben'' még nincsenek működő részek
+	\item[$\ominus$] Részek problémái, igényei későn derülnek ki
+\end{itemize}
+
+\begin{definicio}
+	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé építjük. A modellezés alaplépése a \fogalom{kompozicio}: az egész rendszer összeszerkesztése külön modellezett vagy fejlesztett részrendszerekből.
+\end{definicio}
+
+A bottom-up modellezés jellemzői:
+
+\begin{itemize}
+	\item[$\oplus$] A rendszer részei önmagukban kipróbálhatók, tesztelhetők
+	\item[$\oplus$] Részleges készültségnél könnyebben előállítható a rendszer prototípusa
+	\item[$\ominus$] Nem látszik előre a rész szerepe az egészben
+\end{itemize}
+
+
+\subsection{Metamodellezés}
+
+Adott terület szakértője (ún. \emph{domain expert}) segítségével 
+
+Ontológia készítése, ...
+
+
+
+\subsubsection{Taxonómia és ontológia}
+
+\begin{definicio}
+	A \fogalom{taxonomia} ...
+\end{definicio}
+
+Az ontológia kifejezésre sok különböző definíció létezik. Az informatikában általában az alábbihoz hasonló módon definiálják:
+
+\begin{definicio}
+	Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
+\end{definicio}
+
+\todo{RDF}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -391,7 +419,7 @@ Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók �
 
 \subsection{Struktúramodellezési technikák}
 
-
+A struktúramodellek definiálására és fejlesztésére különböző technikák léteznek. A ... említettük a top-down és a bottom up tervezés. Itt két további, általánosan alkalmazható technikát mutatunk be.
 
 \subsubsection{Tervezési minták}
 
@@ -426,6 +454,10 @@ Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-
 \subsection{Bináris relációk tulajdonságai}
 
 A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha ismerjük a kétváltozós relációkon értelmezett tulajdonságokat~\cite{wiki:relacio}.
+
+\begin{tipp}
+	Az elnevezések egyezése nem véletlen, a \fogalom{ketvaltozos-relacio} egy alesete a \fogalom{relacio} fogalomnak.
+\end{tipp}
 
 %http://math.stackexchange.com/questions/65102/if-a-relation-is-symmetric-and-transitive-will-it-be-reflexive
 
@@ -469,23 +501,13 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 
 A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: \fogalom{reflexivitas}, \fogalom{szimmetria} stb.~\cite{wiki:relacio}. 
 
-\subsection{Ontológia}
-
-Az ontológia kifejezésre sok különböző definíció létezik. Az informatikában általában az alábbihoz hasonló módon definiálják:
-
-\begin{definicio}
-Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
-\end{definicio}
-
-\todo{RDF}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Ajánlott irodalom}
 
-A gráfelmélettel behatóan foglalkozik a \bszketto tantárgy és Fleiner Tamás jegyzete~\cite{FleinerJegyzet}. Különböző gráfalgoritmusokkal -- pl. \fogalom{legrovidebb-ut} és minimális összsúlyú \fogalom{feszitofa} keresésére -- az \algel tárgy foglalkozik. További keresőalgoritmusok a \mestersegesintelligencia tárgyban szerepelnek.
+A gráfelmélettel behatóan foglalkozik a \bszketto tantárgy és Fleiner Tamás jegyzete~\cite{FleinerJegyzet}. Különböző gráfalgoritmusokat mutat be -- pl. \fogalom{legrovidebb-ut} és minimális összsúlyú \fogalom{feszitofa} keresésére -- az \algel tárgy. További keresőalgoritmusok a \mestersegesintelligencia tárgyban szerepelnek.
 
-Olvasmányos, jól érthető összefoglalót ad az UML nyelvről Martin Fowler ,,UML Distilled'' című könyve~\cite{fowler1997uml}.
+Olvasmányos, jól érthető összefoglalót ad az UML nyelvről Martin Fowler ,,UML distilled'' című könyve~\cite{fowler1997uml}.
 
 A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
 
