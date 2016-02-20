@@ -48,10 +48,6 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 	Vizsgáljuk meg például Budapest metróhálózatát. Az egyszerűség kedvéért a példában  a hálózatnak csak a Nagykörúton és az azon belüli részével foglalkozunk (\ref{fig:budapest-metrohalozat-nagykorut-terkep}. ábra).
 \end{pelda}
 
-	
-	
-%	\remofigscaleframed{metro-terkep-nagykorut}{Budapest metróhálózata a Nagykörúton belül. TODO forrás}{1.0}
-
 	A metróhálózat könnyen leképezhető egy gráfra, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező \fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf} \aref{fig:budapest-metrohalozat-nagykorut-egyszeru}. ábrán látható.
 
 	\begin{figure}[H]
@@ -73,17 +69,17 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 
 %	\remofigscaleframed{budapest-metrohalozat-nagykorut-egyszeru}{Budapest metróhálózata a Nagykörúton belül, egyszerű gráfként ábrázolva}{\yedscale}
 
-	\begin{kisdefinicio}
-		A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
-	\end{kisdefinicio}
-	
-	\begin{kisdefinicio}
-		\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa).
-	\end{kisdefinicio}
-	
-	\begin{kisdefinicio}
-		Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
-	\end{kisdefinicio}
+%	\begin{kisdefinicio}
+%		A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
+%%	\end{kisdefinicio}
+%	
+%%	\begin{kisdefinicio}
+%		\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa).
+%%	\end{kisdefinicio}
+%	
+%%	\begin{kisdefinicio}
+%		Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
+%	\end{kisdefinicio}
 
 	A modellünk segítségével választ kaphatunk például a következő kérdésekre:
 	
@@ -108,100 +104,113 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 	\begin{figure}[H]
 		\begin{subfigure}[b]{0.5\textwidth}
 			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elcimkezett}
-			\caption{A gráf kiterjesztése élcímkékkel.}
+			\caption{A gráf élcímkékkel kiegészítve.}
 			\label{fig:budapest-metrohalozat-nagykorut-elcimkezett}
 		\end{subfigure}
 		~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
 		%(or a blank line to force the subfigure onto a new line)
 		\begin{subfigure}[b]{0.5\textwidth}
 			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elsulyozott}
-			\caption{A gráf kiterjesztése élsúlyokkal. TBD}
+			\caption{A gráf élsúlyokkal kiegészítve.}
 			\label{fig:budapest-metrohalozat-nagykorut-elsulyozott}
 		\end{subfigure}
 		\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
 	\end{figure}
 	
-	\Aref{fig:budapest-metrohalozat-nagykorut-elsulyozott}. ábrán élsúlyokkal jelöltük az egyes megállók között menetidőt. Ezek ismeretében meghatározható a Kossuth Lajos tér és a Kálvin tér közötti út menetrend szerinti időtartama.
-	
-	%	\remofigscaleframed{budapest-metrohalozat-nagykorut}{Budapest metróhálózata élcímkézett gráfként}{\yedscale}
-	
-	\begin{kisdefinicio}
-		Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
-	\end{kisdefinicio}
+%	\begin{kisdefinicio}
+%		Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
+%	\end{kisdefinicio}
 
-	A második kérdés megválaszolásához az egyes megállók közötti útidőt kell jellemeznünk. Ehhez vegyünk fel \fogalomragozva{elsuly}{élsúlyokat} a gráfba.
-	
-	\begin{kisdefinicio}
-		A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
-	\end{kisdefinicio}
+	A második kérdés megválaszolásához az egyes megállók közötti útidőt kell jellemeznünk. Ehhez vegyünk fel \fogalomragozva{elsuly}{élsúlyokat} a gráfba. \Aref{fig:budapest-metrohalozat-nagykorut-elsulyozott}. ábrán élsúlyokkal jelöltük az egyes megállók között menetidőt. Ezek ismeretében meghatározható a Kossuth Lajos tér és a Kálvin tér közötti út menetrend szerinti időtartama. Ez a modell arra is alkalmas, hogy meghatározzuk a legrövidebb utat a két csomópont között, például a \fogalom{Dijsktra-algoritmus} segítségével.
+		
+%	\begin{kisdefinicio}
+%		A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
+%	\end{kisdefinicio}
 	
 	A metróhoz hasonlóan sok rendszer jól modellezhető hálózattal: az élőlények táplálkozási lánca, az egyes személyek közösségi hálója, az úthálózat,  telekommunikációs hálózatok stb.
 	
-% Határozzuk meg a legrövidebb utat a két csomópont között, például a \fogalom{Dijsktra-algoritmus} segítségével.
-
-\clearpage
 
 \subsection{Hierarchikus rendszerek}
 
 \begin{pelda}
-	Szervezési okokból Budapestet 23 kerületre osztották, amelyek további városrészekből állnak.\footnote{\url{https://hu.wikipedia.org/wiki/Budapest_v\%C3\%A1rosr\%C3\%A9szeinek_list\%C3\%A1ja}} A metróhálózat megálló különböző városrészekben találhatók. 
+	Szervezési okokból Budapestet 23 kerületre osztották, amelyek további városrészekből állnak. %\footnote{\url{https://hu.wikipedia.org/wiki/Budapest_v\%C3\%A1rosr\%C3\%A9szeinek_list\%C3\%A1ja}} A metróhálózat megálló különböző városrészekben találhatók. 
 	Melyik városrészben van az Opera metrómegállója? Melyik városrészben van a legtöbb metrómegálló? Ezekhez hasonló kérdésekre úgy tudunk hatékonyan válaszolni, ha készítünk egy \fogalomragozva{hierarchikus-modell}{hierarchikus modellt} a problémáról.
 \end{pelda}
 
-Készítsünk modellt, amely ábrázolja Budapest, a kerületek, a városrészek és a metrómegállók viszonyát.
-
 \remofigscale{budapest-keruletek-varosreszek-metromegallok}{Budapest kerületei, városrészei és metrómegállói (részleges modell)}{0.5}
 
-\Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modellje négy szintet tartalmaz.
+Készítsünk modellt, amely ábrázolja Budapest, a kerületek, a városrészek és a metrómegállók viszonyát. \Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modellje négy szintet tartalmaz:
 
 \begin{enumerate}
-	\item Az első szinten egyetlen elem, Budapest található.
-	\item A második szinten a város kerületei szerepelnek.	
+	\item Az első szinten a hierarchia legfelső eleme, Budapest szerepel.
+	\item A második szinten a város kerületei találhatók.
 	\item A harmadik szinten az egyes városrészek vannak.
 	\item A negyedik szinten a metrómegállók találhatók.
 \end{enumerate}
 
-Látható, hogy a hierarchikus modellt is ábrázolhatjuk gráfként. A csomópontok a modell különböző szintű elemeit reprezentálják, míg az élek a \fogalomragozva{tartalmazas}{része} viszonyt fejezik ki, például az Opera megálló a VI.~kerület része. A gráf \fogalomragozva{gyoker-csomopont}{gyökér csomópontja} a hiearchiában legmagasabban szereplő elem, Budapest.
+Látható, hogy a hierarchikus modellt is ábrázolhatjuk gráfként. A csomópontok a modell különböző szintű elemeit reprezentálják, míg az élek a \fogalomragozva{tartalmazas}{része} viszonyt fejezik ki, például az Opera megálló a VI.~kerület része. A gráf \fogalomragozva{gyoker-csomopont}{gyökér csomópontja} a hierarchiában legmagasabban szereplő elem, Budapest.
 
 Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, hogy egy elem tartalmazza a szülő elemét, ezért a hierarchikus modelleket reprezentáló gráfok körmentesek. A gyökér elemet leszámítva minden elemnek van szülője, tehát a gráf összefüggő is, így a hierarchikus modellek \fogalomragozva{fa-graf}{fa gráffal} ábrázolhatók.
 
-
-\begin{kisdefinicio}
-	%azok a gráfok, amelyekben nem található bizonyos értelemben vett kört alkotó élsorozat. A kör definiálásához először szükség van a séta definíciójára.
-	
-	A \fogalom{seta} szomszédos csúcsok és élek váltakozó sorozata, mely csúccsal kezdődik és csúcsban végződik. %Ha egy séta során egy gráfelemet sem érintünk többször, útról beszélünk, tehát
-	Az \fogalom{ut} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik. A \fogalom{kor} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik. %Körről beszélünk, ha egy út során ugyanoda érünk vissza, ahonnan elindultunk.	
-	%Ezek ismeretében már beszélhetünk körmentes gráfokról.
-	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.) %Az \fogalom{erdo} gráfot egyes források \emph{ligetnek} nevezik.
-	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
-
-	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
-	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
-\end{kisdefinicio}
+%\begin{kisdefinicio}
+%	%azok a gráfok, amelyekben nem található bizonyos értelemben vett kört alkotó élsorozat. A kör definiálásához először szükség van a séta definíciójára.
+%	A \fogalom{seta} szomszédos csúcsok és élek váltakozó sorozata, mely csúccsal kezdődik és csúcsban végződik. %Ha egy séta során egy gráfelemet sem érintünk többször, útról beszélünk, tehát
+%	Az \fogalom{ut} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik. A \fogalom{kor} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik. %Körről beszélünk, ha egy út során ugyanoda érünk vissza, ahonnan elindultunk.	
+%	%Ezek ismeretében már beszélhetünk körmentes gráfokról.
+%	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.) %Az \fogalom{erdo} gráfot egyes források \emph{ligetnek} nevezik.
+%	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
+%
+%	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
+%	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
+%\end{kisdefinicio}
 
 
-\begin{megjegyzes}
-	A fa struktúrában a gráf élei \emph{implicit módon} jelölik a tartalmazási hierarchiát.
-	
-	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{explicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes téglalapok közötti tartalmazás reprezentálja a modellben szereplő tartalmazási viszonyt.
-	
-	\begin{center}
-		\includegraphics[scale=0.45]{budapest-explicit-tartalmazas}
-	\end{center}
-\end{megjegyzes}
+%\begin{megjegyzes}
+%	A fa struktúrában a gráf élei \emph{implicit módon} jelölik a tartalmazási hierarchiát.
+%	
+%	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{explicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes téglalapok közötti tartalmazás reprezentálja a modellben szereplő tartalmazási viszonyt.
+%	
+%	\begin{center}
+%		\includegraphics[scale=0.45]{budapest-explicit-tartalmazas}
+%	\end{center}
+%\end{megjegyzes}
 
-\subsection{Attribútumok}
+\subsection{Tulajdonságok}
+
+
+
+
+\fogalom{attributum}
+
+\fogalom{jellemzo}
 
 \fogalom{parcialis-fuggveny}
+
+Egy modellelem tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} írjuk le. (Gráf modellek esetén a modellelemek lehetnek a modell csomópontjai és élei is.)
+
+Különböző modellelemekre az egyes jellemzők más-más értéket vehetnek fel (de nem szükségszerűen térnek el). A jellemzők nem is feltétlenül értelmezettek minden modellelemre (ún. parciális függvényként írhatóak le a matematika nyelvén).
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Struktúramodellezés}
 
-Ahogy \az+\refstruc{sec:motivacio} példáiban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze.
+Ahogy \az+\refstruc{sec:motivacio} példáiban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze, beleértve az egyes elemek típusát, a közöttük lévő kapcsolatokat és az elemek tulajdonságait.
 
 \begin{definicio}
 	A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
+\end{definicio}
+
+
+
+A jellemzők között gyakran kitüntetünk egyet, a típust. Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
+
+\begin{definicio}
+	A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
 \end{definicio}
 
 
@@ -247,24 +256,14 @@ A bottom-up modellezés jellemzői:
 
 \begin{itemize}
 	\item[$\oplus$] A rendszer részei önmagukban kipróbálhatók, tesztelhetők
-	\item[$\oplus$] Részleges készültségnél könnyebben előállítható a rendszer prototípusa.
+	\item[$\oplus$] Részleges készültségnél könnyebben előállítható a rendszer prototípusa
 	\item[$\ominus$] Nem látszik előre a rész szerepe az egészben
 \end{itemize}
 
 
-\section{Tulajdonságmodellezés}
 
-Egy modellelem (gráfok esetén tipikusan a modell csomópontjai) tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} jellemezzük. Különböző modellelemekre az egyes jellemzők más-más értéket vehetnek fel (de nem szükségszerűen térnek el). A jellemzők nem is feltétlenül értelmezettek minden modellelemre (ún. parciális függvényként írhatóak le a matematika nyelvén).
 
-A jellemzők között gyakran kitüntetünk egyet:
-
-\begin{definicio}
-A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
-\end{definicio}
-
-Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
-
-\subsection{Táblázatos ábrázolás}
+\subsection{Jellemzők}
 
 A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomragozva{relacio}{relációkban}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
 
@@ -273,11 +272,12 @@ A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A táblázat
 \end{definicio}
 
 
-Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \textsf{NA} (not applicable, not available) rövidítéssel vagy (különösen az adatbázisokban) \textsf{null} értékkel jellemezzük.
+Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \rovidites{NA} (\roviditesangolul{NA}) rövidítéssel vagy %(különösen az adatbázisokban)
+\textsf{null} értékkel jellemezzük.
 
 \subsubsection{Műveletek}
 
-A relációkon most két alapműveletet definiálunk, ezek a \fogalom{szures} (relációalgebrában \fogalom{szelekcio}) és a \fogalom{vetites} (relációalgebrában \fogalom{projekcio}). Ezekkel a műveletekkel a modellünknek egy-egy nézetét állíthatjuk elő.
+A relációkon most két alapműveletet definiálunk, ezek a \fogalom{szures} (relációalgebrában \fogalom{szelekcio}) és a \fogalom{vetites} (relációalgebrában \fogalom{projekcio}). Ezekkel a műveletekkel a modellünknek egy-egy \fogalomragozva{nezet}{nézetét} állíthatjuk elő.
 
 \paragraph{Szűrt nézet}
 
@@ -289,7 +289,7 @@ A relációkon most két alapműveletet definiálunk, ezek a \fogalom{szures} (r
 \paragraph{Vetített nézet}
 
 \begin{definicio}
-	\Fogalom{vetites} során a modell egyes jellemzőit elhagyjuk a relációból. Fontos, hogy az esetleg létrejövő üres sorokat is elhagyjuk. \todo{formalisan is irjuk le}
+	\Fogalom{vetites} során a modell egyes jellemzőit elhagyjuk a relációból. Fontos, hogy az esetleg létrejövő üres sorokat is elhagyjuk. \todo{formalisan is irjuk le: lehet olyan vetites is, ahol nem hagyunk el jellemzoket}
 \end{definicio}
 
 
@@ -299,7 +299,7 @@ A relációkon most két alapműveletet definiálunk, ezek a \fogalom{szures} (r
 A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
 \end{definicio}
 
-Az elsőre talán furcsának ható definíció tulajdonképpen egy egyszerű fogalmat vezet be: a típusgráfban a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel ..., az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. 
+A típusgráfban tehát a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel ..., az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. 
 
 A típusgráf egy rendszer \fogalomragozva{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
 
@@ -311,7 +311,9 @@ Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa
 
 \section{Összefoglalás}
 
-\fogalom{struktura-alapu-modellezes}, . A következő fejezetekben a \fogalomragozva{viselkedes-alapu-modellezes}{viselkedés alapú modellezést} és annak formalizmusait mutatjuk be.
+A fejezetben bemutattuk \fogalom{struktura-alapu-modellezes} motivációját, a használt formalizmusukat és azok alkalmazásait. Ismertettük \fogalomragozva{tipus}{típusok} fontosságát és a típusrendszer ábrázolásának lehetőségeit.
+
+A következő fejezetekben a \fogalomragozva{viselkedes-alapu-modellezes}{viselkedés alapú modellezést} és annak formalizmusait mutatjuk be.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -366,19 +368,11 @@ Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók �
 
 \subsubsection{Tervezési minták}
 
-\fogalom{objektum-orientalt}
-
-\fogalomragozva{tervezesi-minta}{tervezési minták} (\fogalomragozva{tervezesi-minta}{design patterns}) 
-
-\fogalomragozva{szerkezeti-minta}{szerkezeti minták} (\fogalomragozva{szerkezeti-minta}{structural patterns})
-
-
-
-A tervezési mintákkal a \sznikak tárgy foglalkozik.
+Az \fogalom{objektum-orientalt} tervezés során gyakran előforduló problémákra különböző \fogalomragozva{tervezesi-minta}{tervezési minták} (\fogalomragozva{tervezesi-minta}{design patterns}) léteznek. A tervezési minták között külön szerepet kapnak a rendszer struktúráját leíró \fogalomragozva{szerkezeti-minta}{szerkezeti minták} (\fogalomragozva{szerkezeti-minta}{structural patterns}). A tervezési mintákkal bővebben a \sznikak tárgy foglalkozik.
 
 \subsubsection{Refaktoring}
 
-A dekompozícióhoz, azaz faktoringhoz szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszerek, programkódok (vagy modellek) olyan átalakítását értjük, amelynek sorána megfigyelhető működés változatlan marad, de a kapott programkód (modell) olvashatóbb, érthetőbb, karbantarthatóbb lesz.
+A \fogalomragozva{dekompozicio}{dekompozícióhoz}, azaz \fogalomragozva{faktoring}{faktoringhoz} szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszereket definiáló programkódok vagy modellek átalakítását értjük. A refaktoring lényege, hogy az átalakítás során a rendszer megfigyelhető működése változatlan marad, de a kapott programkód vagy modell érthetőbb, karbantarthatóbb lesz.
 
 \subsection{Struktúramodellező eszközök és vizualizáció}
 
@@ -421,7 +415,7 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 \end{definicio}
 
 \begin{pelda}
-	\remofigscaleframedwhite{tranzitivitas}{Az \emph{egyenlő} ($=$) és a \emph{kisebb} ($<$) relációk gráfon ábrázolva}{\yedscale}
+	\remofigscaleframed{tranzitivitas}{Az \emph{egyenlő} ($=$) és a \emph{kisebb} ($<$) relációk gráfon ábrázolva}{\yedscale}
 
 	Tranzitív relációk:
 	\begin{itemize}
@@ -472,8 +466,5 @@ Barabási-Albert László magyar fizikus nemzetközileg elismert kutatója a kom
 
 %Az osztályok és prototípusok közötti elvi különbséget mutatja be Antero Taivalsaari, a Nokia Research fejlesztőjének 1996-os cikke~\cite{taivalsaari1996classes}.
 
-\roviditesangolulkifejtve{SQL}
-
-\fogalom{azonosito} (\fogalomragozva{elsodleges-kulcs}{elsődleges kulcsok})
-
-
+%\roviditesangolulkifejtve{SQL}
+%\fogalom{azonosito} (\fogalomragozva{elsodleges-kulcs}{elsődleges kulcsok})
