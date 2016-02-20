@@ -24,7 +24,7 @@
 \usepackage{amssymb,amsmath,amsthm}
 \usepackage{graphicx,xcolor}
 \usepackage{listings}
-\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \usepackage[magyar]{babel}
 \usepackage{multicol}
 \usepackage{multirow}
@@ -140,11 +140,17 @@
 \input{include/tikz-settings}
 \input{include/hypersetup}
 
-\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=gray!20] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
-\newenvironment{tipp}{\begin{mdframed}[backgroundcolor=green!20] \textbf{Tipp.}}{\end{mdframed}}
-\newenvironment{feladat}{\begin{mdframed}[backgroundcolor=red!20] \textbf{Feladat.}}{\end{mdframed}}
-\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=yellow!20] \textbf{Definíció.}}{\end{mdframed}}
-\newenvironment{pelda}{\begin{mdframed}[backgroundcolor=orange!20] \textbf{Példa.}}{\end{mdframed}}
+%\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=gray] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
+\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=white] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
+
+\definecolor{SpringGreen}{HTML}{C6DC67}
+\newenvironment{tipp}{\begin{mdframed}[backgroundcolor=SpringGreen] \textbf{Tipp.}}{\end{mdframed}}
+
+\newenvironment{feladat}{\begin{mdframed}[backgroundcolor=blue!20] \textbf{Feladat.}}{\end{mdframed}}
+
+\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=white] \textbf{Definíció.}}{\end{mdframed}}
+
+\newenvironment{pelda}{\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}}
 
 % \iflabeldef parancs
 \newcommand{\iflabeldef}[3]{\makeatletter\ifcsdef{r@#1}{#2}{#3}\makeatother}

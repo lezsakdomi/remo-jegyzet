@@ -9,7 +9,8 @@
 % - kiszolgáló rendszer top-down, bottom-up tervezése (mobil kliens, tömegközl. integráció, adatbázis stb.)
 % - gráfként reprezentált fuvarok, kocsik, szakaszok, utasok, sofőrök stb.
 
-\todo[inline]{kifejteni azt, hogy lehet logikai és fizikai felépítés alapján is modellezni.
+\begin{megjegyzes}
+	kifejteni azt, hogy lehet logikai és fizikai felépítés alapján is modellezni.
 	
 	- Fizikai/architektúrális egységek --> moduláris struktúra hoz létre, újrahasznosítható részekkel.
 	
@@ -17,7 +18,8 @@
 	
 	Pl. dedikált eszközt készítünk, amikor van egy rendszermenedzsment problémám és írok rá egy szkriptet. A másik megoldás lenne, hogy behozunk egy rendszermenedzsment eszközt és annak az újrahasznosítható komponenseit alkalmazzuk.
 	
-	Jó lenne építészeti példát behozni.}
+	Jó lenne építészeti példát behozni.
+\end{megjegyzes}
 
 Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszer egészével kapcsolatos összetett problémákat megválaszoljunk, fontos, hogy tudjuk ezekre a kérdésekre a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
 
@@ -64,7 +66,7 @@ A struktúramodell egybeesik a fizikai valósággal. Nincs mindig így!
 	
 	\remofigscaleframedwhite{budapest-keruletek-varosreszek-metromegallok}{Budapest kerületei, városrészei és metrómegállói (részleges modell)}{\yedscale}
 	
-	\Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modell négy szintet tartalmaz:
+	\Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modellje négy szintet tartalmaz:
 	
 	\begin{enumerate}
 		\item Az első szinten egyetlen elem, \emph{Budapest} található.
@@ -92,6 +94,14 @@ Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható
 	A \fogalom{dekompozicio} (\fogalom{faktoring}) egy összetett probléma vagy rendszer kisebb részekre bontása, amelyek könnyebben érthetők, fejleszthetők és karbantarthatók.
 \end{definicio}
 
+
+\begin{megjegyzes}
+A fa struktúra \emph{implicit módon} jelöli a tartalmazási hierarchiát.
+
+A tartalmazási hierarchia ábrázolható \emph{explicit módon} is: 
+
+\remofigscaleframed{budapest-explicit-tartalmazas}{\Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} tartalmazási hierarchiája explicit módon ábrázolva}{\yedscale}
+\end{megjegyzes}
 
 A rendszer így kapott egyes komponensei (részrendszerei) gyakran további dekompozícióval még kisebb részekre bonthatóak. Természetesen a dekompozíció során ügyelnünk kell arra, hogy az egyes részekből visszaállítható legyen az eredeti rendszer, különben a kapott strukturális modellünk hiányos.
 
@@ -241,10 +251,11 @@ Ez elérhetőségvizsgálatra gyakran elemi bejáróalgoritmusokat használunk, 
 
 \paragraph{Transzformációk}
 
-\begin{itemize}
-\item \Fogalom{szures-eltipusra}: gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
-\end{itemize}
+\begin{definicio}
+\Fogalom{szures-eltipusra}: gyakran csak bizonyos éltípus(ok)ra van szükségünk. Egy $G = (V, E)$ gráf adott $c_1, \dots, c_n$ élcímkékre szűrt részgráfja $G' = (V, E)$, ahol $V$ a csomópontok változatlan halmaza, míg $E'$ azon $e$ élek halmaza, ahol $e$ címkéje eleme a $c_1, \dots, c_n$ halmaznak.
+\end{definicio}
 
+\fogalom{graftranszformacio}
 
 
 \section{Tulajdonságmodellezés}
