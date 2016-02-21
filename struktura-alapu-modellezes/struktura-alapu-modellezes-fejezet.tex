@@ -256,18 +256,18 @@ A strukturális modellre az alábbi tömör definíciót adhatjuk.
 
 A következőkben a korábbi példákra építve bemutatjuk a struktúramodellezés elméleti hátterét és precízen definiáljuk a szükséges fogalmakat.
 
-\begin{kisdefinicio}
+\subsection{Típusok}
+
+\begin{kisdefiniciok}
 	A definíciók támaszkodnak a gráfelmélet alapjaira, ezért röviden összefoglaljuk a felhasznált definíciókat.
 	
 	A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
 	% Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
-
+	
 	\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa). Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
 	
-	A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
-\end{kisdefinicio}
-
-\subsection{Típusok}
+	%A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
+\end{kisdefiniciok}
 
 Láthattuk, hogy a típusok meghatározzák, hogy az egyes modellelemek milyen kapcsolatban lehetnek egymással és milyen tulajdonságokkal jellemezhetjük őket.
 
@@ -297,10 +297,21 @@ Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa
 
 \subsection{Hierarchia}
 
+\begin{kisdefiniciok}
+	A \fogalom{seta} szomszédos csúcsok és élek váltakozó sorozata, mely csúccsal kezdődik és csúcsban végződik. %Ha egy séta során egy gráfelemet sem érintünk többször, útról beszélünk, tehát
+	Az \fogalom{ut} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik. A \fogalom{kor} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik. %Körről beszélünk, ha egy út során ugyanoda érünk vissza, ahonnan elindultunk.	
+	%Ezek ismeretében már beszélhetünk körmentes gráfokról.
+	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.)
+	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
+	
+	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
+	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
+\end{kisdefiniciok}
+
 Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható elő.
 
 \begin{definicio}
-	A \fogalom{dekompozicio} (\fogalom{faktoring}) egy összetett probléma vagy rendszer kisebb részekre bontása, amelyek könnyebben érthetők, fejleszthetők és karbantarthatók.
+	A \fogalom{dekompozicio} (\fogalom{faktoring}) egy rendszer kisebb \fogalomragozva{komponens}{komponensekre} bontása, amelyek könnyebben érthetők, fejleszthetők és karbantarthatók.
 \end{definicio}
 
 A rendszer így kapott egyes komponensei (részrendszerei) gyakran további dekompozícióval még kisebb részekre bonthatóak. Természetesen a dekompozíció során ügyelnünk kell arra, hogy az egyes részekből visszaállítható legyen az eredeti rendszer, különben a kapott strukturális modellünk hiányos.
@@ -318,23 +329,14 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 
 A hierarchikus modellek körmentes gráfot alkotnak.
 
-\begin{kisdefinicio}
-	A \fogalom{seta} szomszédos csúcsok és élek váltakozó sorozata, mely csúccsal kezdődik és csúcsban végződik. %Ha egy séta során egy gráfelemet sem érintünk többször, útról beszélünk, tehát
-	Az \fogalom{ut} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik. A \fogalom{kor} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik. %Körről beszélünk, ha egy út során ugyanoda érünk vissza, ahonnan elindultunk.	
-	%Ezek ismeretében már beszélhetünk körmentes gráfokról.
-	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.)
-	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
 
-	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
-	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
-\end{kisdefinicio}
 
 
 
 
 \subsection{Jellemzők}
 
-A tulajdonságokat gyakran ábrázoljuk táblázatos formában, ún. \fogalomragozva{relacio}{relációkban}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
+A tulajdonságokat gyakran ábrázoljuk táblázatos formában. A táblázatokat mögötti matematikai struktúra az ún. \fogalomragozva{relacio}{reláció}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
 
 \begin{definicio}
 A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció egy eleme a modell egy elemének, egy attribútum egy jellemzőjének felel meg. A relációkat gyakran táblázatos formában ábrázoljuk.
@@ -502,9 +504,8 @@ Az \roviditesangolulkifejtve{UML} egy általános célú modellezési nyelv az~\
 
 Az UML nyelvvel részletesen foglalkozik a \szofttech tárgy.
 
-\subsubsection{AADL}
-
-Az \roviditesangolulkifejtve{AADL} eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv~\cite{AADL}.
+%\subsubsection{AADL}
+%Az \roviditesangolulkifejtve{AADL} eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv~\cite{AADL}.
 
 \subsubsection{SysML}
 
@@ -512,9 +513,9 @@ A \roviditesangolulkifejtve{SysML} egy UML-alapú általános modellezési nyelv
 
 \subsubsection{EMF}
 
-Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \roviditesangolulkifejtve{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. \roviditesteljesenkifejtve{DSL} definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer, sikere nagyban hozzájárul az Eclipse népszerűségéhez.
+Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \roviditesangolulkifejtve{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. \roviditesteljesenkifejtve{DSL} definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer.
 
-Az Eclipse-szel és az EMF-fel foglalkozik az \eat szabadon választható tárgy.
+Az Eclipse fejlesztőkörnyezettel és az EMF keretrendszerrel foglalkozik az \eat szabadon választható tárgy.
 
 \subsubsection{RDF}
 
@@ -528,21 +529,21 @@ Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók �
 
 \subsection{Struktúramodellezési technikák}
 
-A struktúramodellek definiálására és fejlesztésére különböző technikák léteznek. A ... említettük a top-down és a bottom up tervezés. Itt két további, általánosan alkalmazható technikát mutatunk be.
+A struktúramodellek definiálására és fejlesztésére különböző technikák léteznek. A ... említettük a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} tervezést. Itt két további, általánosan alkalmazható technikát mutatunk be.
 
-\subsubsection{Tervezési mintáklatex }
+\subsubsection{Tervezési minták}
 
 Az \fogalom{objektum-orientalt} tervezés során gyakran előforduló problémákra különböző \fogalomragozva{tervezesi-minta}{tervezési minták} (\fogalomragozva{tervezesi-minta}{design patterns}) léteznek. A tervezési minták között külön szerepet kapnak a rendszer struktúráját leíró \fogalomragozva{szerkezeti-minta}{szerkezeti minták} (\fogalomragozva{szerkezeti-minta}{structural patterns}). A tervezési mintákkal bővebben a \sznikak tárgy foglalkozik.
 
 \subsubsection{Refaktoring}
 
-A \fogalomragozva{dekompozicio}{dekompozícióhoz}, azaz \fogalomragozva{faktoring}{faktoringhoz} szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során létező rendszereket definiáló programkódok vagy modellek átalakítását értjük. A refaktoring lényege, hogy az átalakítás során a rendszer megfigyelhető működése változatlan marad, de a kapott programkód vagy modell érthetőbb, karbantarthatóbb lesz.
+A \fogalomragozva{dekompozicio}{dekompozícióhoz}, azaz \fogalomragozva{faktoring}{faktoringhoz} szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során egy rendszert definiáló programkód vagy modell átalakítását értjük. A refaktoring lényege, hogy az átalakítás során a rendszer megfigyelhető működése változatlan marad, de a kapott programkód vagy modell érthetőbb, karbantarthatóbb lesz.
 
 \subsection{Struktúramodellező eszközök és vizualizáció}
 
 Gráfok automatikus megjelenítésére alkalmas pl. a GraphViz\footnote{\url{http://www.graphviz.org/}} programcsomag. Gráfok feldolgozására gyakran alkalmazzák az igraph\footnote{\url{http://igraph.org/}} programcsomagot. Manapság több gráfadatbázis-kezelő rendszer is elterjedt, pl. a Neo4j\footnote{\url{http://neo4j.com/}} és a Titan\footnote{\url{http://thinkaurelius.github.io/titan/}} rendszerek.
 
-Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io\footnote{\url{http://draw.io/}} és az Arrow Tools\footnote{\url{http://www.apcjones.com/arrows/}}. Összetettebb ábrákhoz a yEd\footnote{\url{https://www.yworks.com/products/yed}} eszközt érdemes használni. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. a Microsoft Visio vagy Microsoft PowerPoint alkalmazás.
+Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen használható online felületet biztosít a draw.io\footnote{\url{http://draw.io/}} és az Arrow Tools\footnote{\url{http://www.apcjones.com/arrows/}}. A jegyzetben szereplő ábrák a yEd eszközzel\footnote{\url{https://www.yworks.com/products/yed}} készültek. Sok információt tartalmazó gráf esetén érdemes lehet vektorgrafikus rajzoló-, ill. prezentáló eszközök, pl. a Microsoft Visio vagy Microsoft PowerPoint alkalmazás.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -605,10 +606,7 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 	\item Személyek közötti $\mathit{őse}$ reláció tranzitív, mert $\mathit{őse}(a, b)$ és $\mathit{őse}(b, c)$ esetén $\mathit{őse}(a, c)$ is fennáll. 
 	\item Személyek közötti $\mathit{ismerőse}$ reláció nem tranzitív, mert $\mathit{ismerőse}(a, b)$ és $\mathit{ismerőse}(b, c)$ esetén nem garantált, hogy $\mathit{ismerőse}(a, c)$ fennáll.
 	\end{itemize}
-\end{pelda}
-
-
-A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a relációk további tulajdonságait: \fogalom{reflexivitas}, \fogalom{szimmetria} stb.~\cite{wiki:relacio}. 
+\end{pelda} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -616,7 +614,7 @@ A Rendszermodellezés tárgynak nem témája, de érdemes megismerni a reláció
 
 A gráfelmélettel behatóan foglalkozik a \bszketto tantárgy és Fleiner Tamás jegyzete~\cite{FleinerJegyzet}. Különböző gráfalgoritmusokat mutat be -- pl. \fogalom{legrovidebb-ut} és minimális összsúlyú \fogalom{feszitofa} keresésére -- az \algel tárgy. További keresőalgoritmusok a \mestersegesintelligencia tárgyban szerepelnek.
 
-Olvasmányos, jól érthető összefoglalót ad az UML nyelvről Martin Fowler ,,UML distilled'' című könyve~\cite{fowler1997uml}.
+Olvasmányos összefoglalót nyújt az UML nyelvről Martin Fowler ,,UML distilled'' című könyve~\cite{fowler1997uml}.
 
 A tulajdonsággráfokról egy jól érthető tudományos cikk Marko Rodriguez és Peter Neubauer munkája~\cite{Rodriguez2010}. Rodriguez a Titan elosztott gráfadatbázis-kezelő rendszer egyik fő fejlesztője~\cite{Titan}, míg Neubauer a Neo4j gráfadatbázis-kezelőt fejlesztő cég alapítója~\cite{Neo4j}. Az elosztott gráfadatbázis alkalmazását, elméleti és gyakorlati kihívásait kiváló prezentációkban mutatja be~\cite{RodriguezSlides2012,RodriguezSlides2013}.
 

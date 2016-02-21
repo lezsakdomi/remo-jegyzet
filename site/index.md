@@ -16,7 +16,7 @@ A jegyzet fejezetei külön is letölthetők. Mobiltelefonon és tableten olvas�
 * [Folyamatmodellezés](folyamatmodellezes.pdf)
 * [Teljesítménymodellezés](teljesitmenymodellezes.pdf)
 * [Modellek fejlesztése](modellek-fejlesztese.pdf)
-* [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
+* [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzesemobile.pdf))
 * [Felderítő adatelemzés](felderito-adatelemzes.pdf)
 * [Szimuláció](szimulacio.pdf)
 * [Kódgenerálás](kodgeneralas.pdf)
