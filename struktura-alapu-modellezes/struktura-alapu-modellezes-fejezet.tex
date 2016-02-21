@@ -33,8 +33,7 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 Mind a természetben előforduló, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Egyes szabályszerűségek a rendszer elemei közötti kapcsolatokat, míg mások magukat az elemeket jellemzik.
 
 \subsection{Hálózatok}
-
-%\fogalomragozva{graf}{gráfok}
+\label{sec:halozatok}
 
 Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megkülönböztetjük és leírjuk az ezek közötti \fogalomragozva{kapcsolat}{kapcsolatot}.
 
@@ -46,7 +45,7 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 	Vizsgáljuk meg például Budapest metróhálózatát. Az egyszerűség kedvéért a példában  a hálózatnak csak a Nagykörúton és az azon belüli részével foglalkozunk (\ref{fig:budapest-metrohalozat-nagykorut-terkep}. ábra).
 \end{pelda}
 
-	A metróhálózat könnyen leképezhető egy gráfra, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező \fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf} \aref{fig:budapest-metrohalozat-nagykorut-egyszeru}. ábrán látható.
+	A metróhálózat könnyen leképezhető egy \fogalomragozva{graf}{gráfra}, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező \fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf} \aref{fig:budapest-metrohalozat-nagykorut-egyszeru}. ábrán látható.
 
 	\begin{figure}[H]
 		\begin{subfigure}[b]{0.5\textwidth}
@@ -64,20 +63,6 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 		\end{subfigure}
 		\caption{}\label{fig:animals}
 	\end{figure}
-
-%	\remofigscaleframed{budapest-metrohalozat-nagykorut-egyszeru}{Budapest metróhálózata a Nagykörúton belül, egyszerű gráfként ábrázolva}{\yedscale}
-
-%	\begin{kisdefinicio}
-%		A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
-%%	\end{kisdefinicio}
-%	
-%%	\begin{kisdefinicio}
-%		\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa).
-%%	\end{kisdefinicio}
-%	
-%%	\begin{kisdefinicio}
-%		Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
-%	\end{kisdefinicio}
 
 	A modellünk segítségével választ kaphatunk például a következő kérdésekre:
 	
@@ -97,7 +82,7 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 		\item A menetrend szerint \emph{hány percig tart} az út a Kossuth Lajos tér és az Astoria között?
 	\end{enumerate}
 
-	Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az első kérdéshez szükséges, hogy az egyes metróvonalakat meg tudjuk különböztetni, amit például az élek címkézésével tehetünk meg. \Aref{fig:budapest-metrohalozat-nagykorut-elcimkezett}. ábrán színekkel jelöltük a különböző élcímkéket. Induljunk ki a Fővám térről: átszállás nélkül az Astoria és a Rákóczi tér megállókat érhetjük el, míg egy átszállással elérhetjük a 3-as metró vonalán található megállókat is.
+	Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az első kérdéshez szükséges, hogy az egyes metróvonalakat meg tudjuk különböztetni, amit például az élek címkézésével tehetünk meg. \Aref{fig:budapest-metrohalozat-nagykorut-elcimkezett}. ábrán színekkel jelöltük a különböző élcímkéket. Induljunk ki a Fővám térről: átszállás nélkül az Astoria és a Rákóczi tér megállókat érhetjük el, míg egy átszállással elérhetjük az M3-as metró vonalán található megállókat is.
 
 	\begin{figure}[H]
 		\begin{subfigure}[b]{0.5\textwidth}
@@ -129,6 +114,7 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 	
 
 \subsection{Hierarchikus rendszerek}
+\label{sec:hierarhcikus-rendszerek}
 
 \begin{pelda}
 	Szervezési okokból Budapestet 23 kerületre osztották, amelyek további városrészekből állnak. %\footnote{\url{https://hu.wikipedia.org/wiki/Budapest_v\%C3\%A1rosr\%C3\%A9szeinek_list\%C3\%A1ja}} A metróhálózat megálló különböző városrészekben találhatók. 
@@ -150,17 +136,6 @@ Látható, hogy a hierarchikus modellt is ábrázolhatjuk gráfként. A csomópo
 
 Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, hogy egy elem tartalmazza a szülő elemét, ezért a hierarchikus modelleket reprezentáló gráfok körmentesek. A gyökér elemet leszámítva minden elemnek van szülője, tehát a gráf összefüggő is, így a hierarchikus modellek \fogalomragozva{fa-graf}{fa gráffal} ábrázolhatók.
 
-%\begin{kisdefinicio}
-%	%azok a gráfok, amelyekben nem található bizonyos értelemben vett kört alkotó élsorozat. A kör definiálásához először szükség van a séta definíciójára.
-%	A \fogalom{seta} szomszédos csúcsok és élek váltakozó sorozata, mely csúccsal kezdődik és csúcsban végződik. %Ha egy séta során egy gráfelemet sem érintünk többször, útról beszélünk, tehát
-%	Az \fogalom{ut} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik. A \fogalom{kor} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik. %Körről beszélünk, ha egy út során ugyanoda érünk vissza, ahonnan elindultunk.	
-%	%Ezek ismeretében már beszélhetünk körmentes gráfokról.
-%	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.) %Az \fogalom{erdo} gráfot egyes források \emph{ligetnek} nevezik.
-%	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
-%
-%	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
-%	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
-%\end{kisdefinicio}
 
 
 %\begin{megjegyzes}
@@ -178,6 +153,7 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 \remofigscale{budapest-metrohalozat-hierarchiaval}{Budapest metróhálózata és a városrészek, kerületek hierarchiája}{\yedscale}
 
 \subsection{Tulajdonságok}
+\label{sec:tulajdonsagok}
 
 \begin{pelda}
 	Melyik a legnagyobb teljesítményű jármű? Milyen jellemzőket kell rögzíteni egy újonnan beszerzett buszról? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel.
@@ -208,25 +184,71 @@ A modellünk elemei itt a táblázat sorai. A modellelemek tulajdonságait \foga
 
 \section{A struktúramodellezés elmélete}
 
-Ahogy \az+\refstruc{sec:motivacio} példáiban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze, beleértve az egyes elemek típusát, a közöttük lévő kapcsolatokat és az elemek tulajdonságait.
-
-\begin{definicio}
-	A \fogalom{strukturalis-modell} a rendszer felépítésére vonatkozó tudás.
-\end{definicio}
-
-%A jellemzők között gyakran kitüntetünk egyet, a típust. Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
-%
-%\begin{definicio}
-%	A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
-%\end{definicio}
-
-A struktúramodellezés során meghatározzuk a rendszerünkben található elemek típusait és a típusok közötti kapcsolatokat. A típusok alapján meghatározhatjuk az egyes elemekhez tartozó tulajdonságokat is. Egy rendszer strukturális modellje tehát alkalmas arra, hogy az alábbi kérdésekre (nem feltétlenül kimerítő) választ nyújtson:
+Ahogy \az+\refstruc{sec:motivacio} példáiban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze, beleértve az egyes elemek típusát, a közöttük lévő kapcsolatokat és hierarchiát, valamint az elemek tulajdonságait.
+%A struktúramodellezés során meghatározzuk a rendszerünkben található elemek típusait és a típusok közötti kapcsolatokat. A típusok alapján meghatározhatjuk az egyes elemekhez tartozó tulajdonságokat is.
+Egy rendszer strukturális modellje tehát alkalmas arra, hogy az alábbi kérdésekre (nem feltétlenül kimerítő) választ nyújtson:
 
 \begin{itemize}
 	\item Milyen elemekből áll a rendszer?
 	\item Hogyan kapcsolódnak egymáshoz az elemek?
+	\item Hogyan bontható hierarchikusan részekre a modell?
 	\item Milyen tulajdonságúak a rendszer elemei?
 \end{itemize}
+
+%A strukturális modell elkészítéséhez jellemeznünk kell a rendszerünk elemeinek aspektusait: a típusukat, az elemek közötti hierarchiát és kapcsolatokat, valamint az elemek jellemzőit.
+
+Összefoglalva, a strukturális modellre az alábbi tömör definíciót adhatjuk.
+
+\begin{definicio}
+	A \fogalom{strukturalis-modell} a rendszer felépítésére (\fogalomragozva{struktura}{struktúrájára}) vonatkozó tudás.
+\end{definicio}
+
+%A jellemzők között gyakran kitüntetünk egyet, a típust. Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
+
+A következőkben a korábbi példákra építve bemutatjuk a struktúramodellezés elméleti hátterét és precízen definiáljuk a szükséges fogalmakat.
+
+\begin{kisdefinicio}
+	A definíciók támaszkodnak a gráfelmélet alapjaira, ezért röviden összefoglaljuk a felhasznált definíciókat.
+	
+	A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
+	%		Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
+	%	\end{kisdefinicio}
+	
+	%	\begin{kisdefinicio}
+	\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa).
+	%	\end{kisdefinicio}
+	
+	%	\begin{kisdefinicio}
+	
+\end{kisdefinicio}
+
+\subsection{Típusok}
+
+Láthattuk, hogy a típusok meghatározzák, hogy az egyes modellelemek milyen kapcsolatban lehetnek egymással és milyen tulajdonságokkal jellemezhetjük őket.
+
+\begin{definicio}
+	A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
+\end{definicio}
+
+\begin{megjegyzes}
+	Jelen anyagban az egyszerűség kedvéért feltételezzük, hogy mindennek pontosan egy típusa van.
+\end{megjegyzes}
+
+
+
+
+
+\begin{definicio}
+	A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
+\end{definicio}
+
+A típusgráfban tehát a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel ..., az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. 
+
+A típusgráf egy rendszer \fogalomragozva{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
+
+A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból a típusgráf csomópontjaira \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
+
+Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak: 
 
 \subsection{Hierarchia}
 
@@ -247,19 +269,21 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 
 
 
-\subsection{Típusok}
 
-\begin{definicio}
-	A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
-\end{definicio}
 
-A típusgráfban tehát a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel ..., az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. 
+A hierarchikus modellek körmentes gráfot alkotnak.
 
-A típusgráf egy rendszer \fogalomragozva{metamodell}{metamodelljének} típusait és kapcsolatait ábrázolja.
+\begin{kisdefinicio}
+	A \fogalom{seta} szomszédos csúcsok és élek váltakozó sorozata, mely csúccsal kezdődik és csúcsban végződik. %Ha egy séta során egy gráfelemet sem érintünk többször, útról beszélünk, tehát
+	Az \fogalom{ut} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa különbözik. A \fogalom{kor} olyan séta, amely nem metszi önmagát, valamint első és utolsó csúcsa megegyezik. %Körről beszélünk, ha egy út során ugyanoda érünk vissza, ahonnan elindultunk.	
+	%Ezek ismeretében már beszélhetünk körmentes gráfokról.
+	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.)
+	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
 
-A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból a típusgráf csomópontjaira \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között -- ennek ábrázolása azonban gráfként nehézkes.
+	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
+	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
+\end{kisdefinicio}
 
-Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak: 
 
 
 
@@ -281,8 +305,11 @@ A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció 
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Nézetek}
+
+
+\section{Nézetek}
 
 A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő a \fogalom{szures} és a \fogalom{vetites} műveletekkel.
 
@@ -363,6 +390,29 @@ Az ontológia kifejezésre sok különböző definíció létezik. Az informatik
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Az objektum-orientált modell}
+
+\Fogalom{objektum-orientalt} modellezés során a világot úgy modellezzük, hogy a modellünk elemei \fogalomragozva{objektum}{objektumok}, amelyek \fogalomragozva{attributum}{attribútumokkal} rendelkeznek egymással különböző kapcsolatokat (\fogalomragozva{asszociacio}{asszociációk}) vehetnek fel. Az objektumok típusát az \fogalomragozva{osztaly}{osztályuk} határozza meg.
+
+Az objektum-orientált modell ereje abban rejlik, hogy képes a típusok, a hierarchia, a kapcsolatok és az attribútumok precíz ábrázolására.
+
+
+\begin{megjegyzes}
+	Az \roviditesmagyarul{OOP} (\rovidites{OOP}) foglalkozik az egyes osztályokon végzett műveletekkel \fogalomragozva{metodus}{metódusaival}, ill. az egyes metódusok és \fogalomragozva{mezo}{mezők} láthatóságával is.
+	
+	A \fogalom{tobbszoros-orokles} több felveti a \fogalom{gyemant-problema}
+	
+	Ezekről bővebben a \progketto, a \progharom és a \szofttech tárgyakban esik szó.
+	
+	
+\end{megjegyzes}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \section{Összefoglalás}
 
