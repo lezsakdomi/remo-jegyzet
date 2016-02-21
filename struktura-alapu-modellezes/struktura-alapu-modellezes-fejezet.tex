@@ -51,11 +51,10 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 		\begin{subfigure}[b]{0.5\textwidth}
 			\centering
 			\includegraphics[width=0.9\textwidth]{budapest-metrohalozat-nagykorut-terkep}
-			\caption{Budapest metróhálózata a Nagykörúton belül. TODO: forrást megjelölni}
+			\caption{Budapest metróhálózata a Nagykörúton belül.~\cite{BKK:metro}}
 			\label{fig:budapest-metrohalozat-nagykorut-terkep}
 		\end{subfigure}
-		~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-		%(or a blank line to force the subfigure onto a new line)
+		~
 		\begin{subfigure}[b]{0.5\textwidth}
 			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-egyszeru}
 			\caption{Budapest metróhálózata a Nagykörúton belül, egyszerű gráfként ábrázolva}
@@ -90,8 +89,7 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 			\caption{A gráf élcímkékkel kiegészítve.}
 			\label{fig:budapest-metrohalozat-nagykorut-elcimkezett}
 		\end{subfigure}
-		~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-		%(or a blank line to force the subfigure onto a new line)
+		~
 		\begin{subfigure}[b]{0.5\textwidth}
 			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elsulyozott}
 			\caption{A gráf élsúlyokkal kiegészítve.}
@@ -161,19 +159,19 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 
 Készítsünk egy modellt, ami a különböző járműveket tartalmazza. Ezt a modellt gráf helyett inkább táblázatos formában érdemes ábrázolni, így jobban áttekinthető lesz.
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|l|l|l|l|r|l|l|}
-		\hline
-		név                   & típus    & tömeg & hossz & lökettérfogat & \#motorok & telj. & nyomtáv \\ \hline\hline
-		Volvo 7700            & busz     & 18 t  & 12 m  & 9000 cm$^3$   &               & 320 LE       &         \\ \hline
-		Siemens Combino Supra & villamos & 70 t  & 54 m  &               & 8             & 800 kW       & 1800 mm \\ \hline
-		XY & villamos & a t  & b m  &               & 8             & yy kW       & 1800 mm \\ \hline
-		Alstom Metropolis     & metró    &       &       &               &               &              & 1435 mm \\ \hline
-	\end{tabular}
-	\caption{Járművek tulajdonságai.}
-	\label{tab:jarmuvek}
-\end{table}
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|l|l|l|l|l|r|l|l|}
+%		\hline
+%		név                   & típus    & tömeg & hossz & lökettérfogat & \#motorok & telj. & nyomtáv \\ \hline\hline
+%		Volvo 7700            & busz     & 18 t  & 12 m  & 9000 cm$^3$   &               & 320 LE       &         \\ \hline
+%		Siemens Combino Supra & villamos & 70 t  & 54 m  &               & 8             & 800 kW       & 1800 mm \\ \hline
+%		XY & villamos & a t  & b m  &               & 8             & yy kW       & 1800 mm \\ \hline
+%		Alstom Metropolis     & metró    &       &       &               &               &              & 1435 mm \\ \hline
+%	\end{tabular}
+%	\caption{Járművek tulajdonságai.}
+%	\label{tab:jarmuvek}
+%\end{table}
 
 A modellünk elemei itt a táblázat sorai. A modellelemek tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} írjuk le. Mint \aref{tab:jarmuvek}. táblázatban látható, különböző modellelemekre az egyes jellemzők más-más értéket vehetnek fel. Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \rovidites{NA} (\roviditesangolul{NA}) rövidítéssel vagy \textsf{null} értékkel jellemezzük. Megfigyelhetjük azonban, hogy az azonos \fogalomragozva{tipus}{típussal} rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
 

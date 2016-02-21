@@ -1,9 +1,3 @@
-\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
-%add the twoside option for printing & binding
-
-% mobile version
-%\usepackage[a5paper,top=0.5cm,bottom=0.5cm,left=0.5cm,right=0.5cm]{geometry}
-
 % http://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters
 \usepackage[raggedright]{titlesec}
 %\titlespacing*{\chapter} {0pt}{50pt}{40pt}
@@ -20,6 +14,7 @@
 \usepackage[hang]{caption}
 %\captionsetup{belowskip=0ex,aboveskip=0.5ex}
 
+\usepackage{booktabs}
 \usepackage{wrapfig}
 \usepackage{changes}
 \usepackage{fontspec}
@@ -144,7 +139,7 @@
 \input{include/remo-commands}
 %\input{include/theorem-settings}	% definíciók, tételek stílusai -- előtte szükséges tcolorbox import
 \input{include/tikz-settings}
-\input{include/hypersetup}
+%\input{include/hypersetup}
 
 %\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=gray] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
 \newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=white] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}

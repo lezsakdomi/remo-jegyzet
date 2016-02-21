@@ -3,12 +3,16 @@ DOCUMENTS = \
 	sablon \
 	bevezeto \
 	modellezes-es-metamodellezes \
+	modellezes-es-metamodellezes-mobile \
 	struktura-alapu-modellezes \
+	struktura-alapu-modellezes-mobile \
 	allapot-alapu-modellezes \
+	allapot-alapu-modellezes-mobile \
 	folyamatmodellezes \
 	teljesitmenymodellezes \
 	modellek-fejlesztese \
 	modellek-ellenorzese \
+	modellek-ellenorzese-mobile \
 	felderito-adatelemzes \
 	szimulacio \
 	kodgeneralas
