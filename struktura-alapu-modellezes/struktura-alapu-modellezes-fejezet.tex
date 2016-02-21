@@ -21,7 +21,7 @@
 %	Jó lenne építészeti példát behozni.
 %\end{megjegyzes}
 
-Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszer egészével kapcsolatos összetett problémákat megválaszoljunk, fontos, hogy tudjuk ezekre a kérdésekre a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
+Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszerünkkel kapcsolatos problémákat megválaszoljunk, fontos, hogy ezekre a kérdésekre tudjuk a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
 
 %Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
 
@@ -38,93 +38,93 @@ Mind a természetben előforduló, mind a mesterséges rendszerekben fellelhető
 Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megkülönböztetjük és leírjuk az ezek közötti \fogalomragozva{kapcsolat}{kapcsolatot}.
 
 \begin{pelda}
-	Egy nagyváros közlekedési hálózatában szövevényes rendszere az út- és sínhálózatnak, a több százezernyi járműnek és az ezeken utazó embereknek. A közlekedők mellett az infrastruktúra is folyamatosan változik a különböző fejlesztések, átalakítások és karbantartások miatt.
+	Egy nagyváros közlekedési hálózata szövevényes rendszere az út- és sínhálózatnak, a több százezernyi járműnek és az ezeken utazó embereknek. A közlekedők mozgása mellett az infrastruktúra is folyamatosan változik a különböző fejlesztések, átalakítások és karbantartások miatt.
 	
 	Egy ilyen rendszer precíz modellezése lehetetlen vállalkozás lenne, ezért helyette tipikusan olyan absztrakciókkal dolgozunk, amik az adott probléma megoldásához szükséges információkat tartalmazzák. Például az útvonalkereső alkalmazások ismerik a helyi tömegközlekedés járatait és segítséget nyújtanak abban, hogy az indulási pontunktól a célállomásig közlekedő járműveket és az azok közötti átszállási lehetőségeket listázzák.
 	
-	Vizsgáljuk meg például Budapest metróhálózatát. Az egyszerűség kedvéért a példában  a hálózatnak csak a Nagykörúton és az azon belüli részével foglalkozunk (\ref{fig:budapest-metrohalozat-nagykorut-terkep}. ábra).
+	Vizsgáljuk meg például Budapest metróhálózatát! Az egyszerűség kedvéért a példában a hálózatnak csak a Nagykörúton belüli részével foglalkozunk.
 \end{pelda}
 
-	A metróhálózat könnyen leképezhető egy \fogalomragozva{graf}{gráfra}, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező \fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf} \aref{fig:budapest-metrohalozat-nagykorut-egyszeru}. ábrán látható.
+A metróhálózat térképe \aref{fig:budapest-metrohalozat-nagykorut-terkep} ábrán látható. A térképből is látható, hogy a hálózat könnyen ábrázolható egy \fogalomragozva{graf}{gráffal}, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező %\fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf}
+gráf \aref{fig:budapest-metrohalozat-nagykorut-egyszeru}. ábrán látható.
 
-	\begin{figure}[H]
-		\begin{subfigure}[b]{0.5\textwidth}
-			\centering
-			\includegraphics[width=0.9\textwidth]{budapest-metrohalozat-nagykorut-terkep}
-			\caption{Budapest metróhálózata a Nagykörúton belül.~\cite{BKK:metro}}
-			\label{fig:budapest-metrohalozat-nagykorut-terkep}
-		\end{subfigure}
-		~
-		\begin{subfigure}[b]{0.5\textwidth}
-			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-egyszeru}
-			\caption{Budapest metróhálózata a Nagykörúton belül, egyszerű gráfként ábrázolva}
-			\label{fig:budapest-metrohalozat-nagykorut-egyszeru}
-		\end{subfigure}
-		\caption{}\label{fig:animals}
-	\end{figure}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{budapest-metrohalozat-nagykorut-terkep}
+		\caption{A metróhálózat térképe~\cite{BKK:metro}}
+		\label{fig:budapest-metrohalozat-nagykorut-terkep}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-egyszeru}
+		\caption{A metróhálózat egyszerű gráfként ábrázolva}
+		\label{fig:budapest-metrohalozat-nagykorut-egyszeru}
+	\end{subfigure}
+	\caption{Budapest metróhálózata a Nagykörúton belül.}\label{fig:animals}
+\end{figure}
 
-	A modellünk segítségével választ kaphatunk például a következő kérdésekre:
+A modellünk segítségével választ kaphatunk például a következő kérdésekre:
+
+\begin{enumerate}
+	\item Milyen megállók érhetők el a Vörösmarty térről indulva?
 	
-	\begin{enumerate}
-		\item Milyen megállók érhetők el a Vörösmarty térről indulva?
-		
-			Vizsgáljuk meg, hogy a Vörösmarty teret reprezentáló csomópontból kiindulva milyen csomópontok érhetők el. Ehhez elemi bejáróalgoritmusokat használunk, pl. \fogalomragozva{BFS}{szélességi keresést} (\rovidites{BFS}) vagy \fogalomragozva{DFS}{mélységi keresést} (\rovidites{DFS}).
-		\item Hány megállót kell utaznunk a Kossuth Lajos tér és a Kálvin tér között?
+		Vizsgáljuk meg, hogy a Vörösmarty teret reprezentáló csomópontból kiindulva milyen csomópontok érhetők el. Ehhez elemi bejáróalgoritmusokat használunk, pl. \fogalomragozva{BFS}{szélességi keresést} (\rovidites{BFS}) vagy \fogalomragozva{DFS}{mélységi keresést} (\rovidites{DFS}).
+	\item Hány megállót kell utaznunk a Kossuth Lajos tér és a Kálvin tér között?
 
-			A legrövidebb utat \fogalomragozva{BFS}{szélességi kereséssel} határozhatjuk meg.
-	\end{enumerate}
+		A legrövidebb utat \fogalomragozva{BFS}{szélességi kereséssel} határozhatjuk meg.
+\end{enumerate}
 
-	Vannak azonban olyan metróközlekedéssel kapcsolatos kérdések, amelyekhez a modell nem tartalmaz elég információt:
+Vannak azonban olyan metróközlekedéssel kapcsolatos kérdések, amelyekhez a modell nem tartalmaz elég információt:
+
+\begin{enumerate}
+	\item Milyen megállók érhetők el a Fővám térről indulva \emph{legfeljebb egy átszállással}?
+	\item A menetrend szerint \emph{hány percig tart} az út a Kossuth Lajos tér és az Astoria között?
+\end{enumerate}
+
+Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az első kérdéshez szükséges, hogy az egyes metróvonalakat meg tudjuk különböztetni, amit például az élek címkézésével tehetünk meg. \Aref{fig:budapest-metrohalozat-nagykorut-elcimkezett} ábrán színekkel jelöltük a különböző élcímkéket. Induljunk ki a Fővám térről: átszállás nélkül az Astoria és a Rákóczi tér megállókat érhetjük el, míg egy átszállással elérhetjük az M3-as metró vonalán található megállókat is.
+
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elcimkezett}
+		\caption{A gráf élcímkékkel kiegészítve.}
+		\label{fig:budapest-metrohalozat-nagykorut-elcimkezett}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elsulyozott}
+		\caption{A gráf élsúlyokkal kiegészítve.}
+		\label{fig:budapest-metrohalozat-nagykorut-elsulyozott}
+	\end{subfigure}
+	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
+\end{figure}
+
+A második kérdés megválaszolásához az egyes megállók közötti útidőt kell jellemeznünk. Ehhez vegyünk fel \fogalomragozva{elsuly}{élsúlyokat} a gráfba. \Aref{fig:budapest-metrohalozat-nagykorut-elsulyozott} ábrán élsúlyokkal jelöltük az egyes megállók között menetidőt. Ezek ismeretében meghatározható a Kossuth Lajos tér és a Kálvin tér közötti út menetrend szerinti időtartama. Ez a modell arra is alkalmas, hogy meghatározzuk a legrövidebb utat a két csomópont között, például a \fogalom{Dijsktra-algoritmus} segítségével.
+
+\begin{pelda}
+	Melyik metróvonalak között tudunk átszállni? A kérdésre választ kaphatunk a fenti modell segítségével. Nagyméretű hálózat esetén azonban már sokáig tarthat a válasz meghatározása, ezért érdemes olyan modellt készíteni, ami a válaszhoz nem szükséges részeket \fogalomragozva{absztrakcio}{absztrahálja}.
+\end{pelda}
+
+\remofigscale{metro-atszallas}{Átszállási lehetőségek a metróvonalak között a Nagykörúton belül}{\yedscale}
+
+\Aref{fig:metro-atszallas}. ábrán látható modellből azonnal kiderül, hogy mely metróvonalak között van átszállási lehetőség. A modell segítségével tehát hatékonyabban tudunk válaszolni erre a kérdésre, de a korábbi kérdésekre már nem tudnánk válaszolni ez alapján.
+
+A közlekedési hálózathoz hasonlóan sok rendszer jól modellezhető gráffal: az élőlények táplálkozási lánca, az egyes személyek közösségi hálója, az úthálózat,  telekommunikációs hálózatok stb.
 	
-	\begin{enumerate}
-		\item Milyen megállók érhetők el a Fővám térről indulva \emph{legfeljebb egy átszállással}?
-		\item A menetrend szerint \emph{hány percig tart} az út a Kossuth Lajos tér és az Astoria között?
-	\end{enumerate}
-
-	Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az első kérdéshez szükséges, hogy az egyes metróvonalakat meg tudjuk különböztetni, amit például az élek címkézésével tehetünk meg. \Aref{fig:budapest-metrohalozat-nagykorut-elcimkezett}. ábrán színekkel jelöltük a különböző élcímkéket. Induljunk ki a Fővám térről: átszállás nélkül az Astoria és a Rákóczi tér megállókat érhetjük el, míg egy átszállással elérhetjük az M3-as metró vonalán található megállókat is.
-
-	\begin{figure}[H]
-		\begin{subfigure}[b]{0.5\textwidth}
-			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elcimkezett}
-			\caption{A gráf élcímkékkel kiegészítve.}
-			\label{fig:budapest-metrohalozat-nagykorut-elcimkezett}
-		\end{subfigure}
-		~
-		\begin{subfigure}[b]{0.5\textwidth}
-			\includegraphics[width=\textwidth]{budapest-metrohalozat-nagykorut-elsulyozott}
-			\caption{A gráf élsúlyokkal kiegészítve.}
-			\label{fig:budapest-metrohalozat-nagykorut-elsulyozott}
-		\end{subfigure}
-		\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
-	\end{figure}
-	
-%	\begin{kisdefinicio}
-%		Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
-%	\end{kisdefinicio}
-
-	A második kérdés megválaszolásához az egyes megállók közötti útidőt kell jellemeznünk. Ehhez vegyünk fel \fogalomragozva{elsuly}{élsúlyokat} a gráfba. \Aref{fig:budapest-metrohalozat-nagykorut-elsulyozott}. ábrán élsúlyokkal jelöltük az egyes megállók között menetidőt. Ezek ismeretében meghatározható a Kossuth Lajos tér és a Kálvin tér közötti út menetrend szerinti időtartama. Ez a modell arra is alkalmas, hogy meghatározzuk a legrövidebb utat a két csomópont között, például a \fogalom{Dijsktra-algoritmus} segítségével.
-		
-%	\begin{kisdefinicio}
-%		A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
-%	\end{kisdefinicio}
-	
-	A metróhoz hasonlóan sok rendszer jól modellezhető hálózattal: az élőlények táplálkozási lánca, az egyes személyek közösségi hálója, az úthálózat,  telekommunikációs hálózatok stb.
-	
-
 \subsection{Hierarchikus rendszerek}
 \label{sec:hierarhcikus-rendszerek}
 
 \begin{pelda}
-	Szervezési okokból Budapestet 23 kerületre osztották, amelyek további városrészekből állnak. %\footnote{\url{https://hu.wikipedia.org/wiki/Budapest_v\%C3\%A1rosr\%C3\%A9szeinek_list\%C3\%A1ja}} A metróhálózat megálló különböző városrészekben találhatók. 
+	Budapestnek 23 kerülete van, amelyek további városrészekből állnak. %\footnote{\url{https://hu.wikipedia.org/wiki/Budapest_v\%C3\%A1rosr\%C3\%A9szeinek_list\%C3\%A1ja}} A metróhálózat megálló különböző városrészekben találhatók. 
 	Melyik városrészben van az Opera metrómegállója? Melyik városrészben van a legtöbb metrómegálló? Ezekhez hasonló kérdésekre úgy tudunk hatékonyan válaszolni, ha készítünk egy \fogalomragozva{hierarchikus-modell}{hierarchikus modellt} a problémáról.
 \end{pelda}
 
 \remofigscale{budapest-keruletek-varosreszek-metromegallok}{Budapest kerületei, városrészei és metrómegállói (részleges modell)}{0.5}
 
-Készítsünk modellt, amely ábrázolja Budapest, a kerületek, a városrészek és a metrómegállók viszonyát. \Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modellje négy szintet tartalmaz:
+Készítsünk modellt, amely ábrázolja Budapest, a kerületek, a városrészek és a metrómegállók viszonyát! \Az+\refstruc{fig:budapest-keruletek-varosreszek-metromegallok} modellje négy szintet tartalmaz:
 
 \begin{enumerate}
-	\item Az első szinten a hierarchia legfelső eleme, Budapest szerepel.
+	\item A hierarchia legfelső szintjén Budapest szerepel.
 	\item A második szinten a város kerületei találhatók.
 	\item A harmadik szinten az egyes városrészek vannak.
 	\item A negyedik szinten a metrómegállók találhatók.
@@ -134,19 +134,19 @@ Látható, hogy a hierarchikus modellt is ábrázolhatjuk gráfként. A csomópo
 
 Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, hogy egy elem tartalmazza a szülő elemét, ezért a hierarchikus modelleket reprezentáló gráfok körmentesek. A gyökér elemet leszámítva minden elemnek van szülője, tehát a gráf összefüggő is, így a hierarchikus modellek \fogalomragozva{fa-graf}{fa gráffal} ábrázolhatók.
 
+\begin{megjegyzes}
+	A fa struktúrában a gráf élei \emph{implicit módon} jelölik a tartalmazási hierarchiát.
+	
+	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{explicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes téglalapok közötti tartalmazás reprezentálja a modellben szereplő tartalmazási viszonyt.
+	
+	\begin{center}
+		\includegraphics[scale=0.45]{budapest-explicit-tartalmazas}
+	\end{center}
+	
+	\added[id=szarnyas]{Ide be is tehetünk egy (kerületeket tartalmazó térképet), az jobb példa az explicit ábrázolásra.}
+\end{megjegyzes}
 
-
-%\begin{megjegyzes}
-%	A fa struktúrában a gráf élei \emph{implicit módon} jelölik a tartalmazási hierarchiát.
-%	
-%	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{explicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes téglalapok közötti tartalmazás reprezentálja a modellben szereplő tartalmazási viszonyt.
-%	
-%	\begin{center}
-%		\includegraphics[scale=0.45]{budapest-explicit-tartalmazas}
-%	\end{center}
-%\end{megjegyzes}
-
-Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhierarchia hatékonyan ábrázolható gráfként. \Aref{fig:budapest-metrohalozat-hierarchiaval}. ábrán látható modell a metróhálózatot és a területek hiearchiáját is tartalmazza.
+Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhierarchia hatékonyan ábrázolható gráfként. \Aref{fig:budapest-metrohalozat-hierarchiaval}. ábrán látható modell \aref{fig:budapest-metrohalozat-nagykorut-elcimkezett} és a \ref{fig:budapest-keruletek-varosreszek-metromegallok}. ábrákon található metróhálózatot és a területek hierarchiáját is tartalmazza.
 
 \remofigscale{budapest-metrohalozat-hierarchiaval}{Budapest metróhálózata és a városrészek, kerületek hierarchiája}{\yedscale}
 
@@ -154,11 +154,62 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 \label{sec:tulajdonsagok}
 
 \begin{pelda}
-	Melyik a legnagyobb teljesítményű jármű? Milyen jellemzőket kell rögzíteni egy újonnan beszerzett buszról? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel.
+A közlekedési vállalat üzemen kívüli járművei járműtelepeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók és a villamosok járműtelepe a kocsiszín, a buszoké az autóbuszgarázs.
+
+Mennyi üzemanyag raktározható a legnagyobb autóbusz garázsban? Milyen garázsok vannak a XI. kerületben? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel. Építsünk modellt a problémára!
 \end{pelda}
 
-Készítsünk egy modellt, ami a különböző járműveket tartalmazza. Ezt a modellt gráf helyett inkább táblázatos formában érdemes ábrázolni, így jobban áttekinthető lesz.
+A garázsokat például az alábbi modellel írhatjuk le:
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{llrrrr}
+		\toprule
+		helyszín    & típus           & kapacitás & sínpárok száma & max. üzemanyag \\ \midrule
+		Fehér út    & kocsiszín & xx & yy & & \\
+		Kelenföld   & autóbuszgarázs  &       100 &          &       x millió \\
+		Budafok     & kocsiszín           &        50 &        5 &  \\
+		Cinkota     & autóbuszgarázs      &       100 &          &       y millió \\
+		%	Zách utca & trolibusz-telep & ..      &        yy & 
+		\bottomrule
+	\end{tabular}
+	\caption{A BKK járműtelepei (részleges modell).}
+\end{table}
+
+A modellünk elemei a táblázat sorai. A táblázat fejlécében definiált \fogalomragozva{tulajdonsag}{tulajdonságokból} (pl. helyszín, sínpárok száma) az egyes modellelemek eltérő értékeket vehetnek fel. Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve.
+
+Megfigyelhetjük azonban, hogy az azonos \fogalomragozva{tipus}{típussal} rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
+Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{járműtelep} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat. Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{járműtelep} különböző típusai esetei. Az \textsf{autóbuszgarázs} esetén a max. üzemanyagot, a \textsf{kocsiszín} esetében a sínpárok számát rögzítjük.
+
+\subsection{Összetett modell}
+
+\begin{pelda}
+	A korábbi metróhálózatot szeretnénk kiegészíteni a villamos- és buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik járműtelepen parkolnak.
+\end{pelda}
+
+\added[id=szarnyas]{Itt részletesen végig kellene vinni a példánymodell és a hozzá típusgráf tartozó kidolgozását. Előtte kérek egy sanity checket.}
+
+\remofigscale{jarmutelepek}{Típusgráf}{\yedscale}
+
+\Aref{fig:jarmutelepek}. ábra bemutatja a problémához tartozó típusgráfot. A modellen több fontos dolog is megfigyelhető:
+
+\begin{itemize}
+	\item A típushierarchia maga is egy hierarchikus modell.
+	\item Több olyan fogalom is van, aminek nincs példánya, csak a leszármazottjainak. Például a modellünkben minden vonal vagy villamosvonal vagy metróvonal. A \textsf{vonal} fogalom így \fogalom{absztrakt}.
+	\item A tulajdonságokat nem ábrázoltuk az ábrán. Erre ugyanis a gráf jellegű megjelenítés kevésbé alkalmas.
+\end{itemize}
+
+
+%\begin{megjegyzes}
+%A Zách utcai trolitelepen buszokat és trolikat is tárolnak. Alakítsuk át a modellt úgy, hogy ezt is tudja modellezni. % http://www.bkk.hu/2013/09/villamosnap-budafokon-es-nyilt-nap-a-trolitelepen/
+%\end{megjegyzes}
+
+%\begin{pelda}
+%	Melyik a legnagyobb teljesítményű jármű? Milyen jellemzőket kell rögzíteni egy újonnan beszerzett buszról? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel.
+%\end{pelda}
+%
+%Készítsünk egy modellt, ami a különböző járműveket tartalmazza. Ezt a modellt gráf helyett inkább táblázatos formában érdemes ábrázolni, így jobban áttekinthető lesz.
+%
 %\begin{table}[H]
 %	\centering
 %	\begin{tabular}{|l|l|l|l|l|r|l|l|}
@@ -172,8 +223,8 @@ Készítsünk egy modellt, ami a különböző járműveket tartalmazza. Ezt a m
 %	\caption{Járművek tulajdonságai.}
 %	\label{tab:jarmuvek}
 %\end{table}
-
-A modellünk elemei itt a táblázat sorai. A modellelemek tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} írjuk le. Mint \aref{tab:jarmuvek}. táblázatban látható, különböző modellelemekre az egyes jellemzők más-más értéket vehetnek fel. Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \rovidites{NA} (\roviditesangolul{NA}) rövidítéssel vagy \textsf{null} értékkel jellemezzük. Megfigyelhetjük azonban, hogy az azonos \fogalomragozva{tipus}{típussal} rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
+%
+%A modellünk elemei itt a táblázat sorai. A modellelemek tulajdonságait \fogalomragozva{jellemzo}{jellemzőkkel} vagy más néven \fogalomragozva{attributum}{attribútumokkal} írjuk le. Mint \aref{tab:jarmuvek}. táblázatban látható, különböző modellelemekre az egyes jellemzők más-más értéket vehetnek fel. Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve. Ezeket a cellákat gyakran az \rovidites{NA} (\roviditesangolul{NA}) rövidítéssel vagy \textsf{null} értékkel jellemezzük. Megfigyelhetjük azonban, hogy az azonos \fogalomragozva{tipus}{típussal} rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
 
 %A jellemzők nem is feltétlenül értelmezettek minden modellelemre (ún. \fogalomragozva{parcialis-fuggveny}{parciális függvényként} írhatóak le a matematika nyelvén).
 
@@ -182,20 +233,20 @@ A modellünk elemei itt a táblázat sorai. A modellelemek tulajdonságait \foga
 
 \section{A struktúramodellezés elmélete}
 
-Ahogy \az+\refstruc{sec:motivacio} példáiban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze, beleértve az egyes elemek típusát, a közöttük lévő kapcsolatokat és hierarchiát, valamint az elemek tulajdonságait.
-%A struktúramodellezés során meghatározzuk a rendszerünkben található elemek típusait és a típusok közötti kapcsolatokat. A típusok alapján meghatározhatjuk az egyes elemekhez tartozó tulajdonságokat is.
-Egy rendszer strukturális modellje tehát alkalmas arra, hogy az alábbi kérdésekre (nem feltétlenül kimerítő) választ nyújtson:
+%Ahogy \az+\refstruc{sec:motivacio} 
+
+Ahogy az eddigi példákban láttuk, a struktúramodellezés célja, hogy a rendszer felépítését jellemezze, beleértve az egyes elemek típusát, a közöttük lévő kapcsolatokat és hierarchiát, valamint az elemek tulajdonságait. Egy rendszer strukturális modellje tehát alkalmas arra, hogy az alábbi kérdésekre (nem feltétlenül kimerítő) választ nyújtson:
 
 \begin{itemize}
 	\item Milyen elemekből áll a rendszer?
 	\item Hogyan kapcsolódnak egymáshoz az elemek?
-	\item Hogyan bontható hierarchikusan részekre a modell?
+	\item Milyen hierarchia szerint épül fel a rendszer?
 	\item Milyen tulajdonságúak a rendszer elemei?
 \end{itemize}
 
 %A strukturális modell elkészítéséhez jellemeznünk kell a rendszerünk elemeinek aspektusait: a típusukat, az elemek közötti hierarchiát és kapcsolatokat, valamint az elemek jellemzőit.
 
-Összefoglalva, a strukturális modellre az alábbi tömör definíciót adhatjuk.
+A strukturális modellre az alábbi tömör definíciót adhatjuk.
 
 \begin{definicio}
 	A \fogalom{strukturalis-modell} a rendszer felépítésére (\fogalomragozva{struktura}{struktúrájára}) vonatkozó tudás.
@@ -209,15 +260,11 @@ A következőkben a korábbi példákra építve bemutatjuk a struktúramodellez
 	A definíciók támaszkodnak a gráfelmélet alapjaira, ezért röviden összefoglaljuk a felhasznált definíciókat.
 	
 	A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
-	%		Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
-	%	\end{kisdefinicio}
+	% Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
+
+	\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa). Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
 	
-	%	\begin{kisdefinicio}
-	\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa).
-	%	\end{kisdefinicio}
-	
-	%	\begin{kisdefinicio}
-	
+	A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
 \end{kisdefinicio}
 
 \subsection{Típusok}
@@ -229,7 +276,7 @@ Láthattuk, hogy a típusok meghatározzák, hogy az egyes modellelemek milyen k
 \end{definicio}
 
 \begin{megjegyzes}
-	Jelen anyagban az egyszerűség kedvéért feltételezzük, hogy mindennek pontosan egy típusa van.
+	Jelen anyagban az egyszerűség kedvéért feltételezzük, hogy a modellelemeknek pontosan egy típusa van.
 \end{megjegyzes}
 
 
@@ -302,14 +349,15 @@ A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció 
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 \section{Nézetek}
 
-A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő a \fogalom{szures} és a \fogalom{vetites} műveletekkel.
+A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő.
+
+A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}.
 
 \paragraph{Szűrt nézet}
 
@@ -334,6 +382,19 @@ A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állí
 
 
 \section{Struktúramodellezési technikák}
+
+
+Fontos gondolat: a struktúramodellezésnek többféle célja lehet.
+
+
+\begin{itemize}
+	\item Készítsünk egy adatmodellt a rendszerünkhöz, pl. egy pizzarendelő oldalon elkészítjük az adatbázis modelljét. Ezután az adatbázis a felhasználói interakcióknak megfelelően változik. Ez a modell ,,típusgráf'' része.
+	
+	\item Készítsünk a problémából egy modellt, amiből bizonyos kérdésekre választ kaphatunk. Például az alaprajzával modellezzünk egy épületet és nézzük meg, hogy bizonyos tűzvédelmi szempontoknak megfelel-e. Ez a modell ,,példánygráf'' része.
+\end{itemize}
+
+
+
 
 \subsection{Hierarchia modellezése}
 
