@@ -339,8 +339,10 @@ A hierarchikus modellek körmentes gráfot alkotnak.
 A tulajdonságokat gyakran ábrázoljuk táblázatos formában. A táblázatokat mögötti matematikai struktúra az ún. \fogalomragozva{relacio}{reláció}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
 
 \begin{definicio}
-A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció egy eleme a modell egy elemének, egy attribútum egy jellemzőjének felel meg. A relációkat gyakran táblázatos formában ábrázoljuk.
+A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció egy eleme a modell egy elemének, egy attribútum egy jellemzőjének felel meg. A reláció elemi egyediek.
 \end{definicio}
+
+A relációkat gyakran táblázatos formában ábrázoljuk. Az egyediség feltétele miatt a táblázatnak nem lehet két azonos sora.
 
 
 
@@ -359,26 +361,90 @@ A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció 
 
 A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő.
 
+\subsection{Műveletek}
+
 A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}.
 
-\paragraph{Szűrt nézet}
+\subsubsection{Szűrt nézet}
 
 \begin{definicio}
-	\Fogalom{szures} során egy feltétel mentén bizonyos sorokat elhagyunk a relációból. \todo{formalisan is irjuk le}
+	Egy \fogalomragozva{relacio}{relációból} \fogalomragozva{szures}{szűrt nézet} előállításához bizonyos feltétel menténk elhagyunk elemeket (sorokat) a relációból.
 \end{definicio}
+
+\begin{pelda}
+	Szeretnénk megtudni, hogy mely járműtelep alkalmas legalább 100 jármű befogására.
+\end{pelda}
+
+Azokra az elemekre szűrünk, amelyeknél a \textsf{kapacitás} jellemző értéke 100-nál nagyobb vagy egyenlő.
+$$\sigma_{\mathsf{kapacitás} \,\geq\, 100} (\textsf{járműtelep})$$
+
+Az eredmény:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{llrrrr}
+		\toprule
+		helyszín    & típus           & kapacitás & sínpárok száma & max. üzemanyag \\ \midrule
+		Kelenföld   & autóbuszgarázs  &       100 &          &       x millió \\
+		Cinkota     & autóbuszgarázs      &       100 &          &       y millió \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+	
+\begin{pelda}
+	Szeretnénk megtudni, hogy mely kocsiszín alkalmas legalább 100 jármű befogására.
+\end{pelda}
+
+Ehhez a feltételeket összeköthetjük a ,,logikai és'' %($\wedge$)
+operátorral:
+$$\sigma_{\mathsf{kapacitás} \,\geq\, 100 \,\wedge\,  \mathsf{típus} \,=\, \textsf{'kocsiszín'}} (\textsf{járműtelep})$$	
+
+Az eredmény:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{llrrrr}
+		\toprule
+		helyszín    & típus           & kapacitás & sínpárok száma & max. üzemanyag \\ \midrule
+		Fehér út    & kocsiszín & xx & yy & & \\
+		\bottomrule
+	\end{tabular}
+	\caption{A BKK járműtelepei (részleges modell).}
+\end{table}
+
 
 \begin{megjegyzes}
 	A relációalgebrában a \fogalom{szures} művelet neve \fogalom{szelekcio}.
 \end{megjegyzes}
 
 
-\paragraph{Vetített nézet}
+\subsubsection{Vetített nézet}
 
 \begin{definicio}
-	\Fogalom{vetites} során a modell egyes jellemzőit elhagyjuk a relációból. Fontos, hogy az esetleg létrejövő üres sorokat is elhagyjuk. \todo{formalisan is irjuk le: lehet olyan vetites is, ahol nem hagyunk el jellemzoket}
+	\Fogalom{vetites} során a modell egyes jellemzőit kiválasztjuk és a többit elhagyjuk a relációból.
 \end{definicio}
 
+\begin{pelda}
+	Olyan kimutatásra van szükségünk, ami csak az egyes járműtelepek helyszínét és kapacitását tartalmazza.
+	$$\Pi_{\textsf{helyszín, kapacitás}} (\textsf{járműtelep})$$
+\end{pelda}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\toprule
+		helyszín    & kapacitás   \\ \midrule
+		Fehér út    &        xx   \\
+		Kelenföld   &       100   \\
+		Budafok     &        50   \\
+		Cinkota     &       100   \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
 \begin{megjegyzes}
+	Érvényes vetítés művelet az is, ha a relációs összes jellemzőjét megtartjuk.
+	
 	A relációalgebrában a \fogalom{vetites} művelet neve \fogalom{projekcio}.
 \end{megjegyzes}
 
@@ -473,6 +539,33 @@ Az objektum-orientált modell ereje abban rejlik, hogy képes a típusok, a hier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Gyakorlati alkalmazások}
+
+\subsection{Grafikus felhasználói felület}
+
+Egy szoftver alkalmazás \emph{\glslink{GUI}{grafikus felhasználói felülete}} (\glslink{GUI}{GUI}) is egy hierarchikus modell.
+
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{GUI-ablak}
+		\caption{A számológép alkalmazás grafikus felülete.}
+		\label{fig:GUI-ablak}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.25]{GUI-hierarchia}
+		\caption{A komponensek hierarchiája}
+		\label{fig:GUI-hierarchia}
+	\end{subfigure}
+	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 
 \section{Összefoglalás}
@@ -483,13 +576,13 @@ A következő fejezetekben a \fogalomragozva{viselkedes-alapu-modellezes}{viselk
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Gyakorlati alkalmazások (kieg.)}
+\section{Technológiák és technikák (kieg.)}
 
 Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez kapcsolódó gyakorlati technológiát, specifikációt és eszközt. Az itt felsorolt fogalmak nem részei a számonkérésnek, gyakran előkerülnek viszont a későbbi tanulmányok és munkák során, ezért mindenképpen érdemes legalább névről ismerni őket.
 
-\subsection{Modellezési nyelvek}
+\subsection{Technológiák}
 
-A gyakorlatban sokféle modellezési nyelvet használnak, ezek közül mutatunk be most néhány elterjedtebbet.
+A gyakorlatban sokféle modellezési nyelvet és technológiát használnak, ezek közül mutatunk be most néhány elterjedtebbet.
 
 \subsubsection{UML}
 
