@@ -9,12 +9,14 @@ branches:
     - master
 script:
 - sudo apt-get update
-- sudo apt-get install -y texlive-base texlive-science texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-hungarian texlive-fonts-extra xindy
-- sudo apt-get install -y pdftk
-- ./fix-pdfs.sh
+- sudo apt-get install -y texlive-base texlive-science texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-hungarian texlive-fonts-extra xindy tex;
+# pdfcrop:
+- sudo apt-get install -y texlive-extra-utils
+#- sudo apt-get install -y pdftk
+#- ./fix-pdfs.sh
+- cd struktura-alapu-modellezes/figures/ && ./crop.sh && cd ../..
 - ./use-xindy.sh
 - make
 - ./deploy.sh
 notifications:
   slack: ftsrg:BtaOO3xw6rmfcFhEFNj6XJ29
-
