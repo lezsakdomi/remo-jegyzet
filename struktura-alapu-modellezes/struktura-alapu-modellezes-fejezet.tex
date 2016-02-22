@@ -172,9 +172,13 @@ A modellünk elemei a táblázat sorai. A táblázat fejlécében definiált \fo
 
 Megfigyelhetjük azonban, hogy az azonos %\fogalomragozva{tipus}{típussal}
 funkcióval rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
-Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{járműtelep} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat. Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{járműtelep} különböző típusnak különböző esetei. Az \textsf{autóbuszgarázs} esetén a max. üzemanyagot, a \textsf{kocsiszín} esetében a vágányhosszt rögzítjük.
+%Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{járműtelep} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat.
+%Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{járműtelep} típusnak különböző esetei.
+Mindkét típusú járműtelepnek van \textit{azonosító}, \textit{helyszín}, \textit{funkció} és \textit{kapacitás} attribútuma. Az \textsf{autóbuszgarázs} esetén a \textit{max. üzemanyag}, a \textsf{kocsiszín} esetében a \textit{vágányhossz} attribútumot rögzítjük.
 
 \subsection{Típusok}
+
+\Aref{tab:jarmutelepek}. táblázat példájában láthattuk, hogy a \textit{funkció} jellemzővel megkülönböztethetjük az egyes a telephelyeket. Ha a \textit{funkció} jellemzőt a modellelemek \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett, a \textit{max. üzemanyag} jellemző csak az \textsf{autóbuszgarázs} típusra. A típusokat felhasználhatjuk a gráfok jellemzésére is.
 
 \begin{pelda}
 	A korábbi metróhálózatot szeretnénk kiegészíteni a villamos- és buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik járműtelepen parkolnak.
@@ -182,7 +186,7 @@ Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushiera
 
 \added[id=szarnyas]{Itt részletesen végig kellene vinni a példánymodell és a hozzá típusgráf tartozó kidolgozását. Előtte kérek egy sanity checket.}
 
-\remofigscale{jarmutelepek}{Típusgráf}{\yedscale}
+\remofigscaleframed{jarmutelepek}{Típusgráf}{\yedscale}
 
 \Aref{fig:jarmutelepek}. ábra bemutatja a problémához tartozó típusgráfot. A modellen több fontos dolog is megfigyelhető:
 
@@ -244,29 +248,14 @@ Ahogy az eddigi példákban láttuk, a struktúramodellezés célja, hogy a rend
 A strukturális modellre az alábbi tömör definíciót adhatjuk.
 
 \begin{definicio}
-	A \fogalom{strukturalis-modell} a rendszer felépítésére (\fogalomragozva{struktura}{struktúrájára}) vonatkozó tudás. A strukturális modell az egyes \fogalomragozva{modellelem}{modellelemekek} közötti kapcsolatokat és típusokat definiálja. Az egyes modellelemek \fogalomragozva{egyedi}{egyediek}.
+	A \fogalom{strukturalis-modell} a rendszer felépítésére (\fogalomragozva{struktura}{struktúrájára}) vonatkozó tudás. A strukturális modell a rendszer alkotórészeire, ezek tulajdonságaira és egymással való viszonyaira vonatkozó statikus (tehát változást nem leíró) tudást reprezentál. %Az egyes modellelemek \fogalomragozva{egyedi}{egyediek}.
 \end{definicio}
 
-a strukturális modell aspektusa: fizikai (felépíts), logikai (funkció)
-
-%A jellemzők között gyakran kitüntetünk egyet, a típust. Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
+%A strukturális modell aspektusa: fizikai (felépítés), logikai (funkció)
 
 A következőkben a korábbi példákra építve bemutatjuk a struktúramodellezés elméleti hátterét és precízen definiáljuk a szükséges fogalmakat.
 
-\subsection{Tulajdonságok}
-
-\begin{kisdefiniciok}
-	A definíciók támaszkodnak a gráfelmélet alapjaira, ezért röviden összefoglaljuk a felhasznált definíciókat.
-	
-	A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
-	% Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
-	
-	\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa). Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
-	
-	%A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
-\end{kisdefiniciok}
-
-\subsubsection{Tulajdonságmodellek}
+\subsection{Tulajdonságmodell}
 
 \begin{definicio}
 	A \fogalom{jellemzo} egy, a modell által megadott \fogalom{parcialis-fuggveny}, amelyet a modellelemeken értelmezünk.
@@ -276,28 +265,34 @@ A következőkben a korábbi példákra építve bemutatjuk a struktúramodellez
 	A $H$ halmazon értelmezett \fogalom{parcialis-fuggveny} nem jelent mást, mint a $H$ valamely (nem megnevezett) részhalmazán értelmezett \fogalom{fuggveny}. Konkrét esetünkben az egyes jellemzőket a modellelemek egy-egy részére értelmezzük (nem feltétlenül az összesre).
 \end{megjegyzes}
 
-Vizsgáljuk meg a jellemzőket \aref{tab:jarmutelepek}. táblában.
+A jellemzőket gyakran táblázatos formában ábrázoljuk. Vizsgáljuk meg például \aref{tab:jarmutelepek}. táblázat jellemzőit:
 
 \begin{table}[H]
 	\centering
 	\input{struktura-alapu-modellezes/jarmutelepek}
 \end{table}
 
-Mivel az egyes telephely modellelemek helyszíne egyedi (nincs két telephely azonos helyen), ezért a továbbiakban a \textit{helyszín} jellemző értékének megnevezésével hivatkozunk az egyes modellelemekre. A \textit{kapacitás} jellemzőhöz tartozó függvény
+
+\begin{megjegyzes}
+	A tulajdonságmodell mögötti matematikai struktúra az ún. \fogalomragozva{relacio}{reláció}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik.
+\end{megjegyzes}
+
+A modellelemeket az \textit{azonosító} jellemzőjükkel különböztetjük meg egymástól. % rendelkeznek \fogalomragozva{egyedi-azonosito}{egyedi azonosítóval}.
+A \textit{kapacitás} jellemzőhöz tartozó függvény
 $\mathit{kapacitás}(e) \rightarrow n,$
-ahol $e$ egy modellelem, $n$ egy nemnegatív egész szám. 
+ahol $e$ egy modellelem azonosítója, $n$ egy nemnegatív egész szám. 
 Például
-$$\mathit{kapacitás}(\mathsf{Budafok}) = 46, \quad \mathit{kapacitás}(\mathsf{Óbuda}) = 265.$$
+$$\mathit{kapacitás}(\mathsf{T2}) = 46, \quad \mathit{kapacitás}(\mathsf{T3}) = 265.$$
 
 A \textit{funkció} jellemzőhöz tartozó függvény
 $\mathit{funkció}(e) \rightarrow t,$
-ahol $e$ egy modellelem, $t$ egy a $\{\mathsf{kocsiszín}, \mathsf{autóbuszgarázs}\}$ halmaz eleme.
+ahol $e$ egy modellelem azonosítója, $t$ egy a $\{\mathsf{kocsiszín}, \mathsf{autóbuszgarázs}\}$ halmaz eleme.
 Például
-$$\mathit{funkció}(\mathsf{Budafok}) = \mathsf{kocsiszín}, \quad \mathit{funkció}(\mathsf{Óbuda}) = \mathsf{autóbuszgarázs}.$$
+$$\mathit{funkció}(\mathsf{T2}) = \mathsf{kocsiszín}, \quad \mathit{funkció}(\mathsf{T3}) = \mathsf{autóbuszgarázs}.$$
 
 A fentiekhez hasonlóan, a \textit{vagányhossz} jellemzőhöz tartozó parciális függvény 
 $\mathit{vagányhossz}(e) \rightarrow n,$
-ahol $e$ egy modellelem, $n$ egy nemnegatív egész szám. Fontos különbség viszont, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem: a kocsiszínek esetén vesz fel értéket, az autóbuszgarázsok esetén viszont nem. Vagyis látható, hogy a \textit{vagányhossz} jellemző csak akkor vesz fel értéket, ha a \textit{funkció} attribútum értéke \textsf{kocsiszín}.
+ahol $e$ egy modellelem azonosítója, $n$ egy nemnegatív egész szám. Fontos különbség viszont az eddigiekhez képest, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem: a kocsiszínek esetén vesz fel értéket, az autóbuszgarázsok esetén viszont nem. Vagyis látható, hogy a \textit{vagányhossz} jellemző csak akkor vesz fel értéket, ha a \textit{funkció} attribútum értéke \textsf{kocsiszín}.
 
 Ha tehát a \textit{funkció} attribútumot a telephely \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett. Általánosan:
 
@@ -318,8 +313,18 @@ Egy adott $t$ típus \fogalomragozva{peldany}{példányainak} nevezzük azon mod
 
 A modellezési gyakorlatban elterjedt (de nem univerzális) megkötés, hogy az egyes elemek típusát állandónak tekintjük. Ha az elem típusa a rendszer működése során nem változhat meg, akkor olyan típust kell hozzárendelni, amely az elem teljes életciklusa során előforduló összes lehetséges jellemzővel, kapcsolattal összhangban van.
 
+\subsection{Gráfmodellek}
 
-\subsubsection{Gráfmodellek}
+\begin{kisdefiniciok}
+	A definíciók támaszkodnak a gráfelmélet alapjaira, ezért röviden összefoglaljuk a felhasznált definíciókat.
+	
+	A \fogalom{graf} egy olyan $G = (V, E)$ struktúra, ahol $V$ halmaz a csomópontok, $E$ az élek halmaza. Az élek csomópontok között futnak, \fogalom{iranyitatlan-graf} esetén az $E$ halmaz csomópontok rendezetlen $\{v_1, v_2\}$ párjaiból áll (tehát nem különböztetjük meg a $\{v_1, v_2\}$ és a $\{v_2, v_1\}$) párokat, míg \fogalom{iranyitott-graf} esetén csomópontok rendezett $(v_1, v_2)$ párjaiból.
+	% Egy gráf \fogalomragozva{egyszeru-graf}{egyszerű}, ha nem tartalmaz többszörös és hurokélet.
+	
+	\fogalomragozva{cimkezett-graf}{Címkézett gráf} esetén a gráf elemeit (csomópontjait és/vagy éleit) \fogalomragozva{cimke}{címkékkel} láthatjuk el. A címkézés célja lehet \fogalom{egyedi-azonosito} hozzárendelése vagy bizonyos tulajdonság leírása (pl. a csomópontok kapacitása, élek típusa). Ha precízen szeretnénk jellemezni a gráfot, a következő terminológiát használhatjuk: ha csak a csomópontokhoz rendelünk címkéket, \fogalomragozva{csucscimkezett-graf}{csúcscímkézett} gráfról beszélünk, míg ha csak a gráf éleihez rendelünk címkéket, \fogalomragozva{elcimkezett-graf}{élcímkézett} gráfról beszélünk. 
+	
+	%A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
+\end{kisdefiniciok}
 
 A típusok gráf jellegű modellek esetén is fontosak. A gráfmodell elemeit (külön-külön a csomópontokat és az éleket is) típusokba sorolhatjuk. A típusok meghatározzák, hogy az egyes csomópontok milyen élekkel köthetők össze.
 
@@ -378,26 +383,10 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 
 
 
-
-
-A hierarchiát reprezentáló modellek körmentes gráfot alkotnak.
-
+A hierarchiát reprezentáló modellek körmentes gráfot alkotnak, szigorú hierarchia esetén ez \fogalomragozva{fa-graf}{fa} vagy \fogalom{erdo}, megengedő hierarchia esetén \rovidites{DAG}
 
 
 
-\subsection{Jellemzők}
-
-A tulajdonságokat gyakran ábrázoljuk táblázatos formában.
-
-\begin{definicio}
-A \fogalom{tulajdonsagmodell} a modellelemeket és azok jellemzőit tartalmazza.
-\end{definicio}
-
-A tulajdonságmodellt gyakran táblázatos formában ábrázoljuk. A modellelemek egyedisége feltétele miatt a táblázatnak nem lehet két azonos sora.
-
-\begin{megjegyzes}
-A tulajdonságmodell mögötti matematikai struktúra az ún. \fogalomragozva{relacio}{reláció}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik.
-\end{megjegyzes}
 
 
 
@@ -415,21 +404,22 @@ A tulajdonságmodell mögötti matematikai struktúra az ún. \fogalomragozva{re
 
 \section{Nézetek}
 
-A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő. Idézzük fel \az+\refstruc{tab:jarmutelepek} járműtelepeket tartalmazó tulajdonságmodelljét.
+A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állíthatunk elő. 
+
+Tulajdonságmodelleken a leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}. Ezek során úgy \fogalomragozva{absztrakcio}{absztraháljuk} a modellt, hogy bizonyos modellelemeket és/vagy azok egyes jellemzőit elhagyjuk.
+
+\begin{megjegyzes}
+	A relációalgebrában a \fogalom{szures} művelet neve \fogalom{szelekcio}, a \fogalom{vetites} művelet neve \fogalom{projekcio}.
+\end{megjegyzes}
+
+\subsection{Szűrt nézet}
+
+Ismét idézzük fel \az+\refstruc{tab:jarmutelepek} járműtelepeket tartalmazó tulajdonságmodelljét.
 
 \begin{table}[H]
 	\centering
 	\input{struktura-alapu-modellezes/jarmutelepek}
-	%\caption{A BKK járműtelepei (részleges modell).}
-	%\label{tab:bkk-jarmutelepek}
 \end{table}
-
-
-\subsection{Műveletek}
-
-A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}. Ezek során úgy \fogalomragozva{absztrakcio}{absztraháljuk} a modellt, hogy bizonyos modellelemeket és/vagy azok egyes jellemzőit elhagyjuk.
-
-\subsubsection{Szűrt nézet}
 
 \begin{definicio}
 	A \fogalomragozva{szures}{szűrés} művelet során a modell elemein kiértékelünk egy szűrési feltételt és azokat tartjuk meg, amelyek megfelelnek a feltételnek.
@@ -437,131 +427,143 @@ A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}.
 
 Tulajdonságmodellek esetén a szűrés az elhagyott modellelemek a modell sorai lehetnek, gráf jellegű modellek esetén a gráf csúcsai vagy élei.
 
+\subsubsection{Tulajdonságmodell szűrése}
+
 \begin{pelda}
 	Szeretnénk megtudni, hogy mely járműtelep alkalmas legalább 100 jármű befogására.
 \end{pelda}
 
 Azokra az elemekre szűrünk, amelyeknél a \textsf{kapacitás} jellemző értéke 100-nál nagyobb vagy egyenlő.
-$$\sigma_{\mathsf{kapacitás} \,\geq\, 100} (\textsf{járműtelep})$$
+%$$\sigma_{\mathsf{kapacitás} \,\geq\, 100} (\textsf{járműtelep})$$
 
 Az eredmény:
 \begin{table}[H]
 	\centering
-	\begin{tabular}{llrrrr}
+	\begin{tabular}{rllrrrr}
 		\toprule
-		helyszín    & funkció           & kapacitás & sínpárok száma & max. üzemanyag \\ \midrule
-		Kelenföld   & autóbuszgarázs  &       100 &          &       x millió \\
-		Cinkota     & autóbuszgarázs      &       100 &          &       y millió \\
-		\bottomrule
+		\it azonosító & \it helyszín & \it funkció    & \it kapacitás & \it vágányhossz & \it max. üzemanyag &  \\ \midrule
+		           T1 & Angyalföld   & kocsiszín      &           147 &          4922 m &                    &  \\
+		           T3 & Cinkota      & autóbuszgarázs &           265 &                 &      250~000 liter &  \\
+		           T5 & Kelenföld    & autóbuszgarázs &           322 &                 &      200~000 liter &  \\ \bottomrule
 	\end{tabular}
 \end{table}
 	
 \begin{pelda}
-	Szeretnénk megtudni, hogy mely kocsiszín alkalmas legalább xx jármű befogására.
+	Szeretnénk megtudni, hogy mely kocsiszín alkalmas legalább 100 jármű befogására.
 \end{pelda}
 
 %Ehhez a feltételeket összeköthetjük a ,,logikai és'' %($\wedge$)
 %operátorral:
 %$$\sigma_{\mathsf{kapacitás} \,\geq\, 100 \,\wedge\,  \mathsf{típus} \,=\, \textsf{'kocsiszín'}} (\textsf{járműtelep})$$	
 
-Végezzünk szűrést azokra a modellelemekre, ahol a \textit{típus} típus attribútum értéke \textsf{kocsiszín}, a \textit{kapacitás} attribútum értéke nagyobb vagy egyenlő xx-nél.
+Végezzünk szűrést azokra a modellelemekre, ahol a \textit{funkció} attribútum értéke \textsf{kocsiszín}, a \textit{kapacitás} attribútum értéke nagyobb vagy egyenlő 100-nál.
 
 Az eredmény:
 \begin{table}[H]
 	\sf
 	\centering
-	\begin{tabular}{llrrrr}
+	\begin{tabular}{rllrrrr}
 		\toprule
-		\it helyszín    & \it funkció           & \it kapacitás & \it sínpárok száma & \it max. üzemanyag \\ \midrule
-		Fehér út    & kocsiszín & xx & yy & & \\
-		\bottomrule
+		\it azonosító & \it helyszín & \it funkció & \it kapacitás & \it vágányhossz & \it max. üzemanyag &  \\ \midrule
+		           T1 & Angyalföld   & kocsiszín   &           147 &          4922 m &                    &  \\ \bottomrule
 	\end{tabular}
 \end{table}
 
+\subsubsection{Gráfmodell szűrése}
+
+Egy gráfmodellből a szűrés a modell egy \fogalomragozva{reszgraf}{részgráfját} állítja elő.
 
 \begin{pelda}
 	Soroljuk fel az M2-es és az M4-es metró megállóit.
 \end{pelda}
 
-Olyan szűrést végzünk a modellen, ami csak azokat a csomópontokat tartja meg, amelyekhez tartozik olyan él, amelynek a címkéje M2 vagy M4. \ref{fig:metrohalozat-nagykorut-elcimkezett-szurt}
+A modellen szűrést végzünk, ami csak azokat a csomópontokat tartja meg, amelyekhez tartozik olyan él, amelynek a címkéje M2 vagy M4. A kapott részgráf \aref{fig:metrohalozat-nagykorut-elcimkezett-szurt} ábrán látható.
 
 \begin{pelda}
-	Szeretnénk megtudni, hogy mely szomszédos metrómegállók között hosszabb egy percnél a menetidő.	
+	Határozzuk meg, hogy mely szomszédos metrómegállók között hosszabb egy percnél a menetidő.	
 \end{pelda}
 
-A modellen olyan szűrést végzünk, ami csak azokat az éleket tartja meg, amelyek élsúlya 1-nél nagyobb. \ref{fig:metrohalozat-nagykorut-elsulyozott-szurt}
+A modellen szűrést végzünk, ami
+
+\begin{itemize}
+	\item csak azokat a csomópontokat tartja meg, amelyekhez tartozik 1-nél nagyobb súlyú él,
+	\item csak az 1-nél nagyobb súlyú éleket tartja meg.
+\end{itemize}
+
+A kapott részgráf \aref{fig:metrohalozat-nagykorut-elsulyozott-szurt} ábrán látható.
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[scale=\yedscale]{metrohalozat-nagykorut-elcimkezett-szurt}
-		\caption{? szűrt részgráf}
+		\caption{Az M2 és az M4 metróvonalak megállói.}
 		\label{fig:metrohalozat-nagykorut-elcimkezett-szurt}
 	\end{subfigure}
 	~
 	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[scale=\yedscale]{metrohalozat-nagykorut-elsulyozott-szurt}
-		\caption{Élsúlyra szűrt részgráf}
+		\caption{Az 1 percnél távolabbi metrómegállók.}
 		\label{fig:metrohalozat-nagykorut-elsulyozott-szurt}
 	\end{subfigure}
-	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
+	\caption{Szűrések a metróhálózatot tartalmazó gráfon.}
 \end{figure}
 
 
-
-\subsubsection{Vetített nézet}
+\subsection{Vetített nézet}
 
 \begin{definicio}
 	\Fogalom{vetites} során a modell egyes jellemzőit kiválasztjuk és a többit elhagyjuk a relációból.
-\end{definicio}
 
 \begin{megjegyzes}
 	Érvényes vetítés művelet az is, ha a tulajdonságmodell összes jellemzőjét megtartjuk.
 \end{megjegyzes}
+\end{definicio}
+
+\subsubsection{Tulajdonságmodell vetítése}
 
 \begin{pelda}
-	Olyan kimutatásra van szükségünk, ami csak az egyes járműtelepek helyszínét és kapacitását tartalmazza.
+	Olyan kimutatásra van szükségünk, ami csak az egyes járműtelepek helyszínét, funkcióját és kapacitását tartalmazza.
 %	$$\pi_{\textsf{helyszín, kapacitás}} (\textsf{járműtelep})$$
 \end{pelda}
 
 Végezzünk szűrést a tulajdonságmodelleken a \textit{helyszín} és a \textit{kapacitás} attribútumokra.
 
 \begin{table}[H]
+	\sf
 	\centering
-	\begin{tabular}{lr}
+	\begin{tabular}{rll}
 		\toprule
-		helyszín    & kapacitás   \\ \midrule
-		Fehér út    &        xx   \\
-		Kelenföld   &       100   \\
-		Budafok     &        50   \\
-		Cinkota     &       100   \\
-		\bottomrule
+		\it helyszín & \it funkció    & \it kapacitás  \\ \midrule
+		Angyalföld   & kocsiszín      &           147  \\
+		Budafok      & kocsiszín      &            46  \\
+		Cinkota      & autóbuszgarázs &           265  \\
+		Kelenföld    & kocsiszín      &            42  \\
+		Kelenföld    & autóbuszgarázs &           322  \\ \bottomrule
 	\end{tabular}
 \end{table}
 
 
+\subsubsection{Gráfmodell vetítése}
 
-\begin{megjegyzes}
-	A relációalgebrában a \fogalom{szures} művelet neve \fogalom{szelekcio}, a \fogalom{vetites} művelet neve \fogalom{projekcio}.
-\end{megjegyzes}
+A tulajdonságmodellhez hasonlóan a gráfmodellből is elhagyhatunk jellemzőket.
+
+TODO: példa, címkék elhagyása
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Struktúramodellezési technikák}
 
+%Fontos gondolat: a struktúramodellezésnek többféle célja lehet.
+%
+%
+%\begin{itemize}
+%	\item Készítsünk egy adatmodellt a rendszerünkhöz, pl. egy pizzarendelő oldalon elkészítjük az adatbázis modelljét. Ezután az adatbázis a felhasználói interakcióknak megfelelően változik. Ez a modell ,,típusgráf'' része.
+%	
+%	\item Készítsünk a problémából egy modellt, amiből bizonyos kérdésekre választ kaphatunk. Például az alaprajzával modellezzünk egy épületet és nézzük meg, hogy bizonyos tűzvédelmi szempontoknak megfelel-e. Ez a modell ,,példánygráf'' része.
+%\end{itemize}
 
-Fontos gondolat: a struktúramodellezésnek többféle célja lehet.
-
-
-\begin{itemize}
-	\item Készítsünk egy adatmodellt a rendszerünkhöz, pl. egy pizzarendelő oldalon elkészítjük az adatbázis modelljét. Ezután az adatbázis a felhasználói interakcióknak megfelelően változik. Ez a modell ,,típusgráf'' része.
-	
-	\item Készítsünk a problémából egy modellt, amiből bizonyos kérdésekre választ kaphatunk. Például az alaprajzával modellezzünk egy épületet és nézzük meg, hogy bizonyos tűzvédelmi szempontoknak megfelel-e. Ez a modell ,,példánygráf'' része.
-\end{itemize}
-
-
-
+A modellezési formalizmusok után bemutatunk néhány struktúramodellezési technikát.
 
 \subsection{Hierarchia modellezése}
 
@@ -671,7 +673,7 @@ Egy szoftver alkalmazás \emph{\glslink{GUI}{grafikus felhasználói felülete}}
 		\caption{A komponensek hierarchiája}
 		\label{fig:GUI-hierarchia}
 	\end{subfigure}
-	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
+	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}
 \end{figure}
 
 
