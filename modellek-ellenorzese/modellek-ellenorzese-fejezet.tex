@@ -99,14 +99,27 @@ Szemantikai hibákról akkor beszélünk, ha a fejlesztés alatt álló rendszer
 
 Gyakran a szemantikai problémák nem olyan egyértelműek, mint a fenti nullával osztás. Például az \code{if (x = 1) { ... }} C kódban gyanús az értékadás, feltehetően a fejlesztő szándéka az \code{x} változó értékétől függő feltételes elágazás implementálása volt, ugyanakkor ezt biztosan nem tudhatjuk. Az ilyen gyanús kódrészleteket angolul \emph{code smell}nek hívjuk, és a statikus ellenőrző eszközök tipikusan ezekre is felhívják a figyelmet.
 
-Hasonló probléma folyamatmodellek esetén az alábbi ábrán látható:
+Hasonló probléma folyamatmodellek esetén az alábbi ábrán látható  (\ref{fig:folyamatmodell-decision-join}.~ábra):
 
-\remofigscale{modellek-ellenorzese/figures/folyamatmodell-decision-join}{Folyamatmodell decision és join elemmel \textbf{TODO: kicserélni egy konzisztens stílusú ábrára}}{\modellekEllenorzeseAllapotgepScale}
+\begin{figure}[h]
+	\centering
+	\input{modellek-ellenorzese/figures/folyamatmodell-decision-join.pdf_tex}
+	
+	\caption{Folyamatmodell decision és join elemmel}
+	\label{fig:folyamatmodell-decision-join}
+\end{figure}
 
 A fenti folyamatmodell szintaktikailag helyes, azonban ha közelebbről megvizsgáljuk látszik, hogy valószínűleg szemantikailag helytelen. A decision elem miatt vagy a \allapot{Kártyás fizetés}, vagy a \allapot{Kasszakezelés} tevékenység lesz aktív. Mivel a join mindkét bemeneten tokent fog várni, sosem léphet tovább (tehát holtpontra jut), és így a \allapot{Készletcsökkentés} tevékenység sosem fut le.
 
-Hasonló a helyzet az alábbi folyamatmodellnél.
-\remofigscale{modellek-ellenorzese/figures/folyamatmodell-ket-terminalo}{Folyamatmodell két termináló csomóponttal \textbf{TODO: kicserélni egy konzisztens stílusú ábrára}}{\modellekEllenorzeseAllapotgepScale}
+Hasonló a helyzet az alábbi folyamatmodellnél (\ref{fig:folyamatmodell-ket-terminalo}.~ábra).
+
+\begin{figure}[h]
+	\centering
+	\input{modellek-ellenorzese/figures/folyamatmodell-ket-terminalo.pdf_tex}
+	
+	\caption{Folyamatmodell két termináló csomóponttal}
+	\label{fig:folyamatmodell-ket-terminalo}
+\end{figure}
 
 A fenti folyamatmodell szintén helyes szintaktikailag, viszont amint a \allapot{Pontokat kihirdet} vagy a \allapot{Jegyeket beír} tevékenység befejeződik, a termináló csomópont leállítja a \emph{teljes} folyamatot, így a másik tevékenység nem fog tudni lefutni.
 
@@ -116,16 +129,16 @@ Két egyszerűbb módszert ismertetünk itt a fenti hibák kivédése érdekébe
 \begin{itemize}
 	\item Ha azonosítottuk a fenti szituációk közül a leggyakrabban előfordulókat, \emph{hibamintákat} fogalmazhatunk meg rájuk. Ez után a statikus ellenőrző eszköz ezeket a hibamintákat keresi a modellben vagy a forráskódban. Például ha egy decision elem egy join elemmel áll párban egy folyamatmodell vagy a kódban egy \code{if (<változó> = <érték>)} minta található, erre felhívhatja a felhasználó figyelmét, aki ezután javíthatja a modellt vagy figyelmen kívül hagyhatja a jelzést.
 
-	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok\footnote{Az egyik leghíresebb kódolási szabálygyűjtemény a C nyelvhez a \emph{MISRA C}. Eredetileg közúti járművek beágyazott rendszereihez fejlesztették, de valójában bármilyen beágyazott rendszer esetén használható. Ilyen felhasználási területen a hibák komoly következményekkel járhatnak, ráadásul javításuk igen nehéz. Ezért olyan megkötéseket alkalmaznak a szoftverek fejlesztésekor, amelyek a kódot átláthatóbbá, egyértelműbbé teszik, amely írása közben nehezebb hibát véteni. Például a száznál több MISRA C szabály egyike megtiltja az \code{if (x == 0 \&\& ishigh)} kódrészlet használatát, helyette az \code{if ((x == 0) \&\& ishigh)} formátum használandó. Bár ez a két kódrészlet nyilvánvalóan ekvivalens, ha a logikai műveletek operandusai csak atomi kifejezések (pl. \code{ishigh}) vagy zárójelezett részkifejezések lehetnek, kisebb egy hibás precedencia feltételezésének valószínűsége \cite{Wong:2003}.\kiegeszitoanyag} (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag \aref{fig:jolstrukturalt-folyamatmodellek-mintai}.~ábrán látható mintákból állítható elő: üres folyamat, elemi tevékenység, szekvencia, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
+	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok\footnote{Az egyik leghíresebb kódolási szabálygyűjtemény a C nyelvhez a \emph{MISRA C}. Eredetileg közúti járművek beágyazott rendszereihez fejlesztették, de valójában bármilyen beágyazott rendszer esetén használható. Ilyen felhasználási területen a hibák komoly következményekkel járhatnak, ráadásul javításuk igen nehéz. Ezért olyan megkötéseket alkalmaznak a szoftverek fejlesztésekor, amelyek a kódot átláthatóbbá, egyértelműbbé teszik, amely írása közben nehezebb hibát véteni. Például a száznál több MISRA C szabály egyike megtiltja az \code{if (x == 0 \&\& ishigh)} kódrészlet használatát, helyette az \code{if ((x == 0) \&\& ishigh)} formátum használandó. Bár ez a két kódrészlet nyilvánvalóan ekvivalens, ha a logikai műveletek operandusai csak atomi kifejezések (pl. \code{ishigh}) vagy zárójelezett részkifejezések lehetnek, kisebb egy hibás precedencia feltételezésének valószínűsége \cite{Wong:2003}.\kiegeszitoanyag} (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag adott mintákból állítható elő: üres folyamat, elemi tevékenység, szekvencia, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
 \end{itemize}
 
-\begin{figure}[h]
-	\centering
-	\textbf{TODO -- megrajzolni a többivel egységes formában}
-	
-	\caption{Jólstrukturált folyamatmodellek megengedett mintái}
-	\label{fig:jolstrukturalt-folyamatmodellek-mintai}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\textbf{TODO -- megrajzolni a többivel egységes formában}
+%	
+%	\caption{Jólstrukturált folyamatmodellek megengedett mintái}
+%	\label{fig:jolstrukturalt-folyamatmodellek-mintai}
+%\end{figure}
 
 Az, hogy mit tartunk szemantikai hibának függ a használt modellezési vagy programozási nyelvtől, de függhet az alkalmazási területtől vagy a konkrét felhasználástól is. Bizonyos alkalmazási területeken további \emph{tervezési szabályokat} definiálunk, amelyek tovább korlátozhatják a modellezés vagy programozás szabadságát. Például biztonságkritikus programok esetén gyakran tiltott a dinamikus memóriafoglalás. Ilyen esetekben kiegészíthetjük a hibaminták készletét a \code{malloc} és hasonló konstrukciókkal.
 
