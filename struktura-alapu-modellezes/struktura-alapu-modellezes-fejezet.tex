@@ -25,6 +25,9 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 
 %Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
 
+\clearpage
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{A struktúramodellezés alkalmazásai}
@@ -154,7 +157,7 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 \label{sec:tulajdonsagok}
 
 \begin{pelda}
-A közlekedési vállalat üzemen kívüli járművei járműtelepeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók és a villamosok járműtelepe a kocsiszín, a buszoké az autóbuszgarázs.
+A közlekedési vállalat üzemen kívüli járművei telephelyeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók és a villamosok telephelye a kocsiszín, a buszoké az autóbuszgarázs.
 
 Mennyi üzemanyag raktározható a legnagyobb autóbusz garázsban? Milyen garázsok vannak a XI. kerületben? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel. Építsünk modellt a problémára!
 \end{pelda}
@@ -164,7 +167,7 @@ A garázsokat például az alábbi modellel írhatjuk le:
 \begin{table}[H]
 	\centering
 	\input{struktura-alapu-modellezes/jarmutelepek}
-	\caption{A BKK járműtelepei (részleges modell).}
+	\caption{A BKK telephelyei (részleges modell).}
 	\label{tab:jarmutelepek}
 \end{table}
 
@@ -172,21 +175,25 @@ A modellünk elemei a táblázat sorai. A táblázat fejlécében definiált \fo
 
 Megfigyelhetjük azonban, hogy az azonos %\fogalomragozva{tipus}{típussal}
 funkcióval rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
-%Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{járműtelep} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat.
-%Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{járműtelep} típusnak különböző esetei.
-Mindkét típusú járműtelepnek van \textit{azonosító}, \textit{helyszín}, \textit{funkció} és \textit{kapacitás} attribútuma. Az \textsf{autóbuszgarázs} esetén a \textit{max. üzemanyag}, a \textsf{kocsiszín} esetében a \textit{vágányhossz} attribútumot rögzítjük.
+%Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{telephely} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat.
+%Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{telephely} típusnak különböző esetei.
+Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \textit{funkció} és \textit{kapacitás} attribútuma. Az \textsf{autóbuszgarázs} esetén a \textit{max. üzemanyag}, a \textsf{kocsiszín} esetében a \textit{vágányhossz} attribútumot rögzítjük.
 
 \subsection{Típusok}
 
 \Aref{tab:jarmutelepek}. táblázat példájában láthattuk, hogy a \textit{funkció} jellemzővel megkülönböztethetjük az egyes a telephelyeket. Ha a \textit{funkció} jellemzőt a modellelemek \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett, a \textit{max. üzemanyag} jellemző csak az \textsf{autóbuszgarázs} típusra. A típusokat felhasználhatjuk a gráfok jellemzésére is.
 
 \begin{pelda}
-	A korábbi metróhálózatot szeretnénk kiegészíteni a villamos- és buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik járműtelepen parkolnak.
+	A korábbi metróhálózatot szeretnénk kiegészíteni a villamos- és buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak.
 \end{pelda}
 
-\added[id=szarnyas]{Itt részletesen végig kellene vinni a példánymodell és a hozzá típusgráf tartozó kidolgozását. Előtte kérek egy sanity checket.}
+\added[id=szarnyas]{Ide egy példa nagyobb jön.}
 
-\remofigscaleframed{jarmutelepek}{Típusgráf}{\yedscale}
+Szeretnénk tárolni, hogy melyik vonalhoz melyik telephely tartozik. Értelemszerűen az autóbuszgarázs buszvonalhoz tartozik, metró járműtelep metróhoz stb.
+
+Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes gráfba. Ezzel sok fogalmat elég jól lehet szemléltetni: derived feature-ök, derived referenciák stb.
+
+\remofigscaleframed{jarmutelepek}{A közlekedési hálózatunk metamodellje}{\yedscale}
 
 \Aref{fig:jarmutelepek}. ábra bemutatja a problémához tartozó típusgráfot. A modellen több fontos dolog is megfigyelhető:
 
@@ -196,7 +203,7 @@ Mindkét típusú járműtelepnek van \textit{azonosító}, \textit{helyszín}, 
 	\item A tulajdonságokat nem ábrázoltuk az ábrán. Erre ugyanis a gráf jellegű megjelenítés kevésbé alkalmas.
 \end{itemize}
 
-TODO \fogalom{szarmaztatott-tulajdonsag}
+%TODO \fogalom{szarmaztatott-tulajdonsag}
 
 
 %\begin{megjegyzes}
@@ -383,7 +390,7 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 
 
 
-A hierarchiát reprezentáló modellek körmentes gráfot alkotnak, szigorú hierarchia esetén ez \fogalomragozva{fa-graf}{fa} vagy \fogalom{erdo}, megengedő hierarchia esetén \rovidites{DAG}
+A hierarchiát reprezentáló modellek körmentes gráfot alkotnak, szigorú hierarchia esetén ez \fogalomragozva{fa-graf}{fa} vagy \fogalom{erdo}, megengedő hierarchia esetén \rovidites{DAG}.
 
 
 
@@ -414,7 +421,7 @@ Tulajdonságmodelleken a leggyakrabban használt műveletek a \fogalom{szures} �
 
 \subsection{Szűrt nézet}
 
-Ismét idézzük fel \az+\refstruc{tab:jarmutelepek} járműtelepeket tartalmazó tulajdonságmodelljét.
+Ismét idézzük fel \az+\refstruc{tab:jarmutelepek} telephelyeket tartalmazó tulajdonságmodelljét.
 
 \begin{table}[H]
 	\centering
@@ -430,11 +437,11 @@ Tulajdonságmodellek esetén a szűrés az elhagyott modellelemek a modell sorai
 \subsubsection{Tulajdonságmodell szűrése}
 
 \begin{pelda}
-	Szeretnénk megtudni, hogy mely járműtelep alkalmas legalább 100 jármű befogására.
+	Szeretnénk megtudni, hogy mely telephely alkalmas legalább 100 jármű befogására.
 \end{pelda}
 
 Azokra az elemekre szűrünk, amelyeknél a \textsf{kapacitás} jellemző értéke 100-nál nagyobb vagy egyenlő.
-%$$\sigma_{\mathsf{kapacitás} \,\geq\, 100} (\textsf{járműtelep})$$
+%$$\sigma_{\mathsf{kapacitás} \,\geq\, 100} (\textsf{telephely})$$
 
 Az eredmény:
 \begin{table}[H]
@@ -454,7 +461,7 @@ Az eredmény:
 
 %Ehhez a feltételeket összeköthetjük a ,,logikai és'' %($\wedge$)
 %operátorral:
-%$$\sigma_{\mathsf{kapacitás} \,\geq\, 100 \,\wedge\,  \mathsf{típus} \,=\, \textsf{'kocsiszín'}} (\textsf{járműtelep})$$	
+%$$\sigma_{\mathsf{kapacitás} \,\geq\, 100 \,\wedge\,  \mathsf{típus} \,=\, \textsf{'kocsiszín'}} (\textsf{telephely})$$	
 
 Végezzünk szűrést azokra a modellelemekre, ahol a \textit{funkció} attribútum értéke \textsf{kocsiszín}, a \textit{kapacitás} attribútum értéke nagyobb vagy egyenlő 100-nál.
 
@@ -523,8 +530,8 @@ A kapott részgráf \aref{fig:metrohalozat-nagykorut-elsulyozott-szurt} ábrán 
 \subsubsection{Tulajdonságmodell vetítése}
 
 \begin{pelda}
-	Olyan kimutatásra van szükségünk, ami csak az egyes járműtelepek helyszínét, funkcióját és kapacitását tartalmazza.
-%	$$\pi_{\textsf{helyszín, kapacitás}} (\textsf{járműtelep})$$
+	Olyan kimutatásra van szükségünk, ami csak az egyes telephelyek helyszínét, funkcióját és kapacitását tartalmazza.
+%	$$\pi_{\textsf{helyszín, kapacitás}} (\textsf{telephely})$$
 \end{pelda}
 
 Végezzünk szűrést a tulajdonságmodelleken a \textit{helyszín} és a \textit{kapacitás} attribútumokra.
