@@ -184,12 +184,27 @@ Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \te
 \Aref{tab:jarmutelepek}. táblázat példájában láthattuk, hogy a \textit{funkció} jellemzővel megkülönböztethetjük az egyes a telephelyeket. Ha a \textit{funkció} jellemzőt a modellelemek \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett, a \textit{max. üzemanyag} jellemző csak az \textsf{autóbuszgarázs} típusra. A típusokat felhasználhatjuk a gráfok jellemzésére is.
 
 \begin{pelda}
-	A korábbi metróhálózatot szeretnénk kiegészíteni a villamos- és buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak.
+	A korábbi metróhálózatot szeretnénk kiegészíteni a buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak.
 \end{pelda}
 
 \added[id=szarnyas]{Ide egy példa nagyobb jön.}
 
 Szeretnénk tárolni, hogy melyik vonalhoz melyik telephely tartozik. Értelemszerűen az autóbuszgarázs buszvonalhoz tartozik, metró járműtelep metróhoz stb.
+
+\remofigscaleframed{busz-metro-telephelyek}{}{\yedscale}
+
+A típusgráfja:
+
+\remofigscaleframed{busz-metro-telephelyek-tipusgraf}{}{\yedscale}
+
+A típusgráf és a példánygráf viszonya.
+
+\remofigscaleframed{busz-metro-telephelyek-tipusgraffal}{}{\yedscale}
+
+Metamodell.
+
+\remofigscaleframed{busz-metro-telephelyek-metamodell}{}{\yedscale}
+
 
 Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes gráfba. Ezzel sok fogalmat elég jól lehet szemléltetni: derived feature-ök, derived referenciák stb.
 
@@ -293,7 +308,7 @@ $$\mathit{kapacitás}(\mathsf{T2}) = 46, \quad \mathit{kapacitás}(\mathsf{T3}) 
 
 A \textit{funkció} jellemzőhöz tartozó függvény
 $\mathit{funkció}(e) \rightarrow t,$
-ahol $e$ egy modellelem azonosítója, $t$ egy a $\{\mathsf{kocsiszín}, \mathsf{autóbuszgarázs}\}$ halmaz eleme.
+ahol $e$ egy modellelem azonosítója, $t$ a $\{\mathsf{kocsiszín}, \mathsf{autóbuszgarázs}\}$ halmaz eleme.
 Például
 $$\mathit{funkció}(\mathsf{T2}) = \mathsf{kocsiszín}, \quad \mathit{funkció}(\mathsf{T3}) = \mathsf{autóbuszgarázs}.$$
 
@@ -333,7 +348,7 @@ A modellezési gyakorlatban elterjedt (de nem univerzális) megkötés, hogy az 
 	%A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
 \end{kisdefiniciok}
 
-A típusok gráf jellegű modellek esetén is fontosak. A gráfmodell elemeit (külön-külön a csomópontokat és az éleket is) típusokba sorolhatjuk. A típusok meghatározzák, hogy az egyes csomópontok milyen élekkel köthetők össze.
+A típusok gráf jellegű modellek esetén is fontos szerepet játszanak. A gráfmodell elemeit (külön-külön a csomópontokat és az éleket is) típusokba sorolhatjuk. A típusok meghatározzák, hogy az egyes csomópontok milyen élekkel köthetők össze.
 
 Az egyes csomópont- és éltípusok viszonyát gráfként is ábrázolhatjuk.
 
@@ -349,7 +364,7 @@ A gráfmodelleken is értelmezzük a \fogalom{peldany} fogalmát.
 
 
 
-A típusgráfban tehát a csomópontok olyan típusokat jelölnek, amit a példánygráfban csomópont vehet fel ..., az ezek között futó élek pedig olyan típusokat, amiket a példánygráfban (adott típusú csomópontok között futó élek) vehetnek fel. 
+
 
 A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból a típusgráf csomópontjaira \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között.% -- ennek ábrázolása azonban gráfként nehézkes.
 
@@ -361,7 +376,11 @@ A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány 
 
 
 \begin{definicio}
-	Egy rendszer \fogalomragozva{metamodell}{metamodellje} tartalmazza a típusgráfot, az egyes típusok közötti kapcsolatokat. (Például láthatósági kényszerek, műveletek, származtatott tulajdonságok, multiplicitás, tartalmazás).
+	Egy rendszer \fogalomragozva{metamodell}{metamodellje} tartalmazza a típusgráfot, az egyes típusok közötti kapcsolatokat, ill. további megkötéseket is.
+	
+	\begin{megjegyzes}
+		A további megkötések között szerepelhet az egyes tulajdonságok láthatósága, az egyes modellelemeken értelmezett művelete, multiplicitási kényszerek stb. Ezekkel most nem foglalkozunk részletesen.
+	\end{megjegyzes}
 \end{definicio}
 
 \subsection{Hierarchia}
@@ -376,7 +395,7 @@ A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány 
 	A hierarchikus modellezésben kiemelt szerepet játszanak az irányított körmentes gráfok. Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
 \end{kisdefiniciok}
 
-Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható elő.
+Egy rendszer hierarchiája a rendszer dekompozíciójával állítható elő.
 
 \begin{definicio}
 	A \fogalom{dekompozicio} (\fogalom{faktoring}) egy rendszer kisebb \fogalomragozva{komponens}{komponensekre} bontása, amelyek könnyebben érthetők, fejleszthetők és karbantarthatók.
@@ -651,7 +670,8 @@ TODO: \fogalom{orokles}, \fogalom{alosztaly}, \fogalom{ososztaly}
 
 \subsection{Számítógéphálózat modellezése}
 
-\remofigscaleframed{halozat}{Hálózat}{0.3}
+
+\remofigscaleframed{halozat}{Hálózat}{0.35}
 
 \begin{itemize}
 	\item Milyen elemekből áll a rendszer, milyen kapcsolatok lehetségesek?
