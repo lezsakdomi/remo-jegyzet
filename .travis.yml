@@ -10,6 +10,8 @@ branches:
 script:
 - sudo apt-get update
 - sudo apt-get install -y texlive-base texlive-science texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-hungarian texlive-fonts-extra xindy
+- sudo apt-get install -y pdftk
+- ./fix-pdfs.sh
 - ./use-xindy.sh
 - make
 - ./deploy.sh
