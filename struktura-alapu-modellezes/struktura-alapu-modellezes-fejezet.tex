@@ -269,29 +269,43 @@ A következőkben a korábbi példákra építve bemutatjuk a struktúramodellez
 
 
 \begin{definicio}
-	A \fogalom{jellemzo} egy modellelemeken értelmezett \fogalom{parcialis-fuggveny}. A jellemzők a modell részei.
+	A \fogalom{jellemzo} egy, a modell által megadott \fogalom{parcialis-fuggveny}, amelyet a modellelemeken értelmezünk.
 \end{definicio}
 
-%\begin{pelda}
-Vizsgáljuk meg a jellemzőket \aref{tab:jarmutelepek}. táblában. A modellelemüket a \textit{név} jellemzővel azonosítjuk. A \textit{kapacitás} jellemzőhöz tartozó függvény
-$\mathit{kapacitás}(e) \rightarrow h,$
+\begin{megjegyzes}
+	A $H$ halmazon értelmezett \fogalom{parcialis-fuggveny} nem jelent mást, mint a $H$ valamely (nem megnevezett) részhalmazán értelmezett \fogalom{fuggveny}. Konkrét esetünkben az egyes jellemzőket a modellelemek egy-egy részére értelmezzük (nem feltétlenül az összesre).
+\end{megjegyzes}
+
+Vizsgáljuk meg a jellemzőket \aref{tab:jarmutelepek}. táblában.
+
+\begin{table}[H]
+	\centering
+	\input{struktura-alapu-modellezes/jarmutelepek}
+\end{table}
+
+Mivel az egyes telephely modellelemek helyszíne egyedi (nincs két telephely azonos helyen), ezért a továbbiakban a \textit{helyszín} jellemző értékének megnevezésével hivatkozunk az egyes modellelemekre. A \textit{kapacitás} jellemzőhöz tartozó függvény
+$\mathit{kapacitás}(e) \rightarrow n,$
 ahol $e$ egy modellelem, $n$ egy nemnegatív egész szám. 
 Például
-$$\mathit{kapacitás}(\mathsf{Kelenföld}) = 46, \quad \mathit{kapacitás}(\mathsf{Cinkota}) = yy.$$
+$$\mathit{kapacitás}(\mathsf{Budafok}) = 46, \quad \mathit{kapacitás}(\mathsf{Óbuda}) = 265.$$
 
 A \textit{funkció} jellemzőhöz tartozó függvény
-$\mathit{funkció}(e) \rightarrow h,$
-ahol $e$ egy modellelem, $t$ egy karakterlánc. 
+$\mathit{funkció}(e) \rightarrow t,$
+ahol $e$ egy modellelem, $t$ egy a $\{\mathsf{kocsiszín}, \mathsf{autóbuszgarázs}\}$ halmaz eleme.
 Például
-$$\mathit{funkció}(\mathsf{Kelenföld}) = \mathsf{"kocsiszín"}, \quad \mathit{funkció}(\mathsf{Cinkota}) = \mathsf{"autóbuszgarázs"}.$$
+$$\mathit{funkció}(\mathsf{Budafok}) = \mathsf{kocsiszín}, \quad \mathit{funkció}(\mathsf{Óbuda}) = \mathsf{autóbuszgarázs}.$$
 
-A fentiekhez hasonlóan, a \textit{sínpárok száma} jellemzőhöz tartozó függvény 
-$\mathit{sínpárok\ száma}(e) \rightarrow n,$
-ahol $e$ egy modellelem, $n$ egy egész szám. Fontos különbség viszont, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem: a kocsiszínek esetén vesz fel értéket, az autóbuszgarázsok esetén viszont nem. Vagyis látható, hogy a \textit{sínpárok száma} jellemző csak akkor vesz fel értéket, ha a \textit{funkció} attribútum értéke \textit{kocsiszín}. A \textit{funkció} attribútumot tehát tekinthetjük a telephely \fogalomragozva{tipus}{típusának}. Általánosan:
+A fentiekhez hasonlóan, a \textit{vagányhossz} jellemzőhöz tartozó parciális függvény 
+$\mathit{vagányhossz}(e) \rightarrow n,$
+ahol $e$ egy modellelem, $n$ egy nemnegatív egész szám. Fontos különbség viszont, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem: a kocsiszínek esetén vesz fel értéket, az autóbuszgarázsok esetén viszont nem. Vagyis látható, hogy a \textit{vagányhossz} jellemző csak akkor vesz fel értéket, ha a \textit{funkció} attribútum értéke \textit{kocsiszín}.
 
-\begin{definicio}
-	A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
+Ha tehát a \textit{funkció} attribútumot a telephely \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett. Általánosan:
+
+\begin{definicio}	
+	A \fogalom{tipus} egy kitüntetett jellemző, amely meghatározza, hogy milyen más jellemzők lehetnek értelmezettek az adott modellelemre, illetve milyen más modellelemekkel lehet kapcsolatban. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
 \end{definicio}
+
+A modellezési gyakorlatban elterjedt (de nem univerzális) megkötés, hogy az egyes elemek típusát állandónak tekintjük. Ha az elem típusa a rendszer működése során nem változhat meg, akkor olyan típust kell hozzárendelni, amely az elem teljes életciklusa során előforduló összes lehetséges jellemzővel, kapcsolattal összhangban van.
 
 \begin{megjegyzes}
 	Jelen anyagban az egyszerűség kedvéért feltételezzük, hogy a modellelemeknek pontosan egy típusa van.
