@@ -135,9 +135,9 @@ Látható, hogy a hierarchikus modellt is ábrázolhatjuk gráfként. A csomópo
 Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, hogy egy elem tartalmazza a szülő elemét, ezért a hierarchikus modelleket reprezentáló gráfok körmentesek. A gyökér elemet leszámítva minden elemnek van szülője, tehát a gráf összefüggő is, így a hierarchikus modellek \fogalomragozva{fa-graf}{fa gráffal} ábrázolhatók.
 
 \begin{megjegyzes}
-	A fa struktúrában a gráf élei \emph{implicit módon} jelölik a tartalmazási hierarchiát.
+	A fa struktúrában a gráf élei \emph{explicit módon} jelölik a tartalmazási hierarchiát. A gyakorlatban nem mindig jelenítjük meg explicit módon a tartalmazási viszonyokat.
 	
-	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{explicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes téglalapok közötti tartalmazás reprezentálja a modellben szereplő tartalmazási viszonyt.
+	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{implicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes síkidomok közötti bennfoglaló ábrázolása reprezentálja a modellben szereplő tartalmazási viszonyt.
 	
 	\begin{center}
 		\includegraphics[scale=0.45]{budapest-explicit-tartalmazas}
@@ -174,6 +174,7 @@ A garázsokat például az alábbi modellel írhatjuk le:
 		\bottomrule
 	\end{tabular}
 	\caption{A BKK járműtelepei (részleges modell).}
+	\label{tab:bkk-jarmutelepek}
 \end{table}
 
 A modellünk elemei a táblázat sorai. A táblázat fejlécében definiált \fogalomragozva{tulajdonsag}{tulajdonságokból} (pl. helyszín, sínpárok száma) az egyes modellelemek eltérő értékeket vehetnek fel. Látható, hogy a táblázatnak nem minden celláját töltöttük ki, mivel az egyes jellemzők nincsenek mindenhol értelmezve.
@@ -251,7 +252,7 @@ Ahogy az eddigi példákban láttuk, a struktúramodellezés célja, hogy a rend
 A strukturális modellre az alábbi tömör definíciót adhatjuk.
 
 \begin{definicio}
-	A \fogalom{strukturalis-modell} a rendszer felépítésére (\fogalomragozva{struktura}{struktúrájára}) vonatkozó tudás.
+	A \fogalom{strukturalis-modell} a rendszer felépítésére (\fogalomragozva{struktura}{struktúrájára}) vonatkozó tudás. A strukturális modell az egyes \fogalomragozva{modellelem}{modellelemekek} közötti kapcsolatokat és típusokat definiálja. Az egyes modellelemek \fogalomragozva{egyedi}{egyediek}.
 \end{definicio}
 
 %A jellemzők között gyakran kitüntetünk egyet, a típust. Azonos típussal rendelkező modellelemek közös tulajdonságokkal bírnak.
@@ -271,7 +272,31 @@ A következőkben a korábbi példákra építve bemutatjuk a struktúramodellez
 	%A \fogalom{sulyozott-graf} olyan $(G, w)$ pár, ahol $G = (V, E)$ gráf, $w: E \rightarrow \mathbb{R}$ egy súlyfüggvény.
 \end{kisdefiniciok}
 
-Láthattuk, hogy a típusok meghatározzák, hogy az egyes modellelemek milyen kapcsolatban lehetnek egymással és milyen tulajdonságokkal jellemezhetjük őket.
+
+
+\begin{definicio}
+	A \fogalom{jellemzo} egy modellelemeken értelmezett \fogalom{parcialis-fuggveny}, amely a modell része.
+\end{definicio}
+
+\begin{pelda}
+
+Vizsgáljuk meg a jellemzőket \aref{tab:bkk-jarmutelepek}. táblában. A \textsf{név} jellemzőhöz tartozó függvény
+$$\mathsf{név}(e) \rightarrow h,$$
+ahol $e$ egy modellelem, $h$ egy karaktersorozat. 
+Például
+$$\mathsf{név}(\mathsf{}) = xx, \quad \mathsf{név}(\mathsf{}) = yy$$
+
+A táblázatban ez a függvény minden elemre értelmezett.
+
+A \textsf{sínpárok száma} jellemzőhöz tartozó függvény:
+$$\mathsf{sínpárok\ száma}(e) \rightarrow n,$$
+ahol $e$ egy modellelem, $n$ egy egész szám.
+
+Látható, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem:
+
+\end{pelda}
+
+Korábban láttuk, hogy a típusok meghatározzák, hogy az egyes modellelemek milyen kapcsolatban lehetnek egymással és milyen tulajdonságokkal jellemezhetjük őket.
 
 \begin{definicio}
 	A \fogalom{tipus} egy kitüntetett jellemző, amely tipikusan állandó egy modellelem életciklusa során. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
@@ -332,13 +357,18 @@ A hierarchiát reprezentáló modellek körmentes gráfot alkotnak.
 
 \subsection{Jellemzők}
 
-A tulajdonságokat gyakran ábrázoljuk táblázatos formában. A táblázatokat mögötti matematikai struktúra az ún. \fogalomragozva{relacio}{reláció}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik. Most egy egyszerűbb, kevésbé formális definíció alkalmazunk:
+A tulajdonságokat gyakran ábrázoljuk táblázatos formában.
 
 \begin{definicio}
-A \fogalom{relacio} a modellelemeket és azok jellemzőit tárolja. A reláció egy eleme a modell egy elemének, egy attribútum egy jellemzőjének felel meg. A reláció elemi egyediek.
+A \fogalom{tulajdonsagmodell} a modellelemeket és azok jellemzőit tartalmazza.
 \end{definicio}
 
-A relációkat gyakran táblázatos formában ábrázoljuk. Az egyediség feltétele miatt a táblázatnak nem lehet két azonos sora.
+A tulajdonságmodellt gyakran táblázatos formában ábrázoljuk. A modellelemek egyedisége feltétele miatt a táblázatnak nem lehet két azonos sora.
+
+\begin{megjegyzes}
+A tulajdonságmodell mögötti matematikai struktúra az ún. \fogalomragozva{relacio}{reláció}. A reláció pontos halmazelméleti definíciójával és a relációkon értelmezett műveleteket definiáló \fogalomragozva{relacioalgebra}{relációalgebrával} bővebben az \adatb tárgy foglalkozik.
+\end{megjegyzes}
+
 
 
 
@@ -359,7 +389,7 @@ A struktúramodellekből különböző \fogalomragozva{nezet}{nézeteket} állí
 
 \subsection{Műveletek}
 
-A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}.
+A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}. Ezek során úgy \fogalomragozva{absztrakcio}{absztraháljuk} a modellt, hogy bizonyos modellelemeket és/vagy azok egyes jellemzőit elhagyjuk.
 
 \subsubsection{Szűrt nézet}
 
@@ -367,7 +397,7 @@ A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}.
 	A \fogalomragozva{szures}{szűrés} művelet során a modell elemein kiértékelünk egy szűrési feltételt és azokat tartjuk meg, amelyek megfelelnek a feltételnek.
 \end{definicio}
 
-Relációk esetén a szűrés az elhagyott modellelemek a modell sorai lehetnek, gráf jellegű modellek esetén a gráf csúcsai vagy élei.
+Tulajdonságmodellek esetén a szűrés az elhagyott modellelemek a modell sorai lehetnek, gráf jellegű modellek esetén a gráf csúcsai vagy élei.
 
 \begin{pelda}
 	Szeretnénk megtudni, hogy mely járműtelep alkalmas legalább 100 jármű befogására.
@@ -410,12 +440,16 @@ Az eredmény:
 
 
 \begin{pelda}
-	Soroljuk fel a 2-es és a 4-es metró megállóit.
+	Soroljuk fel az M2-es és az M4-es metró megállóit.
 \end{pelda}
 
+Olyan szűrést végzünk a modellen, ami csak azokat a csomópontokat tartja meg, amelyekhez tartozik olyan él, amelynek a címkéje M2 vagy M4. \ref{fig:budapest-metrohalozat-nagykorut-elcimkezett-szurt}
+
 \begin{pelda}
-	Szeretnénk megtudni, hogy mely szomszédos metrómegállók között hosszabb egy percnél a menetidő.
+	Szeretnénk megtudni, hogy mely szomszédos metrómegállók között hosszabb egy percnél a menetidő.	
 \end{pelda}
+
+A modellen olyan szűrést végzünk, ami csak azokat az éleket tartja meg, amelyek élsúlya 1-nél nagyobb. \ref{fig:budapest-metrohalozat-nagykorut-elsulyozott-szurt}
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.5\textwidth}
@@ -435,16 +469,16 @@ Az eredmény:
 \end{figure}
 
 
-\begin{megjegyzes}
-	A relációalgebrában a \fogalom{szures} művelet neve \fogalom{szelekcio}.
-\end{megjegyzes}
-
 
 \subsubsection{Vetített nézet}
 
 \begin{definicio}
 	\Fogalom{vetites} során a modell egyes jellemzőit kiválasztjuk és a többit elhagyjuk a relációból.
 \end{definicio}
+
+\begin{megjegyzes}
+	Érvényes vetítés művelet az is, ha a tulajdonságmodell összes jellemzőjét megtartjuk.
+\end{megjegyzes}
 
 \begin{pelda}
 	Olyan kimutatásra van szükségünk, ami csak az egyes járműtelepek helyszínét és kapacitását tartalmazza.
@@ -466,10 +500,9 @@ Az eredmény:
 \end{table}
 
 
+
 \begin{megjegyzes}
-	Érvényes vetítés művelet az is, ha a relációs összes jellemzőjét megtartjuk.
-	
-	A relációalgebrában a \fogalom{vetites} művelet neve \fogalom{projekcio}.
+	A relációalgebrában a \fogalom{szures} művelet neve \fogalom{szelekcio}, a \fogalom{vetites} művelet neve \fogalom{projekcio}.
 \end{megjegyzes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
