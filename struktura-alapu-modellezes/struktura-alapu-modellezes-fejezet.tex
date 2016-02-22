@@ -46,7 +46,7 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 \end{pelda}
 
 A metróhálózat térképe \aref{fig:budapest-metrohalozat-nagykorut-terkep} ábrán látható. A térképből is látható, hogy a hálózat könnyen ábrázolható egy \fogalomragozva{graf}{gráffal}, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező %\fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf}
-gráf \aref{fig:budapest-metrohalozat-nagykorut-egyszeru}. ábrán látható.
+gráf \aref{fig:budapest-metrohalozat-nagykorut-egyszeru} ábrán látható.
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.5\textwidth}
@@ -181,7 +181,7 @@ A modellünk elemei a táblázat sorai. A táblázat fejlécében definiált \fo
 Megfigyelhetjük azonban, hogy az azonos \fogalomragozva{tipus}{típussal} rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
 Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{járműtelep} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat. Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{járműtelep} különböző típusai esetei. Az \textsf{autóbuszgarázs} esetén a max. üzemanyagot, a \textsf{kocsiszín} esetében a sínpárok számát rögzítjük.
 
-\subsection{Összetett modell}
+\subsection{Típusok}
 
 \begin{pelda}
 	A korábbi metróhálózatot szeretnénk kiegészíteni a villamos- és buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik járműtelepen parkolnak.
@@ -198,6 +198,8 @@ Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushiera
 	\item Több olyan fogalom is van, aminek nincs példánya, csak a leszármazottjainak. Például a modellünkben minden vonal vagy villamosvonal vagy metróvonal. A \textsf{vonal} fogalom így \fogalom{absztrakt}.
 	\item A tulajdonságokat nem ábrázoltuk az ábrán. Erre ugyanis a gráf jellegű megjelenítés kevésbé alkalmas.
 \end{itemize}
+
+TODO \fogalom{szarmaztatott-tulajdonsag}
 
 
 %\begin{megjegyzes}
@@ -281,7 +283,7 @@ Láthattuk, hogy a típusok meghatározzák, hogy az egyes modellelemek milyen k
 
 
 
-
+A \fogalom{tipusgraf} a típusokat ábrázolja. Precízen:
 
 \begin{definicio}
 	A \fogalom{tipusgraf} egy olyan gráf, amelyben minden csomóponttípushoz egy típuscsomópont, minden éltípushoz egy típusél tartozik.
@@ -304,8 +306,7 @@ Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa
 	A körmentes, összefüggő gráfokat \fogalomragozva{fa-graf}{fának} nevezzük. (A körmentes gráfokat \fogalomragozva{erdo}{erdőnek} nevezzük.)
 	A fák esetén gyakran kiemelt szerepet tulajdonítunk egy csomópontnak: a \fogalom{gyoker-csomopont} a fa egy megkülönböztetett csomópontja. A \fogalom{gyokeres-fa} olyan fa, ami rendelkezik gyökér csomóponttal. \Fogalom{gyokeres-szintezett-fa} esetén a fa csomópontjaihoz hozzárendeljük a gyökértől vett távolságukat is.
 	
-	A strukturális modellezés szempontjából kiemelt szerepet játszanak az irányított körmentes gráfok.
-	Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
+	A hierarchikus modellezésben kiemelt szerepet játszanak az irányított körmentes gráfok. Egy gráf \rovidites{DAG} (\roviditesangolul{DAG}), ha nem tartalmaz irányított kört.	
 \end{kisdefiniciok}
 
 Egy rendszer strukturális modellje a rendszer dekompozíciójával állítható elő.
@@ -320,16 +321,11 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 	Egy dekompozíció \fogalomragozva{helyes-dekompozicio}{helyes}, ha a dekompozícióval kapott rendszer minden elemének megfeleltethető az eredeti rendszer valamelyik eleme, és az eredeti rendszer minden eleméhez hozzárendelhető a dekompozícióval kapott rendszer egy vagy több eleme.
 \end{definicio}
 
-%\subsubsection{Hierarchia modellezése}
 
 
 
 
-
-
-A hierarchikus modellek körmentes gráfot alkotnak.
-
-
+A hierarchiát reprezentáló modellek körmentes gráfot alkotnak.
 
 
 
@@ -368,8 +364,10 @@ A leggyakrabban használt műveletek a \fogalom{szures} és a \fogalom{vetites}.
 \subsubsection{Szűrt nézet}
 
 \begin{definicio}
-	Egy \fogalomragozva{relacio}{relációból} \fogalomragozva{szures}{szűrt nézet} előállításához bizonyos feltétel menténk elhagyunk elemeket (sorokat) a relációból.
+	A \fogalomragozva{szures}{szűrés} művelet során a modell elemein kiértékelünk egy szűrési feltételt és azokat tartjuk meg, amelyek megfelelnek a feltételnek.
 \end{definicio}
+
+Relációk esetén a szűrés az elhagyott modellelemek a modell sorai lehetnek, gráf jellegű modellek esetén a gráf csúcsai vagy élei.
 
 \begin{pelda}
 	Szeretnénk megtudni, hogy mely járműtelep alkalmas legalább 100 jármű befogására.
@@ -411,6 +409,32 @@ Az eredmény:
 \end{table}
 
 
+\begin{pelda}
+	Soroljuk fel a 2-es és a 4-es metró megállóit.
+\end{pelda}
+
+\begin{pelda}
+	Szeretnénk megtudni, hogy mely szomszédos metrómegállók között hosszabb egy percnél a menetidő.
+\end{pelda}
+
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[scale=\yedscale]{budapest-metrohalozat-nagykorut-elcimkezett-szurt}
+		\caption{? szűrt részgráf}
+		\label{fig:budapest-metrohalozat-nagykorut-elcimkezett-szurt}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[scale=\yedscale]{budapest-metrohalozat-nagykorut-elsulyozott-szurt}
+		\caption{Élsúlyra szűrt részgráf}
+		\label{fig:budapest-metrohalozat-nagykorut-elsulyozott-szurt}
+	\end{subfigure}
+	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
+\end{figure}
+
+
 \begin{megjegyzes}
 	A relációalgebrában a \fogalom{szures} művelet neve \fogalom{szelekcio}.
 \end{megjegyzes}
@@ -448,6 +472,7 @@ Az eredmény:
 	A relációalgebrában a \fogalom{vetites} művelet neve \fogalom{projekcio}.
 \end{megjegyzes}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Struktúramodellezési technikák}
 
@@ -495,7 +520,7 @@ A bottom-up modellezés jellemzői:
 
 \subsection{Metamodellezés}
 
-Adott terület szakértője (ún. \emph{domain expert}) segítségével 
+Egy adott problématerület metamodelljét gyakran informatikai szakemberek készítik, az adott terület szakértőivel -- ún. \emph{domain expertök} -- együttműködve.
 
 Ontológia készítése, ...
 
@@ -526,20 +551,33 @@ Az ontológia kifejezésre sok különböző definíció létezik. Az informatik
 Az objektum-orientált modell ereje abban rejlik, hogy képes a típusok, a hierarchia, a kapcsolatok és az attribútumok precíz ábrázolására.
 
 
+TODO: \fogalom{orokles}, \fogalom{alosztaly}, \fogalom{ososztaly}
+
 \begin{megjegyzes}
 	Az \roviditesmagyarul{OOP} (\rovidites{OOP}) foglalkozik az egyes osztályokon végzett műveletekkel \fogalomragozva{metodus}{metódusaival}, ill. az egyes metódusok és \fogalomragozva{mezo}{mezők} láthatóságával is.
 	
 	A \fogalom{tobbszoros-orokles} több felveti a \fogalom{gyemant-problema}
 	
-	Ezekről bővebben a \progketto, a \progharom és a \szofttech tárgyakban esik szó.
-	
-	
+	Ezekről bővebben a \progketto, a \progharom és a \szofttech tárgyakban esik szó.	
 \end{megjegyzes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Gyakorlati alkalmazások}
+
+\subsection{Számítógéphálózat modellezése}
+
+\remofigscaleframed{halozat}{Hálózat}{0.3}
+
+\begin{itemize}
+	\item Milyen elemekből áll a rendszer, milyen kapcsolatok lehetségesek?
+	\item Van-e egyszeres hibapont a rendszerben?
+	\item Milyen hosszú úton, milyen típusú elemeket érintve lehet elérni az internetet?
+	\item Hány gép van a wifi hálózaton?
+	\item Egy elem hibája meddig terjedhet?
+	\item Elérhető-e az internet?
+\end{itemize}
 
 \subsection{Grafikus felhasználói felület}
 
@@ -563,6 +601,8 @@ Egy szoftver alkalmazás \emph{\glslink{GUI}{grafikus felhasználói felülete}}
 \end{figure}
 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -576,7 +616,7 @@ A következő fejezetekben a \fogalomragozva{viselkedes-alapu-modellezes}{viselk
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Technológiák és technikák (kieg.)}
+\section{Technológiák és technikák\kieg}
 
 Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez kapcsolódó gyakorlati technológiát, specifikációt és eszközt. Az itt felsorolt fogalmak nem részei a számonkérésnek, gyakran előkerülnek viszont a későbbi tanulmányok és munkák során, ezért mindenképpen érdemes legalább névről ismerni őket.
 
@@ -640,19 +680,19 @@ Gráfok manuális rajzolására szintén több eszköz elterjedt. Egyszerűen ha
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Elméleti kitekintés (kieg.)}
+\section{Elméleti kitekintés\kieg}
 
 A struktúramodellezésnek komoly matematikai eszköztára is van. Az alábbiakban ezekből mutatunk be néhány részletet.
 
-\subsection{Hipergráfok}
+%\subsection{Hipergráfok}
+%
+%A gráf adatmodell kiterjesztése a \fogalom{hipergraf}. A hipergráfban a \fogalomragozva{hiperel}{hiperélek} több csomópont között is futhatnak. Megkülönböztetünk irányított és irányítatlan hipergráfokat.
+%
+%Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-graf}{páros gráffá}: a gráf egyik halmazában a hipergráf csomópontjainak, a másik halmazában a hiperéleknek veszünk fel egy pontot.
+%
 
-A gráf adatmodell kiterjesztése a \fogalom{hipergraf}. A hipergráfban a \fogalomragozva{hiperel}{hiperélek} több csomópont között is futhatnak. Megkülönböztetünk irányított és irányítatlan hipergráfokat.
-
-Az irányítatlan hipergráfok egyszerűen leképezhetők \fogalomragozva{paros-graf}{páros gráffá}: a gráf egyik halmazában a hipergráf csomópontjainak, a másik halmazában a hiperéleknek veszünk fel egy pontot.
-
-\fogalom{kenyszer} + \rovidites{CSP}
-
-\todo[inline]{ábra}
+%\fogalom{kenyszer} + \rovidites{CSP}
+%\todo[inline]{ábra}
 
 \subsection{Bináris relációk tulajdonságai}
 
