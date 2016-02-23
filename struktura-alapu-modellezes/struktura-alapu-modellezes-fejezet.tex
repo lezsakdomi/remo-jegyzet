@@ -133,6 +133,8 @@ Készítsünk modellt, amely ábrázolja Budapest, a kerületek, a városrészek
 	\item A negyedik szinten a metrómegállók találhatók.
 \end{enumerate}
 
+% Érdemes lehetne megemlíteni azt, hogy a kerületek uniója visszaadja Budapestet, a városrészek uniója a kerületeket. Ezzel szemben a metróállomások csak "elemei" a városrészeknek.
+
 Látható, hogy a hierarchikus modellt is ábrázolhatjuk gráfként. A csomópontok a modell különböző szintű elemeit reprezentálják, míg az élek a \fogalomragozva{tartalmazas}{része} viszonyt fejezik ki, például az Opera megálló a VI.~kerület része. A gráf \fogalomragozva{gyoker-csomopont}{gyökér csomópontja} a hierarchiában legmagasabban szereplő elem, Budapest.
 
 Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, hogy egy elem tartalmazza a szülő elemét, ezért a hierarchikus modelleket reprezentáló gráfok körmentesek. A gyökér elemet leszámítva minden elemnek van szülője, tehát a gráf összefüggő is, így a hierarchikus modellek \fogalomragozva{fa-graf}{fa gráffal} ábrázolhatók.
@@ -140,13 +142,18 @@ Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, h
 \begin{megjegyzes}
 	A fa struktúrában a gráf élei \emph{explicit módon} jelölik a tartalmazási hierarchiát. A gyakorlatban nem mindig jelenítjük meg explicit módon a tartalmazási viszonyokat.
 	
-	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{implicit megjelenítésével} is. Ebben az esetben egy olyan diagramot rajzolunk, amelyben az egyes síkidomok közötti bennfoglaló ábrázolása reprezentálja a modellben szereplő tartalmazási viszonyt.
+	A tartalmazási hierarchia ábrázolható a bennfoglalási viszonyok \emph{implicit megjelenítésével} is:
 	
-	\begin{center}
-		\includegraphics[scale=0.45]{explicit-tartalmazas}
-	\end{center}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.4]{implicit-tartalmazas}
+		\caption{A tartalmazási viszonyok implicit módon jelölve}
+		\label{fig:implicit-tartalmazas}
+	\end{figure}
 	
-	\added[id=szarnyas]{Ide be is tehetünk egy (kerületeket tartalmazó térképet), az jobb példa az explicit ábrázolásra}
+	\Aref{fig:implicit-tartalmazas}. ábrán egy olyan diagramot látunk, amelyben az egyes síkidomok közötti bennfoglaló ábrázolása reprezentálja a modellben szereplő tartalmazási viszonyt.
+	
+%	\added[id=szarnyas]{Ide be is tehetünk egy (kerületeket tartalmazó térképet), az jobb példa az explicit ábrázolásra}
 \end{megjegyzes}
 
 Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhierarchia hatékonyan ábrázolható gráfként. \Aref{fig:metrohalozat-hierarchiaval}. ábrán látható modell \aref{fig:metrohalozat-nagykorut-elcimkezett} és a \ref{fig:keruletek-varosreszek-metromegallok}. ábrákon található metróhálózatot és a területek hierarchiáját is tartalmazza.
@@ -159,7 +166,7 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 \begin{pelda}
 A közlekedési vállalat üzemen kívüli járművei telephelyeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók telephelyek neve metró \emph{járműtelep}, a buszoké az autóbuszgarázs.
 
-Mennyi üzemanyag raktározható a legnagyobb autóbusz garázsban? Milyen garázsok vannak a XI. kerületben? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel. Építsünk modellt a problémára!
+Mennyi üzemanyag raktározható a legnagyobb autóbusz garázsban? Milyen hosszú a Kőér utcai metró járműtelep vágányhálózata? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel. Építsünk modellt a problémára!
 \end{pelda}
 
 A telephelyeket például az alábbi modellel írhatjuk le:
@@ -183,24 +190,27 @@ Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \te
 \Aref{tab:jarmutelepek}. táblázat példájában láthattuk, hogy a \textit{funkció} jellemzővel megkülönböztethetjük az egyes a telephelyeket. Ha a \textit{funkció} jellemzőt a modellelemek \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{metró járműtelep} típusú elemekre értelmezett, a \textit{max. üzemanyag} jellemző csak az \textsf{autóbuszgarázs} típusra. A típusokat felhasználhatjuk a gráfok jellemzésére is.
 
 \begin{pelda}
-	A korábbi metróhálózatot szeretnénk kiegészíteni a buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak.
+	A korábbi metróhálózatot szeretnénk kiegészíteni a buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak. Az autóbuszvonalon közelekedő járművek autóbuszgarázsban, a metróvonalon közlekedő járművek metró járműtelepen parkolnak.
 \end{pelda}
 
-\added[id=szarnyas]{Ide egy példa nagyobb jön}
-
-Szeretnénk tárolni, hogy melyik vonalhoz melyik telephely tartozik. Értelemszerűen az autóbuszgarázs autóbuszvonalhoz tartozik, metró járműtelep metróhoz stb.
+Készítsünk egy példánygráfot, amelyen ábrázoljuk az M1 és M3-as metróvonal, valamint a 7-es és a 8-as buszvonalak kapcsolódásait (\textit{kapcsolódik) élek}, valamint azt, hogy az egyes vonalak melyik telephelyhely tartoznak (\textit{telephelye) élek}.
 
 \remofigscaleframed{busz-metro-telephelyek}{Közlekedési vonalak és telephelyek}{\yedscale}
 
-A típusgráfja:
+A példánygráfot követve a problémához tartozó típusgráfban meg kell jelennie a \textit{vonal} és a \textit{telephely} fogalmaknak. Az egyes vonalak kapcsolódhatnak egymáshoz a \textit{kapcsolódik} él mentén, míg a vonal telephelyét a \textit{telephelye} él jelzi.
+
+\begin{megjegyzes}
+Az egyes telephelyek tulajdonságait nem ábrázoltuk az ábrán.
+\end{megjegyzes}
 
 \remofigscaleframed{busz-metro-telephelyek-tipusgraf}{Közlekedési vonalak és telephelyek típusgráfja}{\yedscale}
 
-A típusgráf és a példánygráf viszonya.
+A példánygráfot és a típusgráfot egy gráfban is jelölhetjük. Ekkor az egyes példányok és a típusok között egy \textit{típusa} él fut.
 
 \remofigscaleframed{busz-metro-telephelyek-tipusgraffal}{Közlekedési vonalak és telephelyek példány- és típusgráfja}{\yedscale}
 
-Típushierarchia.
+\Aref{fig:busz-metro-telephelyek-tipushierarchia}. ábra bemutatja a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}. A típushierarchia egy hierarchikus modell, amely az egy típusok \textit{is a } viszonyait ábrázolja.
+
 
 \remofigscaleframed{busz-metro-telephelyek-tipushierarchia}{Közlekedési vonalak és telephelyek típushierarchiája}{\yedscale}
 
@@ -213,17 +223,16 @@ Példány és metamodell.
 \remofigscaleframed{busz-metro-telephelyek-peldanymodell-metamodell}{Közlekedési vonalak és telephelyek példánymodellje és metamodellje}{\yedscale}
 
 
-Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes gráfba. Ezzel sok fogalmat elég jól lehet szemléltetni: derived feature-ök, derived referenciák stb.
+\begin{feladat}
+	Az egyes járműtelepek is valamelyik városrészhez tartoznak. Készítsünk olyan metamodellt, amelyben ábrázolható az egyes járműtelepek és városrészek kapcsolata is!
+\end{feladat}
 
-\remofigscaleframed{jarmutelepek}{A közlekedési hálózatunk metamodellje}{\yedscale}
 
-\Aref{fig:jarmutelepek}. ábra bemutatja a problémához tartozó típusgráfot. A modellen több fontos dolog is megfigyelhető:
 
-\begin{itemize}
-	\item A típushierarchia maga is egy hierarchikus modell.
-	\item Több olyan fogalom is van, aminek nincs példánya, csak a leszármazottjainak. Például a modellünkben minden vonal vagy villamosvonal vagy metróvonal. A \textsf{vonal} fogalom így \fogalom{absztrakt}.
-	\item A tulajdonságokat nem ábrázoltuk az ábrán. Erre ugyanis a gráf jellegű megjelenítés kevésbé alkalmas.
-\end{itemize}
+%Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes gráfba. Ezzel sok fogalmat elég jól lehet szemléltetni: derived feature-ök, derived referenciák stb.
+
+%\remofigscaleframed{jarmutelepek}{A közlekedési hálózatunk metamodellje}{\yedscale}
+
 
 %TODO \fogalom{szarmaztatott-tulajdonsag}
 
@@ -369,13 +378,7 @@ A gráfmodelleken is értelmezzük a \fogalom{peldany} fogalmát.
 	Egy adott típusgráf \fogalomragozva{peldanygraf}{példánygráfja} alatt olyan gráfmodellt értünk, amelynek elemei a típusgráf csomópont- és éltípusainak példányai, valamint minden él forrása és célja rendre az éltípus forrásának és céljának példánya.
 \end{definicio}
 
-
-
-
-
 A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból a típusgráf csomópontjaira \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között.% -- ennek ábrázolása azonban gráfként nehézkes.
-
-\remofigscale{tipusgraf}{A fogalmak típusgráfja}{\yedscale}
 
 \begin{megjegyzes}
 	Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak.
@@ -622,28 +625,25 @@ A bottom-up modellezés jellemzői:
 	\item[$\ominus$] Nem látszik előre a rész szerepe az egészben
 \end{itemize}
 
-
-\subsection{Metamodellezés}
-
-Egy adott problématerület metamodelljét gyakran informatikai szakemberek készítik, az adott terület szakértőivel -- ún. \emph{domain expertök} -- együttműködve.
-
-Ontológia készítése, ...
-
-
-
-\subsubsection{Taxonómia és ontológia}
-
-\begin{definicio}
-	A \fogalom{taxonomia} ...
-\end{definicio}
-
-Az ontológia kifejezésre sok különböző definíció létezik. Az informatikában általában az alábbihoz hasonló módon definiálják:
-
-\begin{definicio}
-	Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
-\end{definicio}
-
-\todo{RDF}
+%\subsection{Metamodellezés}
+%
+%Egy adott problématerület metamodelljét gyakran informatikai szakemberek készítik, az adott terület szakértőivel -- ún. \emph{domain expertök} -- együttműködve.
+%
+%Ontológia készítése, ...
+%
+%\subsubsection{Taxonómia és ontológia}
+%
+%\begin{definicio}
+%	A \fogalom{taxonomia} ...
+%\end{definicio}
+%
+%Az ontológia kifejezésre sok különböző definíció létezik. Az informatikában általában az alábbihoz hasonló módon definiálják:
+%
+%\begin{definicio}
+%	Az \fogalom{ontologia} egy olyan \fogalom{taxonomia}, amely tartalmazza a benne szereplő fogalmak közötti viszonyokat. 
+%\end{definicio}
+%
+%\todo{RDF}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
