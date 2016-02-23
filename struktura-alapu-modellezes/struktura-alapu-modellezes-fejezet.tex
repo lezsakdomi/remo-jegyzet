@@ -599,31 +599,39 @@ A modellezési formalizmusok után bemutatunk néhány struktúramodellezési te
 
 \subsection{Hierarchia modellezése}
 
-A gyakorlatban a hierarchia modellezésére két fő megközelítést szoktak alkalmazni: a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} modellezést.
+Korábban láttuk, hogy a modellelemek közti szigorú hierarchia kifejezhető fa (ill. erdő) gráfokkal. Ezek a fajta modellek képesek kifejezni a (rész)rendszerek és alkotóelemeik közti tartalmazási viszonyt, akár többlépcsős tartalmazással is (a részrendszerek is további részeket tartalmaznak). Azonban a gyakorlatban a modellnek sokszor ennél jóval több információt kell tartalmaznia; egy-egy adott modellelemmel kapcsolatban nem csak a tartalmazó és tartalmazott komponenseivel való tartalmazási viszonyát kell ismerni, hanem egyéb modellelemekkel való kapcsolatait. Ilyenkor a strukturális modell (gráf jellegű része) két rétegre tagozódik: egyrészt a modell szerkezeti vázát alkotó tartalmazási hierarchiára (fa/erdő), amely az alkotóelemek rész-egész viszonyait reprezentálja, másrészt ezen felüli \fogalom{kereszthivatkozas} élekre, amelyek a tartalmazási rendtől függetlenül, a körmentesség korlátozása nélkül köthetnek össze elemeket. Ennek megfelelően egy metamodell megmondhatja, hogy mely éltípusok példányait fogjuk az említett szerkezeti vázat alkotó tartalmazási éleknek tekinteni. 
+
+A hierarchikus modellek megalkotása, illetve az összetett rendszerek tervezése során többféleképp választható meg az egyes elemek elkészítésének sorrendje. Jól illusztrálja a választási szabadságot két polárisan ellentétes megközelítés: a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} modellezés.
 
 \begin{definicio}
-	\Fogalomangolul{top-down} modellezés során a rendszert felülről lefelé építjük. A modellezés alaplépése a \fogalom{dekompozicio}.
+	\Fogalomangolul{top-down} modellezés során a rendszert felülről lefelé (összetett rendszerből az alkotóelemei felé haladva) építjük. A modellezés alaplépése a \fogalom{dekompozicio}.
 \end{definicio}
 
-A top-down modellezés jellemzői:
+Egy top-down modellezési / tervezési folyamatot úgy kell tehát elképzelni, hogy a kezdetektől fogva az egész rendszer modelljét építjük; azonban eleinte hiányoznak még a részletek. Idővel a modellt finomítjuk: tartalmazott alkotóelemekre bontjuk a rendszert, megadva azok tulajdonságait és kereszthivatkozásait is; majd később magukat az alkotóelemeket ugyanúgy strukturális dekompozíciónak vetjük alá. 
+
+A top-down modellezés fontos jellemzői:
 
 \begin{itemize}
 	\item[$\oplus$] Részrendszer tervezésekor a szerepe már ismert
-	\item[$\ominus$] ,,Félidőben'' még nincsenek működő részek
+	\item[$\ominus$] ,,Félidőben'' még nincsenek működő (teljes részletességgel elkészített) részek
 	\item[$\ominus$] Részek problémái, igényei későn derülnek ki
 \end{itemize}
 
 \begin{definicio}
-	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé építjük. A modellezés alaplépése a \fogalom{kompozicio}: az egész rendszer összeszerkesztése külön modellezett vagy fejlesztett részrendszerekből.
+	\Fogalomangolul{bottom-up} modellezés során a rendszert alulról felfelé (elszigetelt alkotóelemekből az összetett rendszer felé haladva) építjük. A modellezés alaplépése a \fogalom{kompozicio}: az egész rendszer összeszerkesztése külön modellezett vagy fejlesztett részrendszerekből.
 \end{definicio}
 
-A bottom-up modellezés jellemzői:
+Egy bottom-up modellezési / tervezési folyamatot úgy kell tehát elképzelni, hogy a kezdetektől fogva részletes modelleket építünk; azonban eleinte csak a rendszer izolált, egyszerű komponenseivel foglalkozunk. Ahogy fokozatosan egyre több komponens készül el, nagyobb részrendszerekké foglalhatjuk őket össze, az egymáshoz való kapcsolódásukat is tisztázva. Idővel az így kapott összetettebb részrendszereket is további kompozíciónak vethetjük alá. 
+
+A bottom-up modellezés fontos jellemzői:
 
 \begin{itemize}
 	\item[$\oplus$] A rendszer részei önmagukban kipróbálhatók, tesztelhetők
 	\item[$\oplus$] Részleges készültségnél könnyebben előállítható a rendszer prototípusa
 	\item[$\ominus$] Nem látszik előre a rész szerepe az egészben
 \end{itemize}
+
+Természetesen a gyakorlatban a kétféle szélsőséges megközelítés közti kompromisszum is elképzelhető.
 
 %\subsection{Metamodellezés}
 %
