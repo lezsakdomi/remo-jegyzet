@@ -195,7 +195,7 @@ Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \te
 
 Készítsünk egy példánygráfot, amelyen ábrázoljuk az M1 és M3-as metróvonal, valamint a 7-es és a 8-as buszvonalak kapcsolódásait (\textit{kapcsolódik) élek}, valamint azt, hogy az egyes vonalak melyik telephelyhely tartoznak (\textit{telephelye) élek}.
 
-\remofigscaleframed{busz-metro-telephelyek}{Közlekedési vonalak és telephelyek}{\yedscale}
+\remofigscalefixed{busz-metro-telephelyek}{Közlekedési vonalak és telephelyek}{\yedscale}
 
 A példánygráfot követve a problémához tartozó típusgráfban meg kell jelennie a \textit{vonal} és a \textit{telephely} fogalmaknak. Az egyes vonalak kapcsolódhatnak egymáshoz a \textit{kapcsolódik} él mentén, míg a vonal telephelyét a \textit{telephelye} él jelzi.
 
@@ -203,24 +203,27 @@ A példánygráfot követve a problémához tartozó típusgráfban meg kell jel
 Az egyes telephelyek tulajdonságait nem ábrázoltuk az ábrán.
 \end{megjegyzes}
 
-\remofigscaleframed{busz-metro-telephelyek-tipusgraf}{Közlekedési vonalak és telephelyek típusgráfja}{\yedscale}
+\remofigscalefixed{busz-metro-telephelyek-tipusgraf}{Közlekedési vonalak és telephelyek típusgráfja}{\yedscale}
 
 A példánygráfot és a típusgráfot egy gráfban is jelölhetjük. Ekkor az egyes példányok és a típusok között egy \textit{típusa} él fut.
 
-\remofigscaleframed{busz-metro-telephelyek-tipusgraffal}{Közlekedési vonalak és telephelyek példány- és típusgráfja}{\yedscale}
+\remofigscalefixed{busz-metro-telephelyek-tipusgraffal}{Közlekedési vonalak és telephelyek példány- és típusgráfja}{\yedscale}
 
-\Aref{fig:busz-metro-telephelyek-tipushierarchia}. ábra bemutatja a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}. A típushierarchia egy hierarchikus modell, amely az egy típusok \textit{is a } viszonyait ábrázolja.
+\Aref{fig:busz-metro-telephelyek-tipushierarchia}. ábra bemutatja a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}. A típushierarchia egy hierarchikus modell, amely az egy típusok \textit{is a} viszonyait ábrázolja.
 
+\remofigscalefixed{busz-metro-telephelyek-tipushierarchia}{Közlekedési vonalak és telephelyek típushierarchiája}{\yedscale}
 
-\remofigscaleframed{busz-metro-telephelyek-tipushierarchia}{Közlekedési vonalak és telephelyek típushierarchiája}{\yedscale}
+A rendszer fejlesztésekor gyakran fontos, hogy a típusgráfot és a típushierarchiát együtt lássuk. A \fogalom{metamodell} tartalmazza a típusgráfot, a típusok hierarchiáját, a tulajdonságmodellt (ill. további, itt nem részletezett szabályokat, pl. multiplicitási kényszerek, jólformáltsági kényszerek).
 
-Metamodell.
+A metamodell tartalmazza a 
 
-\remofigscaleframed{busz-metro-telephelyek-metamodell}{Közlekedési vonalak és telephelyek metamodellje}{\yedscale}
+A típusgráfban és a típushierarchiában tartalmazott információt, valamint tulajdonságmodellt együtt modellezve megkapjuk a terület metamodelljét. A metamodell részlete \aref{fig:busz-metro-telephelyek-metamodell}. ábrán látható.
 
-Példány és metamodell.
+\remofigscalefixed{busz-metro-telephelyek-metamodell}{Közlekedési vonalak és telephelyek (részleges) metamodellje}{\yedscale}
 
-\remofigscaleframed{busz-metro-telephelyek-peldanymodell-metamodell}{Közlekedési vonalak és telephelyek példánymodellje és metamodellje}{\yedscale}
+A példánymodellt és a metamodellt is ábrázolhatjuk egy gráfon, a \textit{példánya} viszonyok megjelölésével.
+
+\remofigscalefixed{busz-metro-telephelyek-peldanymodell-metamodell}{Közlekedési vonalak és telephelyek példánymodellje és (részleges) metamodellje egy gráfon ábrázolva}{\yedscale}
 
 
 \begin{feladat}
@@ -231,7 +234,7 @@ Példány és metamodell.
 
 %Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes gráfba. Ezzel sok fogalmat elég jól lehet szemléltetni: derived feature-ök, derived referenciák stb.
 
-%\remofigscaleframed{jarmutelepek}{A közlekedési hálózatunk metamodellje}{\yedscale}
+%\remofigscalefixed{jarmutelepek}{A közlekedési hálózatunk metamodellje}{\yedscale}
 
 
 %TODO \fogalom{szarmaztatott-tulajdonsag}
@@ -381,8 +384,10 @@ A gráfmodelleken is értelmezzük a \fogalom{peldany} fogalmát.
 A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány viszonyok is megjeleníthetők: a példánygráf csomópontjaiból a típusgráf csomópontjaira \fogalomangolul{peldanya} (\fogalom{peldanya}) élek mutatnak. Szintén \fogalomangolul{peldanya} viszony áll fenn a példánygráf élei és a típusgráf élei között.% -- ennek ábrázolása azonban gráfként nehézkes.
 
 \begin{megjegyzes}
-	Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak.
+	Az \fogalomangolul{peldanya} viszony helyett gyakran annak inverzét, a \fogalomangolul{tipusa} (x \fogalom{tipusa} y-nak) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak.
 \end{megjegyzes}
+
+\remofigscalefixed{busz-metro-telephelyek-tipusgraf-inverz-elek}{Példány és típusgráf \fogalomangolul{tipusa} élekkel}{\yedscale}
 
 \begin{definicio}
 	Egy rendszer \fogalomragozva{metamodell}{metamodellje} tartalmazza a típusgráfot, az egyes típusok közötti kapcsolatokat, ill. további megkötéseket is.
@@ -663,7 +668,6 @@ Természetesen a gyakorlatban a kétféle szélsőséges megközelítés közti 
 
 Az objektum-orientált modell ereje abban rejlik, hogy képes a típusok, a hierarchia, a kapcsolatok és az attribútumok precíz ábrázolására.
 
-
 TODO: \fogalom{orokles}, \fogalom{alosztaly}, \fogalom{ososztaly}
 
 \begin{megjegyzes}
@@ -686,7 +690,7 @@ Többszintű metamodellezés: járműtípus, járműpéldány modellezése;
 \subsection{Számítógéphálózat modellezése}
 
 
-\remofigscaleframed{halozat}{Hálózat}{0.35}
+\remofigscalefixed{halozat}{Hálózat}{0.35}
 
 \begin{itemize}
 	\item Milyen elemekből áll a rendszer, milyen kapcsolatok lehetségesek?
@@ -835,7 +839,7 @@ A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha i
 \end{definicio}
 
 \begin{pelda}
-	\remofigscaleframed{tranzitivitas}{Az \emph{egyenlő} ($=$) és a \emph{kisebb} ($<$) relációk gráfon ábrázolva}{\yedscale}
+	\remofigscalefixed{tranzitivitas}{Az \emph{egyenlő} ($=$) és a \emph{kisebb} ($<$) relációk gráfon ábrázolva}{\yedscale}
 
 	Tranzitív relációk:
 	\begin{itemize}
