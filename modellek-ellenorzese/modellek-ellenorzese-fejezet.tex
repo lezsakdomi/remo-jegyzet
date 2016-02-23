@@ -4,7 +4,6 @@
 \graphicspath{ {./modellek-ellenorzese/figures/} }
 
 \newcommand{\kiegeszitoanyag}{\ (kiegészítő anyag)} %lábjegyzetek, "bónusz bekezdések" végére  % \textsuperscript{($\ast$)}
-\newcommand{\modellekEllenorzeseAllapotgepScale}{0.5}
 
 A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel is járhat.
 
@@ -49,7 +48,11 @@ Biztonsági követelmény például az, hogy egy jelzőlámpán egyszerre sosem 
 
 \paragraph{Gyakori általános követelmények.}
 Itt kitérünk néhány olyan gyakori általános követelményre, amelyek általában a modell által leírt folyamattól, vagy a megvalósított rendszer érdemi funkcionalitásától lényegében függetlenek.
-Az egyik ilyen általános követelmény a holtpontmentesség. \fogalomragozva{holtpont}{Holtpontnak} (deadlocknak) nevezzük azt az állapotot egy rendszerben, amelyben a végrehajtás megáll, a rendszer többé nem képes állapotot váltani, és nem mutat semmilyen viselkedést. A holtpont egy gyakran előforduló oka, ha a rendszerben két vagy több folyamat egymásra várakozik. Ez egy olyan állapot, amelyből külső (nem modellezett) beavatkozás nélkül nem lehet kilépni. Emiatt párhuzamos rendszereknél egy gyakori követelmény a \fogalom{holtpontmentesseg}, a holtpontok lehetőségének hiánya\footnote{Természetesen előfordulhat olyan eset is, hogy a holtpont nem tiltott, hanem megfelelő körülmények közt egyenesen elvárt. Emlékezzünk arra, hogy egy folyamatpéldány a dolga végeztével semmilyen további viselkedést nem mutat. Ilyenkor inkább az lehet követelmény, hogy a folyamat csak úgy kerülhessen holtpontba, ha már befejeződött.}. Sajnos ez egy olyan probléma, amely kifinomult eszközök nélkül igen nehezen vizsgálható, gyakran a holtpont létrejöttéhez a körülmények ritka, különleges együttállása szükséges.
+Az egyik ilyen általános követelmény a holtpontmentesség. \fogalomragozva{holtpont}{Holtpontnak} (deadlocknak) nevezzük azt az állapotot egy rendszerben, amelyben a végrehajtás megáll, a rendszer többé nem képes állapotot váltani, és nem mutat semmilyen viselkedést. A holtpont egy gyakran előforduló oka, ha a rendszerben két vagy több folyamat egymásra várakozik. Ez egy olyan állapot, amelyből külső (nem modellezett) beavatkozás nélkül nem lehet kilépni. Emiatt párhuzamos rendszereknél egy gyakori követelmény a \fogalom{holtpontmentesseg}, a holtpontok lehetőségének hiánya. Sajnos ez egy olyan probléma, amely kifinomult eszközök nélkül igen nehezen vizsgálható, gyakran a holtpont létrejöttéhez a körülmények ritka, különleges együttállása szükséges.
+
+\begin{megjegyzes}
+Természetesen előfordulhat olyan eset is, hogy a holtpont nem tiltott, hanem megfelelő körülmények közt egyenesen elvárt. Emlékezzünk arra, hogy egy folyamatpéldány a dolga végeztével semmilyen további viselkedést nem mutat. Ilyenkor inkább az lehet követelmény, hogy a folyamat csak úgy kerülhessen holtpontba, ha már befejeződött.
+\end{megjegyzes}
 
 Hasonló fogalom a livelock. \Fogalom{livelock} esetén az érdemi végrehajtás ugyanúgy megáll, mint holtpont esetén. Ennek viszont nem az az oka, hogy a rendszer nem képes állapotot váltani, hanem az, hogy a livelockban résztvevő komponensek egy végtelen ciklusba ragadnak, amelyben nem végeznek hasznos tevékenységet.
 
@@ -298,7 +301,7 @@ Fontos megjegyezni, hogy ha elérnénk néhány új teszteset definiálásával 
 A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak szükséges, de nem elégséges feltétele a jó minőségű rendszer fejlesztésének. Gyakran ez a szám félrevezető is lehet, illetve rossz irányba viheti a teszttervezést.
 
 
-\section{Tesztelés futásidőben (futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
+\section{Tesztelés futásidőben (Futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
 Ebben a fejezetben a futásidejű ,,öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét elhelyezzük magában a megvalósított rendszerben és folyamatosan vizsgáljuk. Azokat a követelményeket, amelyek teljesülését folyamatosan, minden állapotban elvárjuk, \fogalomragozva{invarians}{invariánsoknak} nevezzük.
 
 A monitorozás általános elrendezését szemlélteti \aref{fig:monitorozas-elrendezes}.~ábra.
@@ -395,7 +398,7 @@ Különösen kritikus esetekben, például egy repülő vagy egy atomerőmű vez
 \subsection{Kapcsolódó eszközök}
 Ebben a szakaszban néhány olyan (többnyire jól ismert és ingyenes) eszközt sorolunk fel, amely a gyakorlatban megvalósítja a bemutatott módszerek némelyikét.
 
-Egyszerűbb statikus analízis eszközöket beépítve találhatunk a fejlettebb fejlesztőeszközökben (pl. Eclipse\footnote{\url{http://eclipse.org}}) és modellező eszközökben (pl. Yakindu). Ezeken kívül számos, mélyebb analízist lehetővé tevő eszköz létezik. C esetén gyakran használatos a Lint stb. nyelv esetén a Cppcheck\footnote{\url{http://cppcheck.sourceforge.net/}} és cpplint\footnote{\url{https://github.com/google/styleguide/tree/gh-pages/cpplint}} eszközök. Java nyelvű programok statikus ellenőrzésére használható például a FindBugs\footnote{\url{http://findbugs.sourceforge.net/}} vagy a PMD\footnote{\url{http://pmd.github.io/}} eszköz. A Coverity cég C, \cpp és Java nyelvű programok statikus ellenőrzésére kínál megoldást, amelyek közül például a Coverity Scan\footnote{http://www.coverity.com/products/coverity-scan/} nyílt forráskódú programokra ingyenesen használható.
+Egyszerűbb statikus analízis eszközöket beépítve találhatunk a fejlettebb fejlesztőeszközökben (pl. Eclipse\footnote{\url{http://eclipse.org}}) és modellező eszközökben (pl. Yakindu). Ezeken kívül számos, mélyebb analízist lehetővé tevő eszköz létezik. C esetén gyakran használatos a Lint stb. nyelv esetén a Cppcheck\footnote{\url{http://cppcheck.sourceforge.net/}} és cpplint\footnote{\url{https://github.com/google/styleguide/tree/gh-pages/cpplint}} eszközök. Java nyelvű programok statikus ellenőrzésére használható például a FindBugs\footnote{\url{http://findbugs.sourceforge.net/}} vagy a PMD\footnote{\url{http://pmd.github.io/}} eszköz. A Coverity cég C, \cpp és Java nyelvű programok statikus ellenőrzésére kínál megoldást, amelyek közül például a Coverity Scan\footnote{\url{http://www.coverity.com/products/coverity-scan/}} nyílt forráskódú programokra ingyenesen használható.
 
 C és \cpp nyelvű programokhoz használható tesztfuttató keretrendszer például a Google Test\footnote{\url{https://github.com/google/googletest}}. Java programok modultesztelését segítheti például a JUnit\footnote{\url{http://junit.org/}} keretrendszer.
 
