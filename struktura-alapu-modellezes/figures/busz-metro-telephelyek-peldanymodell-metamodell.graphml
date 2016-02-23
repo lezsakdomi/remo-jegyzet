@@ -187,7 +187,7 @@ autóbuszgarázs</y:NodeLabel>
           <y:Geometry height="16.0" width="16.0" x="659.4465380208568" y="582.0703605143229"/>
           <y:Fill color="#984EA3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="e" textColor="#000000" visible="true" width="36.736328125" x="19.999999999999886" y="-0.984375">vonal</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="e" textColor="#000000" visible="true" width="36.736328125" x="20.0" y="-0.984375">vonal</y:NodeLabel>
           <y:Shape type="ellipse"/>
         </y:ShapeNode>
       </data>
@@ -254,7 +254,6 @@ járműtelep</y:NodeLabel>
       </data>
     </node>
     <node id="n14">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="1.0" width="545.0" x="530.5999999999999" y="706.7950215270024"/>
@@ -501,6 +500,14 @@ járműtelep</y:NodeLabel>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#999999" visible="true" width="70.216796875" x="13.393573527529156" y="-90.68529178273536">instance of<y:LabelModel>
+              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.0" segment="-1"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
           <y:Arc height="-14.419631004333496" ratio="-0.3270508646965027" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
@@ -627,7 +634,6 @@ járműtelep</y:NodeLabel>
       </data>
     </edge>
     <edge id="e25" source="n9" target="n8">
-      <data key="d9"/>
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="-8.0" ty="0.0">
