@@ -235,7 +235,7 @@ negyed</y:NodeLabel>
           <y:Geometry height="16.0" width="16.0" x="1256.1667658730157" y="504.7812573389478"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="false" width="4.0" x="6.0" y="5.999999999999943"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="false" width="4.0" x="6.0" y="6.000000000000057"/>
           <y:Shape type="ellipse"/>
         </y:ShapeNode>
       </data>
@@ -353,7 +353,7 @@ negyed</y:NodeLabel>
     <node id="n25">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="1106.9983324126983" y="657.6098173389478"/>
+          <y:Geometry height="16.0" width="16.0" x="1098.6097244126984" y="656.0369533389477"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="false" width="4.0" x="6.0" y="6.0"/>

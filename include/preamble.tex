@@ -143,15 +143,17 @@
 
 %\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=gray] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
 %\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=white] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
+
 \newenvironment{megjegyzes}{\footnotesize \textbf{Megjegyzés.}}{}
+
 
 \definecolor{SpringGreen}{HTML}{C6DC67}
 \newenvironment{tipp}{\begin{mdframed}[backgroundcolor=SpringGreen] \textbf{Tipp.}}{\end{mdframed}}
 
 \newenvironment{feladat}{\begin{mdframed}[backgroundcolor=blue!20] \textbf{Feladat.}}{\end{mdframed}}
 
-\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}}
-
+%\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}}
+\newenvironment{definicio}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}\end{minipage}}
 
 \newenvironment{kisdefinicio}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíció ($*$).}}{\end{mdframed}}
 

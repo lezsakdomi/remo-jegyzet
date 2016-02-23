@@ -1,41 +1,18 @@
 \newcommand{\remofigscale}[3]{
-%	\begin{samepage}
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[scale=#3,center]{#1}
-		\caption{#2.}
+		\caption{#2}
 		\label{fig:#1}
 	\end{figure}}
-%	\end{samepage}}
 	
 \newcommand{\remofigscaleframed}[3]{
-%	\begin{samepage}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=#3]{#1}
-		\caption{#2.}
+		\includegraphics[scale=#3,center]{#1}
+		\caption{#2}
 		\label{fig:#1}
 	\end{figure}}
-%	\end{samepage}}
-	
-%\newcommand{\remofigscaleframedwrapped}[3]{
-%	\begin{wrapfigure}{r}{8cm}
-%		\begin{center}
-%			\includegraphics[scale=#3]{#1}
-%			\captionof{figure}{#2.}
-%			\label{fig:#1}
-%		\end{center}
-%	\end{wrapfigure}}
-	
-% for fbox around remofigscaleframedwhite
-%\newcommand{\remofigscaleframedwhite}[3]{
-%	\begin{center}
-%		\begin{samepage}
-%			\setlength{\fboxsep}{0pt}\fbox{\setlength{\fboxsep}{15pt}\colorbox{white}{\includegraphics[scale=#3]{#1}}}
-%			\captionof{figure}{#2.}
-%			\label{fig:#1}
-%		\end{samepage}
-%	\end{center}}
 
 
 \newcommand{\kieg}{*}

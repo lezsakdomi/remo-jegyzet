@@ -64,7 +64,7 @@ gráf \aref{fig:metrohalozat-nagykorut-egyszeru} ábrán látható.
 		\caption{A metróhálózat egyszerű gráfként ábrázolva}
 		\label{fig:metrohalozat-nagykorut-egyszeru}
 	\end{subfigure}
-	\caption{Budapest metróhálózata a Nagykörúton belül.}\label{fig:animals}
+	\caption{Budapest metróhálózata a Nagykörúton belül}\label{fig:animals}
 \end{figure}
 
 A modellünk segítségével választ kaphatunk például a következő kérdésekre:
@@ -90,16 +90,16 @@ Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az els�
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{metrohalozat-nagykorut-elcimkezett}
-		\caption{A gráf élcímkékkel kiegészítve.}
+		\caption{A gráf élcímkékkel kiegészítve}
 		\label{fig:metrohalozat-nagykorut-elcimkezett}
 	\end{subfigure}
 	~
 	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{metrohalozat-nagykorut-elsulyozott}
-		\caption{A gráf élsúlyokkal kiegészítve.}
+		\caption{A gráf élsúlyokkal kiegészítve}
 		\label{fig:metrohalozat-nagykorut-elsulyozott}
 	\end{subfigure}
-	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}\label{fig:animals}
+	\caption{A metróhálózatot ábrázoló gráf kiterjesztései}\label{fig:animals}
 \end{figure}
 
 A második kérdés megválaszolásához az egyes megállók közötti útidőt kell jellemeznünk. Ehhez vegyünk fel \fogalomragozva{elsuly}{élsúlyokat} a gráfba. \Aref{fig:metrohalozat-nagykorut-elsulyozott} ábrán élsúlyokkal jelöltük az egyes megállók között menetidőt. Ezek ismeretében meghatározható a Kossuth Lajos tér és a Kálvin tér közötti út menetrend szerinti időtartama. Ez a modell arra is alkalmas, hogy meghatározzuk a legrövidebb utat a két csomópont között, például a \fogalom{Dijsktra-algoritmus} segítségével.
@@ -146,7 +146,7 @@ Amennyiben egy rendszert hierarchikusan részekre bontunk, nem fordulhat elő, h
 		\includegraphics[scale=0.45]{explicit-tartalmazas}
 	\end{center}
 	
-	\added[id=szarnyas]{Ide be is tehetünk egy (kerületeket tartalmazó térképet), az jobb példa az explicit ábrázolásra.}
+	\added[id=szarnyas]{Ide be is tehetünk egy (kerületeket tartalmazó térképet), az jobb példa az explicit ábrázolásra}
 \end{megjegyzes}
 
 Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhierarchia hatékonyan ábrázolható gráfként. \Aref{fig:metrohalozat-hierarchiaval}. ábrán látható modell \aref{fig:metrohalozat-nagykorut-elcimkezett} és a \ref{fig:keruletek-varosreszek-metromegallok}. ábrákon található metróhálózatot és a területek hierarchiáját is tartalmazza.
@@ -167,7 +167,7 @@ A telephelyeket például az alábbi modellel írhatjuk le:
 \begin{table}[H]
 	\centering
 	\input{struktura-alapu-modellezes/jarmutelepek}
-	\caption{A BKK telephelyei (részleges modell).}
+	\caption{A BKK telephelyei (részleges modell)}
 	\label{tab:jarmutelepek}
 \end{table}
 
@@ -187,9 +187,9 @@ Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \te
 	A korábbi metróhálózatot szeretnénk kiegészíteni a buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak.
 \end{pelda}
 
-\added[id=szarnyas]{Ide egy példa nagyobb jön.}
+\added[id=szarnyas]{Ide egy példa nagyobb jön}
 
-Szeretnénk tárolni, hogy melyik vonalhoz melyik telephely tartozik. Értelemszerűen az autóbuszgarázs buszvonalhoz tartozik, metró járműtelep metróhoz stb.
+Szeretnénk tárolni, hogy melyik vonalhoz melyik telephely tartozik. Értelemszerűen az autóbuszgarázs autóbuszvonalhoz tartozik, metró járműtelep metróhoz stb.
 
 \remofigscaleframed{busz-metro-telephelyek}{Közlekedési vonalak és telephelyek}{\yedscale}
 
@@ -203,11 +203,15 @@ A típusgráf és a példánygráf viszonya.
 
 Típushierarchia.
 
-TODO ábra
+\remofigscaleframed{busz-metro-telephelyek-tipushierarchia}{Közlekedési vonalak és telephelyek típushierarchiája}{\yedscale}
 
 Metamodell.
 
 \remofigscaleframed{busz-metro-telephelyek-metamodell}{Közlekedési vonalak és telephelyek metamodellje}{\yedscale}
+
+Példány és metamodell.
+
+\remofigscaleframed{busz-metro-telephelyek-peldanymodell-metamodell}{Közlekedési vonalak és telephelyek példánymodellje és metamodellje}{\yedscale}
 
 
 Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes gráfba. Ezzel sok fogalmat elég jól lehet szemléltetni: derived feature-ök, derived referenciák stb.
@@ -245,7 +249,7 @@ Felismerhetjük, hogy a telephely helyszíne is belepasszol a városrészes grá
 %		XY & villamos & a t  & b m  &               & 8             & yy kW       & 1800 mm \\ \hline
 %		Alstom Metropolis     & metró    &       &       &               &               &              & 1435 mm \\ \hline
 %	\end{tabular}
-%	\caption{Járművek tulajdonságai.}
+%	\caption{Járművek tulajdonságai}
 %	\label{tab:jarmuvek}
 %\end{table}
 %
@@ -377,7 +381,6 @@ A típusgráfot és példánygráfot egy gráfon ábrázolva a típus-példány 
 \begin{megjegyzes}
 	Az \fogalom{peldanya} viszony helyett gyakran annak inverzét, a \fogalom{tipusa} (\fogalomangolul{tipusa}) viszonyt. Gráfban ábrázolva az \fogalom{peldanya} és \fogalom{tipusa} élek adott csomópontok között egymással ellentétes irányúak.
 \end{megjegyzes}
-
 
 \begin{definicio}
 	Egy rendszer \fogalomragozva{metamodell}{metamodellje} tartalmazza a típusgráfot, az egyes típusok közötti kapcsolatokat, ill. további megkötéseket is.
@@ -526,17 +529,17 @@ A kapott részgráf \aref{fig:metrohalozat-nagykorut-elsulyozott-szurt} ábrán 
 	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[scale=\yedscale]{metrohalozat-nagykorut-elcimkezett-szurt}
-		\caption{Az M2 és az M4 metróvonalak megállói.}
+		\caption{Az M2 és az M4 metróvonalak megállói}
 		\label{fig:metrohalozat-nagykorut-elcimkezett-szurt}
 	\end{subfigure}
 	~
 	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[scale=\yedscale]{metrohalozat-nagykorut-elsulyozott-szurt}
-		\caption{Az 1 percnél távolabbi metrómegállók.}
+		\caption{Az 1 percnél távolabbi metrómegállók}
 		\label{fig:metrohalozat-nagykorut-elsulyozott-szurt}
 	\end{subfigure}
-	\caption{Szűrések a metróhálózatot tartalmazó gráfon.}
+	\caption{Szűrések a metróhálózatot tartalmazó gráfon}
 \end{figure}
 
 
@@ -668,6 +671,10 @@ TODO: \fogalom{orokles}, \fogalom{alosztaly}, \fogalom{ososztaly}
 \end{megjegyzes}
 
 
+
+
+Többszintű metamodellezés: járműtípus, járműpéldány modellezése; 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Gyakorlati alkalmazások}
@@ -694,7 +701,7 @@ Egy szoftver alkalmazás \emph{\glslink{GUI}{grafikus felhasználói felülete}}
 	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[scale=0.4]{GUI-ablak}
-		\caption{A számológép alkalmazás grafikus felülete.}
+		\caption{A számológép alkalmazás grafikus felülete}
 		\label{fig:GUI-ablak}
 	\end{subfigure}
 	~
@@ -704,7 +711,7 @@ Egy szoftver alkalmazás \emph{\glslink{GUI}{grafikus felhasználói felülete}}
 		\caption{A komponensek hierarchiája}
 		\label{fig:GUI-hierarchia}
 	\end{subfigure}
-	\caption{A metróhálózatot ábrázoló gráf kiterjesztései.}
+	\caption{A metróhálózatot ábrázoló gráf kiterjesztései}
 \end{figure}
 
 
