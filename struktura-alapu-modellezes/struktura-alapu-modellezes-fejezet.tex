@@ -157,7 +157,7 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 \label{sec:tulajdonsagok}
 
 \begin{pelda}
-A közlekedési vállalat üzemen kívüli járművei telephelyeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók és a villamosok telephelye a kocsiszín, a buszoké az autóbuszgarázs.
+A közlekedési vállalat üzemen kívüli járművei telephelyeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók telephelyek neve metró \emph{járműtelep}, a buszoké az autóbuszgarázs.
 
 Mennyi üzemanyag raktározható a legnagyobb autóbusz garázsban? Milyen garázsok vannak a XI. kerületben? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel. Építsünk modellt a problémára!
 \end{pelda}
@@ -176,12 +176,11 @@ A modellünk elemei a táblázat sorai. A táblázat fejlécében definiált \fo
 Megfigyelhetjük azonban, hogy az azonos %\fogalomragozva{tipus}{típussal}
 funkcióval rendelkező modellelemek azonos tulajdonságokra vesznek fel értéket.
 %Ez alapján megépíthetjük a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}: minden \textsf{telephely} típusú elemre értelmezzük a helyszín és a kapacitás fogalmakat.
-%Az \textsf{autóbuszgarázs} és a \textsf{kocsiszín} a \textsf{telephely} típusnak különböző esetei.
-Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \textit{funkció} és \textit{kapacitás} attribútuma. Az \textsf{autóbuszgarázs} esetén a \textit{max. üzemanyag}, a \textsf{kocsiszín} esetében a \textit{vágányhossz} attribútumot rögzítjük.
+Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \textit{funkció} és \textit{kapacitás} attribútuma. Az \textsf{autóbuszgarázs} esetén a \textit{max. üzemanyag}, a \textsf{metró járműtelep} esetében a \textit{vágányhossz} attribútumot rögzítjük.
 
 \subsection{Típusok}
 
-\Aref{tab:jarmutelepek}. táblázat példájában láthattuk, hogy a \textit{funkció} jellemzővel megkülönböztethetjük az egyes a telephelyeket. Ha a \textit{funkció} jellemzőt a modellelemek \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett, a \textit{max. üzemanyag} jellemző csak az \textsf{autóbuszgarázs} típusra. A típusokat felhasználhatjuk a gráfok jellemzésére is.
+\Aref{tab:jarmutelepek}. táblázat példájában láthattuk, hogy a \textit{funkció} jellemzővel megkülönböztethetjük az egyes a telephelyeket. Ha a \textit{funkció} jellemzőt a modellelemek \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{metró járműtelep} típusú elemekre értelmezett, a \textit{max. üzemanyag} jellemző csak az \textsf{autóbuszgarázs} típusra. A típusokat felhasználhatjuk a gráfok jellemzésére is.
 
 \begin{pelda}
 	A korábbi metróhálózatot szeretnénk kiegészíteni a buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak.
@@ -312,19 +311,19 @@ A \textit{kapacitás} jellemzőhöz tartozó függvény
 $\mathit{kapacitás}(e) \rightarrow n,$
 ahol $e$ egy modellelem azonosítója, $n$ egy nemnegatív egész szám. 
 Például
-$$\mathit{kapacitás}(\mathsf{T2}) = 46, \quad \mathit{kapacitás}(\mathsf{T3}) = 265.$$
+$$\mathit{kapacitás}(\mathsf{T2}) = 60, \quad \mathit{kapacitás}(\mathsf{T3}) = 265.$$
 
 A \textit{funkció} jellemzőhöz tartozó függvény
 $\mathit{funkció}(e) \rightarrow t,$
-ahol $e$ egy modellelem azonosítója, $t$ a $\{\mathsf{kocsiszín}, \mathsf{autóbuszgarázs}\}$ halmaz eleme.
+ahol $e$ egy modellelem azonosítója, $t$ a $\{\textsf{metró járműtelep}, \textsf{autóbuszgarázs}\}$ halmaz eleme.
 Például
-$$\mathit{funkció}(\mathsf{T2}) = \mathsf{kocsiszín}, \quad \mathit{funkció}(\mathsf{T3}) = \mathsf{autóbuszgarázs}.$$
+$$\mathit{funkció}(\mathsf{T2}) = \textsf{metró járműtelep}, \quad \mathit{funkció}(\mathsf{T3}) = \textsf{autóbuszgarázs}.$$
 
 A fentiekhez hasonlóan, a \textit{vagányhossz} jellemzőhöz tartozó parciális függvény 
 $\mathit{vagányhossz}(e) \rightarrow n,$
-ahol $e$ egy modellelem azonosítója, $n$ egy nemnegatív egész szám. Fontos különbség viszont az eddigiekhez képest, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem: a kocsiszínek esetén vesz fel értéket, az autóbuszgarázsok esetén viszont nem. Vagyis látható, hogy a \textit{vagányhossz} jellemző csak akkor vesz fel értéket, ha a \textit{funkció} attribútum értéke \textsf{kocsiszín}.
+ahol $e$ egy modellelem azonosítója, $n$ egy nemnegatív egész szám. Fontos különbség viszont az eddigiekhez képest, hogy ezt jellemzőt csak bizonyos modellelemekre értelmeztünk, másokra nem: a metró járműtelepek esetén vesz fel értéket, az autóbuszgarázsok esetén viszont nem. Vagyis látható, hogy a \textit{vagányhossz} jellemző csak akkor vesz fel értéket, ha a \textit{funkció} attribútum értéke \textsf{metró járműtelep}.
 
-Ha tehát a \textit{funkció} attribútumot a telephely \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{kocsiszín} típusú elemekre értelmezett. Általánosan:
+Ha tehát a \textit{funkció} attribútumot a telephely \fogalomragozva{tipus}{típusának} tekintjük, akkor úgy is fogalmazhatunk, hogy a \textit{vágányhossz} jellemző csak a \textsf{metró járműtelep} típusú elemekre értelmezett. Általánosan:
 
 \begin{definicio}	
 	A \fogalom{tipus} egy kitüntetett jellemző, amely meghatározza, hogy milyen más jellemzők lehetnek értelmezettek az adott modellelemre, illetve milyen más modellelemekkel lehet kapcsolatban. A többi jellemzőt \fogalomragozva{tulajdonsag}{tulajdonságnak} hívjuk.
@@ -335,7 +334,7 @@ Ha tehát a \textit{funkció} attribútumot a telephely \fogalomragozva{tipus}{t
 \end{definicio}
 
 
-A modellünkben két típus van: az \textsf{autóbuszgarázs} és a \textsf{kocsiszín}. Például az Óbudai telephely az \textsf{autóbuszgarázs}, míg a Budafoki telephely a \textsf{kocsiszín} típus példánya.
+A modellünkben két típus van: az \textsf{autóbuszgarázs} és a \textsf{járműtelep}. Például a cinkotai telephely az \textsf{autóbuszgarázs}, míg a mexikói úti telephely a \textsf{metró járműtelep} típus példánya.
 
 \begin{definicio}
 Egy adott $t$ típus \fogalomragozva{peldany}{példányainak} nevezzük azon modellelemeket, amelyek típusa $t$.
@@ -472,24 +471,22 @@ Azokra az elemekre szűrünk, amelyeknél a \textsf{kapacitás} jellemző érté
 Az eredmény:
 \begin{table}[H]
 	\centering
+	\sf
+	\centering
 	\begin{tabular}{rllrrrr}
 		\toprule
-		\it azonosító & \it helyszín & \it funkció    & \it kapacitás & \it vágányhossz & \it max. üzemanyag &  \\ \midrule
-		           T1 & Angyalföld   & kocsiszín      &           147 &          4922 m &                    &  \\
-		           T3 & Cinkota      & autóbuszgarázs &           265 &                 &      250~000 liter &  \\
-		           T5 & Kelenföld    & autóbuszgarázs &           322 &                 &      200~000 liter &  \\ \bottomrule
+		\it azonosító & \it helyszín & \it funkció      & \it kapacitás & \it vágányhossz & \it max. üzemanyag &  \\ \midrule
+		T3 & Cinkota      & autóbuszgarázs   &           265 &                 &      250~000 liter &  \\
+		T4 & Kelenföld    & autóbuszgarázs   &           322 &                 &      200~000 liter &  \\ 
+		\bottomrule
 	\end{tabular}
 \end{table}
 	
 \begin{pelda}
-	Szeretnénk megtudni, hogy mely kocsiszín alkalmas legalább 100 jármű befogására.
+	Szeretnénk megtudni, hogy mely metró járműtelep alkalmas legalább 50 jármű befogására.
 \end{pelda}
 
-%Ehhez a feltételeket összeköthetjük a ,,logikai és'' %($\wedge$)
-%operátorral:
-%$$\sigma_{\mathsf{kapacitás} \,\geq\, 100 \,\wedge\,  \mathsf{típus} \,=\, \textsf{'kocsiszín'}} (\textsf{telephely})$$	
-
-Végezzünk szűrést azokra a modellelemekre, ahol a \textit{funkció} attribútum értéke \textsf{kocsiszín}, a \textit{kapacitás} attribútum értéke nagyobb vagy egyenlő 100-nál.
+Végezzünk szűrést azokra a modellelemekre, ahol a \textit{funkció} attribútum értéke \textsf{metró járműtelep}, a \textit{kapacitás} attribútum értéke nagyobb vagy egyenlő 50-nél.
 
 Az eredmény:
 \begin{table}[H]
@@ -497,8 +494,9 @@ Az eredmény:
 	\centering
 	\begin{tabular}{rllrrrr}
 		\toprule
-		\it azonosító & \it helyszín & \it funkció & \it kapacitás & \it vágányhossz & \it max. üzemanyag &  \\ \midrule
-		           T1 & Angyalföld   & kocsiszín   &           147 &          4922 m &                    &  \\ \bottomrule
+		\it azonosító & \it helyszín & \it funkció      & \it kapacitás & \it vágányhossz & \it max. üzemanyag &  \\ \midrule
+		T2 & Kőér utcai   & metró járműtelep &            60 &        16~512 m &                    &  \\
+		\bottomrule
 	\end{tabular}
 \end{table}
 
@@ -560,22 +558,20 @@ A kapott részgráf \aref{fig:metrohalozat-nagykorut-elsulyozott-szurt} ábrán 
 %	$$\pi_{\textsf{helyszín, kapacitás}} (\textsf{telephely})$$
 \end{pelda}
 
-Végezzünk szűrést a tulajdonságmodelleken a \textit{helyszín} és a \textit{kapacitás} attribútumokra.
+Végezzünk szűrést a tulajdonságmodelleken a \textit{helyszín}, \textit{funkció} és a \textit{kapacitás} attribútumokra.
 
 \begin{table}[H]
 	\sf
 	\centering
-	\begin{tabular}{rll}
+	\begin{tabular}{llr}
 		\toprule
-		\it helyszín & \it funkció    & \it kapacitás  \\ \midrule
-		Angyalföld   & kocsiszín      &           147  \\
-		Budafok      & kocsiszín      &            46  \\
-		Cinkota      & autóbuszgarázs &           265  \\
-		Kelenföld    & kocsiszín      &            42  \\
-		Kelenföld    & autóbuszgarázs &           322  \\ \bottomrule
+		\it helyszín & \it funkció      & \it kapacitás \\ \midrule
+		Mexikói út   & metró járműtelep &            24 \\
+		Kőér utcai   & metró járműtelep &            60 \\
+		Cinkota      & autóbuszgarázs   &           265 \\
+		Kelenföld    & autóbuszgarázs   &           322 \\ \bottomrule
 	\end{tabular}
 \end{table}
-
 
 \subsubsection{Gráfmodell vetítése}
 
