@@ -17,7 +17,7 @@
     <node id="n0">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="913.6834034970265" y="1027.683412698413"/>
+          <y:Geometry height="16.0" width="16.0" x="625.4287403116479" y="861.6029113929299"/>
           <y:Fill color="#377EB8" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="e" textColor="#000000" visible="true" width="59.845703125" x="20.0" y="-0.984375">telephely</y:NodeLabel>
@@ -28,7 +28,7 @@
     <node id="n1">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="16.0" x="913.6834034970265" y="955.0300793650796"/>
+          <y:Geometry height="16.0" width="16.0" x="625.4287403116479" y="788.9495780595965"/>
           <y:Fill color="#984EA3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="eight_pos" modelPosition="e" textColor="#000000" visible="true" width="36.736328125" x="20.0" y="-0.984375">vonal</y:NodeLabel>
@@ -192,16 +192,34 @@ autóbuszgarázs</y:NodeLabel>
         </y:ShapeNode>
       </data>
     </node>
+    <node id="n10">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="1.0" width="388.57815082074" x="426.38995300261087" y="907.6029113929299"/>
+          <y:Fill color="#000000" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="192.28907541037" y="-1.5">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n1" target="n1">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="-0.0">
-            <y:Point x="952.1859606398857" y="920.0495992063496"/>
-            <y:Point x="890.4514034970264" y="920.0495992063496"/>
+            <y:Point x="663.9312974545071" y="753.9690979008666"/>
+            <y:Point x="602.1967403116478" y="753.9690979008666"/>
           </y:Path>
           <y:LineStyle color="#FF7F00" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#FF7F00" visible="true" width="74.6875" x="1.5453628462826146" y="-36.19645384009186">kapcsolódik<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#FF7F00" visible="true" width="74.6875" x="1.5453993679352607" y="-36.19644977448115">kapcsolódik<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -320,11 +338,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="830.96484375" y="991.815673828125"/>
+            <y:Point x="713.186767578125" y="863.0429077148438"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="-28.78559112548828" ratio="-0.6346132159233093" type="fixedRatio"/>
+          <y:Arc height="-31.32859992980957" ratio="-0.6346132159233093" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -332,11 +350,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="796.47900390625" y="940.0146484375"/>
+            <y:Point x="679.2086181640625" y="873.8697509765625"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="23.01542091369629" ratio="0.36764562129974365" type="fixedRatio"/>
+          <y:Arc height="-27.545452117919922" ratio="-0.6468420028686523" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -344,11 +362,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="761.9932250976562" y="983.469970703125"/>
+            <y:Point x="597.7581176757812" y="876.221435546875"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="-20.43986701965332" ratio="-0.2559940218925476" type="fixedRatio"/>
+          <y:Arc height="20.45780372619629" ratio="0.4842885434627533" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -356,11 +374,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="728.5648803710938" y="914.6578979492188"/>
+            <y:Point x="563.6376342773438" y="867.7185668945312"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#999999" visible="true" width="59.365234375" x="154.03570477951428" y="-62.59294810684514">példánya<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#999999" visible="true" width="70.216796875" x="-16.409659179241658" y="-98.88522003546996">instance of<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -368,7 +386,7 @@ autóbuszgarázs</y:NodeLabel>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
-          <y:Arc height="48.372196197509766" ratio="0.5009586215019226" type="fixedRatio"/>
+          <y:Arc height="24.149919509887695" ratio="0.5009586215019226" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -421,11 +439,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="744.4368896484375" y="1003.2020263671875"/>
+            <y:Point x="585.0919189453125" y="946.5739135742188"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="32.48147201538086" ratio="0.366511732339859" type="fixedRatio"/>
+          <y:Arc height="16.383289337158203" ratio="0.366511732339859" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -433,11 +451,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="692.3946533203125" y="1107.8758544921875"/>
+            <y:Point x="521.1822509765625" y="924.8662719726562"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="-72.19239044189453" ratio="-0.6297072768211365" type="fixedRatio"/>
+          <y:Arc height="38.796382904052734" ratio="0.6523361206054688" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -445,11 +463,11 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="848.521240234375" y="1023.0720825195312"/>
+            <y:Point x="736.9312133789062" y="924.8372192382812"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="12.611390113830566" ratio="0.34475165605545044" type="fixedRatio"/>
+          <y:Arc height="-42.80009841918945" ratio="-0.7836511731147766" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -457,22 +475,21 @@ autóbuszgarázs</y:NodeLabel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="0.0">
-            <y:Point x="796.47900390625" y="1058.6219482421875"/>
+            <y:Point x="680.2684326171875" y="946.2816162109375"/>
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="-22.938430786132812" ratio="-0.366415798664093" type="fixedRatio"/>
+          <y:Arc height="-28.632434844970703" ratio="-0.6723671555519104" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
     <edge id="e20" source="n1" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="-0.0" tx="0.0" ty="-0.0"/>
           <y:LineStyle color="#4DAF4A" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#4DAF4A" visible="true" width="67.228515625" x="4.2453650524946625" y="19.0964226855815">telephelye<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#4DAF4A" visible="true" width="67.228515625" x="4.245401574147309" y="19.09642675119221">telephelye<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
