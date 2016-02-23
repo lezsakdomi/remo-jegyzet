@@ -21,7 +21,7 @@
 %	Jó lenne építészeti példát behozni.
 %\end{megjegyzes}
 
-Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszerünkkel kapcsolatos problémákat megválaszoljunk, fontos, hogy ezekre a kérdésekre tudjuk a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
+Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között milyen kapcsolat van? Ahhoz, hogy a rendszerünkkel kapcsolatos problémákat megválaszoljuk, fontos, hogy ezekre a kérdésekre tudjuk a választ. Ebben a fejezetben az egyes rendszerek \fogalomragozva{struktura}{struktúrájának} jellemzésével foglalkozunk. Bemutatjuk a strukturális modellezés motivációját, a leggyakrabban alkalmazott formalizmusokat és azok matematikai alapjait.
 
 %Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
 
@@ -33,7 +33,7 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 \section{A struktúramodellezés alkalmazásai}
 \label{sec:motivacio}
 
-Mind a természetben előforduló, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Egyes szabályszerűségek a rendszer elemei közötti kapcsolatokat, míg mások magukat az elemeket jellemzik.
+Mind a természetben, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Egyes szabályszerűségek a rendszer elemei közötti kapcsolatokat, míg mások magukat az elemeket jellemzik.
 
 \subsection{Hálózatok}
 \label{sec:halozatok}
@@ -48,7 +48,7 @@ Egy rendszert gyakran úgy jellemezhetünk a legjobban, ha bizonyos elemeit megk
 	Vizsgáljuk meg például Budapest metróhálózatát! Az egyszerűség kedvéért a példában a hálózatnak csak a Nagykörúton belüli részével foglalkozunk.
 \end{pelda}
 
-A metróhálózat térképe \aref{fig:metrohalozat-nagykorut-terkep} ábrán látható. A térképből is látható, hogy a hálózat könnyen ábrázolható egy \fogalomragozva{graf}{gráffal}, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomásokat jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező %\fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf}
+A metróhálózat egyszerűsített térképe \aref{fig:metrohalozat-nagykorut-terkep} ábrán látható. A térképből is látható, hogy a hálózat könnyen ábrázolható egy \fogalomragozva{graf}{gráffal}, ahol a gráf minden \fogalomragozva{csomopont}{csomópontja} egy-egy metróállomást jelöl. A csomópontok címkéje a metrómegálló neve. Két csomópont között akkor fut \fogalom{el}, ha a két megálló közvetlenül össze van kötve metróval. A metróhálózatot modellező %\fogalomragozva{iranyitatlan-graf}{irányítatlan}, \fogalomragozva{cimkezett-graf}{címkézett}, \fogalom{egyszeru-graf}
 gráf \aref{fig:metrohalozat-nagykorut-egyszeru} ábrán látható.
 
 \begin{figure}[H]
@@ -85,7 +85,7 @@ Vannak azonban olyan metróközlekedéssel kapcsolatos kérdések, amelyekhez a 
 	\item A menetrend szerint \emph{hány percig tart} az út a Kossuth Lajos tér és az Astoria között?
 \end{enumerate}
 
-Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az első kérdéshez szükséges, hogy az egyes metróvonalakat meg tudjuk különböztetni, amit például az élek címkézésével tehetünk meg. \Aref{fig:metrohalozat-nagykorut-elcimkezett} ábrán színekkel jelöltük a különböző élcímkéket. Induljunk ki a Fővám térről: átszállás nélkül az Astoria és a Rákóczi tér megállókat érhetjük el, míg egy átszállással elérhetjük az M3-as metró vonalán található megállókat is.
+Ezeknek a kérdéseknek megválaszolásához egészítsük ki a gráfot! Az első kérdéshez szükséges, hogy az egyes metróvonalakat meg tudjuk különböztetni, amit például az élek címkézésével érhetünk el. \Aref{fig:metrohalozat-nagykorut-elcimkezett} ábrán színekkel jelöltük a különböző élcímkéket. Induljunk ki a Fővám térről: átszállás nélkül az Astoria és a Rákóczi tér megállókat érhetjük el, míg egy átszállással elérhetjük az M3-as metró vonalán található megállókat is.
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.5\textwidth}
@@ -110,7 +110,7 @@ A második kérdés megválaszolásához az egyes megállók közötti útidőt 
 
 \remofigscale{metro-atszallas}{Átszállási lehetőségek a metróvonalak között a Nagykörúton belül}{\yedscale}
 
-\Aref{fig:metro-atszallas}. ábrán látható modellből azonnal kiderül, hogy mely metróvonalak között van átszállási lehetőség. A modell segítségével tehát hatékonyabban tudunk válaszolni erre a kérdésre, de a korábbi kérdésekre már nem tudnánk válaszolni ez alapján.
+\Aref{fig:metro-atszallas}. ábrán látható modellből azonnal kiderül, hogy mely metróvonalak között van átszállási lehetőség. A modell segítségével tehát hatékonyabban tudunk válaszolni erre a kérdésre, de a korábbi kérdésekhez szükséges információt elvesztettük az absztrakció során.
 
 A közlekedési hálózathoz hasonlóan sok rendszer jól modellezhető gráffal: az élőlények táplálkozási lánca, az egyes személyek közösségi hálója, az úthálózat,  telekommunikációs hálózatok stb.
 	
@@ -164,7 +164,7 @@ Láthattuk tehát, hogy mind a modellelemek közötti kapcsolat, mind a modellhi
 \label{sec:tulajdonsagok}
 
 \begin{pelda}
-A közlekedési vállalat üzemen kívüli járművei telephelyeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók telephelyek neve metró \emph{járműtelep}, a buszoké az autóbuszgarázs.
+A közlekedési vállalat üzemen kívüli járművei telephelyeken parkolnak és itt végzik rajtuk a szükséges karbantartásokat. A metrók telephelyeinek neve metró \emph{járműtelep}, a buszoké az \emph{autóbuszgarázs}.
 
 Mennyi üzemanyag raktározható a legnagyobb autóbusz garázsban? Milyen hosszú a Kőér utcai metró járműtelep vágányhálózata? Ezek a kérdések a modellünk elemeinek tulajdonságaival kapcsolatban merülnek fel. Építsünk modellt a problémára!
 \end{pelda}
@@ -193,7 +193,7 @@ Mindkét típusú telephelynek van \textit{azonosító}, \textit{helyszín}, \te
 	A korábbi metróhálózatot szeretnénk kiegészíteni a buszhálózatra vonatkozó információval. Szeretnénk tárolni azt is, hogy az egyes vonalakon közlekedő járművek melyik telephelyen parkolnak. Az autóbuszvonalon közelekedő járművek autóbuszgarázsban, a metróvonalon közlekedő járművek metró járműtelepen parkolnak.
 \end{pelda}
 
-Készítsünk egy példánygráfot, amelyen ábrázoljuk az M1 és M3-as metróvonal, valamint a 7-es és a 8-as buszvonalak kapcsolódásait (\textit{kapcsolódik) élek}, valamint azt, hogy az egyes vonalak melyik telephelyhely tartoznak (\textit{telephelye) élek}.
+Készítsünk egy példánygráfot, amelyen ábrázoljuk az M1 és M3-as metróvonal, valamint a 7-es és a 8-as buszvonalak kapcsolódásait (\textit{kapcsolódik) élek}, valamint azt, hogy az egyes vonalak melyik telephelyhez tartoznak (\textit{telephelye) élek}.
 
 \remofigscaleframed{busz-metro-telephelyek}{Közlekedési vonalak és telephelyek}{\yedscale}
 
@@ -205,20 +205,20 @@ Az egyes telephelyek tulajdonságait nem ábrázoltuk az ábrán.
 
 \remofigscaleframed{busz-metro-telephelyek-tipusgraf}{Közlekedési vonalak és telephelyek típusgráfja}{\yedscale}
 
-A példánygráfot és a típusgráfot egy gráfban is jelölhetjük. Ekkor az egyes példányok és a típusok között egy \textit{típusa} él fut.
+A példánygráfot és a típusgráfot egy gráfban is jelölhetjük. Ekkor az egyes példányok és a típusok között egy \textit{példánya} él fut.
 
 \remofigscaleframed{busz-metro-telephelyek-tipusgraffal}{Közlekedési vonalak és telephelyek példány- és típusgráfja}{\yedscale}
 
-\Aref{fig:busz-metro-telephelyek-tipushierarchia}. ábra bemutatja a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}. A típushierarchia egy hierarchikus modell, amely az egy típusok \textit{is a } viszonyait ábrázolja.
+\Aref{fig:busz-metro-telephelyek-tipushierarchia}. ábra bemutatja a problémához tartozó \fogalomragozva{tipushierarchia}{típushierarchiát}. A típushierarchia egy hierarchikus modell, amely az egy típusok leszármazási (\textit{is a}) viszonyait ábrázolja.
 
 
 \remofigscaleframed{busz-metro-telephelyek-tipushierarchia}{Közlekedési vonalak és telephelyek típushierarchiája}{\yedscale}
 
-Metamodell.
+A típushierarchia és a típusgráf kombinálásával megkapjuk a problémánk metamodelljét.
 
 \remofigscaleframed{busz-metro-telephelyek-metamodell}{Közlekedési vonalak és telephelyek metamodellje}{\yedscale}
 
-Példány és metamodell.
+A példánymodellt és a metamodellt ábrázolhatjuk egyszerre is, a két modell elemei között a \emph{példánya} viszony teremt kapcsolatot (szürke szaggatott nyíl).
 
 \remofigscaleframed{busz-metro-telephelyek-peldanymodell-metamodell}{Közlekedési vonalak és telephelyek példánymodellje és metamodellje}{\yedscale}
 
