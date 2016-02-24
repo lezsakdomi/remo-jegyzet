@@ -25,15 +25,14 @@ Hogyan épül fel egy rendszer? Milyen részekre bontható és ezek között mil
 
 %Modellezés során egy rendszert jellemezhetünk annak statikus, ill. dinamikus jellemzői alapján. A statikus jellemzés esetén a rendszer felépítését, \fogalomragozva{struktura}{struktúráját} írjuk le, míg dinamikus jellemzés esetén a rendszer \fogalomragozva{viselkedes}{viselkedésével} foglalkozunk.
 
-\clearpage
-
+%\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{A struktúramodellezés alkalmazásai}
 \label{sec:motivacio}
 
-Mind a természetben, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Egyes szabályszerűségek a rendszer elemei közötti kapcsolatokat, míg mások magukat az elemeket jellemzik.
+Mind a természetben, mind a mesterséges rendszerekben fellelhetők bizonyos szabályszerűségek. Egyes szabályszerűségek a rendszer elemei közötti kapcsolatokat, míg mások magukat az elemeket jellemzik. Bár sok mindenben eltér egy közlekedési hálózat, egy számítógép-hálózat, egy épület vagy egy város felépítése, a struktúramodellezés eszköztárával olyan ,,nyelvet'' kapunk, amivel ezeket hasonlóan modellezhetjük.
 
 \subsection{Hálózatok}
 \label{sec:halozatok}
@@ -72,10 +71,19 @@ A modellünk segítségével választ kaphatunk például a következő kérdés
 \begin{enumerate}
 	\item Milyen megállók érhetők el a Vörösmarty térről indulva?
 	
-		Vizsgáljuk meg, hogy a Vörösmarty teret reprezentáló csomópontból kiindulva milyen csomópontok érhetők el. Ehhez elemi bejáróalgoritmusokat használunk, pl. \fogalomragozva{BFS}{szélességi keresést} (\rovidites{BFS}) vagy \fogalomragozva{DFS}{mélységi keresést} (\rovidites{DFS}).
-	\item Hány megállót kell utaznunk a Kossuth Lajos tér és a Kálvin tér között?
+		Vizsgáljuk meg, hogy a Vörösmarty teret reprezentáló csomópontból kiindulva milyen csomópontok érhetők el. Ehhez elemi gráfbejáró algoritmusok használunk.
+		
+		\begin{megjegyzes}
+			Elemi útkereső algoritmusok pl. a \roviditesmagyarul{BFS} vagy \roviditesmagyarul{DFS}.
+		\end{megjegyzes}
+	\item Legalább hány megállót kell utaznunk a Kossuth Lajos tér és a Kálvin tér között?
 
-		A legrövidebb utat \fogalomragozva{BFS}{szélességi kereséssel} határozhatjuk meg.
+		A legrövidebb utat szintén kereséssel határozhatjuk meg.
+		
+		\begin{megjegyzes}
+			Például egy \fogalomragozva{BFS}{szélességi kereséssel}.
+		\end{megjegyzes}
+
 \end{enumerate}
 
 Vannak azonban olyan metróközlekedéssel kapcsolatos kérdések, amelyekhez a modell nem tartalmaz elég információt:
@@ -420,12 +428,9 @@ A rendszer így kapott egyes komponensei (részrendszerei) gyakran további deko
 \end{definicio}
 
 
+%Korábban láttuk, hogy a hierarchiában nincs kör és ezt egyébként fának nevezzük. Ha irányított a gráf, akkor az a fontos, hogy irányított kör ne legyen benne.
 
-A hierarchiát reprezentáló modellek körmentes gráfot alkotnak, szigorú hierarchia esetén ez \fogalomragozva{fa-graf}{fa} vagy \fogalom{erdo}, megengedő hierarchia esetén \rovidites{DAG}.
-
-
-
-
+%A hierarchiát reprezentáló modellek körmentes gráfot alkotnak, szigorú hierarchia esetén ez \fogalomragozva{fa-graf}{fa} vagy \fogalom{erdo}, megengedő hierarchia esetén \rovidites{DAG}.
 
 
 
@@ -583,7 +588,11 @@ Végezzünk szűrést a tulajdonságmodelleken a \textit{helyszín}, \textit{fun
 
 A tulajdonságmodellhez hasonlóan a gráfmodellből is elhagyhatunk jellemzőket.
 
-TODO: példa, címkék elhagyása
+\begin{pelda}
+	\ldots
+\end{pelda}
+
+\ldots
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -658,35 +667,36 @@ Természetesen a gyakorlatban a kétféle szélsőséges megközelítés közti 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{Az objektum-orientált modell}
-
-\Fogalom{objektum-orientalt} modellezés során a világot úgy modellezzük, hogy a modellünk elemei \fogalomragozva{objektum}{objektumok}, amelyek \fogalomragozva{attributum}{attribútumokkal} rendelkeznek egymással különböző kapcsolatokat (\fogalomragozva{asszociacio}{asszociációk}) vehetnek fel. Az objektumok típusát az \fogalomragozva{osztaly}{osztályuk} határozza meg.
-
-Az objektum-orientált modell ereje abban rejlik, hogy képes a típusok, a hierarchia, a kapcsolatok és az attribútumok precíz ábrázolására.
-
-TODO: \fogalom{orokles}, \fogalom{alosztaly}, \fogalom{ososztaly}
-
-\begin{megjegyzes}
-	Az \roviditesmagyarul{OOP} (\rovidites{OOP}) foglalkozik az egyes osztályokon végzett műveletekkel \fogalomragozva{metodus}{metódusaival}, ill. az egyes metódusok és \fogalomragozva{mezo}{mezők} láthatóságával is.
-	
-	A \fogalom{tobbszoros-orokles} több felveti a \fogalom{gyemant-problema}
-	
-	Ezekről bővebben a \progketto, a \progharom és a \szofttech tárgyakban esik szó.	
-\end{megjegyzes}
-
-
-
-
-Többszintű metamodellezés: járműtípus, járműpéldány modellezése; 
-
+%
+%
+%\section{Az objektum-orientált modell}
+%
+%\Fogalom{objektum-orientalt} modellezés során a világot úgy modellezzük, hogy a modellünk elemei \fogalomragozva{objektum}{objektumok}, amelyek \fogalomragozva{attributum}{attribútumokkal} rendelkeznek egymással különböző kapcsolatokat (\fogalomragozva{asszociacio}{asszociációk}) vehetnek fel. Az objektumok típusát az \fogalomragozva{osztaly}{osztályuk} határozza meg.
+%
+%Az objektum-orientált modell ereje abban rejlik, hogy képes a típusok, a hierarchia, a kapcsolatok és az attribútumok precíz ábrázolására.
+%
+%TODO: \fogalom{orokles}, \fogalom{alosztaly}, \fogalom{ososztaly}
+%
+%\begin{megjegyzes}
+%	Az \roviditesmagyarul{OOP} (\rovidites{OOP}) foglalkozik az egyes osztályokon végzett műveletekkel \fogalomragozva{metodus}{metódusaival}, ill. az egyes metódusok és \fogalomragozva{mezo}{mezők} láthatóságával is.
+%	
+%	A \fogalom{tobbszoros-orokles} több felveti a \fogalom{gyemant-problema}
+%	
+%	Ezekről bővebben a \progketto, a \progharom és a \szofttech tárgyakban esik szó.	
+%\end{megjegyzes}
+%
+%
+%
+%
+%Többszintű metamodellezés: járműtípus, járműpéldány modellezése; 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Gyakorlati alkalmazások}
 
 \subsection{Számítógéphálózat modellezése}
 
+Számítógép-hálózatok kiválóan modellezhetők gráfokkal, amelyben a gráf csomópontjai a hálózat elemei (pl. számítógép, router, tűzfal), a kapcsolatok pedig ezek összeköttetései.
 
 \remofigscalefixed{halozat}{Hálózat}{0.35}
 
@@ -698,6 +708,10 @@ Többszintű metamodellezés: járműtípus, járműpéldány modellezése;
 	\item Egy elem hibája meddig terjedhet?
 	\item Elérhető-e az internet?
 \end{itemize}
+
+\begin{feladat}
+	Milyen típushierarchiát készíthetünk egy számítógép-hálózathoz?
+\end{feladat}
 
 \subsection{Grafikus felhasználói felület}
 
@@ -720,6 +734,10 @@ Egy szoftver alkalmazás \emph{\glslink{GUI}{grafikus felhasználói felülete}}
 	\caption{A metróhálózatot ábrázoló gráf kiterjesztései}
 \end{figure}
 
+\begin{feladat}
+	Mi történik, amikor egy alkalmazás ablakán kattintunk -- hogyan határozza meg a rendszer, hogy melyik komponensre kattintottunk?
+\end{feladat}
+
 
 
 
@@ -736,13 +754,13 @@ A következő fejezetekben a \fogalomragozva{viselkedes-alapu-modellezes}{viselk
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Technológiák és technikák\kieg}
+\section{Kitekintés: technológiák és technikák\kieg}
 
 Az alábbiakban bemutatunk néhány, a strukturális modellezés témaköréhez kapcsolódó gyakorlati technológiát, specifikációt és eszközt. Az itt felsorolt fogalmak nem részei a számonkérésnek, gyakran előkerülnek viszont a későbbi tanulmányok és munkák során, ezért mindenképpen érdemes legalább névről ismerni őket.
 
 \subsection{Technológiák}
 
-A gyakorlatban sokféle modellezési nyelvet és technológiát használnak, ezek közül mutatunk be most néhány elterjedtebbet.
+A gyakorlatban sokféle modellezési nyelvet és technológiát használnak. Ezek közül mutatunk be most azokat, amelyek a később tanulmányok során előkerülnek.
 
 \subsubsection{UML}
 
@@ -760,29 +778,15 @@ Az UML nyelvvel részletesen foglalkozik a \szofttech tárgy.
 %\subsubsection{AADL}
 %Az \roviditesangolulkifejtve{AADL} eredetileg repülőipari célokra fejlesztett architektúraleíró nyelv~\cite{AADL}.
 
-\subsubsection{SysML}
-
-A \roviditesangolulkifejtve{SysML} egy UML-alapú általános modellezési nyelv rendszertervezési célokra~\cite{SysML}. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
-
 \subsubsection{EMF}
 
 Az Eclipse fejlesztőkörnyezet~\cite{eclipse} saját modellezési keretrendszerrel rendelkezik, ez az \roviditesangolulkifejtve{EMF}. Az EMF metamodellező nyelve, az Ecore lehetővé teszi saját, ún. \roviditesteljesenkifejtve{DSL} definiálását. Az EMF mára több területen is \emph{de facto} modellezési keretrendszer.
 
 Az Eclipse fejlesztőkörnyezettel és az EMF keretrendszerrel foglalkozik az \eat szabadon választható tárgy.
 
-\subsubsection{RDF}
-
-\roviditesangolulkifejtve{RDF}
-
-TODO erről is lesz szakirányos tárgy
-
-\subsubsection{AUTOSAR}
-
-Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a \emph{Méréstechnika és Információs Rendszerek Tanszék} is tagja~\cite{autosar-attendees}.
-
 \subsection{Struktúramodellezési technikák}
 
-A struktúramodellek definiálására és fejlesztésére különböző technikák léteznek. A ... említettük a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} tervezést. Itt két további, általánosan alkalmazható technikát mutatunk be.
+A struktúramodellek definiálására és fejlesztésére különböző technikák léteznek. Korábban tárgyaltuk a \fogalomangolul{top-down} és a \fogalomangolul{bottom-up} tervezést. Itt két további, általánosan alkalmazható technikát mutatunk be.
 
 \subsubsection{Tervezési minták}
 
@@ -791,6 +795,23 @@ Az \fogalom{objektum-orientalt} tervezés során gyakran előforduló problémá
 \subsubsection{Refaktoring}
 
 A \fogalomragozva{dekompozicio}{dekompozícióhoz}, azaz \fogalomragozva{faktoring}{faktoringhoz} szorosan kapcsolódik a \fogalom{refaktoring} (\fogalomangolul{refaktoring}) fogalma~\cite{fowler2012refactoring}. Refaktoring során egy rendszert definiáló programkód vagy modell átalakítását értjük. A refaktoring lényege, hogy az átalakítás során a rendszer megfigyelhető működése változatlan marad, de a kapott programkód vagy modell érthetőbb, karbantarthatóbb lesz.
+
+%\section{További technológiák}
+%
+%\subsubsection{SysML}
+%
+%A \roviditesangolulkifejtve{SysML} egy UML-alapú általános modellezési nyelv rendszertervezési célokra~\cite{SysML}. A SysML az UML egy részhalmazát bővíti ki és új diagramtípusokat is bevezet, pl. \emph{Requirement Diagram} követelmények és viszonyaik ábrázolására alkalmas.
+%
+%%\subsubsection{RDF}
+%%
+%%\roviditesangolulkifejtve{RDF}
+%%
+%%TODO erről is lesz szakirányos tárgy
+%
+%\subsubsection{AUTOSAR}
+%
+%Az \roviditesangolulkifejtve{AUTOSAR}~\cite{autosar} nagy autóipari gyártók és beszállítóik által fejlesztett szabványos architektúranyelv, amely az egyes hardver- és szoftverkomponensek együttműködése magas szinten definiálható. Az AUTOSAR konzorciumnak a \emph{Méréstechnika és Információs Rendszerek Tanszék} is tagja~\cite{autosar-attendees}.
+
 
 \subsection{Struktúramodellező eszközök és vizualizáció}
 
@@ -814,9 +835,12 @@ A struktúramodellezésnek komoly matematikai eszköztára is van. Az alábbiakb
 %\fogalom{kenyszer} + \rovidites{CSP}
 %\todo[inline]{ábra}
 
+%\subsection{Relációk}
+
 \subsection{Bináris relációk tulajdonságai}
 
-A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha ismerjük a kétváltozós relációkon értelmezett tulajdonságokat~\cite{wiki:relacio}.
+%A \fogalom{tranzitiv-lezaras} fogalom jelentésének megértését segíti, ha \\
+Hasznos ismerni a kétváltozós relációkon értelmezett tulajdonságokat~\cite{wiki:relacio}.
 
 \begin{tipp}
 	Az elnevezések egyezése nem véletlen, a \fogalom{ketvaltozos-relacio} egy alesete a \fogalom{relacio} fogalomnak.

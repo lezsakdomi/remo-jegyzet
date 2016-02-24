@@ -159,7 +159,7 @@
 
 \newenvironment{kisdefiniciok}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíciók ($*$).}}{\end{mdframed}}
 
-\newenvironment{pelda}{\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}}
+\newenvironment{pelda}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}\end{minipage}}
 
 % \iflabeldef parancs
 \newcommand{\iflabeldef}[3]{\makeatletter\ifcsdef{r@#1}{#2}{#3}\makeatother}
