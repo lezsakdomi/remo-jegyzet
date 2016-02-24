@@ -2,6 +2,7 @@ DOCUMENTS = \
 	rendszermodellezes \
 	sablon \
 	bevezeto \
+	bevezeto-mobile \
 	modellezes-es-metamodellezes \
 	modellezes-es-metamodellezes-mobile \
 	struktura-alapu-modellezes \
