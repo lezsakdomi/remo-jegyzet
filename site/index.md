@@ -14,7 +14,7 @@ A jegyzet fejezetei külön is letölthetők. Mobiltelefonon és tableten olvas�
 * [Struktúra alapú modellezés](struktura-alapu-modellezes.pdf) ([A5](struktura-alapu-modellezes-mobile.pdf))
 * [Állapot alapú modellezés](allapot-alapu-modellezes.pdf) ([A5](allapot-alapu-modellezes-mobile.pdf))
 * [Folyamatmodellezés](folyamatmodellezes.pdf) ([A5](folyamatmodellezes-mobile.pdf))
-* [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](modellek-fejlesztese-mobile.pdf))
+* [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](teljesitmenymodellezes-mobile.pdf))
 * [Modellek fejlesztése](modellek-fejlesztese.pdf) ([A5](modellek-fejlesztese-mobile.pdf))
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
 * [Felderítő adatelemzés](felderito-adatelemzes.pdf)
