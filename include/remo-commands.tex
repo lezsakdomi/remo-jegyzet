@@ -1,3 +1,4 @@
+% képek
 \newcommand{\remofigscale}[3]{
 	\begin{figure}[htb]
 		\centering
@@ -14,8 +15,25 @@
 		\label{fig:#1}
 	\end{figure}}
 
+% környezetek
+\definecolor{SpringGreen}{HTML}{C6DC67}
+\newenvironment{tipp}{\begin{mdframed}[backgroundcolor=SpringGreen] \textbf{Tipp.}}{\end{mdframed}}
 
-\newcommand{\kieg}{*}
+\newenvironment{feladat}{\begin{mdframed}[backgroundcolor=blue!20] \textbf{Feladat.}}{\end{mdframed}}
+
+\newenvironment{definicio}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}\end{minipage}}
+
+\newenvironment{kisdefinicio}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíció ($*$).}}{\end{mdframed}}
+
+\newenvironment{kisdefiniciok}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíciók ($*$).}}{\end{mdframed}}
+
+\newenvironment{pelda}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}\end{minipage}}
+
+\newenvironment{megjegyzes}{\footnotesize \textbf{Megjegyzés.}}{}
+
+
+\newcommand{\kieg}{$\ast$}
+\newcommand{\kiegeszitoanyag}{\textsuperscript{($\ast$)}} %lábjegyzetek, "bónusz bekezdések" végére  %
 	
 \newcommand{\halalfejes}{$\skull$}
 \newcommand{\allapot}[1]{\textsf{#1}}

@@ -3,8 +3,6 @@
 
 \graphicspath{ {./modellek-ellenorzese/figures/} }
 
-\newcommand{\kiegeszitoanyag}{\ (kiegészítő anyag)} %lábjegyzetek, "bónusz bekezdések" végére  % \textsuperscript{($\ast$)}
-
 A korábbiakban láthattuk, hogy modelleket számos célból készíthetünk. Függetlenül attól, hogy a modellek felhasználási célja a dokumentáció, a kommunikáció segítése, az analízis vagy a megvalósítás származtatása, a modellek minősége fontos kérdés. Egy hibás modell könnyen vezethet hibás megvalósításhoz, amely pedig a felhasználási területtől függően katasztrofális következményekkel is járhat.
 
 
@@ -170,11 +168,11 @@ Lehet \code{z} értéke 0? Természetesen, hiszen \code{z} egy bementi változó
 Amikor végrehajtunk egy programot, mindig a változók bizonyos konkrét értékei mellett tesszük ezt (pl. \code{foo(5)}). \Fogalom{szimbolikus-vegrehajtas} esetén konkrét értékek helyett szimbolikus értékekkel ,,imitáljuk'' a végrehajtást, azaz a változókat matematikai változóként fogjuk fel. Emellett a belső elágazások által támasztott feltételeket is összegyűjtjük, majd ezen információk alapján következtetünk az egyes változók értékeire a program adott pontjain, vagy egyes programrészek elérhetőségére.
 
 \begin{pelda}
-Ha \code{z}-t egy $z$ matematikai változónak tekintjük, akkor tudjuk, hogy a feltételes elágazás \emph{igaz} ágában a \code{y = z + 10;} utasítás miatt $y = z + 10$ igaz, valamint az elágazási feltételben szereplő \code{y != 10} miatt $y \neq 10$ igaz. A kettőből együttesen $z + 10 \neq 10$, azaz $z \neq 0$. Így bizonyíthatjuk, hogy sosem osztunk nullával a fenti példakódban.
+Ha \code{z}-t egy $z$ matematikai változónak tekintjük, akkor tudjuk, hogy a feltételes elágazás \emph{igaz} ágában az \code{y = z + 10;} utasítás miatt $y = z + 10$ igaz, valamint az elágazási feltételben szereplő \code{y != 10} miatt $y \neq 10$ igaz. A kettőből együttesen $z + 10 \neq 10$, azaz $z \neq 0$. Így bizonyíthatjuk, hogy sosem osztunk nullával a fenti példakódban.
 \end{pelda}
 
 \begin{pelda}
-Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ kaphatunk szimbolikus végrehajtás segítségével, míg konkrét végrehajtással minden egyes lehetséges \code{z}-re le kellene futtatnunk a függvényt. Ha az elágazás feltétele teljesült tudjuk, hogy a program végére $x = \frac{z+10}{z} \wedge z \neq 0$, azaz \code{x} akkor lesz 2, ha \code{z} értéke 10. Ha az elágazás feltétele nem teljesült, akkor tudjuk, hogy a program végére $x = 2 \wedge z = 0$, azaz ha \code{z} értéke 0, a kimenet $2$ lesz. Tehát \code{z=0} és \code{z=10} esetén kaphatunk eredményként 2-t.
+Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ kaphatunk szimbolikus végrehajtás segítségével, míg konkrét végrehajtással minden egyes lehetséges \code{z}-re le kellene futtatnunk a függvényt. Ha az elágazás feltétele teljesült, tudjuk, hogy a program végére $x = \frac{z+10}{z} \wedge z \neq 0$, azaz \code{x} akkor lesz 2, ha \code{z} értéke 10. Ha az elágazás feltétele nem teljesült, akkor tudjuk, hogy a program végére $x = 2 \wedge z = 0$, azaz ha \code{z} értéke 0, a kimenet $2$ lesz. Tehát \code{z=0} és \code{z=10} esetén kaphatunk eredményként 2-t.
 \end{pelda}
 
 
@@ -235,13 +233,13 @@ A függvény a megadott \code{n} egész számra visszadja, hogy prím-e (\code{i
 Egy összetett számnak számos valódi osztója lehet, emiatt a függvény megvalósításának tesztelésénél nem adhatunk meg konkrét elvárt értékeket. Ehelyett azt vizsgálhatjuk, hogy a visszaadott szám (\code{divisor}) tényleg osztója-e \code{n}-nek és tényleg 1-től és \code{n}-től eltérő. Így például az alábbi teszteseteket tervezhetjük meg a \codeEsc{find_nontrivial_divisor} függvény vizsgálatára:
 
 \begin{center}
-\begin{tabular}{l|l|l}
-Teszteset & Bemenet (\code{n}) & Elfogadási kritérium \\ \hline
-1 & 997 & \codeEsc{is_prime==true} \\
-2 & 998 & \codeEsc{is_prime==false && divisor>1 && divisor<998 && }\code{998\%divisor==0} \\
-3 & 999 & \codeEsc{is_prime==false && divisor>1 && divisor<999 && }\code{999\%divisor==0} \\
-4 & 1 & \textit{kivétel dobása} \\
-\end{tabular}
+\begin{tabularx}{\linewidth}{|r|r|Z|}\hline
+Teszteset & Bemenet (\code{n}) & Elfogadási kritérium \\ \hline\hline
+1 & 997 & \codeEsc{is_prime==true} \\ \hline
+2 & 998 & \codeEsc{is_prime==false && divisor>1 && divisor<998 && }\code{998\%divisor==0} \\ \hline
+3 & 999 & \codeEsc{is_prime==false && divisor>1 && divisor<999 && }\code{999\%divisor==0} \\ \hline
+4 & 1 & \textit{kivétel dobása} \\ \hline
+\end{tabularx}
 \end{center}
 
 Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véletlenszerűen, hanem gondos tervezés alapján határozzuk meg. Például fontos, hogy a különleges, \code{n==1} esetet is megvizsgáljuk. A teszttervezéssel bővebben a \szore (BMEVIMIMA01) MSc tárgyban\footnote{\url{https://inf.mit.bme.hu/edu/courses/szore}} foglalkozunk.
@@ -284,10 +282,10 @@ Tekintsük az alábbi egyszerű állapotgépet, amely egy közlekedési lámpát
 Vegyük az alábbi, két tesztesetből álló tesztkészletet (az elfogadási kritérium nem lényeges a fedettség szempontjából, így azt elhagytuk):
 
 \begin{center}
-\begin{tabular}{l|ll}
-Teszteset & Bemenet (\code{n}) \\ \hline
-1 & \code{sw1}, \code{sw2}, \code{sw3}, \code{sw4} \\
-2 & \code{sw1}, \code{sw2}, \code{sw3}, \code{toBlinking}, \code{toRed} \\
+\begin{tabular}{|l|l|}\hline
+Teszteset & Bemenet (\code{n}) \\ \hline\hline
+1 & \code{sw1}, \code{sw2}, \code{sw3}, \code{sw4} \\ \hline
+2 & \code{sw1}, \code{sw2}, \code{sw3}, \code{toBlinking}, \code{toRed} \\ \hline
 \end{tabular}
 \end{center}
 
@@ -301,7 +299,7 @@ Fontos megjegyezni, hogy ha elérnénk néhány új teszteset definiálásával 
 A fenti áttekintésből az is látszik, hogy egy magas fedettségi arány csak szükséges, de nem elégséges feltétele a jó minőségű rendszer fejlesztésének. Gyakran ez a szám félrevezető is lehet, illetve rossz irányba viheti a teszttervezést.
 
 
-\section{Tesztelés futásidőben (Futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
+\section{Tesztelés futásidőben (futásidejű verifikáció)}\label{sec:futasideju-verifikacio}
 Ebben a fejezetben a futásidejű ,,öntesztelés'' vagy monitorozás alapötletét mutatjuk be. Bizonyos esetekben kiemelkedően magas minőségi elvárásaink vannak a rendszerünkkel szemben (pl. biztonságkritikus alkalmazási területek). Más esetekben olyan külső komponenseket használunk, amelyek minőségéről nem tudunk alaposan meggyőződni (pl. egy lefordított, más által fejlesztett alkalmazást csak korlátozottan tudunk tesztelni). Ilyenkor az elvárásaink egy részét elhelyezzük magában a megvalósított rendszerben és folyamatosan vizsgáljuk. Azokat a követelményeket, amelyek teljesülését folyamatosan, minden állapotban elvárjuk, \fogalomragozva{invarians}{invariánsoknak} nevezzük.
 
 A monitorozás általános elrendezését szemlélteti \aref{fig:monitorozas-elrendezes}.~ábra.

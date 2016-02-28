@@ -28,6 +28,8 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{tabularx}
+\newcolumntype{Z}{ >{\raggedright\arraybackslash}X }
+
 \usepackage{colortbl}
 \usepackage{booktabs}
 \usepackage{placeins}
@@ -132,34 +134,12 @@
 %\setlength{\cftsecindent}{1.8em}
 %\setlength{\cftsubsecindent}{4.6em}
 	
-\newcommand{\code}[1]{{\footnotesize\ttfamily #1}}
+\newcommand{\code}[1]{{\ttfamily #1}}
 \newcommand{\codeEsc}[1]{\code{\detokenize\expandafter{#1}}}
 
 \input{include/listings-settings}	% forráskódok stílusai
 \input{include/remo-commands}
-%\input{include/theorem-settings}	% definíciók, tételek stílusai -- előtte szükséges tcolorbox import
 \input{include/tikz-settings}
-%\input{include/hypersetup}
-
-%\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=gray] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
-%\newenvironment{megjegyzes}{\begin{mdframed}[backgroundcolor=white,linecolor=white] \footnotesize \textbf{Megjegyzés.}}{\end{mdframed}}
-
-\newenvironment{megjegyzes}{\footnotesize \textbf{Megjegyzés.}}{}
-
-
-\definecolor{SpringGreen}{HTML}{C6DC67}
-\newenvironment{tipp}{\begin{mdframed}[backgroundcolor=SpringGreen] \textbf{Tipp.}}{\end{mdframed}}
-
-\newenvironment{feladat}{\begin{mdframed}[backgroundcolor=blue!20] \textbf{Feladat.}}{\end{mdframed}}
-
-%\newenvironment{definicio}{\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}}
-\newenvironment{definicio}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white, linecolor=black] \textbf{Definíció.}}{\end{mdframed}\end{minipage}}
-
-\newenvironment{kisdefinicio}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíció ($*$).}}{\end{mdframed}}
-
-\newenvironment{kisdefiniciok}{\begin{mdframed}[backgroundcolor=white, linecolor=gray] \footnotesize \textbf{Formális definíciók ($*$).}}{\end{mdframed}}
-
-\newenvironment{pelda}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}\end{minipage}}
 
 % \iflabeldef parancs
 \newcommand{\iflabeldef}[3]{\makeatletter\ifcsdef{r@#1}{#2}{#3}\makeatother}
