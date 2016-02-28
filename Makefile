@@ -10,13 +10,19 @@ DOCUMENTS = \
 	allapot-alapu-modellezes \
 	allapot-alapu-modellezes-mobile \
 	folyamatmodellezes \
+	folyamatmodellezes-mobile \
 	teljesitmenymodellezes \
+	teljesitmenymodellezes-mobile \
 	modellek-fejlesztese \
+	modellek-fejlesztese-mobile \
 	modellek-ellenorzese \
 	modellek-ellenorzese-mobile \
 	felderito-adatelemzes \
+	felderito-adatelemzes-mobile \
 	szimulacio \
-	kodgeneralas
+	szimulacio-mobile \
+	kodgeneralas \
+	kodgeneralas-mobile
 
 build:
 	@$(foreach DOCUMENT, $(DOCUMENTS),\
