@@ -1,0 +1,241 @@
+\topic{Technikai segédlet a Rendszermodellezés (VIMIAA00) házi feladathoz}
+
+\graphicspath{ {./hf/figures/} }
+
+\section{Előszó}
+
+Jelen segédanyag a BME VIK elsőéves informatikus hallgatói számára készült a \emph{Méréstechnika és Információs Rendszerek Tanszéken} Lucz Soma és Farkas Rebeka munkájának felhasználásával, és a Rendszermodellezés (VIMIAA00) című tárgy kötelező házi feladatának elkészítésében segít. A szöveg a \emph{Yakindu} 2.4.0 verziójával van összhangban, amely egy állapot alapú modellezést, szimulációt és kódgenerálást támogató eszköz.
+
+
+\section{Alapismeretek}
+
+A Yakindu modellező eszköz\footnote{\url{http://statecharts.org}} az Eclipse nevű fejlesztőkörnyezet egy kiterjesztéseként érhető el. Mindkét szoftver nyílt forráskódú és az \emph{Eclipse Public Licence} keretében ingyen használható. Ez a fejezet egy egy áttekintést ad az Eclipse és a Yakindu főbb fogalmairól.
+
+\subsection{Eclipse bevezető}
+
+Az Eclipse egy ingyenes, nyílt forráskódú és többcélú fejlesztőkörnyezet, amely egy közös platformból és arra épülő \emph{plugin} (beépülő) modulokból áll. A megfelelő pluginek kiválasztásával ill. saját pluginek fejlesztésével az Eclipse képességei szabadon megválaszthatóak. A legtöbben Java fejlesztőkörnyezetként találkoznak vele, pedig többféle előre csomagolt változata is létezik (pl. C/C++ fejlesztéshez, modell alapú szoftvertervezéshez stb.), melyek mindegyike a célnak megfelelő plugineket tartalmazza.
+
+\subsection{Az Eclipse munkaterület}
+
+Az Eclipse a munkát \emph{Workspace}-ekbe (munkaterület, munkakönyvtár) szervezi, amely a merevlemezünk egy erre célra kijelölt (de szabadon megválasztható) könyvtára. A workspace-ek \emph{Project}-eket tartalmaznak, amelyeket szükség esetén \emph{Working Set}-ekbe lehet szervezni. Többféle projektet lehet létrehozni, pl Java, C++, Plug-in projekt stb. Projekteket lehet exportálni (pl. \codeEsc{zip} fájlba tömörítve), illetve importálni, így egy projekt workspace-ek és számítógépek között hordozható.
+
+\subsection{A Eclipse felhasználói felület}
+\label{sec:eclipse-gui}
+
+Az Eclipse elindítása után a \emph{Workbench} felület látszik, amely nyitott szerkesztőkből és nézetekből, valamint menüsorból, eszköztárakból, állapotsorból áll.
+
+A \emph{szerkesztőket} (Editor) használjuk a munkaterület fájljainak megnyitására és módosítására. Többféle szerkesztő használható egyszerre akár több példányban -- pl egyszerre több Java fájl lehet megnyitva, vagy akár Java és XML szerkeszthető együtt. A szerkesztőterületek igény szerint különféleképpen elrendezhetőek a képernyőn, akár külön ablakba is áthúzhatóak.
+
+A szerkesztők mellett további funkciókat tesznek elérhetőve a különféle \emph{nézetek} (View). Például a \textbf{Console} nézet a fejlesztőkörnyezetből elindított programok szabványos be- és kimeneti (ill. hibakimeneti) konzolját mutatja, a \textbf{Search} nézet a kereséseink találatait listázza stb. Talán a legfontosabb nézet a \textbf{Project Explorer} (valamint \textbf{Package Explorer} stb.), amelyen keresztül a workspace tartalmát böngészhetjük.
+
+A nyitott nézetek, eszköztárak stb. körét és elrendezését az éppen használt \emph{perspektíva} (Perspective) határozza meg, amelyet valamely munkafázis támogatására válogattak össze. A perspektíva természetesen testreszabható a nyitott nézetek kézi áthelyezésével, bezárásával, valamint újak megnyitásával (\textbf{Window} | \textbf{Show View}).
+
+\begin{comment}
+A nézetek elsődleges funkciója az, hogy a navigálni lehessen az információ között. Egy nézet tulajdonképpen a Workspace adatinak egy reprezentációja. Míg a szerkesztők helye kötött, nézetek bárhová helyezhetők. Saját eszköztárral is rendelkezhetnek.
+\end{comment}
+
+\subsection{Yakindu bevezető}
+
+A Yakindu egy nyílt forráskódú eszköz reaktív, eseményvezérelt rendszerek specifikálására és fejlesztésére állapotgépek~\cite{DBLP:journals/scp/Harel87} segítségével. Tartalmaz egy könnyen használható grafikus szerkesztőt, eszközöket validációhoz és szimulációhoz, valamint kódgenerátorokat különböző platformokra. A Yakindu Eclipse pluginek csoportjaként van megvalósítva, saját perspektívával, szerkesztőkkel és nézetekkel, amelyeket a következő fejezetek tárgyalnak.
+
+\section{A modellező eszköz telepítése}
+\label{sec:modellezo-eszkoz-telepitese}
+
+\subsection{Java környezet}
+Ahhoz, hogy az Eclipse alapú Yakindu, továbbá a házi feladathoz segítséget nyújtó további eszközök futni tudjanak, a Java fejlesztőkészlet (Java Development Kit, JDK) előzetes telepítése szükséges (minimálisan 7u6-os verzió).
+
+A JDK telepítőkészletet az Oracle honlapjáról\footnote{\url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}} lehet letölteni. Az oldalon a \textbf{Java SE Development Kit} feliratú szürke dobozban az \textbf{Accept License Agreement} lehetőséget kell kiválasztani, ekkor az alatta lévő listából letölthető a platformunknak megfelelő telepítőfájl. A telepítés \textbf{Next, Next, Finish} típusú, nem igényel különösebb fejtörést. Amennyiben valamilyen további reklámtermék (pl. Ask.com) telepítését is felajánlja, azt nem szükséges elfogadni.
+
+\begin{megjegyzes}
+Figyelem: a hivatalos Oracle JVM-et ajánljuk. OpenJDK-val maga a feladat megoldható, de nem fog működni a kötelező házi feladat kipróbálását segítő grafikus felület (ld. \ref{sec:modellezo-eszkoz-telepitese}. szakasz).
+\end{megjegyzes}
+
+
+\begin{comment}
+Telepítés után érdemes beállítani a \codeEsc{JAVA\_HOME} változót, valamint hozzáadni a Java elérési útját a PATH-hoz. Ehhez Windowson a követketzőt kell tenni.
+
+\begin{itemize}
+\item A számítógép ikonra jobb gombal kattintva válasszuk a \textbf{Properties} (Tulajdonságok) lehetőséget. (Elérhető a \textbf{Control Panel} | \textbf{System and Security} | \textbf{System} úton is.)
+\item A bal oldali menü lehetőségei közül kattintsunk az \\textbf{Advanced System Settings}-re.
+\item Itt nyomjunk rá az \textbf{Environment Variables} gombra.
+\item Ha még nincs \codeEsc{JAVA_HOME} változó, létre kell hozni. \codeEsc{JAVA_HOME} legyen a neve, az értéke pedig a frissen installált Java könyvtár elérési útja. Ha szóközöket tartalmaz, érdemes rövidítéseket használni, pl. \codeEsc{C:\Progra~1\Java\jdk1.8.0\_31}
+\item Jelöljük ki a \codeEsc{Path} változót, majd \textbf{Edit}. A változó jelenlegi értékét ne töröljük ki, csak írjunk a végére egy pontosvesszőt, majd a JDK-n belüli bin könyvtár elérési útját.
+\end{itemize}
+\end{comment}
+
+\subsection{A Yakindu letöltése és beüzemelése}
+
+A linkelt oldalról\footnote{\url{http://statecharts.org/download.html}} tölthető le egy teljes Eclipse a Yakinduval kiegészítve. Itt a jobb oldali oszlopban a \emph{Full Eclipse} alatt lehet kiválasztani az oprendszernek megfelelő verziót. (Alternatívaként természetesen lehetséges egy meglévő Eclipse példány kiegészítése a Yakindu pluginjeivel; ez kezdő Eclipse felhasználóknak nem ajánlott, és nem nyújtunk segítséget hozzá.)
+
+A programot nem kell telepíteni -- letöltés és kicsomagolás után egy futtatásra kész állományt kapunk, amit csak el kell indítanunk az \codeEsc{eclipse.exe}/\codeEsc{eclipse.app}-re kattintva.
+
+Első indításkor az Eclipse megkérdezi, melyik workspace-ben szeretnénk dolgozni. Adjunk meg neki egy mappát (ha nem létezik, majd az Eclipse létrehozza). Figyeljünk, hogy a mappa elérési útjában ne szerepeljenek ékezetes karakterek, vagy szóközök. Pipáljuk ki, hogy ne kérdezze meg minden indításkor (indulás után bármikor lehet workspace-t váltani).
+Ez a workspace lesz a későbbiekben a projektfájlok helye, ide fog dolgozni alapesetben a program.
+
+\begin{comment}
+Természetesen máshonnan is importálható projekt, illetve máshová is lehet menteni, de a workspace kényelmes megoldás arra, hogy egységes helyen tároljuk az aktuális munkáinkat.
+\end{comment}
+
+Amíg az új workspace-ben nincsenek projektjeink, az Eclipse megjelenít egy üdvözlőképernyő fület. Ezt nyugodtan bezárhatjuk.
+
+\section{Projekt létrehozása, importálása}
+
+\subsection{A projekt és modell létrehozása}
+Ahhoz, hogy a Yakinduval megkezdhessük a munkát, szükség van egy tetszőleges projektre az Eclipse workspace-ben. A házi feladat támogatására kiadunk megfelelően előkészített projektvázakat, amelyeket csak importálni kell (lásd \ref{sec:yakindu-projekt-importalasa}). Az alábbiakban viszont leírjuk, hogyan kellene enélkül a projektváz nélkül a ,,nulláról'' elindulni.
+
+Ha Java kódot szeretnénk majd generálni (ami a házi feladat támogatására kiadott segédeszközöknek kelleni is fog), akkor \emph{Java Project} készítésére van szükség. Ehhez a \textbf{File} menü \textbf{New} menüpontján belüli \textbf{New Java Project} pontra kell kattintanunk. Itt megadhatjuk a projekt nevét, majd egészen nyugodtan nyomhatunk rögtön egy \textbf{Finish}-t (a további beállításokra most nem lesz szükségünk).
+
+\begin{comment}
+a további beállításokra még Szoftlab 3-on sem lesz szükségünk.
+\end{comment}
+
+\begin{comment}
+\subsection{A projekten belüli Yakindu-mappa létrehozása -->}
+\end{comment}
+
+\begin{comment}
+A bal oldali Project Explorerben láthatóak a projektjeink: itt keressük meg a frissen létrehozottat. A projekten belül célszerű lesz egy külön mappát létrehozni a modell számára Erre jobb gombbal kattintva \textbf{New} és \textbf{Folder}. A létrehozandó mappának adjuk a \emph{model} nevet. Ez persze bármi lehet, de most a modell nevet adjuk a mappának, hiszen a benne tárolt adat egy Yakinduban létrehozott állapotmodell lesz. A projektünkön belül létrejött egy \codeEsc{model} nevű mappa.
+\subsection{A Yakindu állapotmodell létrehozása}
+\end{comment}
+
+A bal oldali Project Explorerben láthatóak a projektjeink: itt keressük meg a frissen létrehozottat. Ide fogjuk elkészíteni a Yakindu állapotmodellünket. Jobb gombbal kattintva a mappára \textbf{New}, majd \textbf{Other}. Felugrik egy ablak rengeteg választási lehetőséggel, itt válasszuk a \textbf{Yakindu} kategóriát, azon belül pedig a \textbf{Statechart Model} pontot. Fájlnévként megadhatunk bármit, csak a \codeEsc{.sct} kiterjesztésre figyeljünk. Aki akarja, természetesen létehozhat előbb a projekten belüle egy mappastruktúrát (jobb gombbal kattintva \textbf{New} és \textbf{Folder}) a modell elhelyezésére.
+
+\subsection{Yakindu projekt importálása}
+\label{sec:yakindu-projekt-importalasa}
+
+A házi feladat elkészítése során a fenti lépések végrehajtására nem lesz szükség, mivel egy előre megadott projektvázlattal kell dolgozni. Ezt egy \codeEsc{.zip} fájlban adják ki, amelyet a következőképpen kell Eclipse-be importálni.
+
+\begin{itemize}
+	\item Katt a \textbf{File} menü \textbf{Import...} pontjára.
+	\item A felügró ablakban a \textbf{General} mappán belüli \textbf{Existing Projects into Workspace} pont fog kelleni nekünk.
+	\item Itt a \emph{Select archive file} lehetőséget választva adjuk meg a letöltött \codeEsc{.zip} fájl útvonalát. Ekkor az ablak közepén lévő \emph{Projects} részben láthatóvá kell válnia egyetlen projektnek, amelynek a neve tartalmazza a NEPTUN-kódunkat. Ez lesz a miénk.
+	\item A \textbf{Finish} után a Project Explorerben láthatóvá válik az imént importált projektünk. Itt a mappát lenyitva, az \textbf{.sct} kiterjesztésű fájlra duplán kattintva elkezdhetünk dolgozni a házi feladattal.
+\end{itemize}
+
+
+\subsection{A modell megnyitása}
+
+Nyissuk meg az \codeEsc{.sct} fájlt a Yakindu szerkesztőjében! Az Eclipse ekkor fel fogja tenni a kérdést, hogy \emph{,,Perspektívát''} akarunk-e váltani. Ahogy \aref{sec:eclipse-gui}. szakaszban írtuk, az Eclipse különböző funkcióihoz az eszközök, nézetek, eszköztárak különféle elrendezései tartoznak, így a Yakindu is olyan elrendezéssel jelenik meg az Eclipse-en belül, ahogy a készítői szerint a legkényelmesebb benne dolgozni. Tehát nyomjunk igent. A perspektíva természetesen később testreszabható a korábban írtak szerint.
+
+\subsection{A modell kimentése}
+\label{sec:a-modell-kimentese}
+
+Ha elkészült a megoldás, ne felejtsük el elmenteni (Ctrl+S, illetve floppy ikon az eszköztáron). A kész megoldás elmentése után az \codeEsc{.sct} fájlt kell majd feltölteni a feladatbeadó portálra (ld. \ref{sec:feladatkiadas-es-feladatbeadas}. szakasz). Ha a \textbf{Project Explorer} segítségével kitallózzuk a fájlt, egyszerű \emph{drag\&drop} művelettel kimásolható a workspace-en belüli helyéről.
+
+Egy másik megoldás a számos lehetőség közül, hogy jobb gombbal a fájlt képviselő bejegyzésre kattintunk, és a \textbf{Properties} menüponttal megnyitjuk a tulajdonságablakot; ott a \textbf{Resource} tulajdonságlap \textbf{Location} bejegyzése alatt olvasható a fájl teljes elérési útja, amelyet felhasználhatunk pl. a fájlfeltöltési párbeszédablakban.
+
+Ügyeljünk arra, hogy a feladatmegoldás során előállt végleges verziót töltsük fel, semmiképp se az eredetileg kiadott projektvázban található modellkezdeményt.
+
+
+\section{Modellezés, szimuláció}
+
+\subsection{Állapot alapú modellezés}
+
+Az állapot alapú modellezés tágabb témaköréről szóló Rendszermodellezés előadás fóliái elérhetőek a honlapon\footnote{\url{https://inf.mit.bme.hu/edu/courses/remo/materials}} a többi előadási alkalom fóliáival együtt. A Yakindu modellek az állapotgép (\emph{statechart}) formalizmussal írják le a rendszerek működését. Ezen modellezési paradigmához hasznos elméleti bevezetőt adunk az előadás kiegészítő írásos segédanyagban;\footnote{\url{http://docs.inf.mit.bme.hu/remo-jegyzet/}} ennek az alapos tanulmányozását mindenképpen javasoljuk, mivel a formalizmus elemeinek többségét bemutatja, és Yakindu modelleket használ hozzá illusztrációnak.
+
+\subsection{Modellezés Yakinduban}
+
+Az \textbf{.sct} fájl szerkesztéséhez megnyíló szerkesztőfül három területre van osztva:
+
+\begin{itemize}
+	\item A bal oldali terület szöveges szintaxissal specifikálja az állapotgép nevét és interfészeit (input/output események ill. interfészváltozók neve és típusa).
+	\item A középső területen maga a statechart diagram lesz szerkeszthető. A diagram állapot- és pszeudoállapot-csomópontokból áll, amelyek szürke téglalapként jelölt ortogonális régiókba szervezhetőek. A csomópontok között állapotátmeneti szabályokat reprezentáló élek haladnak amelyek megcímkézhetőek a kiváltó okkal (input esemény vagy időzítés), őrfeltétellel, és végrehajtandó akcióval (változóértékek frissítése, output események).
+	\item A jobb oldali területet a diagramszerkesztéshez használható paletta foglalja el, itt választhatóak ki a diagramra helyezendő modellelemek.
+\end{itemize}
+
+A házi feladat megoldásakor elvárás, hogy az állapotgép külső interfésze az előre kiadottal egyezzen. Így tehát a feladatmegoldás során elsősorban a diagrammal kell dolgozni, \textbf{az állapotgép nevének és interfészének módosítása tilos}. Ugyanakkor engedélyezett és ajánlott belső használatú, lokális változókat felvenni; erre a célra fenn van tartva a bal oldali területen egy \textbf{internal} megjelölésű szakasz (\textbf{Insert additional variables here} megjegyzéssel).
+
+A szerkesztőeszköz részletesebb ismertetésére ezen a helyen nincs mód, de ez a tudás más forrásokból könnyen pótolható. A modellszerkesztő felhasználói felület használatát egy videón mutatjuk be\footnote{\url{ http://youtu.be/ev5wEjvje78}}, amely lépésről lépésre végighalad a fenti elméleti bevezető segédanyag példáin. A modellező eszköz részletesebb megismeréséhez természetesen rendlekezésre áll a Yakindu honlapján angol nyelven publikált szöveges dokumentáció,\footnote{\url{http://statecharts.org/documentation.html}} továbbá a bemutató videó\footnote{\url{https://www.youtube.com/watch?v=uO6MASCBPrg}} is.
+
+A videóból nem feltétlenül látszik, de hasznos tudnivaló, hogy a szöveges beviteli helyeken (pl. állapotátmeneti szabályok címkézése) gépelés közben a \textbf{Ctrl + szóköz} billentyűkombinációval kódkiegészítéseket (\emph{Code completion}) javasol nekünk a Yakindu; ezzel nagymértékben gyorsítható a munka. További hasznos tipp, hogy a modellezés kezdetekor növeljük meg a \emph{main region} nevű területet, mivel szinte biztos, hogy több helyre lesz szükségünk; a \textbf{Ctrl + görgő} kombinációval tudunk kényelmesen nagyítani, illetve kicsinyíteni.
+
+A Yakindu természetesen jóval szélesebb körű felhasználásra alkalmas, mint a Rendszermodellezés házi feladat. Így vannak olyan modellezési elemei, amelyeket más felhasználási esetkere szántak, a házi feladat szempontjából értelmetlenek, és így használatukat nem engedjük meg. (Konkrétabban: a Rendszermodellezés házi feladat kontextusában, a \emph{Digitális technika} tárgyból tanult szinkron áramkörökkel ellentétben, nincs meghatározott \emph{órajel} fogalom, így a kifejezetten erre építő Yakindu nyelvi elemek a szimulációban és tesztelés közben nem fognak helyesen működni.) Ezen \textbf{tiltott elemek}:
+
+\begin{itemize}
+	\item \code{always}
+	\item \code{oncycle}
+	\item Kiváltó esemény nélküli állapotátmenet (a Yakindu a fentiekkel ekvivalensen értelmezi)
+\end{itemize}
+
+\begin{comment}
+A \emph{default} ablakrészben tudjuk megadni az interface-eket, illetve a modellezéshez szükséges alapokat. A jobb oldali eszköztárral tudunk hozzáadni az ábrához újabb állapotokat, illetve onnan érünk el mindent, ami a modellezéshez szükséges.
+\end{comment}
+
+
+\subsection{A modell működésének szimulálása}
+Ha már van egy részleges vagy teljes megoldásunk, nyilván szeretnénk meggyőződni annak helyességéről. Ennek egyik eszköze a Yakindu beépített szimulátora.
+
+A szimuláció elindításához válasszuk ki a bal oldali Project Explorerben látható Yakindu statechart fájlt (\codeEsc{.sct}) vagy az erre a célra készített \codeEsc{Simulation.launch} nevű ,,launch configurationt'' (indítási konfigurációs állományt), majd jobb gombbal kattintva a \textbf{Run As}, majd \textbf{Statechart Simulation} pontot válasszuk. Így megnyílik a \textbf{Simulation View} nézet, és a Yakindu elkezdi szimulálni a modellünket. Piros színnel ki lesz(nek) emelve az állapotkonfiguráció aktív állapota(i), a nagyobb összetett állapotoktól egészen a legszűkebb állapotig.
+
+A jobb oldali \textbf{Simulation} fül alatt láthatóak az állapotgép interfészén definiált ,,változók'', illetve ,,események''. A házi feladat példáiban ezek gombok, kijelzők, illetve időesemények lesznek majd. A szimuláció indítása után a \emph{gombok} nyomkodása input eseményeknek felel meg, így ezekkel vezérelhetjük közvetlenül a szimulált állapotgép állapotátmeneteit. A szimulációt a felső eszköztárban lévő piros négyzettel, vagyis a \textbf{Terminate} gombbal állíthatjuk le.
+
+
+\subsection{A modell működésének tesztelése}
+
+Megoldásunk helyességének ellenőrzésére szolgálnak a kiadott tesztesetek. Ezek lefuttatásával egyszerű helyesírási hibáktól kezdve a bonyolult funkcionális hiányosságokig számos problémára fényt deríthetünk még a házi feladat beadása előtt. Teszteseteink felépítése a következő: először kezdőállapotba állítjuk a vizsgált állapotgépet, majd események sorozatának hatására léptetjük, végül (esetleg közben is) megvizsgáljuk, hogy a feladatkiírásnak megfelelően viselkedett-e. Amennyiben igen, a teszteset \emph{sikeresnek} mondjuk, ellenkező esetben a teszteset \emph{meghiúsul}, és kilistázzuk a hiba okát.
+
+A kötelező házi feladat esetén egy teszteset az alábbi eseményeket tartalmazhatja:
+
+\begin{itemize}
+	\item \emph{Gomb Lenyomása}: a sakkórán lenyomunk egy gombot, amire a rendszernek a feladatkiírásnak megfelelően kell reagálnia.
+	\item \emph{Várakozás:} Idő múlását szimulálhatjuk az állapotgépen. Erre szintén reagálhat az állapotgép.
+\end{itemize}
+
+Események egy sorozata után az alábbi vizsgálatokat tehetjük:
+
+\begin{itemize}
+	\item \emph{Kijelző leolvasása:} A kijelző szövegét betűről betűre összehasonlítjuk egy elvárt értékkel.
+	\item \emph{Játékosok számjelzőinek leolvasása:} A játékosok idejét jelző kijelzőn lévő számot vizsgáljuk.
+	\item \emph{Hangjelzés vizsgálata:} Megnézzük, hogy az ellenőrzés pillanatában elkezdett-e sípolni a sakkóra. (Mivel a modellnek önmagában, az aktuális megvalósításban használt hangjelzések hosszától függetlenül helyesen kell viselkedniük, csak a hangjelzés kezdését mint pillanatszerű eseményt vizsgáljuk.)
+\end{itemize}
+
+A bemelegítő szorgalmi házi feladatban értelemszerűen ennél kevesebb elemből épülnek fel a tesztesetek.
+
+Teszteseteinket a \codeEsc{Tests.launch} állományra jobb gombbal kattintva futtathatjuk, a \textbf{Run as} menüponttal. A tesztek hamar lefutnak, két helyen lehet ellenőrizni az eredményeket: a tesztekről szöveges jelentés jelenik meg a konzolon (\textbf{Console} nézet), illetve a tesztfuttató keretrendszer (\textbf{JUnit}) egy külön erre a célra szánt nézetben is összefoglalja az eredményeket.
+
+A konzolon a sikeres tesztek kódját egyszerűen csak felsoroljuk:
+
+\begin{lstlisting}
+neptun4 Succeeded!
+\end{lstlisting}
+
+Meghiúsult tesztek esetén kiírjuk a vizsgált teszt célját, a beadott eseményeket sorrendhelyesen (azok időpontjával feltüntetve), valamint azt a vizsgálatot, ami meghiúsítja a tesztet. Itt a kapott és a helyette elvárt kimenetet is feltüntetjük.
+
+\begin{lstlisting}
+neptun4 Failed:
+Pressing the button three times shows your Neptun code N3PTUN again
+----------
+- Button at 0s
+- Button at 0s
+- Button at 0s
+- Failed main display check: expected "N3PTUN" but found "Other text"
+\end{lstlisting}
+
+A \textbf{JUnit} nézet felsorolja a teszteket, amelyeket színkóddal (zöld ill. piros) lát el annak megfelelően, hogy sikeres volt-e vagy sem. Az összes teszteset lefutásáról összefoglalót olvashatunk a nézet tetején, valamint egy jelzőcsík is mutatja a futtatás kimenetelét. Egy meghiúsult esetre kattintva megnézhetjük a hiba okát a \textbf{Failure Trace} ablakban.
+
+\subsection{A modell kipróbálása}
+
+A részleges vagy teljes megoldásunk helyességét nem csak a Yakindu beépített szimulátorán keresztül próbálhatjuk ki, hanem saját fejlesztésű programba is beágyazhatjuk. (A bemelegítő házi feladat esetén ez a lehetőség nem érhető el.) A kötelező házi feladat esetén el is készítettünk egy sakkórát imitáló grafikus felületet, amelyen keresztül az elkészített modell működése közvetlenül és látványosan kipróbálható. Az alkalmazást az \codeEsc{Application.launch} launch configuration állományra jobb gombbal kattintva indíthatjuk, ha a \textbf{Run as} menüpontot választjuk.
+
+\begin{megjegyzes}
+	Olyan modellt nem érdemes kipróbálni, amelyet már a Yakindu szerkesztő is hibásnak mond. Ezekben az esetekben sokszor az alkalmazás már el sem fog tudni indulni, hibaüzenettel azonnal leáll.
+\end{megjegyzes}
+
+\subsection{Kódgenerálás}
+
+A Yakindu képes az állapotgép-modellből olyan forráskódot generálni (különféle programnyelvekben), amelynek működése az állapotgéppel meg fog egyezni. Az állapotgép szerkesztése és elmentése után a Yakindu automatikusan előállítja ill. frissíti a tárgynyelvi forrásfájlokat.
+
+A kiadott projektvázakban már konfigurálásra került a (Java nyelvű) kódgenerálás, amelynek a beállításait egy \codeEsc{.sgen} kiterjesztésű fájl tárolja. Valójában mind a tesztkészlet, mind a sakkóra grafikus felület az így automatikusan előálló forráskódot hívja meg. A házi feladat megoldása során se a kódgenerálás beállításaival, se a generált forráskóddal nem kell foglalkozni, de érdeklődő hallgatók megnézhetik ezeket.
+
+\section{Feladatkiadás és feladatbeadás}
+\label{sec:feladatkiadas-es-feladatbeadas}
+
+A Rendszermodellezés tágy honlapján\footnote{\url{https://inf.mit.bme.hu/edu/courses/remo}}, a bal oldalt fent látható navigációs fában a \textbf{Hírek} rovatra kattintva a tárggyal kapcsolatos aktuális oktatási hírek olvashatóak, amelyekre RSS olvasó segítségével fel is lehet iratkozni. Itt lesz közzétéve a házi feladatokhoz tartozó feladatkiírások és az előre összekészített Yakindu projektvázak letöltésének lehetősége.
+
+A megoldás feltöltése a feladatbeadó portálon\footnote{\url{https://inf.mit.bme.hu/user/grader}} lehetséges, kizárólag a határidőt megelőző időszakban. A határidőt szigorúan vesszük, a beadási űrlap a határidő elérésekor percre pontosan lezárul. A feladatbeadó portál használata nem bonyolult, de probléma esetén nyugodtan fordulhatunk a használati útmutatót.\footnote{\url{https://inf.mit.bme.hu/wiki/jegyzokonyv}} A megoldás beadásakor egyetlen \codeEsc{.sct} fájl feltöltése szükséges.
+Vigyázzunk arra, hogy azt a modellt töltsük fel amit szerkesztettünk!
+(A \textbf{Copy project into workspace} opció hatására a workspace mappába másolódik a projekt.
+Ebben az esetben innen töltsük fel a megoldást. Részletes leírás \aref{sec:a-modell-kimentese}. szakaszban olvasható.)
+
+Mivel mindenki egyénileg testreszabott házi feladatot kap, egyéni azonosítás szükséges a házi feladat elemeinek letöltésekor és a megoldás feltöltésekor egyaránt. Az azonosítást a BME Címtár\footnote{\url{https://login.bme.hu/admin/}} szolgáltatása végzi, ezért aki még nem tette meg, mielőbb regisztráljon magának címtár azonosítót. Ha a portál elérésekor nem történik meg automatikusan az azonosítás, akkor a ,,nincs jogosultság'' hibaüzenetet kaphatjuk; ebben az esetben a bal oldali sávban kattintsunk a \textbf{BME Címtár belépés} linkre.
+

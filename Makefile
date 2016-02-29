@@ -1,6 +1,8 @@
 DOCUMENTS = \
 	rendszermodellezes \
 	sablon \
+	hf \
+	hf-mobile \
 	bevezeto \
 	bevezeto-mobile \
 	modellezes-es-metamodellezes \
