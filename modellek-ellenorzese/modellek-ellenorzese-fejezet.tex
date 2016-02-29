@@ -282,13 +282,14 @@ A függvény a megadott \code{n} egész számra visszadja, hogy prím-e (\code{i
 Egy összetett számnak számos valódi osztója lehet, emiatt a függvény megvalósításának tesztelésénél nem adhatunk meg konkrét elvárt értékeket. Ehelyett azt vizsgálhatjuk, hogy a visszaadott szám (\code{divisor}) tényleg osztója-e \code{n}-nek és tényleg 1-től és \code{n}-től eltérő. Így például az alábbi teszteseteket tervezhetjük meg a \codeEsc{find_nontrivial_divisor} függvény vizsgálatára:
 
 \begin{center}
-\begin{tabularx}{\linewidth}{|r|r|Z|}\hline
-Teszteset & Bemenet (\code{n}) & Elfogadási kritérium \\ \hline\hline
-1 & 997 & \codeEsc{is_prime==true} \\ \hline
-2 & 998 & \codeEsc{is_prime==false && divisor>1 && divisor<998 && }\code{998\%divisor==0} \\ \hline
-3 & 999 & \codeEsc{is_prime==false && divisor>1 && divisor<999 && }\code{999\%divisor==0} \\ \hline
-4 & 1 & \textit{kivétel dobása} \\ \hline
-\end{tabularx}
+	\begin{tabularx}{\linewidth}{rrZ}
+		\toprule
+		Teszteset & Bemenet (\code{n}) & Elfogadási kritérium \\ \midrule
+		1 & 997 & \codeEsc{is_prime==true} \\ %\hline
+		2 & 998 & \codeEsc{is_prime==false && divisor>1 && divisor<998 && }\code{998\%divisor==0} \\ %\hline
+		3 & 999 & \codeEsc{is_prime==false && divisor>1 && divisor<999 && }\code{999\%divisor==0} \\ %\hline
+		4 & 1 & \textit{kivétel dobása} \\ \bottomrule
+	\end{tabularx}
 \end{center}
 
 Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véletlenszerűen, hanem gondos tervezés alapján határozzuk meg. Például fontos, hogy a különleges, \code{n==1} esetet is megvizsgáljuk. A teszttervezéssel bővebben a \szore (BMEVIMIMA01) MSc tárgyban\footnote{\url{https://inf.mit.bme.hu/edu/courses/szore}} foglalkozunk.
@@ -331,11 +332,11 @@ Tekintsük az alábbi egyszerű állapotgépet, amely egy közlekedési lámpát
 Vegyük az alábbi, két tesztesetből álló tesztkészletet (az elfogadási kritérium nem lényeges a fedettség szempontjából, így azt elhagytuk):
 
 \begin{center}
-\begin{tabular}{|l|l|}\hline
-Teszteset & Bemenet (\code{n}) \\ \hline\hline
-1 & \code{sw1}, \code{sw2}, \code{sw3}, \code{sw4} \\ \hline
-2 & \code{sw1}, \code{sw2}, \code{sw3}, \code{toBlinking}, \code{toRed} \\ \hline
-\end{tabular}
+	\begin{tabular}{rl}\toprule
+		Teszteset & Bemenet (\code{n}) \\ \midrule
+		1 & \code{sw1}, \code{sw2}, \code{sw3}, \code{sw4} \\ %\hline
+		2 & \code{sw1}, \code{sw2}, \code{sw3}, \code{toBlinking}, \code{toRed} \\ \bottomrule
+	\end{tabular}
 \end{center}
 
 Ez a két teszt az összes állapotot be fogja járni. Így az állapotgépben az \emph{állapotfedettség} $\frac{5}{5} = 1 = 100 \%$.
