@@ -24,8 +24,14 @@ Látható, hogy önmagában nincs értelme egy modell helyességéről beszélni
 Ebben a fejezetben áttekintjük, milyen követelményeket támaszthatunk a modellekkel szemben, hogyan csoportosíthatjuk és hogyan ellenőrizhetjük ezen követelményeket.
 
 \paragraph{Követelmények funkcionalitás szerint.}
-Az egyik leggyakoribb felosztás a követelményeket aszerint különbözteti meg, hogy a rendszer elsődleges funkcióját írják le vagy sem. \fogalomragozva{funkcionalis-kovetelmeny}{Funkcionális követelményeknek} nevezzük azokat a követelményeket, amelyek egy rendszer(összetevő) által ellátandó funkciót definiálnak \cite{IEEE-24765}.
+Az egyik leggyakoribb felosztás a követelményeket aszerint különbözteti meg, hogy a rendszer elsődleges funkcióját írják le vagy sem.
+
+\begin{definicio}
+\fogalomragozva{funkcionalis-kovetelmeny}{Funkcionális követelményeknek} nevezzük azokat a követelményeket, amelyek egy rendszer(összetevő) által ellátandó funkciót definiálnak \cite{IEEE-24765}.
+\end{definicio}
+\begin{definicio}
 \fogalomragozva{nemfunkcionalis-kovetelmeny}{Nemfunkcionális követelményeknek} (vagy extrafunkcionális követelményeknek) nevezzük az ezeken kívül eső követelményeket, amelyek a rendszer minőségére vonatkoznak, például megbízhatóságra, teljesítményre vonatkozó kritériumok \cite{IEEE-24765}.
+\end{definicio}
 
 \begin{megjegyzes}
 Tehát a \fogalomragozva{funkcionalis-kovetelmeny}{funkcionális követelmények} meghatározzák, \emph{mit} fog a rendszer csinálni. A \fogalomragozva{nemfunkcionalis-kovetelmeny}{nemfunkcionális követelmények} arról szólnak, \emph{hogyan} kell a rendszernek ezeket a funkciókat ellátnia.
@@ -33,9 +39,15 @@ Tehát a \fogalomragozva{funkcionalis-kovetelmeny}{funkcionális követelmények
 
 \paragraph{Biztonsági és élőségi követelmények.}
 A követelmények egy másik klasszikus kategorizálása alapján biztonsági és élőségi követelményeket különböztetünk meg \cite{Lamport:1977}.
+
+\begin{definicio}
 A \fogalomragozva{biztonsagi-kovetelmeny}{biztonsági követelmények} a megengedett viselkedést definiálják: megadják, hogy milyen viselkedés engedélyezett és mely viselkedések tiltottak. Ezek univerzális követelmények, melyeknek a rendszerre minden időpillanatban teljesülniük kell.
+\end{definicio}
+\begin{definicio}
 Az \fogalomragozva{elosegi-kovetelmeny}{élőségi követelmények} az elvárt viselkedést definiálják.
 Ezek egzisztenciális követelmények, amelyek szerint a rendszer megfelelő körülmények közt előbb-utóbb teljesíteni képes bizonyos elvárásokat.
+\end{definicio}
+
 Bizonyos követelmények biztonsági és élőségi követelmények keverékei, így -- különösen komplex esetekben -- nem feltétlen lehetséges valamelyik kategóriába sorolni a követelményt.
 
 \begin{megjegyzes}
@@ -46,7 +58,13 @@ Biztonsági követelmény például az, hogy egy jelzőlámpán egyszerre sosem 
 
 \paragraph{Gyakori általános követelmények.}
 Itt kitérünk néhány olyan gyakori általános követelményre, amelyek általában a modell által leírt folyamattól, vagy a megvalósított rendszer érdemi funkcionalitásától lényegében függetlenek.
-Az egyik ilyen általános követelmény a holtpontmentesség. \fogalomragozva{holtpont}{Holtpontnak} (deadlocknak) nevezzük azt az állapotot egy rendszerben, amelyben a végrehajtás megáll, a rendszer többé nem képes állapotot váltani, és nem mutat semmilyen viselkedést. A holtpont egy gyakran előforduló oka, ha a rendszerben két vagy több folyamat egymásra várakozik. Ez egy olyan állapot, amelyből külső (nem modellezett) beavatkozás nélkül nem lehet kilépni. Emiatt párhuzamos rendszereknél egy gyakori követelmény a \fogalom{holtpontmentesseg}, a holtpontok lehetőségének hiánya. Sajnos ez egy olyan probléma, amely kifinomult eszközök nélkül igen nehezen vizsgálható, gyakran a holtpont létrejöttéhez a körülmények ritka, különleges együttállása szükséges.
+Az egyik ilyen általános követelmény a holtpontmentesség.
+
+\begin{definicio}
+\fogalomragozva{holtpont}{Holtpontnak} (deadlocknak) nevezzük azt az állapotot egy rendszerben, amelyben a végrehajtás megáll, a rendszer többé nem képes állapotot váltani, és nem mutat semmilyen viselkedést.
+\end{definicio}
+
+A holtpont egy gyakran előforduló oka, ha a rendszerben két vagy több folyamat egymásra várakozik. Ez egy olyan állapot, amelyből külső (nem modellezett) beavatkozás nélkül nem lehet kilépni. Emiatt párhuzamos rendszereknél egy gyakori követelmény a \fogalom{holtpontmentesseg}, a holtpontok lehetőségének hiánya. Sajnos ez egy olyan probléma, amely kifinomult eszközök nélkül igen nehezen vizsgálható, gyakran a holtpont létrejöttéhez a körülmények ritka, különleges együttállása szükséges.
 
 \begin{megjegyzes}
 Természetesen előfordulhat olyan eset is, hogy a holtpont nem tiltott, hanem megfelelő körülmények közt egyenesen elvárt. Emlékezzünk arra, hogy egy folyamatpéldány a dolga végeztével semmilyen további viselkedést nem mutat. Ilyenkor inkább az lehet követelmény, hogy a folyamat csak úgy kerülhessen holtpontba, ha már befejeződött.
@@ -67,7 +85,16 @@ Ha rendelkezésre állnak a követelmények, már lehetséges a modellek helyess
 Képzeljük el, hogy egy kereszteződést szerelünk fel jelzőlámpákkal. A leszállított rendszert ellenőriztük, megfelel a specifikációnak: a fények megfelelő sorrendben, megfelelő időzítéssel követik egymást és mindig csak az engedélyezett irányok kapnak egyidejűleg szabad jelzést. Az átadáskor a megrendelő megkérdezi: ,,-- És hol lehet átkapcsolni villogó sárgára?'' Mivel ez nem volt a specifikáció része, ilyen funkció nem is került a jelzőlámpák vezérlésébe. Mi meg vagyunk győződve arról, hogy a rendszer helyes, mivel teljesíti a specifikáció minden elemét. Ugyanakkor a megrendelő biztos abban, hogy a rendszer hibás, hiszen nem megfelelő a számára.
 \end{pelda}
 
-Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be. \fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak. \fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e. Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval. A verifikáció és a validáció közti különbséget illusztrálja \aref{fig:verifikacio_vs_validacio}.~ábra.
+Annak érdekében, hogy a helyességvizsgálatról pontosabban beszéljünk, két új fogalmat vezetünk be.
+
+\begin{definicio}
+\fogalomragozva{verifikacio}{Verifikációnak} nevezzük, amikor azt vizsgáljuk, hogy az implementáció (az elkészített modell vagy rendszer) megfelel-e a specifikációnak. Ekkor a kérdés az, hogy helyesen fejlesztjük-e a rendszert, megfelel-e az az előírt kívánalmaknak.
+\end{definicio}
+\begin{definicio}
+\fogalomragozva{validacio}{Validációnak} nevezzük azt a folyamatot, amelyben a rendszert a felhasználói elvárásokhoz hasonlítjuk, azaz azt vizsgáljuk, hogy a megfelelő rendszert fejlesztjük-e.
+\end{definicio}
+
+Mint ahogyan azt a korábbi példán láthattuk, a sikeres verifikáció nem feltétlen jár együtt sikeres validációval. A verifikáció és a validáció közti különbséget illusztrálja \aref{fig:verifikacio_vs_validacio}.~ábra.
 
 \begin{figure}[h]
 	\centering
@@ -82,7 +109,12 @@ A modellek vagy rendszerek ellenőrzésére többféle módszer is rendelkezésr
 
 
 \section{Statikus ellenőrzés}\label{sec:statikus-ellenorzes}
-Statikus ellenőrzés során a vizsgált rendszert vagy modellt annak végrehajtása, szimulációja nélkül elemezzük. Bizonyos hibák ,,ránézésre látszanak'', könnyen felismerhetők, ezekre célszerű statikus ellenőrzési módszereket alkalmazni. Ilyenkor a statikus vizsgálat alapvető előnye, hogy gyorsan és könnyen szolgáltat eredményt. Ráadásul a statikus ellenőrzési módszerek gyakran a hiba helyét is pontosan behatárolják, míg például dinamikus módszereknél gyakran a hiba felismerése és annak okának megtalálása két külön feladat. Statikus ellenőrzési technikákat akkor is használunk, amikor szintaktikai hibákat keresünk, ilyenkor a rendszer tipikusan nem is futtatható.
+
+\begin{definicio}
+\Fogalom{statikus-ellenorzes} során a vizsgált rendszert vagy modellt annak végrehajtása, szimulációja nélkül elemezzük.
+\end{definicio}
+
+Bizonyos hibák ,,ránézésre látszanak'', könnyen felismerhetők, ezekre célszerű statikus ellenőrzési módszereket alkalmazni. Ilyenkor a statikus vizsgálat alapvető előnye, hogy gyorsan és könnyen szolgáltat eredményt. Ráadásul a statikus ellenőrzési módszerek gyakran a hiba helyét is pontosan behatárolják, míg például dinamikus módszereknél gyakran a hiba felismerése és annak okának megtalálása két külön feladat. Statikus ellenőrzési technikákat akkor is használunk, amikor szintaktikai hibákat keresünk, ilyenkor a rendszer tipikusan nem is futtatható.
 
 Az alábbiakban részletesen foglalkozunk a statikus ellenőrzés technikáival és használatával. Először a szintaktikai hibák vizsgálatát tekintjük át (\ref{sec:statikus-ellenorzes-szintaktikai-hibak}.~szakasz), majd a szemantikai hibák vizsgálatára koncentrálunk (\ref{sec:statikus-ellenorzes-szemantikai-hibak}.~szakasz). 
 
@@ -180,23 +212,40 @@ Milyen esetekben ad a fenti példakód 2-t eredményül? Erre szintén választ 
 
 \section{Tesztelés}\label{sec:teszteles}
 
-\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert (vagy egy futtatható modelljét) bizonyos meghatározott körülmények közt futtatjuk (vagy szimuláljuk), majd az eredményeket összehasonlítjuk az elvárásainkkal\footnote{Ennél a nagyon általános és gyakran használt fogalomnál kivételesen érdemes az eredeti, angol nyelvű, az IEEE által adott definíciót is elolvasni: ,,[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component''.~\cite{IEEE-24765}}~\cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk. 
+\begin{definicio}
+\Fogalom{teszteles} alatt olyan tevékenységet értünk, amely során a rendszert (vagy egy futtatható modelljét) bizonyos meghatározott körülmények közt futtatjuk (vagy szimuláljuk), majd az eredményeket összehasonlítjuk az elvárásainkkal\footnote{Ennél a nagyon általános és gyakran használt fogalomnál kivételesen érdemes az eredeti, angol nyelvű, az IEEE által adott definíciót is elolvasni: ,,[Testing is an] activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component''.~\cite{IEEE-24765}}~\cite{IEEE-24765}. A tesztelés célja a vizsgált rendszer minőségének felmérése és/vagy javítása azáltal, hogy hibákat azonosítunk.
+\end{definicio}
 
 Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus ellenőrzés közt: utóbbi esetben a vizsgált rendszert nem futtatjuk, nem hajtjuk végre. Ugyanakkor attól, hogy a rendszert annak vizsgálata céljából végrehajtjuk, még nem beszélünk tesztelésről. Ahogyan a definíció is mutatja, meghatározott körülmények közt futtatjuk a rendszert, azaz nem ,,próbálgatásról'' van szó, hanem a fejlesztés egy alaposan megtervezett részfolyamatáról.
 
 Azt is érdemes megjegyezni, hogy a tesztelés és a ,,debugolás'' is két külön fogalom. Tesztelés esetén hibajelenségek meglétét vagy hiányát vizsgáljuk. \Fogalom{debugolas} esetén ismert egy bizonyos hibajelenség (pl. egy teszt kimutatta vagy egy felhasználó jelezte), a célunk pedig ennek a helyének, a kiváltó okának megkeresése, lokalizálása.
 
 \subsection{A tesztelés alapfogalmai}
-Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagában a rendszer. Tesztek végrehajtásához legalább a következő komponensek szükségesek: 
-\begin{itemize}
-\item a \fogalom{tesztelendo-rendszer} (\roviditesangolul{SUT}, \rovidites{SUT}), amelyet a teszt során futtatni fogunk;
-\item a \fogalomragozva{tesztbemenet}{tesztbemenetek}, amelyek megadják a tesztelendő rendszer számára biztosítandó bemeneti adatokat; és
-\item a \fogalom{tesztorakulum}, amely alapján a végrehajtott tesztről eldönthető annak eredménye.
-\end{itemize}
+Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagában a rendszer. Tesztek végrehajtásához legalább a következő három komponensre szükséges: a tesztelendő rendszer, a tesztbemenetek és a tesztorákulum.
 
-Összefoglaló néven \fogalomragozva{teszteset}{tesztesetnek} hívjuk azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ,,bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}. Tesztesetek egy adott halmazát \fogalomragozva{tesztkeszlet}{tesztkészletnek} hívjuk.
+\begin{definicio}
+\Fogalom{tesztelendo-rendszer} (\roviditesangolul{SUT}, \rovidites{SUT}): az a rendszer amelyet a teszt során futtatni fogunk vizsgálat céljából.
+\end{definicio}
+\begin{definicio}
+\fogalomragozva{tesztbemenet}{Tesztbemenetek}: a tesztelendő rendszer számára biztosítandó bemeneti adatok.
+\end{definicio}
+\begin{definicio}
+\Fogalom{tesztorakulum}: olyan algoritmus és/vagy adat, amely alapján a végrehajtott tesztről eldönthető annak eredménye.
+\end{definicio}
 
-A \fogalom{tesztfuttatas}, azaz egy vagy több teszteset végrehajtása után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet sikeres (pass), sikertelen (fail) vagy hibás (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni. 
+
+\begin{definicio}
+\fogalomragozva{teszteset}{Tesztesetnek} hívjuk összefoglaló néven azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ,,bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}.
+\end{definicio}
+\begin{definicio}
+\fogalomragozva{tesztkeszlet}{Tesztkészletnek} hívjuk a tesztesetek egy adott halmazát.
+\end{definicio}
+
+\begin{definicio}
+\Fogalom{tesztfuttatas}: egy vagy több teszteset végrehajtása \cite{IEEE-24765}.
+\end{definicio}
+
+A tesztfuttatás után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet \emph{sikeres} (pass), \emph{sikertelen} (fail) vagy \emph{hibás} (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni. 
 Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
 
 A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-orakulum}.~ábrán.
