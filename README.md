@@ -51,3 +51,8 @@ A Xindy használata Linux alatt nincs külön teendőnk, Windows alatt viszont i
 * Hozzunk létre egy batch állományt, ami meghívja a Perl futtatókörnyezetet a `xindy.pl` szkripttel. Egy ilyen példa állományt megtalálható a `scripts` könyvtárban `xindy.bat` néven. Ebben a `xindy.pl` elérési útvonalát módosítsuk a rendszerünknek megfelelően. Fontos, hogy az állomány nevét ne változassuk meg.
 * A batch állományt helyezzük el a PATH-ra, pl. a `C:\Windows\system32` könyvtárba.
 * A TeXstudióban a fent leírt módon tudjuk fordítani a dokumentumot.
+
+### GYIK
+
+* **Probléma:** Nem jelennek meg a képek a jegyzetben.
+* **Megoldás:** A PDF 1.4 és a PDF 1.5 szabvány közötti eltérések okozhatják a problémát. Ha nem tudunk egyszerűen PDF 1.4-es fájlt előállítani (pl. a yEd-nél nincs erre opció), akkor workaroundként a `pdfcrop` alkalmazással körbevágva a képet 1.4-es PDF-et kapunk. Ahol erre szükség lehet, ott a `figures` könyvtárakban található egy `crop.sh` szkript. Ez a szkript az adott könyvtár *összes* PDF fájlját felülírja a körbevágott változattal.
