@@ -264,7 +264,7 @@ Amennyiben módosítást végzünk a rendszerünkön, a korábbi tesztek eredmé
 Ahogyan a fejezet elején írtuk, a tesztelés általános célja a vizsgált rendszer minőségének javítása hibák megtalálásán és javításán keresztül. Nyilvánvaló, hogy ez a végtelenségig nem folytatható, egy idő után az összes hibát megtaláljuk és kijavítjuk. Ennél az utópisztikus nézetnél kissé pragmatikusabban azt is mondhatjuk, hogy egy idő után a tesztelés folytatása nem célszerű (nem gazdaságos), mert a vizsgált rendszer minősége már ,,elég jó''. % Igen, az utópisztikust tényleg így írják.
 De honnan tudhatjuk, hogy elértük ezt a szintet?
 
-Az egyik gyakran használt módszer a tesztkészlet fedésének mérése. A tesztfedettség alapötlete az, hogy a tesztkészlet egyik tesztesete sem látogat meg egy adott állapotot, akkor az az állapot biztosan nem lesz vizsgálva, így annak minőségéről következtetést nem vonhatunk le. Ugyanez elmondható például egy metódus hívásával kapcsolatban is.
+Az egyik gyakran használt módszer a tesztkészlet fedésének mérése. A tesztfedettség alapötlete az, hogy a tesztkészlet egyik tesztesete sem látogat meg egy adott állapotot egy állapotgépben, akkor az az állapot biztosan nem lesz vizsgálva, így annak minőségéről következtetést nem vonhatunk le. Ugyanez elmondható például egy metódus hívásával kapcsolatban is.
 
 Ha viszont a tesztkészletünk meglátogat minden állapotot vagy meghív minden metódust, elmondhatjuk, hogy mindent megvizsgáltunk? Sajnos korántsem. Például abból, hogy minden állapotot bejár egy tesztkészlet nem következik, hogy minden állapotátmenetet is érint. Attól, hogy egy tesztkészlet minden metódust meghív, nem feltétlenül érint minden utasítást. Látható, hogy számos fedettségi metrikát lehet bevezetni. Mi itt mindössze az alábbi három alapvető fedettségi metrikára szorítkozunk.
 \begin{itemize}
@@ -358,7 +358,9 @@ void RootsMonitor(float a, b, c, float &x1, &x2) {
 
 Monitorozást nem csak ilyen egyszerű esetekben lehet használni, összetett monitorok is elképzelhetők. Például állapotgépek esetén készíthetünk egy monitor régiót, ami a rendszer megvalósításával párhuzamosan fut és detektálja a hibás vagy tiltott állapotokat, akciókat.
 
-
+\begin{megjegyzes}
+Az elő- és utófeltételek adják az ún. \emph{design by contract} elv alapötletét. Ennek célja a rendszer minőségének javítása (a hibák elkerülése) azáltal, hogy a rendszer minden komponensére elő- és utófeltételeket határozunk meg. Egy adott $x$ komponenst felhasználó $y$ komponensnek garantálnia kell, hogy $x$ előfeltételei teljesülnek a felhasználáskor, cserébe feltételezheti, hogy a válasz teljesíteni fogja $x$ utófeltételeit. A másik oldalról $x$ feltételezi, hogy az előfeltételei teljesülni fognak, és az ő felelőssége az utófeltételek teljesítése. Egy komponensre az elő- és utófeltételek összességét \emph{szerződésnek} hívjuk, amely lényegében az adott komponens egy specifikációja. A legtöbb programozási nyelv beépítve vagy kiegészítéseken keresztül támogatást nyújt a szerződések precíz leírásához és esetleg azok automatikus ellenőrzéséhez is.
+\end{megjegyzes}
 
 
 
