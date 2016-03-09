@@ -18,30 +18,34 @@ A példa kidolgozását azzal az egyszerű esettel kezdjük, amikor a modellező
 
 \subsection{Állapottér}
 
-Ehhez első lépéseként meg kell határozni a rendszer \fogalomragozva{allapotter}{állapotterét}. Az állapottér elemeit \fogalomragozva{allapot}{állapotoknak} nevezzük. Az állapottérnek az alábbi két kritériumnak kell megfelelnie:
+Ehhez első lépéseként meg kell határozni a rendszer \fogalomragozva{allapotter}{állapotterét}. Az állapottér elemeit \fogalomragozva{allapot}{állapotoknak} nevezzük. Az állapottérnek az alábbi két kritériumnak kell megfelelnie: 
 
-\begin{itemize}
-	\item \Fogalom{teljesseg}. Minden időpontban az állapottér legalább egy eleme jellemzi a rendszert.
-	\item \Fogalom{kizarolagossag}. Minden időpontban az állapottér legfeljebb egy eleme jellemzi a rendszert.
-\end{itemize}
+\begin{definicio}
+\Fogalom{teljesseg}. Minden időpontban az állapottér legalább egy eleme jellemzi a rendszert.
+\end{definicio}
+
+\begin{definicio}
+\Fogalom{kizarolagossag}. Minden időpontban az állapottér legfeljebb egy eleme jellemzi a rendszert.
+\end{definicio}
 
 Egy adott időpontban a rendszer \fogalomragozva{pillanatnyi-allapot}{pillanatnyi állapota} az állapottér azon egyetlen eleme, amelyik abban az időpontban jellemző a rendszerre. A rendszer egy \fogalomragozva{kezdoallapot}{kezdőállapota} olyan állapot, amely a vizsgálatunk kezdetekor (például a $t = 0$ időpillanatban) pillanatnyi állapot lehet.
 
-\begin{megjegyzes}
-Kiindulásként a jelzőlámpa alábbi egyszerű állapotterével dolgozunk.
+\begin{pelda}
+Határozzuk meg egy jelzőlámpa egyszerű állapotterét!
+\end{pelda}
+
 
 \newcommand{\allapotikon}[1]{\includegraphics[height=0.3cm]{#1}}
 
 \begin{itemize}
 \item \allapotikon{tl_empty} \allapot{Off}: kikapcsolt állapot
-\item \allapotikon{tl_red} \allapot{Stop}: vörös jelzés
-\item \allapotikon{tl_redyellow} \allapot{Prepare}: vörös-sárga jelzés
+\item \allapotikon{tl_red} \allapot{Stop}: piros jelzés
+\item \allapotikon{tl_redyellow} \allapot{Prepare}: piros-sárga jelzés
 \item \allapotikon{tl_green} \allapot{Go}: zöld jelzés
 \item \allapotikon{tl_yellow} \allapot{Continue}: sárga jelzés
 \end{itemize}
 
 Kezdetben a rendszer legyen kikapcsolva, vagyis a rendszer egyetlen kezdőállapota legyen \allapot{Off}.
-\end{megjegyzes}
 
 \subsection{Állapotámenet, esemény}
 
@@ -49,10 +53,10 @@ A rendszer időbeli viselkedésében kulcsfontosságú, hogy a pillanatnyi álla
 
 Az ilyen diszkrét rendszerek viselkedése \fogalomragozva{allapotatmenet}{állapotátmenetekkel} (más néven \fogalomragozva{tranzicio}{tranzíciókkal}) jól modellezhető. Egy állapotátmenet megengedi, hogy a rendszer állapotot váltson egy forrás- és egy célállapot között. Amennyiben a rendszer pillanatnyi állapota a forrásállapot, az állapotátmenet \fogalomragozva{tuzeles}{tüzelését} követően a rendszer új állapota a célállapot lesz. (Az, hogy a tüzelés pillanatában a rendszer pillanatnyi állapota a forrás- vagy a célállapot-e, megállapodás kérdése.)
 
-Egy állapotátmenet tüzelését egy adott \fogalom{esemeny} bekövetkezte váltja ki. (Ennek speciális esete a spontán állapotátmenet, amikor a kiváltó esemény kívülről nem megfigyelhető.) Ezen felül állapotátmenetek \fogalomragozva{akcio}{akciókat} hajthatnak végre, például maguk is válhatnak ki eseményeket. Sokszor praktikus egy adott rendszer szempontjából input és output események elkülönítése.
+Egy állapotátmenet tüzelését egy adott \fogalom{esemeny} bekövetkezte váltja ki. (Ennek speciális esete a spontán állapotátmenet, amikor a kiváltó esemény kívülről nem megfigyelhető.) Ezen felül állapotátmenetek \fogalomragozva{akcio}{akciókat} hajthatnak végre, például maguk is válhatnak ki eseményeket. Sokszor praktikus egy adott rendszer szempontjából bemenet és kimeneti események elkülönítése.
 
 \begin{pelda}
-Definiáljuk a jelzőlámpa modelljéhez az alábbi input eseményeket:
+Definiáljuk a jelzőlámpa modelljéhez az alábbi bemeneti eseményeket:
 
 \begin{itemize}
 	\item \allapot{onOff}: ki- és bekapcsolás kérése
@@ -76,10 +80,10 @@ interface:
   out event go
 \end{lstlisting}
 
-Ekkor a jelzőlámpa modellezhető az alábbi állapotgéppel:
-
-\remofigscalefixed{TrafficLight_1}{Jelzőlámpa egyszerű állapotgépe}{\allapotgeplargescale}
+Ekkor a jelzőlámpa modellezhető \az+\refstruc{fig:TrafficLight_1} állapotgépével.
 \end{pelda}
+
+\remofigscale{TrafficLight_1}{Jelzőlámpa egyszerű állapotgépe}{\allapotgeplargescale}
 
 A diagramon a rendszer állapotait (\allapot{Off}, \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue}) lekerekített téglalapok jelölik. Az állapotgép kezdőállapotát (\allapot{Off}) a tömör fekete korongból húzott nyíl jelöli ki. A téglalapok között húzott nyilak a megfelelő állapotok közötti tranzíciókat jelképezik. A nyilakra írt címkék a tranzíciót kiváltó, illetve a kiváltott eseményekre hivatkoznak (Yakinduban az esemény kiváltását \lstinline{raise} kulcsszó jelöli).
 
@@ -92,30 +96,31 @@ Amint azt a fenti definíciókból láthatjuk, az ,,állapot'' kifejezés két k
 
 Egyszerű állapotgépek esetében elmondható, hogy a két fogalom által jelölt objektumok megfeleltethetőek egymásnak. Az állapotgép formalizmus új szintaktikai elemekkel történő kiterjesztésével (változók, összetett állapotok, ortogonális állapotok -- ld. később) ugyanakkor ez a kapcsolat a továbbiakban nem áll fenn.
 
+\remofigscale{TrafficLight_1_sim}{Pillanatnyi állapot nyomonkövetése szimulációval}{\allapotgeplargescale}
+
 \begin{tipp}
 A Yakindu eszköz lehetőséget biztosít az állapotgép \fogalomragozva{szimulacio}{szimulációjára}. Szimuláció során nyomon tudjuk követni, hogy a adott események hatására időben hogyan alakul a rendszer pillanatnyi állapota.
 
-Például az \allapot{onOff}, majd \allapot{switchPhase} események a szimulátor felületén történő kiváltását követően a rendszer \allapot{Prepare} állapotba kerül, amit a Yakindu az állapotot jelképező téglalap átszínezésével ábrázol:
-
-\remofigscalefixed{TrafficLight_1_sim}{Pillanatnyi állapot nyomonkövetése szimulációval}{\allapotgeplargescale}
+Például az \allapot{onOff}, majd \allapot{switchPhase} események a szimulátor felületén történő kiváltását követően a rendszer \allapot{Prepare} állapotba kerül, amit a Yakindu az állapotot jelképező téglalap átszínezésével ábrázol (ld. \refstruc{fig:TrafficLight_1_sim}).
 \end{tipp}
 
 A fenti modell két fontos tulajdonsággal bír:
 
-\begin{itemize}
-	\item \Fogalom{determinisztikus}. Az állapotgépnek legfeljebb egy kezdőállapota van, valamint bármely állapotban, bármely input esemény bekövetkeztekor legfeljebb egy tranzíció tüzelhet.
+\begin{definicio}
+	\Fogalom{determinisztikus}. Az állapotgépnek legfeljebb egy kezdőállapota van, valamint bármely állapotban, bármely bemeneti esemény bekövetkeztekor legfeljebb egy tranzíció tüzelhet.
+\end{definicio}
 
-	\begin{megjegyzes}
-		A Yakindu csak determinisztikus modellek létrehozását támogatja.
-	\end{megjegyzes}
+\begin{megjegyzes}
+	A Yakindu csak determinisztikus modellek létrehozását támogatja.
+\end{megjegyzes}
 
-	\item \Fogalom{teljesen-specifikalt}. Az állapotgépnek legalább egy kezdőállapota van, valamint bármely állapotban, bármely input esemény bekövetkeztekor legalább egy tranzíció tüzelhet.
+\begin{definicio}
+	\Fogalom{teljesen-specifikalt}. Az állapotgépnek legalább egy kezdőállapota van, valamint bármely állapotban, bármely bemeneti esemény bekövetkeztekor legalább egy tranzíció tüzelhet.
+\end{definicio}
 
-	\begin{megjegyzes}
-		Ennek egyik következménye, hogy a rendszer \fogalom{holtpontmentes}, azaz nem tartalmaz olyan állapotot, amelyből nem vezet ki tranzíció.
-	\end{megjegyzes}
-
-\end{itemize}
+\begin{megjegyzes}
+	Ennek egyik következménye, hogy a rendszer \fogalom{holtpontmentes}, azaz nem tartalmaz olyan állapotot, amelyből nem vezet ki tranzíció.
+\end{megjegyzes}
 
 \subsection{Végrehajtási szekvencia}
 
@@ -125,20 +130,20 @@ $$s_0 \xrightarrow{i_0 / o_0} s_1 \xrightarrow{i_1 / o_1} \ldots$$
 
 (véges vagy végtelen) alternáló sorozata, ahol $s_0$ a rendszer egy kezdőállapota, $s_j \xrightarrow{i_j / o_j} s_{j+1}$ pedig a rendszer egy állapotátmenete minden $j$-re. Egy állapot \fogalom{elerheto}, ha a rendszernek létezik véges végrehajtási szekvenciája az állapotba.
 
-\begin{megjegyzes}
+\begin{pelda}
 	Az $\mathit{Off} \xrightarrow{\mathit{onOff}} \mathit{Stop} \xrightarrow{\mathit{switchPhase}} \mathit{Prepare} \xrightarrow{\mathit{switchPhase} / \mathit{go}} \mathit{Go}$ sorozat a jelző egy véges végrehajtási szekvenciája; ennek megfelelően biztosan tudjuk, hogy például a \allapot{Go} állapot elérhető állapot. Az $\mathit{Off} \xrightarrow{\mathit{onOff}} \mathit{Stop} \xrightarrow{\mathit{onOff}} \mathit{Off} \xrightarrow{\mathit{onOff}} \ldots$ egy végtelen végrehajtási szekvencia.
-\end{megjegyzes}
+\end{pelda}
 
 Az állapotgép végrehajtási szekvenciái vezérelten bejárhatóak szimuláció segítségével, ami jó módot ad az állapotgép ellenőrzésére. A Yakindu beépített szimulátora erre lehetőséget biztosít.
 
 \section{Hierarchia}
 
+\remofigscale{TrafficLight_15}{Jelzőlámpa állapotgépe \esemeny{reset} eseménnyel \halalfejes}{\allapotgeplargescale}
+
 \begin{pelda}
-	Egészítsük ki a fenti modellt egy \allapot{reset} input eseménnyel, melynek hatására bekapcsolt állapotban a jelzőlámpa alaphelyzetbe (\allapot{Stop} állapotba) áll.
+	Egészítsük ki a fenti modellt egy \allapot{reset} bemeneti eseménnyel, melynek hatására bekapcsolt állapotban a jelzőlámpa alaphelyzetbe (\allapot{Stop} állapotba) áll.
 
-	Az eddig megismert eszközökkel elkészített modellt szemlélteti az alábbi ábra.
-
-	\remofigscalefixed{TrafficLight_15}{Jelzőlámpa állapotgépe \esemeny{reset} eseménnyel \halalfejes}{\allapotgeplargescale}
+	Az eddig megismert eszközökkel elkészített modellt szemlélteti \az+\refstruc{fig:TrafficLight_15}.
 \end{pelda}
 
 Vegyük észre, hogy a rendszer a \allapot{reset} eseményre a \allapot{Stop}, \allapot{Prepare}, \allapot{Go} és \allapot{Continue} állapotok mindegyikében egyformán viselkedik. Ebben az esetben ez annak köszönhető, hogy ezen állapotok mindegyikében a rendszer bekapcsolt állapotban van. Ezt a kapcsolatot a modellben explicit módon meg lehet jeleníteni egy \fogalom{osszetett-allapot} bevezetésével, amely a négy állapot közös tulajdonságait és viselkedését általánosítja.
@@ -147,23 +152,19 @@ Vegyük észre, hogy a rendszer a \allapot{reset} eseményre a \allapot{Stop}, \
 
 Egy összetett állapot szintaktikailag megfelel egy egyszerű állapotnak, azzal a kivétellel, hogy saját \fogalomragozva{regio}{régióval} rendelkezik, mely további állapotokat (beleértve a kezdőállapotokat) és köztük tranzíciókat tartalmazhat. Régiók közül kiemelt jelentőséggel bír a legfelső szintű régió, mely magát az állapotgépet tartalmazza.
 
-\begin{megjegyzes}
-	Az alábbi ábra szemlélteti az \allapot{On} összetett állapot bevezezésével kapott modellt.
+\Az+\refstruc{fig:TrafficLight_2_sim} szemlélteti az \allapot{On} összetett állapot bevezetésével kapott modellt.
 
-	\remofigscalefixed{TrafficLight_2_sim}{Hierarchikus állapot pillanatnyi állapotként}{\allapotgeplargescale}
+\remofigscale{TrafficLight_2_sim}{Hierarchikus állapot pillanatnyi állapotként}{\allapotgeplargescale}
 
-	A teljes állapotgépet az \allapot{Operation}, míg az összetett állapot belsejét a \allapot{Phase} régió tartalmazza. A \allapot{Phase} régió kezdőállapota a \allapot{Stop} állapot, így a régióba való belépéskor ez az állapot lesz a rendszer pillanatnyi állapota. A \allapot{reset} esemény az \allapot{On} állapotból \allapot{On} állapotba vezet, így hatására valóban a \allapot{Stop} állapot lesz aktív.
-\end{megjegyzes}
+A teljes állapotgépet az \allapot{Operation}, míg az összetett állapot belsejét a \allapot{Phase} régió tartalmazza. A \allapot{Phase} régió kezdőállapota a \allapot{Stop} állapot, így a régióba való belépéskor ez az állapot lesz a rendszer pillanatnyi állapota. A \allapot{reset} esemény az \allapot{On} állapotból \allapot{On} állapotba vezet, így hatására valóban a \allapot{Stop} állapot lesz aktív.
 
-\begin{megjegyzes}
-	A fenti példát szimulálva az \allapot{onOff} esemény \allapot{Off} állapotban történő fogadását követően az elvárásoknak megfelelően a \allapot{Stop} állapot a rendszer pillanatnyi állapota lesz. Ugyanakkor a \allapot{Stop} állapotot tartalmazó \allapot{On} állapot is pillanatnyi állapot lesz:
+A fenti példát szimulálva az \allapot{onOff} esemény \allapot{Off} állapotban történő fogadását követően az elvárásoknak megfelelően a \allapot{Stop} állapot a rendszer pillanatnyi állapota lesz. Ugyanakkor a \allapot{Stop} állapotot tartalmazó \allapot{On} állapot is pillanatnyi állapot lesz:
 
-	\remofigscalefixed{TrafficLight_2}{Jelzőlámpa állapotgépe összetett állapottal}{\allapotgeplargescale}
-\end{megjegyzes}
+\remofigscale{TrafficLight_2}{Jelzőlámpa állapotgépe összetett állapottal}{\allapotgeplargescale}
 
 Általánosságban ha egy tartalmazott (egyszerű vagy összetett) állapot aktív, akkor az őt tartalmazó összetett állapot is aktív. Ezt fejezi ki az \fogalom{allapotkonfiguracio} fogalma, ami állapotok egy olyan maximális (azaz nem bővíthető) halmaza, melyek egyszerre lehetnek aktívak a rendszerben.
 
-\begin{megjegyzes}
+\begin{pelda}
 A jelzőlámpa állapotkonfigurációi:
 
 \begin{itemize}
@@ -173,11 +174,11 @@ A jelzőlámpa állapotkonfigurációi:
 \item \{ \allapot{On}, \allapot{Go} \}
 \item \{ \allapot{On}, \allapot{Continue} \}
 \end{itemize}
-\end{megjegyzes}
+\end{pelda}
 
 Tartalmazó és tartalmazott állapot között tehát nem érvényesül a kizárólagosság. Ennek megfelelően a hierarchikus állapot bevezetésével többféle érvényes állapottér adódik.
 
-\begin{megjegyzes}
+\begin{pelda}
 A jelzőlámpa érvényes állapotterei:
 
 \begin{itemize}
@@ -191,8 +192,8 @@ Ezen felül az állapotkonfigurációk halmaza is tekinthető állapottérnek:
 	\item \{ \{ \allapot{Off} \}, \{ \allapot{On}, \allapot{Stop} \}, \{ \allapot{On}, \allapot{Prepare} \}, \{ \allapot{On}, \allapot{Go} \}, \{ \allapot{On}, \allapot{Continue} \} \}
 \end{itemize}
 
-Ugyanakkor az \{ \allapot{Off}, \allapot{On}, \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue} \} nem jó állapottér, hiszen ebben az esetben például az \{ \allapot{On}, \allapot{Prepare} \} részhalmaz sérti a kizárólagosságot. Általános szabály, > hogy egy állapottér vagy az összetett állapotot, vagy annak összes részállapotát tartalmazza, de nem > mindkét változatot.
-\end{megjegyzes}
+Ugyanakkor az \{ \allapot{Off}, \allapot{On}, \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue} \} nem jó állapottér, hiszen ebben az esetben például az \{ \allapot{On}, \allapot{Prepare} \} részhalmaz sérti a kizárólagosságot. Általános szabály, hogy egy állapottér vagy az összetett állapotot, vagy annak összes részállapotát tartalmazza, de nem mindkét változatot.
+\end{pelda}
 
 A \{ \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue} \} részállapottér az \allapot{On} állapotot \fogalomragozva{finomitas}{finomítja}, míg az \allapot{On} állapot a \{ \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue} \} állapotokat \fogalomragozva{absztrakcio}{absztrahálja}. Jó modellezési gyakorlat a modell állapotainak fokozatos finomítása.
 
@@ -200,11 +201,11 @@ A \{ \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue} \} rés
 
 Amint a következő példából kiderül, az állapotok közötti hierarchia nem feltétlenül egyszintű.
 
-\begin{megjegyzes}
-Az alábbi ábrán szemléltetett modell az \allapot{On} állapotot tovább bővíti egy \allapot{Alert} állapottal, mely a jelző sárgán villogó, figylemeztető állapotát modellezi. A rendes üzem jelzéseit a \allapot{Normal} összetett állapot tartalmazza. A \allapot{Normal} és \allapot{Alert} állapotok közötti váltás a \esemeny{switchMode} input esemény hatására történik, a $\mathit{Normal} \rightarrow \mathit{Alert}$ állapotváltás \allapot{Alert} output eseményt vált ki.
+\begin{pelda}
+\Az+\ref{fig:TrafficLight_3}. ábrán szemléltetett modell az \allapot{On} állapotot tovább bővíti egy \allapot{Alert} állapottal, mely a jelző sárgán villogó, figylemeztető állapotát modellezi. A rendes üzem jelzéseit a \allapot{Normal} összetett állapot tartalmazza. A \allapot{Normal} és \allapot{Alert} állapotok közötti váltás a \esemeny{switchMode} bemeneti esemény hatására történik, a $\mathit{Normal} \rightarrow \mathit{Alert}$ állapotváltás \allapot{Alert} kimeneti eseményt vált ki.
+\end{pelda}
 
-\remofigscalefixed{TrafficLight_3}{Jelzőlámpa állapotgépe többszintű összetett állapottal}{\allapotgeplargescale}
-\end{megjegyzes}
+\remofigscale{TrafficLight_3}{Jelzőlámpa állapotgépe többszintű összetett állapottal}{\allapotgeplargescale}
 
 \section{Változók és őrfeltételek}
 
@@ -213,9 +214,9 @@ A villogás modellezéséhez feltételezzünk egy \allapot{tick} bejövő esemé
 
 Ahhoz, hogy a 2 Hz-es váltakozást modellezzük, a \allapot{tick} esemény minden negyedik bekövetkeztekor kell váltani \allapot{LightOn} és \allapot{LightOff} között. Ezért az állapotokat tovább kell finomítanunk, hogy a bekövetkező órajeleket számolni tudjuk.
 
-Egy lehetséges megvalósítást szemléltet az alábbi ábra.
+\remofigscale{TrafficLight_35}{Villogó jelzés külső órával \halalfejes}{\allapotgepmediumscale}
 
-\remofigscalefixed{TrafficLight_35}{Villogó jelzés külső órával \halalfejes}{\allapotgepmediumscale}
+Egy lehetséges megvalósítást szemléltet \az+\refstruc{fig:TrafficLight_35}.
 
 A fenti állapotgép valóban a kívánt viselkedést modellezi: az állapotgép \allapot{Alert} állapotban pontosan minden negyedik \allapot{tick} eseményre vált \allapot{LightOn} és \allapot{LightOff} állapotok között.
 
@@ -225,25 +226,27 @@ Abban az esetben azonban, ha csak minden századik eseményre kellene váltani \
 
 A probléma megoldható \fogalomragozva{valtozo}{változók} alkalmazásával. A változó típussal rendelkezik, ez Yakinduban lehet \tipus{boolean}, \tipus{integer}, \tipus{real} vagy \tipus{string}, ezek a programozási nyelveknél megszokott logikai, egész, lebegőpontos, illetve karakterlánc típusoknak felelnek meg. Változók jelenlétében a rendszer állapotát már nemcsak a vezérlés állapota (állapot csomópontok), hanem az éppen érvényes \fogalom{valtozoertekeles} is meghatározza.
 
-\begin{megjegyzes}
+\begin{pelda}
 A bekövetkezett \allapot{tick} események számlálására a rendszer interfészdefinícióját kiegészítjük a \allapot{counter} egész típusú változóval:
 
+\begin{minipage}{\linewidth}
 \begin{lstlisting}
 var counter : integer
 \end{lstlisting}
-\end{megjegyzes}
+\end{minipage}
+\end{pelda}
 
-A változó értékét \fogalomragozva{utasitas}{utasítással} lehet módosítani, amely -- az eseménykiváltáshoz hasonlóan -- tranzícióhoz kapcsolható \fogalom{akcio}. Akció ezen felül kapcsolható állapothoz is az \valtozo{entry} és \valtozo{exit} triggerek segítségével, melyek az állapotba való belépéskor, illetve az állapotból történő kilépéskor aktiválódnak.
+A változó értékét \fogalomragozva{utasitas}{utasítással} lehet módosítani, amely -- az eseménykiváltáshoz hasonlóan -- tranzícióhoz kapcsolható \fogalom{akcio}. Akció ezen felül kapcsolható állapothoz is az \valtozo{entry} és \valtozo{exit} triggerek segítségével, melyek az állapotba való belépéskor, illetve az állapotból történő kilépéskor aktiválódnak. %TODO define trigger
 
 Azt, hogy a változó aktuális értéke befolyással lehessen a vezérlésre, a tranzíciókra felírt őrfeltételekkel lehet megvalósítani. Az őrfeltétel biztosítja, hogy a tranzíció csak akkor tüzelhessen, ha az őrfeltételbe felírt logikai kifejezést az aktuális állapot változóértékelése kielégíti.
 
-\begin{megjegyzes}
-A \allapot{tick} események számlálása változóval megvalósítható az alábbi állapotgép szerint. Figyeljük meg, hogy a változó értékét szögletes zárójelekbe tett őrfeltételek használják.
+\begin{pelda}
+A \allapot{tick} események számlálása változóval megvalósítható \az+\refstruc{fig:TrafficLight_4} állapotgépe szerint. Figyeljük meg, hogy a változó értékét szögletes zárójelekbe tett őrfeltételek használják.
+\end{pelda}
 
-\remofigscalefixed{TrafficLight_4}{Villogó jelzés számlálóval}{\allapotgepmediumscale}
-\end{megjegyzes}
+\remofigscale{TrafficLight_4}{Villogó jelzés számlálóval}{\allapotgepmediumscale}
 
-\begin{megjegyzes}
+\begin{pelda}
 A fenti rendszer egy végrehajtásiszekvencia-részlete:
 \begin{align*}
 & \langle \mathit{LightOn}, \{ \mathit{counter} \mapsto 0 \} \rangle \xrightarrow{\mathit{tick}}
@@ -253,7 +256,7 @@ A fenti rendszer egy végrehajtásiszekvencia-részlete:
   \langle \mathit{LightOff}, \{ \mathit{counter} \mapsto 0 \} \rangle
 \end{align*}
 
-\end{megjegyzes}
+\end{pelda}
 
 \begin{feladat}
 Hogyan módosul őrfeltételek jelenlétében a \fogalomragozva{determinisztikus}{determinizmus} definíciója?
@@ -261,13 +264,13 @@ Hogyan módosul őrfeltételek jelenlétében a \fogalomragozva{determinisztikus
 
 \subsection{Interfészváltozók}
 
-A vörös, sárga ill. zöld színű fények állapotának nyilvántartására felvesszük \valtozo{red}, \valtozo{yellow} és \valtozo{green} logikai változókat. A korábban bevezetett \valtozo{counter} változóval ellentétben ezek a változók nem csak az állapotgéppel leírt vezérlő belső működésében játszanak szerepet; úgy tekintjük, hogy a különböző színű fények villanyégőit közvetlenül ezek az \fogalom{interfeszvaltozo}{interfészváltozók} kapcsolják. Általánosságban a be- és kimeneti események mellett interfészváltozókon keresztül kommunikálhat az állapotgép a külvilággal.
+A vörös, sárga ill. zöld színű fények állapotának nyilvántartására felvesszük \valtozo{red}, \valtozo{yellow} és \valtozo{green} logikai változókat. A korábban bevezetett \valtozo{counter} változóval ellentétben ezek a változók nem csak az állapotgéppel leírt vezérlő belső működésében játszanak szerepet; úgy tekintjük, hogy a különböző színű fények villanyégőit közvetlenül ezek az \fogalomragozva{interfeszvaltozo}{interfészváltozók} kapcsolják. Általánosságban a be- és kimeneti események mellett interfészváltozókon keresztül kommunikálhat az állapotgép a külvilággal.
 
 Mivel a vezérlési állapotokat úgy vettük fel, hogy egyértelműen meghatározzák a fényeket leíró változók értékét, ezen változóknak értéket adó utasításokat \valtozo{entry} triggerhez rendeljük -- ez egy tömör jelölése annak, hogy az adott állapotba lépő összes állapotátmenet végrehajtson egy adott akciót.
 
-A bővített állapotgépet az alábbi ábra szemlélteti.
-
 \remofigscale{TrafficLight_5}{Fények állapotának modellezése változókkal}{\allapotgepmediumscale}
+
+A bővített állapotgépet \az+\refstruc{fig:TrafficLight_5} szemlélteti.
 
 \section{Időzítés}
 
@@ -275,19 +278,19 @@ A modell időbeli viselkedését eddig egy külső óra által szolgáltatott, m
 
 Az időzítés explicit modellezésével a modell tömörebb, kifejezőbb lehet, és a későbbi tényleges technikai megvalósítás apró részleteitől (órajel frekvenciája) függetlenül érvényes.
 
-Az időzítést használó modellt az alábbi ábra szemlélteti.
+Az időzítést használó modellt \az+\refstruc{fig:TrafficLight_6} szemlélteti.
 
-\remofigscalefixed{TrafficLight_6}{Villogó jelzés időzítéssel}{\allapotgepmediumscale}
+\remofigscale{TrafficLight_6}{Villogó jelzés időzítéssel}{\allapotgepmediumscale}
 
 \section{Ortogonális dekompozíció}
 
 Bővítsük a modellt járműérzékelő\footnote{\url{https://en.wikipedia.org/wiki/Induction\_loop\#Vehicle\_detection}} funkcióval!
 
 \begin{tipp}
-	A jelzőlámpa (bekapcsolt állapotban) periodikus \esemeny{trafficPresent} és \esemeny{trafficAbsent} input események fogadásával értesül arról, hogy tartózkodik-e jármű a lámpa előtti útszakaszon. A jelző ezt az információt a \valtozo{queue} logikai változóban tárolja (ennek értéke kezdetben $\mathsf{true}$). A foglaltság nyilvántartásának értelme, hogy ilyenkor csak akkor kell \allapot{Stop} állapotból \allapot{switchPhase} esemény hatására jelzést váltani, ha van a lámpa előtt várakozó jármű, vagyis $\mathit{queue} = \mathsf{true}$.
+	A jelzőlámpa (bekapcsolt állapotban) periodikus \esemeny{trafficPresent} és \esemeny{trafficAbsent} bemeneti események fogadásával értesül arról, hogy tartózkodik-e jármű a lámpa előtti útszakaszon. A jelző ezt az információt a \valtozo{queue} logikai változóban tárolja (ennek értéke kezdetben $\mathsf{true}$). A foglaltság nyilvántartásának értelme, hogy ilyenkor csak akkor kell \allapot{Stop} állapotból \allapot{switchPhase} esemény hatására jelzést váltani, ha van a lámpa előtt várakozó jármű, vagyis $\mathit{queue} = \mathsf{true}$.
 \end{tipp}
 
-A járműérzékelő jeleinek fogadását az alábbi ábrán szemléltetett állapotgép valósítja meg.
+A járműérzékelő jeleinek fogadását \az+\ref{fig:TrafficLight_7_Detect}. ábrán szemléltetett állapotgép valósítja meg.
 
 \remofigscale{TrafficLight_7_Detect}{Járműérzékelő funkció állapotgépe}{\allapotgeplargescale}
 
@@ -299,25 +302,25 @@ A fent vázolt művelet az állapotgépeken értelmezett \fogalom{aszinkron-szor
 
 \subsection{Ortogonális állapot}
 
-Ilyen esetekben alkalmazható eszköz az \fogalom{ortogonalis-allapot}. Az ortogonális állapot egy olyan összetett állapot, mely több régióval rendelkezik. Az ortogonális állapot régiói \fogalom{ortogonalis-regio}{ortogonális régiók}, melyek -- az egyrégiós összetett állapottal megegyező módon -- akkor aktívak, ha a tartalmazó állapot aktív.
+Ilyen esetekben alkalmazható eszköz az \fogalom{ortogonalis-allapot}. Az ortogonális állapot egy olyan összetett állapot, mely több régióval rendelkezik. Az ortogonális állapot régiói \fogalomragozva{ortogonalis-regio}{ortogonális régiók}, melyek -- az egyrégiós összetett állapottal megegyező módon -- akkor aktívak, ha a tartalmazó állapot aktív.
 
-Az így elkészített állapotgépet az alábbi ábra szemlélteti.
+Az így elkészített állapotgépet \az+\refstruc{fig:TrafficLight_7} szemlélteti.
 
 \begin{fektetett}
-\remofigscale{TrafficLight_7}{Járműérzékelős jelzőlámpa állapotgépe ortogonális állapottal}{\allapotgeplargescale}
+	\remofigscale{TrafficLight_7}{Járműérzékelős jelzőlámpa állapotgépe ortogonális állapottal}{\allapotgeplargescale}
 \end{fektetett}
 
 Szemantikailag az ortogonális régiók \fogalom{aszinkron} módon működnek, a tranzíciók külön-külön tüzelnek, szemben a \fogalom{szinkron} működéssel, amikor egy adott esemény bekövetkeztekor az ortogonális régiók tranzíciói egyszerre tüzelnek. Fontos, hogy az ortogonális régiók különböző eseményeket dolgozzanak fel, különben \fogalom{versenyhelyzet} alakulhat ki. A működés összhangolása történhet például megosztott változókon keresztül; egyéb módszerek is léteznek (pl. belső események mentén történő szinkronizálás), amelyekkel itt nem foglalkozunk.
 
-\begin{megjegyzes}
-	A fenti rendszert szimulálva, majd az (\allapot{onOff}, \allapot{switchPhase}, \regio{trafficAbsent}) eseményeket sorrendben kiváltva a rendszer az alábbi ábrán látható állapotkonfigurációba kerül. Vegyük észre, hogy az aktív ortogonális állapot (\allapot{On}) mindkét ortogonális régiójában (\regio{Control}, \regio{Detect}) pontosan egy közvetlenül tartalmazott állapot aktív.
+\begin{pelda}
+	A fenti rendszert szimulálva, majd az (\allapot{onOff}, \allapot{switchPhase}, \regio{trafficAbsent}) eseményeket sorrendben kiváltva a rendszer \az+\refstruc{fig:TrafficLight_7_sim} látható állapotkonfigurációba kerül. Vegyük észre, hogy az aktív ortogonális állapot (\allapot{On}) mindkét ortogonális régiójában (\regio{Control}, \regio{Detect}) pontosan egy közvetlenül tartalmazott állapot aktív.
+\end{pelda}
 
-	\remofigscalefixed{TrafficLight_7_sim}{Ortogonális állapot aktuális állapotként}{\allapotgepsmallscale}
-\end{megjegyzes}
+\remofigscale{TrafficLight_7_sim}{Ortogonális állapot aktuális állapotként}{\allapotgepsmallscale}
 
 Ortogonális állapotok bevezetésével az állapotkonfiguráció fogalma is összetettebbé válik. Ilyen esetben ugyanis minden időpillanatban, amikor egy ortogonális állapot aktív, minden régiójának pontosan egy állapota aktív (az egy ortogonális állapothoz tartozó régiók között tehát nem érvényesül a kizárólagosság).
 
-\begin{megjegyzes}
+\begin{pelda}
 A rendszer állapotkonfigurációi:
 
 \begin{itemize}
@@ -335,18 +338,18 @@ A rendszer állapotkonfigurációi:
 \item $\{ \allapot{On}, \allapot{Alert}, \allapot{LightOn}, \allapot{Absent} \}$
 \item $\{ \allapot{On}, \allapot{Alert}, \allapot{LightOff}, \allapot{Absent} \}$
 \end{itemize}
-\end{megjegyzes}
+\end{pelda}
 
-\begin{megjegyzes}
-A fentieknek megfelelően az állapotkonfigurációk halmaza tekinthető a változókat elabsztraháló állapottérnek. Ha azonban a változókon kívül a forgalomszámláló működését is elabsztraháljuk, akkor arra jutunk, hogy a már ismerős
+\begin{pelda}
+A fentieknek megfelelően az állapotkonfigurációk halmaza tekinthető a változókat elabsztraháló állapottérnek. Ha azonban a változókon kívül a járműérzékelő működését is elabsztraháljuk, akkor arra jutunk, hogy a már ismerős
 $$\{ \allapot{Off}, \allapot{Stop}, \allapot{Prepare}, \allapot{Go}, \allapot{Continue}, \allapot{LightOn}, \allapot{LightOff} \}$$
 halmaz továbbra is egy érvényes állapottere a rendszernek. Természetesen az is egy érvényes absztrakció, ha a \regio{Control} régió állapotait absztraháljuk el; ilyenkor az
 $$\{ \allapot{Off}, \allapot{Present}, \allapot{Absent} \}$$
 halmaz adódik állapottérnek.
-\end{megjegyzes}
+\end{pelda}
 
 \begin{feladat}
-Gondoljuk végig, hogy a szorzatautomata ill. szorzat-állapottér fogalmaknak mi köze van a matematikából ismert Descartes-szorzat művelethez!
+Gondoljuk végig, hogy a szorzatautomata, ill. szorzat-állapottér fogalmaknak mi köze van a matematikából ismert Descartes-szorzat művelethez!
 \end{feladat}
 
 \begin{feladat}
@@ -384,13 +387,7 @@ internal:
   var queue : boolean
 \end{lstlisting}
 
-Mivel a különböző interfészeknek lehetne azonos nevű eseménye ill. állapotváltozója, ezért Yakinduban mindig az interfész megadásával kell hivatkozni a változókra és eseményekre. A módosított modellt szemlélteti az alábbi ábra:
-
-\begin{fektetett}
-	\remofigscale{TrafficLight_8}{A jelzőlámpa modellje interfészekkel}{\allapotgeplargescale}
-\end{fektetett}
-
-
+Mivel a különböző interfészeknek lehetne azonos nevű eseménye ill. állapotváltozója, ezért Yakinduban mindig az interfész megadásával kell hivatkozni a változókra és eseményekre. A módosított modellt szemlélteti \az+\refstruc{fig:TrafficLight_8}.
 
 %\section{Összefoglalás}
 %
@@ -400,10 +397,14 @@ Mivel a különböző interfészeknek lehetne azonos nevű eseménye ill. állap
 
 \begin{itemize}
 	\item Az állapottérkép modellezési módszer kidolgozása~\cite{DBLP:journals/scp/Harel87, DBLP:conf/hopl/Harel07}
-	\item Az állapottérkép modell az UML-ben~\cite{UML}
+	\item Az állapottérkép modell UML-ben~\cite{UML}
 	\item Állapottérkép modellek értelmezése (modellszemantika)~\cite{DBLP:conf/fmoods/LatellaMM99, DBLP:conf/acsd/DubrovinJ08, DBLP:conf/lics/HarelPSS87}
 	\item Állapottérkép alapú forráskód generálás~\cite{samak2008practical}
 	\item Pintér Gergely, \emph{Model Based Program Synthesis and Runtime Error Detection for Dependable Embedded Systems}~\cite{PinterGergelyPhD}
 	\item UML állapottérképek használata biztonságkritikus rendszerekben~\cite{knight1997formal, DBLP:conf/icre/NobeW96}
 	\item Pap Zsigmond, \emph{Biztonságossági kritériumok ellenőrzése UML környezetben}~\cite{PapZsigmondPhD}
 \end{itemize}
+
+\begin{fektetett}
+	\remofigscale{TrafficLight_8}{A jelzőlámpa modellje interfészekkel}{\allapotgeplargescale}
+\end{fektetett}
