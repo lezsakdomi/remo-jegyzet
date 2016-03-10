@@ -20,3 +20,7 @@ A jegyzet fejezetei külön is letölthetők. Mobiltelefonon és tableten olvas�
 * [Felderítő adatelemzés](felderito-adatelemzes.pdf) ([A5](felderito-adatelemzes-mobile.pdf))
 * [Szimuláció](szimulacio.pdf) ([A5](szimulacio-mobile.pdf))
 * [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))
+
+### Házi feladat segédlet
+
+[Házi feladat segédlet](hf.pdf) ([A5](hf-a5.pdf))
