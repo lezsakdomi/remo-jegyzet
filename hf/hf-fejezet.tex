@@ -47,9 +47,8 @@ Ahhoz, hogy az Eclipse alapú Yakindu, továbbá a házi feladathoz segítséget
 A JDK telepítőkészletet az Oracle honlapjáról\footnote{\url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}} lehet letölteni. Az oldalon a \textbf{Java SE Development Kit} feliratú szürke dobozban az \textbf{Accept License Agreement} lehetőséget kell kiválasztani, ekkor az alatta lévő listából letölthető a platformunknak megfelelő telepítőfájl. A telepítés \textbf{Next, Next, Finish} típusú, nem igényel különösebb fejtörést. Amennyiben valamilyen további reklámtermék (pl. Ask.com) telepítését is felajánlja, azt nem szükséges elfogadni.
 
 \begin{megjegyzes}
-Figyelem: a hivatalos Oracle JVM-et ajánljuk. OpenJDK-val maga a feladat megoldható, de nem fog működni a kötelező házi feladat kipróbálását segítő grafikus felület (ld. \ref{sec:modellezo-eszkoz-telepitese}. szakasz).
+Figyelem: a hivatalos Oracle JVM-et ajánljuk. OpenJDK-val maga a feladat megoldható, de nem tudjuk biztosítani hogy működni a kötelező házi feladat kipróbálását segítő grafikus felület (ld. \ref{sec:modellezo-eszkoz-telepitese}. szakasz).
 \end{megjegyzes}
-
 
 \begin{comment}
 Telepítés után érdemes beállítani a \codeEsc{JAVA\_HOME} változót, valamint hozzáadni a Java elérési útját a PATH-hoz. Ehhez Windowson a követketzőt kell tenni.
@@ -97,6 +96,14 @@ a további beállításokra még Szoftlab 3-on sem lesz szükségünk.
 A bal oldali Project Explorerben láthatóak a projektjeink: itt keressük meg a frissen létrehozottat. A projekten belül célszerű lesz egy külön mappát létrehozni a modell számára Erre jobb gombbal kattintva \textbf{New} és \textbf{Folder}. A létrehozandó mappának adjuk a \emph{model} nevet. Ez persze bármi lehet, de most a modell nevet adjuk a mappának, hiszen a benne tárolt adat egy Yakinduban létrehozott állapotmodell lesz. A projektünkön belül létrejött egy \codeEsc{model} nevű mappa.
 \subsection{A Yakindu állapotmodell létrehozása}
 \end{comment}
+\begin{megjegyzes}
+Figyelem: A jelenlegi Yakinduban eltávolítottak néhány Java fejlesztéssel kapcsolatos kiterjesztést, ami a tesztelést támogatta. Így a korábbi verziójú tesztkörnyezet fordítása gondot okozhat, és \code{Assert can not be resolved.} jellegű hibaüzenetek jelennek meg. A problémát könnyen megoldhatjuk, ha az alábbi pontok valamelyikét elvégezzük:
+\begin{itemize}
+  \item \emph {(Ajánlott)} Egyszerűen letöltjük újra a házi feladatot. Az újabban generált házi feladatokban már erre is figyelünk.
+  \item Letöltjük a Java fejlesztőkörnyezetet a Yakinduba: \textbf{Help} menü  \textbf{Install new software} menüpontra felugró ablakban állítsuk be a \textbf{Working with: Eclipse Mars Repository}, és válasszuk ki a \textbf{Eclipse Java Developement tools} csomagot telepítésre.
+\end{itemize}
+\end{megjegyzes}
+
 
 A bal oldali Project Explorerben láthatóak a projektjeink: itt keressük meg a frissen létrehozottat. Ide fogjuk elkészíteni a Yakindu állapotmodellünket. Jobb gombbal kattintva a mappára \textbf{New}, majd \textbf{Other}. Felugrik egy ablak rengeteg választási lehetőséggel, itt válasszuk a \textbf{Yakindu} kategóriát, azon belül pedig a \textbf{Statechart Model} pontot. Fájlnévként megadhatunk bármit, csak a \codeEsc{.sct} kiterjesztésre figyeljünk. Aki akarja, természetesen létehozhat előbb a projekten belüle egy mappastruktúrát (jobb gombbal kattintva \textbf{New} és \textbf{Folder}) a modell elhelyezésére.
 
