@@ -2,6 +2,43 @@
 
 \graphicspath{ {./folyamatmodellezes/figures/} }
 
+% diasorok:
+% - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/04-folyamatmodellezes.pdf
+% - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/05-bpmn-dfn.pdf
+
+
+def \fogalom{viselkedes-alapu-modellezes}
+
+def \fogalom{folyamat}
+
+\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
+
+\fogalom{elemi-tevekenyseg}
+
+\fogalom{szekvencia}
+
+\fogalom{orfeltetel}
+
+\fogalom{elagazas}
+
+\fogalom{ciklus}
+
+\fogalom{hierarchia}
+
+\fogalom{hivas}
+
+\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
+
+\fogalom{vezerlesi-folyam}
+
+\fogalom{komplexitas}
+
+\fogalom{ciklomatikus-komplexitas}
+
+\fogalom{rekurzio}
+
+\szgarch tárgy
+
 \section{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
 A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. 
@@ -33,3 +70,8 @@ A jólstrukturáltság célja, hogy áttekinthetőbbé tegye a folyamatot, és h
 Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőleges gráfként megalkotni a vezérlési folyamot, hanem kizárólag jólstrukturált blokkokat lehet létrehozni és más jólstrukturált blokkokból felépíteni. Ilyen nyelv pl. a \rovidites{BPMN} (alap jelkészlete), vagy a programozásoktatásból ismeről Nassi-Shneiderman-féle \fogalom{struktogram}. Ezeken a nyelveken a megkötések miatt bizonyos folyamatokat csak körülményesebben lehet megfogalmazni; cserébe az adott nyelven készített összes folyamatról külön ellenőrzés nélkül tudható, hogy rendelkezik a jólstrukturáltság fent tárgyalt összes előnyével.
 
 A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.
+
+
+\fogalom{adatfolyam}
+
+\fogalom{tevekenyseg}
