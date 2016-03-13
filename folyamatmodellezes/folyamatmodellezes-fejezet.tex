@@ -53,8 +53,12 @@ A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jell
 Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus jelölését és szemantikáját.
 
 \begin{definicio}
-	\fogalom{elemi-tevekenyseg}
+	\fogalom{elemi-tevekenyseg} \fogalom{atomi}
 \end{definicio}
+
+\begin{megjegyzes}
+	Az \fogalom{atomi-muvelet} (\fogalomangolul{atomi-muvelet})
+\end{megjegyzes}
 
 \begin{definicio}
 	\fogalom{szekvencia}
@@ -64,9 +68,23 @@ Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus
 	\fogalom{orfeltetel}
 \end{definicio}
 
+Szemantika:
+
+o Csak az egyik ág hajtódik végre
+
+o Nemdeterminizmus lehetséges: átlapolódó őrfeltételek esetén vagy egyszerűen akkor, ha nincsenek őrfeltételek.
+
 \begin{definicio}
 	\fogalom{elagazas}
 \end{definicio}
+
+Szemantika:
+
+o Nem meghatározott végrehajtási sorrend
+
+o Párhuzamos / átlapolt végrehajtás is lehet
+
+Részletesen a \szgarch tárgyban.
 
 \begin{definicio}
 	\fogalom{ciklus}
@@ -76,10 +94,19 @@ Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus
 	\fogalom{hierarchia}
 \end{definicio}
 
+• Elemi lépés valójában alfolyamat
+
 \begin{definicio}
 	\fogalom{hivas}
 \end{definicio}
 
+Beágyazható a “főfolyamatba”, ha helyes a finomítás, azaz
+
+• A lépések együtt ugyanazt állítják elő, mint a folyamat
+
+• Nincs olyan eset, amit nem kezelünk a hívó fél szintjén
+
+• (Input/output konzisztencia)
 
 
 \fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
@@ -189,7 +216,7 @@ int fact(int n) {
 }
 \end{lstlisting}
 
-A \lstinline{?:} operátor\footnote{Elvis operátor.} tömör kódot eredményez, de esetünkben fontosabb szempont, hogy a kódban bejárható útvonalakat lássuk.
+A \lstinline{?:} operátor\footnote{Egyes programozási nyelvek megengedik, hogy ... . Ezekben a \lstinline{?:} operátort gyakran Elvis operátornak nevezik.} tömör kódot eredményez, de esetünkben fontosabb szempont, hogy a kódban bejárható útvonalakat lássuk.
 
 \begin{minipage}{0.5\linewidth}
 \begin{lstlisting}
@@ -245,8 +272,6 @@ int choose(int n, int k) {
 
 
 
-\szgarch tárgy
-
 \section{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
 A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. 
@@ -283,11 +308,20 @@ Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőlege
 
 A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.
 
+\section{Adatfolyamhálók}
 
-\fogalom{adatfolyam}
+\fogalom{adatfolyam} \rovidites{DFN}
 
 \fogalom{tevekenyseg}
 
+\fogalom{folyamatmotor} (\fogalomangolul{folyamatmotor})
+
+\newcommand{\prioritas}{\pi}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+
+tüzelések: $\tuple{s_0; \mathrm{in} = c_0; s_1; \mathrm{out} = c_2; \prioritas}$
+
+adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
 
 \section{Kitekintés\kieg}
 
