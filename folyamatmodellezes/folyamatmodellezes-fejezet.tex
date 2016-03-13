@@ -1,31 +1,92 @@
+% !TeX spellcheck = hu_HU
 \topic{Folyamatmodellezés}
 
 \graphicspath{ {./folyamatmodellezes/figures/} }
+
+\lstset{
+	language=c,
+	morekeywords={sync}
+}
 
 % diasorok:
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/04-folyamatmodellezes.pdf
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/05-bpmn-dfn.pdf
 
+Autómegosztó szolgáltatásban egy fuvar rendeléséhez, banki ügyintézés esetén a hitelbírálathoz, egyetemi környezetben egy tárgy felvételéhez egy jól meghatározott \fogalom{folyamat} tartozik. Amennyiben ezeket digitálisan szeretnénk végezni, fontos, hogy a folyamatokat precízen definiáljuk.
 
-def \fogalom{viselkedes-alapu-modellezes}
+A folyamatmodelleket széleskörűen használják, többek között az informatikában rendszerek működtetésére, protokollok specifikációjára, adatelemzési folyamatok specifikálására.
 
-def \fogalom{folyamat}
+\section{Folyamatok}
 
-\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
+A \fogalomragozva{viselkedes-alapu-modellezes}{viselkedési modellek} a rendszer viselkedését többféle aspektusból jellemezhetik:
 
-\fogalom{elemi-tevekenyseg}
+\begin{itemize}
+	\item Az \fogalomragozva{allapot-alapu-modellezes}{állapot alapú modellek} esetén a rendszereket az \fogalomragozva{allapot}{állapotukkal} jellemezzük, ami meghatározza, hogy a rendszerünk egy adott időpillanatban ,,milyen'' és ,,hogyan változhat''? Ezekkel a modellekkel bővebben  \iflabeldef{sec:allapot-alapu-modellezes}{\Aref{sec:allapot-alapu-modellezes}.}{\emph{Állapot alapú modellezés}} fejezetben foglalkoztunk.
+	\item A \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer, milyen módon jellemezhető a rendszerben az adatok és a vezérlés áramlása.
+\end{itemize}
 
-\fogalom{szekvencia}
+\begin{megjegyzes}
+A folyamatmodellezés történeti előzményei:
 
-\fogalom{orfeltetel}
+\begin{itemize}
+	\item Programok vezérlési szerkezete
+	\item Ütemezés (pl. GANTT diagramok): tevékenységek állapota, időzítése, és függőségei
+	\item Gyártási/irodai folyamatok modellezése
+	\item IDEF-0: 1980-as évek, US AirForce: logikai függőségek (adatfüggőség és végrehajtási logika nem)
+	\item Logisztikai folyamatok leírása
+	\item Üzemeltetés: ,,runbook''
+\end{itemize}
 
-\fogalom{elagazas}
+TODO: IDEF-0 ábra
 
-\fogalom{ciklus}
+TODO: GANTT ábra \footnote{\url{wiki}}
+\end{megjegyzes}
 
-\fogalom{hierarchia}
+A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jellemezzük.
 
-\fogalom{hivas}
+\begin{definicio}
+	A \fogalom{folyamat} lépések sorozata, melyek sorrendben történő végrehajtása valamilyen célra vezet.
+\end{definicio}	
+
+\section{A folyamatmodellek építőkövei}
+
+Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus jelölését és szemantikáját.
+
+\begin{definicio}
+	\fogalom{elemi-tevekenyseg}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{szekvencia}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{orfeltetel}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{elagazas}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{ciklus}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{hierarchia}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{hivas}
+\end{definicio}
+
+
+
+\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
+
+\fogalom{dontesi-diagram} (\fogalomangolul{dontesi-diagram})
+
+
 
 \fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
 
@@ -37,13 +98,164 @@ def \fogalom{folyamat}
 
 \fogalom{rekurzio}
 
+
+
+\section{Vezérlési folyamok folyamatmodelljei}
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+<statement1>
+<statement2>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+if (<expression>)
+	<statement>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+if (<expression>)
+	<statement1>
+else
+	<statement2>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+while (<expression>)
+	<statement>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+do
+	<statement>
+while (<expression>)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+Nézzünk meg egy összetettebb példát!
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+while (a != b) {
+	if (a > b) {
+		a = a - b;
+	} else {
+		b = b - a;
+	}
+}
+return a;
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+Vizsgáljuk meg az alábbi programkódot, ami egy szám faktoriálisát határozza meg!
+
+\begin{lstlisting}
+int fact(int n) {
+	return (n == 0) ? 1 : n * fact(n - 1);
+}
+\end{lstlisting}
+
+A \lstinline{?:} operátor\footnote{Elvis operátor.} tömör kódot eredményez, de esetünkben fontosabb szempont, hogy a kódban bejárható útvonalakat lássuk.
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+int fact(int n) {
+	int tmp1;
+	if (n == 0) {
+		tmp1 = 1;
+	} else {
+		int tmp2 = fact(n - 1);
+		tmp1 = n * tmp2;
+	}
+	return tmp1;
+}
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+Az alábbi rekurzív függvény meghatározza $n \choose k$ értékét. A számításhoz felhasználjuk, hogy ${0 \choose 0} = 1$ és ${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$.
+
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}
+int choose(int n, int k) {
+	if (k < 0 || k > n) {
+		return 0;
+	} else if (k == 0 && n == 0) {
+		return 1;
+	} else {
+		int x = spawn choose(n - 1, k);
+		int y = spawn choose(n - 1, k - 1);
+		sync;
+		return x + y;
+	}
+}
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+	x
+\end{minipage}
+
+
+
+\section{Formalizmusok}
+
+\rovidites{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
+
+\rovidites{BPMN}
+
+%\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
+
+
+
+
 \szgarch tárgy
 
 \section{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
 A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. 
 
-Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak. Jólstrukturáltnak nevezzük azokat a részfolyamatokat, amelyek egyféleképpen kezdődnek el, egyféleképpen fejeződnek be; továbbá ha összetett részfolyamatról van szó (több elemből áll), akkor az alkotórészei hasonlóan jólstrukuráltak, és megengedett módon vannak összekapcsolva. Egy teljes folyamat pedig akkor jólstrukturált, ha az egész ilyen módon épül fel.
+Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak. 
+
+\begin{definicio}
+	Egy \fogalom{reszfolyamat} akkor \fogalom{jolstrukturalt}, ha egyféleképpen kezdődik el és egyféleképpen fejeződik be; továbbá összetett (több elemből álló) részfolyamatok esetén annak alkotórészei hasonlóan jólstrukturáltak, és megengedett módon vannak összekapcsolva. Egy \fogalom{folyamat} akkor jólstrukturált, ha az egész ilyen módon épül fel.
+\end{definicio}
 
 \subsection{Jólstrukturált blokk}
 
@@ -75,3 +287,22 @@ A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is fol
 \fogalom{adatfolyam}
 
 \fogalom{tevekenyseg}
+
+
+\section{Kitekintés\kieg}
+
+
+\rovidites{PERT} (nem tud elágazást ábrázolni)
+
+\subsection{Adatelemzés}
+
+AirBnB cég AirFlow rendszere\footnote{\url{github}}
+
+Tudományos célú folyamatmodellező rendszerek (\emph{science workflow engines})
+
+Kepler, Taverna, ...
+
+\subsection{Üzleti folyamatmodellek}
+
+jBPM\footnote{\url{}}, Bonita\footnote{\url{}}, C...\footnote{\url{http://bpmn.io}}, Eclipse Stardust\footnote{\url{}}
+
