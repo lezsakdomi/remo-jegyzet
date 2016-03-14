@@ -45,7 +45,7 @@ TODO: IDEF-0 ábra
 % Figure 5-7. IDEF0 Diagram Example
 % http://ocw.mit.edu/terms/
 
-TODO: GANTT ábra \footnote{\url{wiki}}
+TODO: GANTT ábra \footnote{\url{https://commons.wikimedia.org/wiki/File:GanttChartAnatomy.svg}}
 \end{megjegyzes}
 
 A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jellemezzük.
@@ -258,7 +258,7 @@ return a;
 
 \fogalom{ciklomatikus-komplexitas}
 
-\subsection{Példa: faktoriális meghatározása}
+\subsection{Példa: $n!$ meghatározása}
 
 Vizsgáljuk meg az alábbi programkódot, ami egy szám faktoriálisát határozza meg!
 
@@ -317,9 +317,11 @@ int choose(int n, int k) {
 
 \section{Formalizmusok}
 
-\rovidites{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
+Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
 
-\rovidites{BPMN}
+\rovidites{UML}~\cite{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
+
+\rovidites{BPMN}~\cite{omg2011bpmn}
 
 %\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
 
@@ -382,15 +384,22 @@ adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
 
 \rovidites{PERT} (nem tud elágazást ábrázolni)
 
-\subsection{Adatelemzés}
+\subsection{Szabványok}
 
-AirBnB cég AirFlow rendszere\footnote{\url{https://github.com/airbnb/airflow}}
+\rovidites{BPEL}
 
-Tudományos célú folyamatmodellező rendszerek (\emph{scientific workflow engines})
+\subsection{Technológiák}
 
-Kepler\footnote{https://kepler-project.org/}, Taverna\footnote{\url{http://incubator.apache.org/projects/taverna.html}}, ...
+\subsubsection{Adatelemzés}
 
-\subsection{Üzleti folyamatmodellek}
+Az Airbnb cég Airflow eszköze\footnote{\url{https://github.com/airbnb/airflow}} adatelemzési folyamatok definiálására és végrehajtására alkalmas.
 
-jBPM\footnote{\url{http://www.jbpm.org/}}, Bonita\footnote{\url{http://www.bonitasoft.com/}}, Camunda\footnote{\url{https://camunda.org/}}, Eclipse Stardust\footnote{\url{https://www.eclipse.org/stardust/}}
+Több olyan rendszer is létezik, amelyek tudományos folyamatok futtatását teszik lehetővé (\emph{scientific workflow engine}), beleértve az adatok összegyűjtését, elemzését és vizualizálását. Ilyen rendszerek például a 
+Kepler\footnote{\url{https://kepler-project.org/}} és a Taverna\footnote{\url{http://taverna.incubator.apache.org/}}.
+
+\subsubsection{Üzleti folyamatmodellek}
+
+Az üzleti folyamatok modellezésére használt szoftverek manapság tipikusan a BPMN 2.0 szabványt valósítják meg.\footnote{\url{https://en.wikipedia.org/wiki/List_of_BPMN_2.0_engines}}
+
+Ilyen eszközök pédául a jBPM\footnote{\url{http://www.jbpm.org/}}, a Bonita BPM\footnote{\url{http://www.bonitasoft.com/}}, Camunda\footnote{\url{https://camunda.org/}} és az Eclipse Stardust\footnote{\url{https://www.eclipse.org/stardust/}}.
 
