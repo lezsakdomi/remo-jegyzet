@@ -8,7 +8,9 @@
 	morekeywords={sync}
 }
 
-\newcommand{\folyamatmodellscale}{0.6}
+\newcommand{\folyamatmodellscale}{0.42}
+\newcommand{\balhasab}{0.4\linewidth}
+\newcommand{\jobbhasab}{0.6\linewidth}
 
 % diasorok:
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/04-folyamatmodellezes.pdf
@@ -175,31 +177,31 @@ Beágyazható a “főfolyamatba”, ha helyes a finomítás, azaz
 
 \subsection{Leképzés}
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 <statement1>
 <statement2>
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-01}{\folyamatmodellscale}
 \end{minipage}
 
 
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 if (<expression>)
 	<statement>
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-02}{\folyamatmodellscale}
 \end{minipage}
 
 
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 if (<expression>)
 	<statement1>
@@ -207,38 +209,40 @@ else
 	<statement2>
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-03}{\folyamatmodellscale}
 \end{minipage}
 
+\subsection{Összetett példa ábrázolása}
 
-
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 while (<expression>)
 	<statement>
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-04}{\folyamatmodellscale}
 \end{minipage}
 
 
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 do
 	<statement>
 while (<expression>)
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-05}{\folyamatmodellscale}
 \end{minipage}
+
+
 
 Nézzünk meg egy összetettebb példát!
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 while (a != b) {
 	if (a > b) {
@@ -250,13 +254,35 @@ while (a != b) {
 return a;
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-06}{\folyamatmodellscale}
+\end{minipage}
+
+%\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-07}{\folyamatmodellscale}
+
+Lépésenként átalakítva:
+
+\begin{minipage}{0.2\linewidth}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-07}{\folyamatmodellscale}
+\end{minipage}
+\begin{minipage}{0.35\linewidth}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-08}{\folyamatmodellscale}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-09}{\folyamatmodellscale}
 \end{minipage}
 
 \subsection{Komplexitás}
 
-\fogalom{ciklomatikus-komplexitas}
+\begin{definicio}
+\fogalom{ciklomatikus-komplexitas}: $M$ = $E$ - $N$ + 2, ahol ...
+\end{definicio}
+
+\remofigscale{vezerlesi-folyamat/ciklomatikus-komplexitas}{A ciklomatikus komplexitás fogalmai. $E$: élek (narancssárga), $N$ csomópontok (kék)}{\folyamatmodellscale}
+
+\begin{megjegyzes}
+	A ciklomatikus komplexitással a \szofttech tárgy is foglalkozik.
+\end{megjegyzes}
 
 \subsection{Példa: $n!$ meghatározása}
 
@@ -268,9 +294,9 @@ int fact(int n) {
 }
 \end{lstlisting}
 
-A \lstinline{?:} operátor\footnote{Egyes programozási nyelvek megengedik, hogy ... . Ezekben a \lstinline{?:} operátort gyakran Elvis operátornak nevezik.} tömör kódot eredményez, de esetünkben fontosabb szempont, hogy a kódban bejárható útvonalakat lássuk.
+A \lstinline{?:} operátor tömör kódot eredményez, de esetünkben fontosabb szempont, hogy a kódban bejárható útvonalakat lássuk. Mentsük el továbbá a visszatérési értéket egy átmeneti változóba. Így az alábbi kódot kapjuk:
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 int fact(int n) {
 	int tmp1;
@@ -284,8 +310,8 @@ int fact(int n) {
 }
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{faktorialis}{\folyamatmodellscale}
 \end{minipage}
 
 \subsection{Példa: $n \choose k$ meghatározása}
@@ -293,7 +319,7 @@ int fact(int n) {
 Az alábbi rekurzív függvény meghatározza $n \choose k$ értékét. A számításhoz felhasználjuk, hogy ${0 \choose 0} = 1$ és ${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$.
 
 
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{\balhasab}
 \begin{lstlisting}
 int choose(int n, int k) {
 	if (k < 0 || k > n) {
@@ -309,8 +335,8 @@ int choose(int n, int k) {
 }
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-	x
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{n-alatt-a-k}{\folyamatmodellscale}
 \end{minipage}
 
 
