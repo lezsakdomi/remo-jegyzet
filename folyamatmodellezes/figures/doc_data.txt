@@ -1,0 +1,88 @@
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20160314115905+01'00'
+InfoBegin
+InfoKey: PTEX.Fullbanner
+InfoValue: This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) kpathsea version 6.2.1
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20160314115905+01'00'
+InfoBegin
+InfoKey: Creator
+InfoValue: TeX
+InfoBegin
+InfoKey: Producer
+InfoValue: pdfTeX-1.40.16
+PdfID0: 3efd9fddb1600783106e8f39c0242031
+PdfID1: 3efd9fddb1600783106e8f39c0242031
+NumberOfPages: 14
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 141 169
+PageMediaDimensions: 141 169
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 267 233
+PageMediaDimensions: 267 233
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 337 233
+PageMediaDimensions: 337 233
+PageMediaBegin
+PageMediaNumber: 4
+PageMediaRotation: 0
+PageMediaRect: 0 0 286 310
+PageMediaDimensions: 286 310
+PageMediaBegin
+PageMediaNumber: 5
+PageMediaRotation: 0
+PageMediaRect: 0 0 218 248
+PageMediaDimensions: 218 248
+PageMediaBegin
+PageMediaNumber: 6
+PageMediaRotation: 0
+PageMediaRect: 0 0 235 437
+PageMediaDimensions: 235 437
+PageMediaBegin
+PageMediaNumber: 7
+PageMediaRotation: 0
+PageMediaRect: 0 0 235 437
+PageMediaDimensions: 235 437
+PageMediaBegin
+PageMediaNumber: 8
+PageMediaRotation: 0
+PageMediaRect: 0 0 341 437
+PageMediaDimensions: 341 437
+PageMediaBegin
+PageMediaNumber: 9
+PageMediaRotation: 0
+PageMediaRect: 0 0 463 437
+PageMediaDimensions: 463 437
+PageMediaBegin
+PageMediaNumber: 10
+PageMediaRotation: 0
+PageMediaRect: 0 0 569 444
+PageMediaDimensions: 569 444
+PageMediaBegin
+PageMediaNumber: 11
+PageMediaRotation: 0
+PageMediaRect: 0 0 660 429
+PageMediaDimensions: 660 429
+PageMediaBegin
+PageMediaNumber: 12
+PageMediaRotation: 0
+PageMediaRect: 0 0 698 429
+PageMediaDimensions: 698 429
+PageMediaBegin
+PageMediaNumber: 13
+PageMediaRotation: 0
+PageMediaRect: 0 0 709 161
+PageMediaDimensions: 709 161
+PageMediaBegin
+PageMediaNumber: 14
+PageMediaRotation: 0
+PageMediaRect: 0 0 626 139
+PageMediaDimensions: 626 139

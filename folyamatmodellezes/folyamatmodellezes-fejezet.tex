@@ -1,31 +1,165 @@
+% !TeX spellcheck = hu_HU
 \topic{Folyamatmodellezés}
 
 \graphicspath{ {./folyamatmodellezes/figures/} }
+
+\lstset{
+	language=c,
+	morekeywords={sync}
+}
+
+\newcommand{\folyamatmodellscale}{0.42}
+\newcommand{\balhasab}{0.4\linewidth}
+\newcommand{\jobbhasab}{0.6\linewidth}
 
 % diasorok:
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/04-folyamatmodellezes.pdf
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/05-bpmn-dfn.pdf
 
+Autómegosztó szolgáltatásban egy fuvar rendeléséhez, banki ügyintézés esetén a hitelbírálathoz, egyetemi környezetben egy tárgy felvételéhez egy jól meghatározott \fogalom{folyamat} tartozik. Amennyiben ezeket digitálisan szeretnénk végezni, fontos, hogy a folyamatokat precízen definiáljuk.
 
-def \fogalom{viselkedes-alapu-modellezes}
+A folyamatmodelleket széleskörűen használják, többek között az informatikában rendszerek működtetésére, protokollok specifikációjára, adatelemzési folyamatok specifikálására.
 
-def \fogalom{folyamat}
+\section{Folyamatok}
 
-\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
+A \fogalomragozva{viselkedes-alapu-modellezes}{viselkedési modellek} a rendszer viselkedését többféle aspektusból jellemezhetik:
 
-\fogalom{elemi-tevekenyseg}
+\begin{itemize}
+	\item Az \fogalomragozva{allapot-alapu-modellezes}{állapot alapú modellek} esetén a rendszereket az \fogalomragozva{allapot}{állapotukkal} jellemezzük, ami meghatározza, hogy a rendszerünk egy adott időpillanatban ,,milyen'' és ,,hogyan változhat''? Ezekkel a modellekkel bővebben  \iflabeldef{sec:allapot-alapu-modellezes}{\Aref{sec:allapot-alapu-modellezes}.}{\emph{Állapot alapú modellezés}} fejezetben foglalkoztunk.
+	\item A \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer, milyen módon jellemezhető a rendszerben az adatok és a vezérlés áramlása.
+\end{itemize}
 
-\fogalom{szekvencia}
+\begin{megjegyzes}
+A folyamatmodellezés történeti előzményei:
 
-\fogalom{orfeltetel}
+\begin{itemize}
+	\item Programok vezérlési szerkezete
+	\item Ütemezés (pl. GANTT diagramok): tevékenységek állapota, időzítése, és függőségei
+	\item Gyártási/irodai folyamatok modellezése
+	\item IDEF-0: 1980-as évek, US AirForce: logikai függőségek (adatfüggőség és végrehajtási logika nem)
+	\item Logisztikai folyamatok leírása
+	\item Üzemeltetés: ,,runbook''
+\end{itemize}
 
-\fogalom{elagazas}
+TODO: IDEF-0 ábra
 
-\fogalom{ciklus}
+% http://ocw.mit.edu/courses/aeronautics-and-astronautics/16-885j-aircraft-systems-engineering-fall-2005/readings/sefguide_01_01.pdf
+% Figure 5-7. IDEF0 Diagram Example
+% http://ocw.mit.edu/terms/
 
-\fogalom{hierarchia}
+\remofigscale{GanttChartAnatomy}{GANTT diagram}{0.46}
 
-\fogalom{hivas}
+\footnote{\url{https://commons.wikimedia.org/wiki/File:GanttChartAnatomy.svg}}
+\end{megjegyzes}
+
+A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jellemezzük.
+
+\begin{definicio}
+	A \fogalom{folyamat} lépések sorozata, melyek sorrendben történő végrehajtása valamilyen célra vezet.
+\end{definicio}	
+
+\section{A folyamatmodellek építőkövei}
+
+Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus jelölését és szemantikáját.
+
+\begin{definicio}
+	\fogalom{elemi-tevekenyseg} \fogalom{atomi}
+\end{definicio}
+
+\remofigscalefixed{szintaxis/elemi-tevekenyseg}{Elemi tevékenység grafikus szintaxisa}{\folyamatmodellscale}
+
+\remofigscalefixed{szintaxis/elemi-tevekenyseg-ido}{Elemi tevékenység időbeli lefutása}{\folyamatmodellscale}
+
+
+\begin{megjegyzes}
+	Az \fogalom{atomi-muvelet} (\fogalomangolul{atomi-muvelet})
+\end{megjegyzes}
+
+\begin{definicio}
+	\fogalom{szekvencia}
+\end{definicio}
+
+\remofigscalefixed{szintaxis/szekvencia}{Szekvencia grafikus szintaxisa}{\folyamatmodellscale}
+
+\remofigscalefixed{szintaxis/szekvencia-ido}{Szekvencia időbeli lefutása}{\folyamatmodellscale}
+
+\begin{definicio}
+	\fogalom{elagazas}
+\end{definicio}
+
+\begin{definicio}
+	\fogalom{orfeltetel}
+\end{definicio}
+
+\remofigscalefixed{szintaxis/elagazas}{Elágazás grafikus szintaxisa őrfeltételekkel}{\folyamatmodellscale}
+
+Szemantika:
+
+o Csak az egyik ág hajtódik végre
+
+o Nemdeterminizmus lehetséges: átlapolódó őrfeltételek esetén vagy egyszerűen akkor, ha nincsenek őrfeltételek.
+
+
+Szemantika:
+
+o Nem meghatározott végrehajtási sorrend
+
+o Párhuzamos / átlapolt végrehajtás is lehet
+
+Részletesen a \szgarch tárgyban.
+
+\begin{definicio}
+	\fogalom{ciklus}
+\end{definicio}
+
+\remofigscalefixed{szintaxis/ciklus}{Ciklus grafikus szintaxisa}{\folyamatmodellscale}
+
+\begin{definicio}
+	\fogalom{fork}, \fogalom{join}
+\end{definicio}
+
+\remofigscalefixed{szintaxis/fork-join}{Fork és join}{\folyamatmodellscale}
+
+\begin{definicio}
+	\fogalom{flow-begin}, \fogalom{flow-end}
+\end{definicio}
+
+\remofigscalefixed{szintaxis/flow-begin-flow-end}{Flow begin és flow end grafikus szintaxisa}{\folyamatmodellscale}
+
+
+\begin{definicio}
+	\fogalom{hierarchia}
+\end{definicio}
+
+• Elemi lépés valójában alfolyamat
+
+\remofigscalefixed{szintaxis/hierarchia}{Hierarchia grafikus szintaxisa}{\folyamatmodellscale}
+
+\remofigscalefixed{szintaxis/hierarchia-ido}{Hierarchia időbeli lefutása}{\folyamatmodellscale}
+
+\begin{definicio}
+	\fogalom{hivas}
+\end{definicio}
+
+
+\remofigscalefixed{szintaxis/hivas}{Hívás grafikus szintaxisa}{\folyamatmodellscale}
+
+\remofigscalefixed{szintaxis/hivas-ido}{Hívás időbeli lefutása}{\folyamatmodellscale}
+
+Beágyazható a “főfolyamatba”, ha helyes a finomítás, azaz
+
+• A lépések együtt ugyanazt állítják elő, mint a folyamat
+
+• Nincs olyan eset, amit nem kezelünk a hívó fél szintjén
+
+• (Input/output konzisztencia)
+
+
+\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
+
+\fogalom{dontesi-diagram} (\fogalomangolul{dontesi-diagram})
+
+
 
 \fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
 
@@ -37,13 +171,200 @@ def \fogalom{folyamat}
 
 \fogalom{rekurzio}
 
-\szgarch tárgy
+
+
+\section{Vezérlési folyamok folyamatmodelljei}
+
+
+
+\subsection{Leképzés}
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+<statement1>
+<statement2>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-01}{\folyamatmodellscale}
+\end{minipage}
+
+
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+if (<expression>)
+	<statement>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-02}{\folyamatmodellscale}
+\end{minipage}
+
+
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+if (<expression>)
+	<statement1>
+else
+	<statement2>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-03}{\folyamatmodellscale}
+\end{minipage}
+
+\subsection{Összetett példa ábrázolása}
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+while (<expression>)
+	<statement>
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-04}{\folyamatmodellscale}
+\end{minipage}
+
+
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+do
+	<statement>
+while (<expression>)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-05}{\folyamatmodellscale}
+\end{minipage}
+
+
+
+Nézzünk meg egy összetettebb példát!
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+while (a != b) {
+	if (a > b) {
+		a = a - b;
+	} else {
+		b = b - a;
+	}
+}
+return a;
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-06}{\folyamatmodellscale}
+\end{minipage}
+
+%\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-07}{\folyamatmodellscale}
+
+Lépésenként átalakítva:
+
+\begin{minipage}{0.2\linewidth}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-07}{\folyamatmodellscale}
+\end{minipage}
+\begin{minipage}{0.35\linewidth}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-08}{\folyamatmodellscale}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-09}{\folyamatmodellscale}
+\end{minipage}
+
+\subsection{Komplexitás}
+
+\begin{definicio}
+\fogalom{ciklomatikus-komplexitas}: $M$ = $E$ - $N$ + 2, ahol ...
+\end{definicio}
+
+\remofigscale{vezerlesi-folyamat/ciklomatikus-komplexitas}{A ciklomatikus komplexitás fogalmai. $E$: élek (narancssárga), $N$ csomópontok (kék)}{\folyamatmodellscale}
+
+\begin{megjegyzes}
+	A ciklomatikus komplexitással a \szofttech tárgy is foglalkozik.
+\end{megjegyzes}
+
+\subsection{Példa: $n!$ meghatározása}
+
+Vizsgáljuk meg az alábbi programkódot, ami egy szám faktoriálisát határozza meg!
+
+\begin{lstlisting}
+int fact(int n) {
+	return (n == 0) ? 1 : n * fact(n - 1);
+}
+\end{lstlisting}
+
+A \lstinline{?:} operátor tömör kódot eredményez, de esetünkben fontosabb szempont, hogy a kódban bejárható útvonalakat lássuk. Mentsük el továbbá a visszatérési értéket egy átmeneti változóba. Így az alábbi kódot kapjuk:
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+int fact(int n) {
+	int tmp1;
+	if (n == 0) {
+		tmp1 = 1;
+	} else {
+		int tmp2 = fact(n - 1);
+		tmp1 = n * tmp2;
+	}
+	return tmp1;
+}
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{faktorialis}{\folyamatmodellscale}
+\end{minipage}
+
+\subsection{Példa: $n \choose k$ meghatározása}
+
+Az alábbi rekurzív függvény meghatározza $n \choose k$ értékét. A számításhoz felhasználjuk, hogy ${0 \choose 0} = 1$ és ${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$.
+
+
+\begin{minipage}{\balhasab}
+\begin{lstlisting}
+int choose(int n, int k) {
+	if (k < 0 || k > n) {
+		return 0;
+	} else if (k == 0 && n == 0) {
+		return 1;
+	} else {
+		int x = spawn choose(n - 1, k);
+		int y = spawn choose(n - 1, k - 1);
+		sync;
+		return x + y;
+	}
+}
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{\jobbhasab}
+	\simplefigscale{n-alatt-a-k}{\folyamatmodellscale}
+\end{minipage}
+
+
+
+\section{Formalizmusok}
+
+Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
+
+\rovidites{UML}~\cite{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
+
+\rovidites{BPMN}~\cite{omg2011bpmn}
+
+%\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
+
+
+
 
 \section{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
 A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. 
 
-Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak. Jólstrukturáltnak nevezzük azokat a részfolyamatokat, amelyek egyféleképpen kezdődnek el, egyféleképpen fejeződnek be; továbbá ha összetett részfolyamatról van szó (több elemből áll), akkor az alkotórészei hasonlóan jólstrukuráltak, és megengedett módon vannak összekapcsolva. Egy teljes folyamat pedig akkor jólstrukturált, ha az egész ilyen módon épül fel.
+Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak. 
+
+\begin{definicio}
+	Egy \fogalom{reszfolyamat} akkor \fogalom{jolstrukturalt}, ha egyféleképpen kezdődik el és egyféleképpen fejeződik be; továbbá összetett (több elemből álló) részfolyamatok esetén annak alkotórészei hasonlóan jólstrukturáltak, és megengedett módon vannak összekapcsolva. Egy \fogalom{folyamat} akkor jólstrukturált, ha az egész ilyen módon épül fel.
+\end{definicio}
 
 \subsection{Jólstrukturált blokk}
 
@@ -71,7 +392,42 @@ Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőlege
 
 A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.
 
+\section{Adatfolyamhálók}
 
-\fogalom{adatfolyam}
+\fogalom{adatfolyam} \rovidites{DFN}
 
 \fogalom{tevekenyseg}
+
+\fogalom{folyamatmotor} (\fogalomangolul{folyamatmotor})
+
+\newcommand{\prioritas}{\pi}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+
+tüzelések: $\tuple{s_0; \mathrm{in} = c_0; s_1; \mathrm{out} = c_2; \prioritas}$
+
+adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
+
+\section{Kitekintés\kieg}
+
+
+\rovidites{PERT} (nem tud elágazást ábrázolni)
+
+\subsection{Szabványok}
+
+\rovidites{BPEL}
+
+\subsection{Technológiák}
+
+\subsubsection{Adatelemzés}
+
+Az Airbnb cég Airflow eszköze\footnote{\url{https://github.com/airbnb/airflow}} adatelemzési folyamatok definiálására és végrehajtására alkalmas.
+
+Több olyan rendszer is létezik, amelyek tudományos folyamatok futtatását teszik lehetővé (\emph{scientific workflow engine}), beleértve az adatok összegyűjtését, elemzését és vizualizálását. Ilyen rendszerek például a 
+Kepler\footnote{\url{https://kepler-project.org/}} és a Taverna\footnote{\url{http://taverna.incubator.apache.org/}}.
+
+\subsubsection{Üzleti folyamatmodellek}
+
+Az üzleti folyamatok modellezésére használt szoftverek manapság tipikusan a BPMN 2.0 szabványt valósítják meg.\footnote{\url{https://en.wikipedia.org/wiki/List_of_BPMN_2.0_engines}}
+
+Ilyen eszközök pédául a jBPM\footnote{\url{http://www.jbpm.org/}}, a Bonita BPM\footnote{\url{http://www.bonitasoft.com/}}, Camunda\footnote{\url{https://camunda.org/}} és az Eclipse Stardust\footnote{\url{https://www.eclipse.org/stardust/}}.
+
