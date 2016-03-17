@@ -56,3 +56,4 @@ A Xindy használata Linux alatt nincs külön teendőnk, Windows alatt viszont i
 
 * **Probléma:** Nem jelennek meg a képek a jegyzetben.
 * **Megoldás:** A PDF 1.4 és a PDF 1.5 szabvány közötti eltérések okozhatják a problémát. Ha nem tudunk egyszerűen PDF 1.4-es fájlt előállítani (pl. a yEd-nél nincs erre opció), akkor workaroundként a `pdfcrop` alkalmazással körbevágva a képet 1.4-es PDF-et kapunk. Ahol erre szükség lehet, ott a `figures` könyvtárakban található egy `crop.sh` szkript. Ez a szkript az adott könyvtár *összes* PDF fájlját felülírja a körbevágott változattal.
+ 
