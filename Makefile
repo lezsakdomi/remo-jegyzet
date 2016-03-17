@@ -1,5 +1,6 @@
 DOCUMENTS = \
 	rendszermodellezes \
+	rendszermodellezes-mobile \
 	sablon \
 	hf \
 	hf-mobile \

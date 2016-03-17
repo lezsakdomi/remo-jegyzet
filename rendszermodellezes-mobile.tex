@@ -1,0 +1,56 @@
+% !TeX spellcheck = hu_HU
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+\documentclass[11pt]{report}
+
+\input{include/mobile}
+\input{include/preamble}
+
+\newcommand{\topic}[1]{\chapter{#1}}
+
+% page headers
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}}
+\lhead{\textsc{Rendszermodellezés}}
+\rhead{\leftmark}
+\cfoot{\thepage}
+
+\newcommand{\irodalomjegyzektartalomjegyzekbe}{\addcontentsline{toc}{chapter}{Irodalomjegyzék}}
+
+\begin{document}
+\renewcommand{\thepage}{}
+
+\include{include/titlepage}
+
+%\include{colophon}
+\raggedbottom
+
+\renewcommand{\thepage}{\roman{page}}
+
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+\renewcommand{\thepage}{\arabic{page}}
+
+% Fejezetek közötti hivatkozáshoz sablon:
+%\iflabeldef{sec:}{\aref{sec:}.~***ban}{a \emph{}}
+% Példa:
+%\iflabeldef{sec:modellek-ellenorzese}{\aref{sec:modellek-ellenorzese}.~fejezetben}{a \emph{Modellek ellenőrzése}}
+
+\include{bevezeto/bevezeto-fejezet}
+\include{modellezes-es-metamodellezes/modellezes-es-metamodellezes-fejezet}
+\include{struktura-alapu-modellezes/struktura-alapu-modellezes-fejezet}
+\include{allapot-alapu-modellezes/allapot-alapu-modellezes-fejezet}
+\include{folyamatmodellezes/folyamatmodellezes-fejezet}
+\include{teljesitmenymodellezes/teljesitmenymodellezes-fejezet}
+\include{modellek-fejlesztese/modellek-fejlesztese-fejezet}
+\include{modellek-ellenorzese/modellek-ellenorzese-fejezet}
+\include{felderito-adatelemzes/felderito-adatelemzes-fejezet}
+\include{szimulacio/szimulacio-fejezet}
+\include{kodgeneralas/kodgeneralas-fejezet}
+
+\input{bibliography-and-glossary}
+
+\end{document}
