@@ -5,9 +5,11 @@ title:
 
 # Rendszermodellezés jegyzet
 
+A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten olvasásra az A5-ös változatokat javasoljuk.
+
 [Teljes jegyzet](rendszermodellezes.pdf) ([A5](rendszermodellezes-mobile.pdf)) &ndash; Fejlesztés alatt. Kinyomtatását nem javasoljuk.
 
-A jegyzet fejezetei külön is letölthetők. Mobiltelefonon és tableten olvasásra az A5-ös változatot javasoljuk.
+## Anyagrészek
 
 * [Bevezető](bevezeto.pdf) ([A5](bevezeto-mobile.pdf))
 * [Modellezés és metamodellezés](modellezes-es-metamodellezes.pdf) ([A5](modellezes-es-metamodellezes-mobile.pdf))
@@ -27,6 +29,6 @@ A jegyzet fejezetei külön is letölthetők. Mobiltelefonon és tableten olvas�
 * Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
 
-### Házi feladat segédlet
+## Házi feladat segédlet
 
 [Házi feladat segédlet](hf.pdf) ([A5](hf-a5.pdf))
