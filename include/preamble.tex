@@ -30,7 +30,6 @@
 \usepackage{tabularx}
 \newcolumntype{Z}{ >{\raggedright\arraybackslash}X }
 
-\usepackage[multiple]{footmisc}
 \usepackage{colortbl}
 \usepackage{booktabs}
 \usepackage{placeins}
@@ -180,6 +179,18 @@
 	framerule=0pt,
 %	framexleftmargin=0.25em,
 }
+
+% footnotes
+% based on http://tex.stackexchange.com/questions/40072/incompatibility-between-footmisc-option-multiple-and-hyperref/62091#62091
+
+\let\oldFootnote\footnote
+\newcommand\nextToken\relax
+
+\renewcommand\footnote[1]{%
+	\oldFootnote{#1}\futurelet\nextToken\isFootnote}
+
+\newcommand\isFootnote{%
+	\ifx\footnote\nextToken\textsuperscript{,}\fi}
 
 % load font to support the phonetic alphabet
 \newfontfamily\ipa{DoulosSIL-R.ttf}
