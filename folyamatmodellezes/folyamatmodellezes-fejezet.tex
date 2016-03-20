@@ -56,7 +56,7 @@ A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jell
 
 \begin{definicio}
 	A \fogalom{folyamat} lépések sorozata, melyek sorrendben történő végrehajtása valamilyen célra vezet.
-\end{definicio}	
+\end{definicio}
 
 \section{A folyamatmodellek építőkövei}
 
@@ -358,9 +358,9 @@ Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
 
 \section{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
-A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. 
+A folyamatmodellek a tanultak szerint leírhatóak egy vezérlésifolyam-gráffal. Eddig azonban semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek.
 
-Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak. 
+Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak.
 
 \begin{definicio}
 	Egy \fogalom{reszfolyamat} akkor \fogalom{jolstrukturalt}, ha egyféleképpen kezdődik el és egyféleképpen fejeződik be; továbbá összetett (több elemből álló) részfolyamatok esetén annak alkotórészei hasonlóan jólstrukturáltak, és megengedett módon vannak összekapcsolva. Egy \fogalom{folyamat} akkor jólstrukturált, ha az egész ilyen módon épül fel.
@@ -375,7 +375,7 @@ A következő (egy belépési és egy kilépési pontú) részfolyamatokat tekin
 \item egyetlen folyamathivatkozás/hívás (máshol definiált folyamatmodell újrafelhasználása);
 \item üres vezérlési élszakasz;
 \item ,,soros kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok szekvenciája (egyszerű vezérlési éllel egymás után kötve őket);
-\item ,,\emph{Fork-Join} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Fork} és egy $n$ ágú \emph{Join} közé zárva; 
+\item ,,\emph{Fork-Join} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Fork} és egy $n$ ágú \emph{Join} közé zárva;
 \item ,,\emph{Decision-Merge} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Decision} és egy $n$ ágú \emph{Merge} közé zárva;
 \item ,,Ciklus": egy kétágú \emph{Merge} csomóponttal kezdődik, amely után a jólstrukturált $P_1$ blokkok következik, majd egy kétágú \emph{Decision}, melynek egyik ága a részfolyamat vége, a másik a $P_2$ jólstrukturált blokkokon keresztül az előbbi \emph{Merge}-be tér vissza.
 \end{itemize}
@@ -422,7 +422,7 @@ adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
 
 Az Airbnb cég Airflow eszköze\footnote{\url{https://github.com/airbnb/airflow}} adatelemzési folyamatok definiálására és végrehajtására alkalmas.
 
-Több olyan rendszer is létezik, amelyek tudományos folyamatok futtatását teszik lehetővé (\emph{scientific workflow engine}), beleértve az adatok összegyűjtését, elemzését és vizualizálását. Ilyen rendszerek például a 
+Több olyan rendszer is létezik, amelyek tudományos folyamatok futtatását teszik lehetővé (\emph{scientific workflow engine}), beleértve az adatok összegyűjtését, elemzését és vizualizálását. Ilyen rendszerek például a
 Kepler\footnote{\url{https://kepler-project.org/}} és a Taverna\footnote{\url{http://taverna.incubator.apache.org/}}.
 
 \subsubsection{Üzleti folyamatmodellek}
@@ -430,4 +430,3 @@ Kepler\footnote{\url{https://kepler-project.org/}} és a Taverna\footnote{\url{h
 Az üzleti folyamatok modellezésére használt szoftverek manapság tipikusan a BPMN 2.0 szabványt valósítják meg.\footnote{\url{https://en.wikipedia.org/wiki/List_of_BPMN_2.0_engines}}
 
 Ilyen eszközök pédául a jBPM\footnote{\url{http://www.jbpm.org/}}, a Bonita BPM\footnote{\url{http://www.bonitasoft.com/}}, Camunda\footnote{\url{https://camunda.org/}} és az Eclipse Stardust\footnote{\url{https://www.eclipse.org/stardust/}}.
-
