@@ -165,7 +165,7 @@ Valójában csak olyankor kell lefordítani egy forrásállományt, ha a fordít
 Ha már megismertük a döntés és merge vezérlési elemeket, akkor építhetünk velük \fogalom{ciklus}t, amely a folyamat egy részletét többször is képes ismételni. 
 
 \begin{pelda}
-\Aref{fig:szintaxis/ciklus}. ábra olyan folyamatot mutat be, ahol a fordítás után megvizsgáljuk, találtunk-e fordítási hibát; amennyiben van hiba, akkor azt megpróbáljuk kijavítani, és újrafordítjuk az állományt. Előfordul, hogy továbbra is vannak hibák, ekkor ismét a kód szerkesztése és újrafordítás következik. Ezek a tevékenységek mindaddig ismétlődnek, amíg 
+\Aref{fig:szintaxis/ciklus}. ábra olyan folyamatot mutat be, ahol a fordítás után megvizsgáljuk, találtunk-e fordítási hibát; amennyiben van hiba, akkor azt megpróbáljuk kijavítani, és újrafordítjuk az állományt. Előfordul, hogy továbbra is vannak hibák, ekkor ismét a kód szerkesztése és újrafordítás következik. Ezek a tevékenységek mindaddig ismétlődnek, amíg végül el nem tűnnek a hibák.
 \end{pelda}
 
 \remofigscalefixed{szintaxis/ciklus}{Ciklus grafikus szintaxisa}{\folyamatmodellscale}
@@ -176,12 +176,19 @@ Ha már megismertük a döntés és merge vezérlési elemeket, akkor építhet�
 Nem nehéz végiggondolni, hogy ciklikus folyamatok futásakor ezek a vezérlési csomópontok többször is érinthetőek. Próbáljuk ezt a fenti példán a tokenes kézi szimuláció módszerével kipróbálni!
 
 \subsection{Konkurrens viselkedés}
+Előfordulhat olyan folyamat, amelyben nincs előírva két tevékenység (vagy részfolyamat) egymáshoz képesti sorrendje, csak hogy mindkettőnek meg kell történnie. A szóban forgó két tevékenység közül történhet az egyik a másik előtt, vagy fordítva; sőt, futhatnak (részben) egyszerre is. Ilyen viselkedést fejez ki a \fogalom{fork-node} és a \fogalom{join-node} párosa.
 
-\begin{definicio}
-	\fogalom{fork-node}, \fogalom{join-node}
-\end{definicio}
+\begin{pelda}
+\Aref{fig:szintaxis/fork-join}. ábra olyan folyamatot mutat be, ahol két forrásfájlt is lefordítunk, azonban a sorrendjük nincs meghatározva. Fordítható az 1-es számú állomány a 2-es előtt, vagy fordított sorrendben. Ha többmagos processzorunk van, érdemes lehet a két fájl fordításával egyszerre is megpróbálkozni.
+\end{pelda}
 
 \remofigscalefixed{szintaxis/fork-join}{Fork és join}{\folyamatmodellscale}
+
+TODO idődiagram példák, tokenek
+
+\begin{definicio}
+Két bekövetkező tevékenység vagy esemény \fogalom{konkurrens}, ha a bekövetkezési sorrendjükre nézve nincs megkötés.
+\end{definicio} 
 
 
 \subsection{Teljes folyamatok}
