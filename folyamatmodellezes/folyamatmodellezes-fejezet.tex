@@ -108,79 +108,84 @@ Hogyan szimulálhatjuk a szekvenciánk működését? Ha \aref{fig:szintaxis/sze
   \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.
 \end{itemize}
 Ha belegondolunk, a tokennel valójában  a következő állapotteret jártuk be: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamat tehát ezt az állapotmodellt indukálja.
-  \item Harmadszor is mozgatva a tokent, elkezdhetjük a \emph{Link} tevékenységet.  
-  \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.  
-\end{itemize}   
 \end{pelda}
 
-Ha a folyamatot (például a fenti példához hasonlóan token mozgatásával) szimuláljuk, egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamatpeldany}{folyamatpéldányainak} nevezzük. Ez nyilván akkor lesz izgalmas fogalom, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször,
+Ha a folyamatot (például a fenti példához hasonlóan token mozgatásával) szimuláljuk, egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamat-peldany}{folyamatpéldányainak} nevezzük. Ez nyilván akkor lesz izgalmas fogalom, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször,
 Ha belegondolunk, a tokennel valójában a végrehajtás pillanatnyi állapotát jelöltük ki, és a következő állapotteret jártuk be vele: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamatmodell tehát ezt az állapotmodellt indukálja, a folyamat szimulációját pedig visszavezettük a fent konstruált állapotmodell szimulációra. A szimuláció eredményeképpen \aref{fig:szintaxis/szekvencia-ido}. ábrán látható idődiagramhoz hasonló eredményt kapunk.
  \remofigscalefixed{szintaxis/szekvencia-ido}{Szekvencia időbeli lefutása}{\folyamatmodellscale}
 
 
-\subsection{Folyamatpéldányok}
-TODO legyen folyamat kezdete és vége
+
+\subsection{Elágazás, őrfeltétel}
+Azt is ki lehet fejezni megfelelő folyamatmodellel, ha nem minden lefutás ugyanazokat a tevékenységeket hajtja végre. Ilyen elágazások modellezésére szolgál a \fogalom{decision-node}, amely az első általunk megismert \fogalom{vezerlesi-elem} a folyamatmodellben.
 
 \begin{pelda}
-Vegyük ismét példának \aref{fig:szintaxis/szekvencia}. ábrán látható folyamatmodellt, és szimuláljuk. Ahogy \aref{fig:szintaxis/szekvencia-ido}. ábra idődiagramja is mutatja, a szimuláció alatt sorban a következő események következtek be: \begin{enumerate}
-  \item A \emph{Compile} tevékenység elkezdődik.
-  \item A \emph{Compile} tevékenység befejeződik.
-  \item A \emph{Link} tevékenység elkezdődik.
-  \item A \emph{Link} tevékenység befejeződik.
-\end{enumerate}
+Bizonyos fájlokra a C fordítót, másokra a C++ fordítót kell meghívni. Ezt \aref{fig:szintaxis/elagazas-natur}. ábrán látható folyamatmodell fejezi ki, ahol a rombusz jelképezi a \fogalomragozva{decision-node}{döntési csomópontot (elágazást)}. Ennek a folyamatmodellnek az is érvényes lefutása, ha az egyik fordítót hívjuk meg, és az is, ha a másikat.
+
+A folyamat szimulációja során először a bal oldalról belépő vezérlési élre helyezzük a tokent; ezek után szabadon választhatunk, hogy a döntési csomópontból kilépő élek közül melyikre rakjuk át. A folytatás már a jól ismert módon történik: a tokent először a választott elemi tevékenységre, majd a továbblépő vezérlési élre helyezzük. 
+\end{pelda}
+\remofigscalefixed{szintaxis/elagazas-natur}{Elágazás grafikus szintaxisa}{\folyamatmodellscale}
+
+Természetesen 2 helyett 3, 4, stb. ágú döntési csomópont is elképzelhető.
+
+Az elágazási pontnál bármelyik ágat is választjuk, a folyamatmodell egy érvényes lefutását kapjuk. Másképpen szólva: a modell nem fejezi ki azt az információt, hogy mi alapján dönthető el, melyik esetben melyik lehetőség fog megtörténni. A korábban tanult szóhasználattal élve \fogalomragozva{nemdeterminizmus}{nemdeterminizmust} mutat a modell. Gyakran hasznos így modellezni, pl. ha emberi döntéstől függ a választás; vagy bármilyen egyéb esetben, ha vagy nincs rálátásunk a döntést meghatározó tényezőkre, vagy a modellezés jelenlegi absztrakciós szintjén a szükséges részleteket el akarjuk hanyagolni. 
+
+Gyakran esetekben azonban a rendszermodellünkben elérhető olyan információ, amely meghatározza, hogy a folyamat végrehajtása melyik ágon történhet, determinisztikussá téve a választást. Más modelleknél erről nincs szó, de a rendelkezésre álló információ alapján legalább időnként csökkenthető a választási lehetőségek száma. Mindkét esetben a szoros értelemben vett folyamatmodellen kívüli tudás alapján kizárjuk a döntés után előálló ágak némelyikét; erre pedig (az állapotgépekhez hasonló módon) az ún. \fogalom{orfeltetel} szolgál. 
+
+\begin{pelda}
+Elérhető az \code{ext} karakterlánc, amely a fodítandó forrásfájl kiterjesztését adja meg. Ez alapján minden esetben eldönthető, hogy melyik nyelv fordítóprogramját kell végrehajtani. \Aref{fig:szintaxis/elagazas-orfeltetel}. ábrán látható folyamatmodell őrfeltételekkel fejezi ezt ki.
 \end{pelda}
 
+\remofigscalefixed{szintaxis/elagazas-orfeltetel}{Elágazás grafikus szintaxisa őrfeltételekkel}{\folyamatmodellscale}
 
-Ha egy folyamatmodellt szimulálunk (például a fent bemutatott manuális módszerrel, token mozgatásával), akkor a folyamat egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamat-peldany}{folyamatpéldányainak} nevezzük. A folyamatpéldány tulajdonképpen események sorozata. Ezen események a folyamatot alkotó elemi tevékenységek kezdetét és befejezését jelzik, illetve az egész folyamat kezdetét és befejezését. A folyamatmodell voltaképp ezen eseményeket azonosítja, és lehetséges sorrendjükre tesz megkötéseket.
+A korábban bevezetett fogalmaknak megfelelően akkor determinisztikus a folyamatmodell, ha minden egyes elágazás minden végrehajtásánál kizárják egymást az őrfeltételek; és akkor teljesen specifikált, ha minden egyes elágazás minden végrehajtásánál az őrfeltételek legalább egyike mindig teljesül. Ha nincsenek őrfeltételek megadva, az úgy tekintendő, mintha az állandó ``[igaz]'' őrfeltételt alkalmaztuk volna.
 
-\begin{definicio}
-	Egy folyamatmodellhez tartozó \fogalom{folyamat-peldany} olyan diszkrét eseménysor, amelyet a következő jellegű események alkotják, a folyamatmodell által megszabott időrendben: 	\begin{itemize}
-	  \item a folyamat kezdete,
-	  \item a folyamatot alkotó egyik tevékenység kezdete, 
-	  \item a folyamatot alkotó egyik tevékenység vége, 
-	  \item a folyamat vége.
-	\end{itemize}
-\end{definicio}
+\subsection{Merge (besorolódás)}
+Gyakran egy elágazás különböző ágai egy adott ponton túl egyformán folytatódnak. Ennek kifejezésére szolgál egy újabb vezérlési elem, a \fogalom{merge-node}. Sajnos nem terjedt el rá frappáns magyar név, így leggyakrabban az angol merge szót használjuk.
 
-A folyamatmodellek és folyamatpéldányok közti viszony nyilván akkor lesz izgalmas, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, egymás után vagy akár részben átlapolódva. Az egyszerre végrehajtott folyamatpéldányokat úgy lehet szimulálni, hogy minden folyamatpéldányhoz egy-egy tokent rendelünk, amelyik a példány pillanatnyi állapotát jellemzi; ezután az összes tokent felrakjuk a folyamat diagramjára, és külön-külön léptetgetjük őket.  \iflabeldef{cha:teljesitmenymodellezes}{\Aref{cha:teljesitmenymodellezes}.}{A \emph{Teljesítménymodellezés}} fejezetben kifejezetten azzal az esettel foglalkozunk majd, amikor ugyanaz a folyamat egyszerre nagyon sok példányban fut. Ilyen esetben a szimuláció során nem is érdemes a tokenekkel egyenként vesződni; csak azt tartjuk számon, hogy hány token tartózkodik éppen a diagram egy adott pontján.
+\begin{pelda}
+Akár C, akár C++ nyelvű forrásfájt fordítottunk le, utána mindenképp a linkelés következik. \Aref{fig:szintaxis/elagazas-orfeltetel-merge}. ábrán feltüntetett merge csomópont (rajzjele egyezik a döntési csomópontéval) éppen ezt fejezi ki. A modell szimulációjakor, miután az egyik fordítási tevékenységet végrehajtottuk, a token a merge csomópontba mutató nyilak egyikén áll; ezután egyszerűen átmozgathatjuk a merge csomópont túloldalára, hogy utána már a \emph{Link} tevékenység végrehajtása következhessen. Akármelyik ágról is érkezik a token, a merge csomópont után ugyanazon kimenő vezérlési élre kerül; ez ahhoz hasonlatos, mint amikor a közúti forgalomban egy közlekedési sáv megszűnésekor két járműoszlopból is ugyanabba a sávba sorolódnak be a járművek. \Aref{fig:szintaxis/elagazas-orfeltetel-merge-ido}. ábra idődiagramon mutat be két eltérő lefutást.  
+\end{pelda}
 
+\remofigscalefixed{szintaxis/elagazas-orfeltetel-merge}{Elágazás és merge (besorolódás) grafikus szintaxisa}{\folyamatmodellscale}
 
-\begin{definicio}
-	\fogalom{elagazas}
-\end{definicio}
-
-\begin{definicio}
-	\fogalom{orfeltetel}
-\end{definicio}
-
-\remofigscalefixed{szintaxis/elagazas}{Elágazás grafikus szintaxisa őrfeltételekkel}{\folyamatmodellscale}
-
-Szemantika:
-
-o Csak az egyik ág hajtódik végre
-
-o Nemdeterminizmus lehetséges: átlapolódó őrfeltételek esetén vagy egyszerűen akkor, ha nincsenek őrfeltételek.
+\remofigscalefixed{szintaxis/elagazas-orfeltetel-merge-ido}{Elágazás és merge (besorolódás) kétféle lefutása idődiagramon}{\folyamatmodellscale}
 
 
-Szemantika:
+Természetesen a többágú döntési csomópont mintájára többágú merge is elképzelhető. További különleges eset, ha a döntési és merge csomópontok között valamelyik ágon csak egy üres vezérlési él vezet, semmilyen tevékenység nem hajtódik végre; ilyet akkor használunk, ha egy tevékenység végrehajtása opcionális, vagy egy döntés valamilyen kimenetele esetén nincs teendő.
 
-o Nem meghatározott végrehajtási sorrend
+\begin{pelda}
+Valójában csak olyankor kell lefordítani egy forrásállományt, ha a fordítóprogram utolsó végrehajtása óta módosult; egyéb esetben a régi tárgykódot meghagyva a fordítási lépés kihagyható. Ilyen elven épített folyamatot mutat be \aref{fig:szintaxis/elagazas-ures}. ábra.  
+\end{pelda}
 
-o Párhuzamos / átlapolt végrehajtás is lehet
+\remofigscalefixed{szintaxis/elagazas-ures}{Elágazás üres ággal}{\folyamatmodellscale}
 
-Részletesen a \szgarch tárgyban.
 
-\begin{definicio}
-	\fogalom{ciklus}
-\end{definicio}
+\subsection{Ciklus}
+Ha már megismertük a döntés és merge vezérlési elemeket, akkor építhetünk velük \fogalom{ciklus}t, amely a folyamat egy részletét többször is képes ismételni. 
+
+\begin{pelda}
+\Aref{fig:szintaxis/ciklus}. ábra olyan folyamatot mutat be, ahol a fordítás után megvizsgáljuk, találtunk-e fordítási hibát; amennyiben van hiba, akkor azt megpróbáljuk kijavítani, és újrafordítjuk az állományt. Előfordul, hogy továbbra is vannak hibák, ekkor ismét a kód szerkesztése és újrafordítás következik. Ezek a tevékenységek mindaddig ismétlődnek, amíg 
+\end{pelda}
 
 \remofigscalefixed{szintaxis/ciklus}{Ciklus grafikus szintaxisa}{\folyamatmodellscale}
 
 \begin{definicio}
-	\fogalom{fork}, \fogalom{join}
+	A \fogalom{ciklus} olyan folyamatmodell (részlet), amelyben egy elágazás valamelyik ágán az elágazást \emph{megelőző} merge csomópontba jutunk vissza.
+\end{definicio} 
+Nem nehéz végiggondolni, hogy ciklikus folyamatok futásakor ezek a vezérlési csomópontok többször is érinthetőek. Próbáljuk ezt a fenti példán a tokenes kézi szimuláció módszerével kipróbálni!
+
+\subsection{Konkurrens viselkedés}
+
+\begin{definicio}
+	\fogalom{fork-node}, \fogalom{join-node}
 \end{definicio}
 
 \remofigscalefixed{szintaxis/fork-join}{Fork és join}{\folyamatmodellscale}
+
+
+\subsection{Teljes folyamatok}
+
 
 \begin{definicio}
 	\fogalom{flow-begin}, \fogalom{flow-end}
@@ -188,6 +193,7 @@ Részletesen a \szgarch tárgyban.
 
 \remofigscalefixed{szintaxis/flow-begin-flow-end}{Flow begin és flow end grafikus szintaxisa}{\folyamatmodellscale}
 
+\subsection{Hierarchikus folyamatmodellek}
 
 \begin{definicio}
 	\fogalom{hierarchia}
@@ -217,13 +223,50 @@ Beágyazható a “főfolyamatba”, ha helyes a finomítás, azaz
 • (Input/output konzisztencia)
 
 
+\subsection{Folyamatpéldányok}
+TODO ábra igazít
+
+\begin{pelda}
+Vegyük példának \aref{fig:szintaxis/szekvencia-beginend}. ábrán látható folyamatmodellt, és szimuláljuk. Ahogy \aref{fig:szintaxis/szekvencia-beginend-ido}. ábra idődiagramja is mutatja, a szimuláció alatt sorban a következő események következtek be: \begin{enumerate}
+  \item A \emph{Build} folyamat elkezdődik.
+  \item A \emph{Compile} tevékenység elkezdődik.
+  \item A \emph{Compile} tevékenység befejeződik.
+  \item A \emph{Link} tevékenység elkezdődik.
+  \item A \emph{Link} tevékenység befejeződik.
+  \item A \emph{Build} folyamat befejeződik.
+\end{enumerate}
+\end{pelda}
+
+% \remofigscalefixed{szintaxis/szekvencia-hivott}{Szekvenciális folyamat grafikus szintaxisa}{\folyamatmodellscale}
+%  \remofigscalefixed{szintaxis/szekvencia-hivott-ido}{Szekvenciális folyamat időbeli lefutása}{\folyamatmodellscale}
+
+Ha egy folyamatmodellt szimulálunk (például a korábban bemutatott manuális módszerrel, token mozgatásával), akkor a folyamat egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamat-peldany}{folyamatpéldányainak} nevezzük. A folyamatpéldány olyan események sorozata, amelyek a folyamatot alkotó elemi tevékenységek kezdetét és befejezését jelzik, illetve az egész folyamat kezdetét és befejezését. A folyamatmodell szemantikája voltaképp az, hogy ezen eseményeket azonosítja, és lehetséges sorrendjükre tesz megkötéseket.
+
+\begin{definicio}
+	Egy folyamatmodellhez tartozó \fogalom{folyamat-peldany} olyan diszkrét eseménysor, amelyet a következő jellegű események alkotják, a folyamatmodell által megszabott időrendben: 	\begin{itemize}
+	  \item a folyamat kezdete,
+	  \item a folyamatot alkotó egyik tevékenység kezdete, 
+	  \item a folyamatot alkotó egyik tevékenység vége, 
+	  \item a folyamat vége.
+	\end{itemize}
+\end{definicio}
+
+A folyamatmodellek és folyamatpéldányok közti viszony nyilván akkor lesz izgalmas, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, egymás után vagy akár részben átlapolódva. Az egyszerre végrehajtott folyamatpéldányokat úgy lehet szimulálni, hogy minden folyamatpéldányhoz egy-egy tokent rendelünk, amelyik a példány pillanatnyi állapotát jellemzi; ezután az összes tokent felrakjuk a folyamat diagramjára, és külön-külön léptetgetjük őket.  \iflabeldef{cha:teljesitmenymodellezes}{\Aref{cha:teljesitmenymodellezes}.}{A \emph{Teljesítménymodellezés}} fejezetben kifejezetten azzal az esettel foglalkozunk majd, amikor ugyanaz a folyamat egyszerre nagyon sok példányban fut. Ilyen esetben a szimuláció során nem is érdemes a tokenekkel egyenként vesződni; csak azt tartjuk számon, hogy hány token tartózkodik éppen a diagram egy adott pontján.
+
+
+
+\section{Rokon formalizmusok}
+
+\subsection{Döntési diagramok}
+
 \fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
 
 \fogalom{dontesi-diagram} (\fogalomangolul{dontesi-diagram})
 
-
-
 \fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
+
+\subsection{Programok vezérlési folyama}
+
 
 \fogalom{vezerlesi-folyam}
 
@@ -235,11 +278,11 @@ Beágyazható a “főfolyamatba”, ha helyes a finomítás, azaz
 
 
 
-\section{Vezérlési folyamok folyamatmodelljei}
+%\section{Vezérlési folyamok folyamatmodelljei}
 
 
 
-\subsection{Leképzés}
+\subsubsection{Leképzés}
 
 \begin{minipage}{\balhasab}
 \begin{lstlisting}
@@ -277,7 +320,7 @@ else
 	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-03}{\folyamatmodellscale}
 \end{minipage}
 
-\subsection{Összetett példa ábrázolása}
+\subsubsection{Összetett példa ábrázolása}
 
 \begin{minipage}{\balhasab}
 \begin{lstlisting}
@@ -405,18 +448,10 @@ int choose(int n, int k) {
 
 
 
-\section{Formalizmusok}
+\section{Folyamatmodellezés a gyakorlatban}
 
-Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
-
-\rovidites{UML}~\cite{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
-
-\rovidites{BPMN}~\cite{omg2011bpmn}
-
-%\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
-
-
-
+\subsection{Modellezés több aspektus szerint}
+TODO Autógyáras-futószalagos példa.
 
 \section{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
@@ -454,20 +489,36 @@ Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőlege
 
 A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon \todo{Ezt így nem biztos, hogy érthető lesz. Ötlet: "kivezetnek a jólstrukturált modellek közül". Én beleírnám, hogy a "break" parancs is ilyen. Egyébként a "return" gyakran kifejezetten átláthatóbbá teszi a kódot (az indentáció csökkentésével), ezt is beleszőhetjük lábjegyzetbe.}; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.
 
-\section{Adatfolyamhálók}
+% \section{Adatfolyamhálók}
+% 
+% \fogalom{adatfolyam} \rovidites{DFN}
+% 
+% \fogalom{tevekenyseg}
 
-\fogalom{adatfolyam} \rovidites{DFN}
+% 
+% 
+% 
+% \fogalom{folyamatmotor} (\fogalomangolul{folyamatmotor})
+% 
+% \newcommand{\prioritas}{\pi}
+% \newcommand{\tuple}[1]{\langle #1 \rangle}
+% 
+% tüzelések: $\tuple{s_0; \mathrm{in} = c_0; s_1; \mathrm{out} = c_2; \prioritas}$
+% 
+% adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
 
-\fogalom{tevekenyseg}
 
-\fogalom{folyamatmotor} (\fogalomangolul{folyamatmotor})
+\section{Formalizmusok}
 
-\newcommand{\prioritas}{\pi}
-\newcommand{\tuple}[1]{\langle #1 \rangle}
+Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
 
-tüzelések: $\tuple{s_0; \mathrm{in} = c_0; s_1; \mathrm{out} = c_2; \prioritas}$
+\rovidites{UML}~\cite{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
 
-adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
+\rovidites{BPMN}~\cite{omg2011bpmn}
+
+%\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
+
+
 
 \section{Kitekintés\kieg}
 
