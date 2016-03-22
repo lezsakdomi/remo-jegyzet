@@ -108,23 +108,42 @@ Hogyan szimulálhatjuk a szekvenciánk működését? Ha \aref{fig:szintaxis/sze
   \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.
 \end{itemize}
 Ha belegondolunk, a tokennel valójában  a következő állapotteret jártuk be: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamat tehát ezt az állapotmodellt indukálja.
+  \item Harmadszor is mozgatva a tokent, elkezdhetjük a \emph{Link} tevékenységet.  
+  \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.  
+\end{itemize}   
 \end{pelda}
 
 Ha a folyamatot (például a fenti példához hasonlóan token mozgatásával) szimuláljuk, egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamatpeldany}{folyamatpéldányainak} nevezzük. Ez nyilván akkor lesz izgalmas fogalom, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször,
-
-TODO lefutás
-
-TODO példány, sok példány
+Ha belegondolunk, a tokennel valójában a végrehajtás pillanatnyi állapotát jelöltük ki, és a következő állapotteret jártuk be vele: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamatmodell tehát ezt az állapotmodellt indukálja, a folyamat szimulációját pedig visszavezettük a fent konstruált állapotmodell szimulációra. A szimuláció eredményeképpen \aref{fig:szintaxis/szekvencia-ido}. ábrán látható idődiagramhoz hasonló eredményt kapunk.
+ \remofigscalefixed{szintaxis/szekvencia-ido}{Szekvencia időbeli lefutása}{\folyamatmodellscale}
 
 
+\subsection{Folyamatpéldányok}
+TODO legyen folyamat kezdete és vége
+
+\begin{pelda}
+Vegyük ismét példának \aref{fig:szintaxis/szekvencia}. ábrán látható folyamatmodellt, és szimuláljuk. Ahogy \aref{fig:szintaxis/szekvencia-ido}. ábra idődiagramja is mutatja, a szimuláció alatt sorban a következő események következtek be: \begin{enumerate}
+  \item A \emph{Compile} tevékenység elkezdődik.
+  \item A \emph{Compile} tevékenység befejeződik.
+  \item A \emph{Link} tevékenység elkezdődik.
+  \item A \emph{Link} tevékenység befejeződik.
+\end{enumerate}
+\end{pelda}
 
 
-% \begin{definicio}
-% 	\fogalom{szekvencia}
-% \end{definicio}
+Ha egy folyamatmodellt szimulálunk (például a fent bemutatott manuális módszerrel, token mozgatásával), akkor a folyamat egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamat-peldany}{folyamatpéldányainak} nevezzük. A folyamatpéldány tulajdonképpen események sorozata. Ezen események a folyamatot alkotó elemi tevékenységek kezdetét és befejezését jelzik, illetve az egész folyamat kezdetét és befejezését. A folyamatmodell voltaképp ezen eseményeket azonosítja, és lehetséges sorrendjükre tesz megkötéseket.
 
+\begin{definicio}
+	Egy folyamatmodellhez tartozó \fogalom{folyamat-peldany} olyan diszkrét eseménysor, amelyet a következő jellegű események alkotják, a folyamatmodell által megszabott időrendben: 	\begin{itemize}
+	  \item a folyamat kezdete,
+	  \item a folyamatot alkotó egyik tevékenység kezdete, 
+	  \item a folyamatot alkotó egyik tevékenység vége, 
+	  \item a folyamat vége.
+	\end{itemize}
+\end{definicio}
 
-\remofigscalefixed{szintaxis/szekvencia-ido}{Szekvencia időbeli lefutása}{\folyamatmodellscale}
+A folyamatmodellek és folyamatpéldányok közti viszony nyilván akkor lesz izgalmas, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, egymás után vagy akár részben átlapolódva. Az egyszerre végrehajtott folyamatpéldányokat úgy lehet szimulálni, hogy minden folyamatpéldányhoz egy-egy tokent rendelünk, amelyik a példány pillanatnyi állapotát jellemzi; ezután az összes tokent felrakjuk a folyamat diagramjára, és külön-külön léptetgetjük őket.  \iflabeldef{cha:teljesitmenymodellezes}{\Aref{cha:teljesitmenymodellezes}.}{A \emph{Teljesítménymodellezés}} fejezetben kifejezetten azzal az esettel foglalkozunk majd, amikor ugyanaz a folyamat egyszerre nagyon sok példányban fut. Ilyen esetben a szimuláció során nem is érdemes a tokenekkel egyenként vesződni; csak azt tartjuk számon, hogy hány token tartózkodik éppen a diagram egy adott pontján.
+
 
 \begin{definicio}
 	\fogalom{elagazas}
