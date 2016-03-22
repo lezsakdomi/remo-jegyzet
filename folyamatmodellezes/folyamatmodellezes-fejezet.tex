@@ -16,17 +16,17 @@
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/04-folyamatmodellezes.pdf
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/05-bpmn-dfn.pdf
 
-Autómegosztó szolgáltatásban egy fuvar rendeléséhez, banki ügyintézés esetén a hitelbírálathoz, egyetemi környezetben egy tárgy felvételéhez egy jól meghatározott \fogalom{folyamat} tartozik. Amennyiben ezeket digitálisan szeretnénk végezni, fontos, hogy a folyamatokat precízen definiáljuk.
+Az informatikában és azon kívül is számos esetben találkozunk olyan viselkedéssel, amikor megadott tevékenységek megadott sorrendben zajlanak. Például egy autómegosztó szolgáltatásban egy fuvar rendeléséhez, banki ügyintézés esetén a hitelbírálathoz, egyetemi környezetben egy tárgy felvételéhez egy jól meghatározott \fogalom{folyamat} tartozik. Amennyiben ezeket digitálisan szeretnénk végezni, fontos, hogy a folyamatokat precízen definiáljuk.
 
-A folyamatmodelleket széleskörűen használják, többek között az informatikában rendszerek működtetésére, protokollok specifikációjára, adatelemzési folyamatok specifikálására.
+A folyamatmodelleket széleskörűen használják, többek között az informatikában rendszerek működtetésére, protokollok specifikációjára, adatelemzési folyamatok specifikálására. Látni fogjuk, hogy a szoftverek programkódjának elemzése is folyamatmodellre vezet.
 
 \section{Folyamatok}
 
 A \fogalomragozva{viselkedes-alapu-modellezes}{viselkedési modellek} a rendszer viselkedését többféle aspektusból jellemezhetik:
 
 \begin{itemize}
-	\item Az \fogalomragozva{allapot-alapu-modellezes}{állapot alapú modellek} esetén a rendszereket az \fogalomragozva{allapot}{állapotukkal} jellemezzük, ami meghatározza, hogy a rendszerünk egy adott időpillanatban ,,milyen'' és ,,hogyan változhat''? Ezekkel a modellekkel bővebben  \iflabeldef{sec:allapot-alapu-modellezes}{\Aref{sec:allapot-alapu-modellezes}.}{\emph{Állapot alapú modellezés}} fejezetben foglalkoztunk.
-	\item A \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer, milyen módon jellemezhető a rendszerben az adatok és a vezérlés áramlása.
+	\item Az \fogalomragozva{allapot-alapu-modellezes}{állapot alapú modellek} esetén a rendszereket az \fogalomragozva{allapot}{állapotukkal} jellemezzük. Az állapotgép alapú viselkedésmodell arra válaszol, hogy ,,miként változhat'' a rendszer. Másként fogalmazva: a modell elsődlegesen arra összpontosít, hogy milyen állapotokban lelhető fel a rendszer (és nevekkel látja el az állapotokat), ill. milyen hatásokra mely állapotból mely állapotokba léphet át. Az másodlagosnak tekinthető, hogy ez a változás részletesebben megvizsgálva hogyan zajlik le, ezért a modell azt az egyszerűsítést alkalmazza, hogy az állapotátmenetek pillanatszerű események. Ilyen állapot alapú modellekkel bővebben  \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.}{\emph{Állapot alapú modellezés}} fejezetben foglalkoztunk.
+	\item Ezzel szemben a \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer. A tevékenységeknek időbeli kiterjedést tulajdonítunk (ahelyett, hogy pillanatszerűvé egyszerűsítenénk őket), és azt vizsgáljuk, hogy mely tevékenységek végezhetőek el más tevékenységek előtt vagy után, esetleg velük átlapolódva. Ugyan a rendszer állapotainak jellemzése (adott időpontban mely tevékenységek vannak folyamatban, fejeződtek már be, stb.) implicit módon kikövetkeztethető a folyamatmodellből, de ez mintegy másodlagos; a modell a folyamatot alkotó tevékenységeknek ad nevet, és ezek viszonyának megadását várjuk el a modellezőtől.
 \end{itemize}
 
 \begin{megjegyzes}
@@ -55,31 +55,74 @@ TODO: IDEF-0 ábra
 A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jellemezzük.
 
 \begin{definicio}
-	A \fogalom{folyamat} lépések sorozata, melyek sorrendben történő végrehajtása valamilyen célra vezet.
+	A \fogalom{folyamat} tevékenységek összessége, melyek adott rendben történő végrehajtása valamilyen célra vezet.
 \end{definicio}
 
 \section{A folyamatmodellek építőkövei}
 
 Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus jelölését és szemantikáját.
 
+
+\subsection{Elemi tevékenység}
+
+Mielőtt valódi folyamatmodelleket vizsgálnánk, először meg kell ismerkednünk azzal az esettel, amikor valamilyen viselkedés részleteit \emph{nem} modellezzük folyamatként. 
+
+\begin{pelda}
+Szoftverünk C nyelvű forráskódjából futtatható programot szeretnénk előállítani; ennek egyik lépéseként egy konkrét forrásállományt le kell fordítanunk (\emph{compile}) a fordítóprogram segítségével. Mivel a fordítóprogramot nem mi készítjük, ezért nem szükséges részleteiben vizsgálnunk, hogy milyen lépésekből áll a futása. Így tehát azt mondhatjuk, hogy a fordítóprogram futása egy \fogalom{elemi-tevekenyseg}; valamikor el fog kezdődni, utána némi idővel be fog fejeződni, és nem részletezzük, hogy közben mi történik. Ebben a jegyzetben \aref{fig:szintaxis/elemi-tevekenyseg}. ábrán láthatóhoz hasonló rajzjelekkel fogjuk a hasonló elemi tevékenységeket jelölni. 
+\end{pelda}
+
 \begin{definicio}
-	\fogalom{elemi-tevekenyseg} \fogalom{atomi}
+	Az \fogalom{elemi-tevekenyseg} olyan időbeli kiterjedéssel rendelkező tevékenység, amelynek a megkezdésén és befejezésén túl további részleteit nem modellezzük. 
 \end{definicio}
 
 \remofigscalefixed{szintaxis/elemi-tevekenyseg}{Elemi tevékenység grafikus szintaxisa}{\folyamatmodellscale}
 
-\remofigscalefixed{szintaxis/elemi-tevekenyseg-ido}{Elemi tevékenység időbeli lefutása}{\folyamatmodellscale}
+\begin{pelda}
+Mit is értünk azalatt, hogy a fordítóprogram futtatása időbeli kiterjedéssel bír? Ahogy \aref{fig:szintaxis/elemi-tevekenyseg-ido}. ábrán látható idődiagram is illusztrálja, kezdetben a tevékenység nem fut. Valamikor a működés során eljön a tevékenység kezdete - ezt egy pillatanszerű eseményként modellezzük; utána úgy tekinthető, hogy a fordítás tevékenység \emph{folyamatban van}. Később eljön az az idő, amikor a fordítás befejeződik; ez egy újabb pillanatszerű esemény, amely után az elemi tevékenység már nincs folyamatban, befejezettnek tekinthető.    
+\end{pelda}
 
+\remofigscalefixed{szintaxis/elemi-tevekenyseg-ido}{Elemi tevékenység időbeli lefutása idődiagramon}{\folyamatmodellscale}
+
+Ahogy a fenti példa is illusztrálja, minden elemi tevékenység önmagában egy háromelemű állapotteret határoz meg: $\{$még nem kezdődött el, folyamatban van, már befejeződött$\}$; később az összetett folyamatmodellek állapotteréről is lesz szó. Látható, hogy az elemi tevékenység is leírható a korábban tanult állapotmodellezési eszköztárral; ebben az esetben viszont más a modell fókusza, más elemeket tartunk elnevezésre és vizsgálatra érdemesnek. 
 
 \begin{megjegyzes}
-	Az \fogalom{atomi-muvelet} (\fogalomangolul{atomi-muvelet})
+	Bizonyos források \fogalom{atomi} tevékenység vagy lépés néven hivatkoznak ugyanerre az \fogalom{elemi-tevekenyseg} fogalomra, de ebben a jegyzetben ezt kerüljük. Ellenkező esetben összekeverhető lenne  egy hasonló nevű másik fogalommal: az \fogalom{atomi-muvelet} (\fogalomangolul{atomi-muvelet}) kifejezetten a pillanatszerűnek tekinthető, időbeli kiterjedés nélkül modellezett tevékenységekre utal. Az atomokhoz hasonlóan az atomi művelet nem osztható: vagy el se kezdődött, vagy már befejeződött, de nem találhatjuk magunkat olyan időpillanatban, amikor részben már lezajlott, de még folyamatban van. Ezzel szemben az elemi tevékenység időbeli kiterjedéssel bír, és a modell megenged olyan időpontot, amikor épp folyamatban van; még ha nem is részletezi, a tevékenység mely elemei milyen készültségi fokon vannak. A tevékenységek kezdetét és befejezését viszont már atominak, pillanatszerűnek tekintjük.
 \end{megjegyzes}
 
-\begin{definicio}
-	\fogalom{szekvencia}
-\end{definicio}
+\subsection{Szekvencia}
+Ha a modelljeink csak egymástól izolált elemi tevékenységeket tartalmaznának, nem sok hasznos tudást fejeznének ki. A folyamatmodellek igazi erőssége, hogy a tevékenységekből \fogalomragozva{folyamat}{folyamatot} építenek fel, amely azt fejezi ki, hogy az egyes tevékenységek egymáshoz viszonyítva mikor hajthatóak végre. A legegyszerűbb ilyen konstrukció a \fogalom{szekvencia}.
 
+\begin{pelda}
+Az ipari gyakorlatban egy C program forráskódja tipikusan nem csak egyetlen fájlból áll. Miután egy C forrásfájlt tárgykóddá fordítunk, utána össze kell \emph{linkelni} más tárgykódokkal (korábban lefordított forrásállományok, függvénykönyvtárak), hogy végül megkapjuk a futtatható állományt. Így tehát a következő folyamatot kell elvégezni: először a fordítás elemi tevékenységet kell végrehajtani, majd annak befejezte után kezdhető meg a linkelés. \Aref{fig:szintaxis/szekvencia}. ábrán ennek a \fogalomragozva{szekvencia}{szekvenciának} a jelölését látjuk; a szaggatott nyíl rákövetkezést jelöl, tehát hogy a \emph{Compile} tevékenység vége után kezdhető meg a \emph{Link}.  
+\end{pelda}
 \remofigscalefixed{szintaxis/szekvencia}{Szekvencia grafikus szintaxisa}{\folyamatmodellscale}
+
+A következőkben több külön módszerrel értelmezzük a \fogalom{szekvencia} szemantikáját. Bár ez a vizsgálat feleslegesen alaposnak és szájbarágósnak tűnhet (``ágyúval verébre''), de a később előkerülő összetettebb folyamatmodell-konstrukciók megértését nagymértékben segíti.
+
+\begin{pelda}
+Hogyan szimulálhatjuk a szekvenciánk működését? Ha \aref{fig:szintaxis/szekvencia}. ábrán látható folyamatdiagramot kinyomtatjuk, és a papírra helyezünk egy régi egyforintost (vagy csavaranyát, vagy bármely egyéb jelölőt, amelyet a továbbiakban a \fogalom{token} névvel illetjük), akkor az ábra alapján könnyen követhetjük a folyamat működését. \begin{itemize}
+  \item Helyezzük kezdetben a tokent az ábra bal szélén belépő szaggatott nyílra! Mivel a token nem tevékenységen áll, ezért ez úgy értelmezzük, hogy nem fut jelenleg egyik feltüntetett elemi tevékenység se.
+  \item Csúsztassuk ujjunkkal kissé arrébb a tokent. Kövessük nyilat, tehát kerüljön a token a \emph{Compile} tevékenységre! Amíg a tevékenység rajzjelén áll a token, úgy tekintjük, hogy a tevékenység folyamatban van.    
+  \item Amikor a nyilak irányában ismét továbbmozgatjuk, a token a két tevékenység közötti szaggatott nyílszakaszra kerül. Ekkor az első tevékenység már nem fut, tehát befejeződött; ugyanakkor a második tevékenység még nem kezdődött el.
+  \item Harmadszor is mozgatva a tokent, elkezdhetjük a \emph{Link} tevékenységet.  
+  \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.  
+\end{itemize}   
+Ha belegondolunk, a tokennel valójában  a következő állapotteret jártuk be: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamat tehát ezt az állapotmodellt indukálja. 
+\end{pelda}
+
+Ha a folyamatot (például a fenti példához hasonlóan token mozgatásával) szimuláljuk, egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamatpeldany}{folyamatpéldányainak} nevezzük. Ez nyilván akkor lesz izgalmas fogalom, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, 
+
+TODO lefutás
+
+TODO példány, sok példány
+
+
+
+
+% \begin{definicio}
+% 	\fogalom{szekvencia}
+% \end{definicio}
+
 
 \remofigscalefixed{szintaxis/szekvencia-ido}{Szekvencia időbeli lefutása}{\folyamatmodellscale}
 

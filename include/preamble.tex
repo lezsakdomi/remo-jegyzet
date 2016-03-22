@@ -1,3 +1,19 @@
+%\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage{textcomp}
+% \usepackage{lmodern}
+\usepackage{fontspec}
+\usepackage[magyar]{babel}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+	% bookmarks=true,            % show bookmarks bar?
+	unicode=true,              % non-Latin characters in Acrobat's bookmarks
+}
+
 % http://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters
 \usepackage[raggedright]{titlesec}
 %\titlespacing*{\chapter} {0pt}{50pt}{40pt}
@@ -22,9 +38,7 @@
 \usepackage{amssymb,amsmath,amsthm}
 \usepackage{graphicx,xcolor}
 \usepackage{listings}
-\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
-%\usepackage[hidelinks]{hyperref}
-\usepackage[magyar]{babel}
+
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{tabularx}
@@ -52,7 +66,6 @@
 	\usepackage[acronym,nopostdot,shortcuts,nomain,toc]{glossaries}
 }
 \usepackage{skull}
-\usepackage{fancyhdr}
 \usepackage{todonotes}
 \presetkeys{todonotes}{inline,backgroundcolor=yellow}{}
 \usepackage{etoolbox}
@@ -193,9 +206,9 @@
 	\ifx\footnote\nextToken\textsuperscript{,}\fi}
 
 % load font to support the phonetic alphabet
-\newfontfamily\ipa{DoulosSIL-R.ttf}
-
-\loadglsentries{glossary-entries}
+ \newfontfamily\ipa{DoulosSIL-R.ttf}
+% 
+ \loadglsentries{glossary-entries}
 
 \title{Rendszermodellezés}
 \author{Hibatűrő Rendszerek Kutatócsoport}
