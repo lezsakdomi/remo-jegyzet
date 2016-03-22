@@ -65,25 +65,25 @@ Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus
 
 \subsection{Elemi tevékenység}
 
-Mielőtt valódi folyamatmodelleket vizsgálnánk, először meg kell ismerkednünk azzal az esettel, amikor valamilyen viselkedés részleteit \emph{nem} modellezzük folyamatként. 
+Mielőtt valódi folyamatmodelleket vizsgálnánk, először meg kell ismerkednünk azzal az esettel, amikor valamilyen viselkedés részleteit \emph{nem} modellezzük folyamatként.
 
 \begin{pelda}
-Szoftverünk C nyelvű forráskódjából futtatható programot szeretnénk előállítani; ennek egyik lépéseként egy konkrét forrásállományt le kell fordítanunk (\emph{compile}) a fordítóprogram segítségével. Mivel a fordítóprogramot nem mi készítjük, ezért nem szükséges részleteiben vizsgálnunk, hogy milyen lépésekből áll a futása. Így tehát azt mondhatjuk, hogy a fordítóprogram futása egy \fogalom{elemi-tevekenyseg}; valamikor el fog kezdődni, utána némi idővel be fog fejeződni, és nem részletezzük, hogy közben mi történik. Ebben a jegyzetben \aref{fig:szintaxis/elemi-tevekenyseg}. ábrán láthatóhoz hasonló rajzjelekkel fogjuk a hasonló elemi tevékenységeket jelölni. 
+Szoftverünk C nyelvű forráskódjából futtatható programot szeretnénk előállítani; ennek egyik lépéseként egy konkrét forrásállományt le kell fordítanunk (\emph{compile}) a fordítóprogram segítségével. Mivel a fordítóprogramot nem mi készítjük, ezért nem szükséges részleteiben vizsgálnunk, hogy milyen lépésekből áll a futása. Így tehát azt mondhatjuk, hogy a fordítóprogram futása egy \fogalom{elemi-tevekenyseg}; valamikor el fog kezdődni, utána némi idővel be fog fejeződni, és nem részletezzük, hogy közben mi történik. Ebben a jegyzetben \aref{fig:szintaxis/elemi-tevekenyseg}. ábrán láthatóhoz hasonló rajzjelekkel fogjuk a hasonló elemi tevékenységeket jelölni.
 \end{pelda}
 
 \begin{definicio}
-	Az \fogalom{elemi-tevekenyseg} olyan időbeli kiterjedéssel rendelkező tevékenység, amelynek a megkezdésén és befejezésén túl további részleteit nem modellezzük. 
+	Az \fogalom{elemi-tevekenyseg} olyan időbeli kiterjedéssel rendelkező tevékenység, amelynek a megkezdésén és befejezésén túl további részleteit nem modellezzük.
 \end{definicio}
 
 \remofigscalefixed{szintaxis/elemi-tevekenyseg}{Elemi tevékenység grafikus szintaxisa}{\folyamatmodellscale}
 
 \begin{pelda}
-Mit is értünk azalatt, hogy a fordítóprogram futtatása időbeli kiterjedéssel bír? Ahogy \aref{fig:szintaxis/elemi-tevekenyseg-ido}. ábrán látható idődiagram is illusztrálja, kezdetben a tevékenység nem fut. Valamikor a működés során eljön a tevékenység kezdete - ezt egy pillatanszerű eseményként modellezzük; utána úgy tekinthető, hogy a fordítás tevékenység \emph{folyamatban van}. Később eljön az az idő, amikor a fordítás befejeződik; ez egy újabb pillanatszerű esemény, amely után az elemi tevékenység már nincs folyamatban, befejezettnek tekinthető.    
+Mit is értünk azalatt, hogy a fordítóprogram futtatása időbeli kiterjedéssel bír? Ahogy \aref{fig:szintaxis/elemi-tevekenyseg-ido}. ábrán látható idődiagram is illusztrálja, kezdetben a tevékenység nem fut. Valamikor a működés során eljön a tevékenység kezdete - ezt egy pillatanszerű eseményként modellezzük; utána úgy tekinthető, hogy a fordítás tevékenység \emph{folyamatban van}. Később eljön az az idő, amikor a fordítás befejeződik; ez egy újabb pillanatszerű esemény, amely után az elemi tevékenység már nincs folyamatban, befejezettnek tekinthető.
 \end{pelda}
 
 \remofigscalefixed{szintaxis/elemi-tevekenyseg-ido}{Elemi tevékenység időbeli lefutása idődiagramon}{\folyamatmodellscale}
 
-Ahogy a fenti példa is illusztrálja, minden elemi tevékenység önmagában egy háromelemű állapotteret határoz meg: $\{$még nem kezdődött el, folyamatban van, már befejeződött$\}$; később az összetett folyamatmodellek állapotteréről is lesz szó. Látható, hogy az elemi tevékenység is leírható a korábban tanult állapotmodellezési eszköztárral; ebben az esetben viszont más a modell fókusza, más elemeket tartunk elnevezésre és vizsgálatra érdemesnek. 
+Ahogy a fenti példa is illusztrálja, minden elemi tevékenység önmagában egy háromelemű állapotteret határoz meg: $\{$még nem kezdődött el, folyamatban van, már befejeződött$\}$; később az összetett folyamatmodellek állapotteréről is lesz szó. Látható, hogy az elemi tevékenység is leírható a korábban tanult állapotmodellezési eszköztárral; ebben az esetben viszont más a modell fókusza, más elemeket tartunk elnevezésre és vizsgálatra érdemesnek.
 
 \begin{megjegyzes}
 	Bizonyos források \fogalom{atomi} tevékenység vagy lépés néven hivatkoznak ugyanerre az \fogalom{elemi-tevekenyseg} fogalomra, de ebben a jegyzetben ezt kerüljük. Ellenkező esetben összekeverhető lenne  egy hasonló nevű másik fogalommal: az \fogalom{atomi-muvelet} (\fogalomangolul{atomi-muvelet}) kifejezetten a pillanatszerűnek tekinthető, időbeli kiterjedés nélkül modellezett tevékenységekre utal. Az atomokhoz hasonlóan az atomi művelet nem osztható: vagy el se kezdődött, vagy már befejeződött, de nem találhatjuk magunkat olyan időpillanatban, amikor részben már lezajlott, de még folyamatban van. Ezzel szemben az elemi tevékenység időbeli kiterjedéssel bír, és a modell megenged olyan időpontot, amikor épp folyamatban van; még ha nem is részletezi, a tevékenység mely elemei milyen készültségi fokon vannak. A tevékenységek kezdetét és befejezését viszont már atominak, pillanatszerűnek tekintjük.
@@ -93,7 +93,7 @@ Ahogy a fenti példa is illusztrálja, minden elemi tevékenység önmagában eg
 Ha a modelljeink csak egymástól izolált elemi tevékenységeket tartalmaznának, nem sok hasznos tudást fejeznének ki. A folyamatmodellek igazi erőssége, hogy a tevékenységekből \fogalomragozva{folyamat}{folyamatot} építenek fel, amely azt fejezi ki, hogy az egyes tevékenységek egymáshoz viszonyítva mikor hajthatóak végre. A legegyszerűbb ilyen konstrukció a \fogalom{szekvencia}.
 
 \begin{pelda}
-Az ipari gyakorlatban egy C program forráskódja tipikusan nem csak egyetlen fájlból áll. Miután egy C forrásfájlt tárgykóddá fordítunk, utána össze kell \emph{linkelni} más tárgykódokkal (korábban lefordított forrásállományok, függvénykönyvtárak), hogy végül megkapjuk a futtatható állományt. Így tehát a következő folyamatot kell elvégezni: először a fordítás elemi tevékenységet kell végrehajtani, majd annak befejezte után kezdhető meg a linkelés. \Aref{fig:szintaxis/szekvencia}. ábrán ennek a \fogalomragozva{szekvencia}{szekvenciának} a jelölését látjuk; a szaggatott nyíl rákövetkezést jelöl, tehát hogy a \emph{Compile} tevékenység vége után kezdhető meg a \emph{Link}.  
+Az ipari gyakorlatban egy C program forráskódja tipikusan nem csak egyetlen fájlból áll. Miután egy C forrásfájlt tárgykóddá fordítunk, utána össze kell \emph{linkelni} más tárgykódokkal (korábban lefordított forrásállományok, függvénykönyvtárak), hogy végül megkapjuk a futtatható állományt. Így tehát a következő folyamatot kell elvégezni: először a fordítás elemi tevékenységet kell végrehajtani, majd annak befejezte után kezdhető meg a linkelés. \Aref{fig:szintaxis/szekvencia}. ábrán ennek a \fogalomragozva{szekvencia}{szekvenciának} a jelölését látjuk; a szaggatott nyíl rákövetkezést jelöl, tehát hogy a \emph{Compile} tevékenység vége után kezdhető meg a \emph{Link}.
 \end{pelda}
 \remofigscalefixed{szintaxis/szekvencia}{Szekvencia grafikus szintaxisa}{\folyamatmodellscale}
 
@@ -102,15 +102,15 @@ A következőkben több külön módszerrel értelmezzük a \fogalom{szekvencia}
 \begin{pelda}
 Hogyan szimulálhatjuk a szekvenciánk működését? Ha \aref{fig:szintaxis/szekvencia}. ábrán látható folyamatdiagramot kinyomtatjuk, és a papírra helyezünk egy régi egyforintost (vagy csavaranyát, vagy bármely egyéb jelölőt, amelyet a továbbiakban a \fogalom{token} névvel illetjük), akkor az ábra alapján könnyen követhetjük a folyamat működését. \begin{itemize}
   \item Helyezzük kezdetben a tokent az ábra bal szélén belépő szaggatott nyílra! Mivel a token nem tevékenységen áll, ezért ez úgy értelmezzük, hogy nem fut jelenleg egyik feltüntetett elemi tevékenység se.
-  \item Csúsztassuk ujjunkkal kissé arrébb a tokent. Kövessük nyilat, tehát kerüljön a token a \emph{Compile} tevékenységre! Amíg a tevékenység rajzjelén áll a token, úgy tekintjük, hogy a tevékenység folyamatban van.    
+  \item Csúsztassuk ujjunkkal kissé arrébb a tokent. Kövessük nyilat, tehát kerüljön a token a \emph{Compile} tevékenységre! Amíg a tevékenység rajzjelén áll a token, úgy tekintjük, hogy a tevékenység folyamatban van.
   \item Amikor a nyilak irányában ismét továbbmozgatjuk, a token a két tevékenység közötti szaggatott nyílszakaszra kerül. Ekkor az első tevékenység már nem fut, tehát befejeződött; ugyanakkor a második tevékenység még nem kezdődött el.
-  \item Harmadszor is mozgatva a tokent, elkezdhetjük a \emph{Link} tevékenységet.  
-  \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.  
-\end{itemize}   
-Ha belegondolunk, a tokennel valójában  a következő állapotteret jártuk be: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamat tehát ezt az állapotmodellt indukálja. 
+  \item Harmadszor is mozgatva a tokent, elkezdhetjük a \emph{Link} tevékenységet.
+  \item Végül, az ábra jobb szélén látható nyílra helyezve a tokent, kifejezzük a második tevékenység befejeződését is.
+\end{itemize}
+Ha belegondolunk, a tokennel valójában  a következő állapotteret jártuk be: $\{$ még nem kezdődött el egyik tevékenység sem, \emph{Compile} folyamatban van, \emph{Compile} befejeződött és \emph{Link} még nem kezdődött el, \emph{Link} folyamatban van, befejeződött mindkét tevékenység $\}$. A folyamatmodell határozza meg ezt az öt állapotot, valamint hogy milyen állapotátmenetek megengedettek köztük (jelen esetben csak a felsorolás sorrendjében lehet állapotot váltani). A folyamat tehát ezt az állapotmodellt indukálja.
 \end{pelda}
 
-Ha a folyamatot (például a fenti példához hasonlóan token mozgatásával) szimuláljuk, egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamatpeldany}{folyamatpéldányainak} nevezzük. Ez nyilván akkor lesz izgalmas fogalom, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, 
+Ha a folyamatot (például a fenti példához hasonlóan token mozgatásával) szimuláljuk, egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamatpeldany}{folyamatpéldányainak} nevezzük. Ez nyilván akkor lesz izgalmas fogalom, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször,
 
 TODO lefutás
 
@@ -431,9 +431,9 @@ Amint az a definícióból látszik, egy teljes folyamat lehet úgy jólstruktur
 
 A jólstrukturáltság célja, hogy áttekinthetőbbé tegye a folyamatot, és hogy bizonyos hibalehetőségeket (pl. holtpont) eleve kizárjon. A folyamatmodellekre jellemző hibamintákról később lesz szó; ezek egy jó része jólstrukturált modellnél elő sem fordulhat. Ha a folyamat nem jólstrukturált, akkor külön ellenőrzési eljárásokkal kell kizárni a hibalehetőségeket. Mindemellett nem csak a jólstrukturált folyamatmodellek lehetnek értelmesek; előadáson volt példa nem jólstrukturált, de értelmes folyamatra (ld. ,,Jólstrukturált folyamatok'' c. dia, vagy a gyártósoros példához tartozó ,,Együttes nézet'' c. dia).
 
-Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőleges gráfként megalkotni a vezérlési folyamot, hanem kizárólag jólstrukturált blokkokat lehet létrehozni és más jólstrukturált blokkokból felépíteni. Ilyen nyelv pl. a \rovidites{BPMN} (alap jelkészlete), vagy a programozásoktatásból ismeről Nassi-Shneiderman-féle \fogalom{struktogram}. Ezeken a nyelveken a megkötések miatt bizonyos folyamatokat csak körülményesebben lehet megfogalmazni; cserébe az adott nyelven készített összes folyamatról külön ellenőrzés nélkül tudható, hogy rendelkezik a jólstrukturáltság fent tárgyalt összes előnyével.
+Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőleges gráfként megalkotni a vezérlési folyamot, hanem kizárólag jólstrukturált blokkokat lehet létrehozni és más jólstrukturált blokkokból felépíteni. Ilyen nyelv pl. a \rovidites{BPMN} (alap jelkészlete), vagy a programozásoktatásból ismerős Nassi-Shneiderman-féle \fogalom{struktogram}. Ezeken a nyelveken a megkötések miatt bizonyos folyamatokat csak körülményesebben lehet megfogalmazni; cserébe az adott nyelven készített összes folyamatról külön ellenőrzés nélkül tudható, hogy rendelkezik a jólstrukturáltság fent tárgyalt összes előnyével.
 
-A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.
+A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is folyamatmodell; mit jelent a programokra nézve a jólstrukturáltság? A program vezérlési folyamja akkor lesz jólstrukturált, ha egy belépési és egy kilépési pontja van, és egyszerű utasításokból szekvenciális egymás után fűzéssel áll össze, ill. elágazásokat vagy ciklusokat tartalmaz (ill. megfelelő programozási nyelv/platform esetén akár párhuzamosan végrehajtott blokkokat). A \lstinline{goto}, idő előtti \lstinline{return} és hasonló jellegű ugrások azonban túlmutatnak a jólstrukturáltságon \todo{Ezt így nem biztos, hogy érthető lesz. Ötlet: "kivezetnek a jólstrukturált modellek közül". Én beleírnám, hogy a "break" parancs is ilyen. Egyébként a "return" gyakran kifejezetten átláthatóbbá teszi a kódot (az indentáció csökkentésével), ezt is beleszőhetjük lábjegyzetbe.}; ennek megfelelően könnyen átláthatatlanná tehetik a forráskódot, így mértékletes alkalmazásukat szokták javasolni, lehetőség szerint kerülendők.
 
 \section{Adatfolyamhálók}
 
