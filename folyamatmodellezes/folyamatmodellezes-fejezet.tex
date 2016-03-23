@@ -97,6 +97,11 @@ Az ipari gyakorlatban egy C program forráskódja tipikusan nem csak egyetlen f�
 \end{pelda}
 \remofigscalefixed{szintaxis/szekvencia}{Szekvencia grafikus szintaxisa}{\folyamatmodellscale}
 
+\begin{definicio}
+	A \fogalom{szekvencia} tevékenységek szigorú végrehajtási sorrendjét definiálja.
+\end{definicio}
+
+
 \begin{megjegyzes}
 Ahogy az ábrán is látható, a vezérlési éleket jelen jegyzetben egységesen szaggatott nyíllal jelöljük, de más forrásokban, különböző modellezési nyelvek szabványaiban gyakran jelölik folytonos nyíllal. 
 \end{megjegyzes}
@@ -124,6 +129,10 @@ Ha belegondolunk, a tokennel valójában a végrehajtás pillanatnyi állapotát
 \subsection{Elágazás, őrfeltétel}
 Azt is ki lehet fejezni megfelelő folyamatmodellel, ha nem minden lefutás ugyanazokat a tevékenységeket hajtja végre. Ilyen elágazások modellezésére szolgál a \fogalom{decision-node}, amely az első általunk megismert \fogalom{vezerlesi-elem} a folyamatmodellben.
 
+\begin{definicio}
+	A \fogalom{vezerlesi-elem} olyan csomópont a folyamatban, mely a folyamatmodell tevékenységei közül választ ki egyet vagy többet végrehajtásra.
+\end{definicio}
+
 \begin{pelda}
 Bizonyos fájlokra a C fordítót, másokra a C++ fordítót kell meghívni. Ezt \aref{fig:szintaxis/elagazas-natur}. ábrán látható folyamatmodell fejezi ki, ahol a rombusz jelképezi a \fogalomragozva{decision-node}{döntési csomópontot (elágazást)}. Ennek a folyamatmodellnek az is érvényes lefutása, ha az egyik fordítót hívjuk meg, és az is, ha a másikat.
 
@@ -145,6 +154,12 @@ Elérhető az \code{ext} karakterlánc, amely a fodítandó forrásfájl kiterje
 
 A korábban bevezetett fogalmaknak megfelelően akkor determinisztikus a folyamatmodell, ha minden egyes elágazás minden végrehajtásánál kizárják egymást az őrfeltételek; és akkor teljesen specifikált, ha minden egyes elágazás minden végrehajtásánál az őrfeltételek legalább egyike mindig teljesül. Ha nincsenek őrfeltételek megadva, az úgy tekintendő, mintha az állandó ``[igaz]'' őrfeltételt alkalmaztuk volna.
 
+Összefoglalásként tehát ezt a definíciót alkothatjuk:
+\begin{definicio}
+	A \fogalom{decision-node} olyan csomópont a folyamatban, amely a belé érkező egyetlen vezérlési él hatására a belőle kiinduló \fogalomragozva{ag}{ágak} (vezérlési élek) közül pontosan egyet választ ki végrehajtásra, az esetleges \fogalomragozva{orfeltetel}{őrfeltételekkel} összhangban.
+\end{definicio}
+
+
 \subsection{Merge (besorolódás)}
 Gyakran egy elágazás különböző \fogalomragozva{ag}{ágai} egy adott ponton túl egyformán folytatódnak. Ennek kifejezésére szolgál egy újabb vezérlési elem, a \fogalom{merge-node}. Sajnos nem terjedt el rá frappáns magyar név, így leggyakrabban az angol merge szót használjuk.
 
@@ -156,6 +171,9 @@ Akár C, akár C++ nyelvű forrásfájt fordítottunk le, utána mindenképp a l
 
 \remofigscalefixed{szintaxis/elagazas-orfeltetel-merge-ido}{Elágazás és merge (besorolódás) kétféle lefutása idődiagramon}{\folyamatmodellscale}
 
+\begin{definicio}
+	A \fogalom{merge-node} olyan csomópont a folyamatban, amely a belé érkező \fogalomragozva{ag}{ágak} közül akármelyik végrehajtásakor kiválasztja a belőle kiinduló egyetlen vezérlési élet további végrehajtásra. 
+\end{definicio}
 
 Természetesen a többágú döntési csomópont mintájára többágú merge is elképzelhető. További különleges eset, ha a döntési és merge csomópontok között valamelyik ágon csak egy üres vezérlési él vezet, semmilyen tevékenység nem hajtódik végre; ilyet akkor használunk, ha egy tevékenység végrehajtása opcionális, vagy egy döntés valamilyen kimenetele esetén nincs teendő.
 
@@ -195,7 +213,18 @@ Ezt a folyamatmodellt a következőképpen szimulálhatjuk: először természet
 \remofigscalefixed{szintaxis/fork-join}{Fork és join grafikus szintaxisa}{\folyamatmodellscale}
 \remofigscalefixed{szintaxis/fork-join-ido}{Fork és join néhány lehetséges lefutása idődiagramon}{\folyamatmodellscale}
 
-Nagyon fontos megérteni, hogy a két \fogalom{parhuzamos-folyam} megvárja egymást (szinkronizál) a join csomópontnál; egyik se haladhat tovább, amíg a join csomópont összes bemenő vezérlési élére nem érkezik token.  
+Nagyon fontos megérteni, hogy a két \fogalom{parhuzamos-folyam} megvárja egymást (szinkronizál) a join csomópontnál; egyik se haladhat tovább, amíg a join csomópont összes bemenő vezérlési élére nem érkezik token. 
+
+Természetesen a többágú döntési és merge csomópont mintájára többágú fork ill. join is használható. Ilyenkor a fork hatására megkettőzés helyett többszöröződik a token, ill. több token várja össze egymást a join csomópontnál.
+ 
+ \begin{definicio}
+	A \fogalom{fork-node} olyan csomópont a folyamatban, amely a belé érkező egyetlen vezérlési él hatására a belőle kiinduló összes \fogalomragozva{parhuzamos-folyam}{párhuzamnos folyamot} (vezérlési élet) kiválasztja végrehajtásra.
+\end{definicio}
+ 
+\begin{definicio}
+	A \fogalom{join-node} olyan csomópont a folyamatban, amely a belé érkező összes \fogalom{parhuzamos-folyam} végrehajtása után kiválasztja a belőle kiinduló egyetlen vezérlési élet további végrehajtásra. 
+\end{definicio}
+
 
 \subsection{Teljes folyamatok}
 Eddig csak a folyamatok építőelemeivel foglalkoztunk; most megnézzük, hogy lehet a segítségükkel egy egész folyamatot leírni az elejétől a végéig. Ehhez csupán két új vezérlési csomópontra lesz szükségünk; ezek az új elemek a folyamat kezdetét jelentő, egyszerű körrel/koronggal jelölt \fogalom{flow-begin}, valamint a folyamat befejeztét jelentő és a dupla falú körrel jelölt \fogalom{flow-end}.
@@ -206,6 +235,13 @@ Vegyük az \aref{fig:szintaxis/flow-begin-end-szekvencia}. ábrán látható, \e
 
 \remofigscalefixed{szintaxis/flow-begin-end-szekvencia}{Flow begin és flow end grafikus szintaxisa}{\folyamatmodellscale}
 \remofigscalefixed{szintaxis/teljes-folyamat-ido}{Teljes folyamat idődiagramja}{\folyamatmodellscale}
+
+\begin{definicio}
+	Minden folyamat egy \fogalom{flow-begin} vezérlési elemmel indul, és egy \fogalom{flow-end} elemmel fejeződik be.
+Az \fogalom{flow-begin} a folyamat elindulását jelentő elem, melynek pontosan egy kimenete van. 
+A \fogalom{flow-end} a folyamat befejezését jelentő elem, melynek pontosan egy bemenete van. 
+\end{definicio}
+
 
 \subsection{Hierarchikus folyamatmodellek}
 Egészen idáig elemi tevékenységeket használtunk a folyamatainkban. Azonban lehetőségünk van összetett tevékenységek modellezésére is, ahol a tevékenység belső lépéseit egy külön folyamatmodell írja le. Egyfelől a hierarchikus modellezés elvét követve egy alfolyamat beágyazható tevékenységként egy főfolyamatba; másrészt elkülönítetten definiált folyamatokra is hivatkozhat egy tevékenység.  
@@ -273,18 +309,38 @@ A több folyamatpéldány reprezentálására szolgáló tokensokaság nem kever
 
 
 
-\section{Programok vezérlési folyama}
-
-\subsection{Alapismeretek}
 
 
-\fogalom{vezerlesi-folyam}
+\section{Folyamatmodellek felhasználása}
 
-\fogalom{komplexitas}
+\subsection{Programok vezérlési folyama}
 
-\fogalom{ciklomatikus-komplexitas}
+\subsubsection{Alapismeretek}
+Bizonyára észrvetettük, hogy a legtöbb programozási nyelven (pl. C, C++ stb.) készült eljárások, függvények, metódusok, szkriptek sokban hasonlítanak a folyamatmodellekhez: egymás után elvégzendő lépések szekvenciáját határozzák meg, bizonyos esetekben elágazásokkal, más kódrészletek hívásával. Sőt, egyes programozási nyelvek nyelvi elemként tartalmaznak fork ill. join jellegű primitíveket is.  
 
-\fogalom{rekurzio}
+\begin{definicio}
+Egy program által meghatározott folyamatmodellt, amely az elvégzendő lépéseket ill. a végrehajtásukra előírt sorrendet írja le, a program \fogalomragozva{vezerlesi-folyam}{vezérlési folyamának} (\fogalomangolul{vezerlesi-folyam}) nevezzük. 
+\end{definicio}
+
+\begin{definicio}
+Azon programokat, amelyek vezérlési folyamot határoznak meg, \fogalom{imperativ} programnak nevezzük.  
+\end{definicio}
+\begin{megjegyzes}
+	Bár a kezdő programozók általában az imperatív programokkal kezdik tanulmányaikat, léteznek ettől eltérő programozási paradigmák is, ahol a program a végrehajtási lépéssort nem határozza meg követlenül. Egyetemünkön a \deklapo című tárgy foglalkozik a funkcionális ill. a logikai programozás világába való bevezetéssel.
+\end{megjegyzes}
+
+
+Persze ne higgyük azt, hogy a program csak a vezérlési folyamból áll; számos egyéb részletet is meg kell határoznia (pl. adatszerkezetek, adatáramlás), amelyeket a vezérlési folyam kiemelésekor elabsztrahálunk.
+
+
+
+
+% TODO
+% \fogalom{komplexitas}
+% 
+% \fogalom{ciklomatikus-komplexitas}
+% 
+% \fogalom{rekurzio}
 
 
 
@@ -293,6 +349,8 @@ A több folyamatpéldány reprezentálására szolgáló tokensokaság nem kever
 
 
 \subsubsection{Leképzés}
+
+Az alábbiakban egy C-szerű programozási nyelvet alapul véve, számos vezérlési struktúrára megmutatjuk, hogy milyen vezérlési folyamot határoz meg. 
 
 \begin{minipage}{\balhasab}
 \begin{lstlisting}
@@ -389,19 +447,21 @@ Lépésenként átalakítva:
 	\simplefigscale{vezerlesi-folyamat/vezerlesi-folyamat-09}{\folyamatmodellscale}
 \end{minipage}
 
-\subsection{Komplexitás}
+\subsubsection{Vezérlési folyam ciklomatikus komplexitása}
+A vezérlési folyamok ismeretének egyik létjogosultsága, hogy segítségükkel a programok könnyebben elemezhetőek. Bár a programok elemzése túlmutat jelen tárgy keretein, maradjon itt illusztrációnak egy egyszerű elemzési mód, amely arra próbál választ adni, hogy egy programkód mennyire szövevényes, nehezen átlátható. 
 
 \begin{definicio}
-\fogalom{ciklomatikus-komplexitas}: $M$ = $E$ - $N$ + 2, ahol ...
+A vezérlési folyamhoz tartozó \fogalom{ciklomatikus-komplexitas}: $M$ = $E$ - $N$ + 2, ahol $E$ a vezérlési élek, $N$ a vezérlési csomópontok és tevékenységek száma.
 \end{definicio}
 
 \remofigscale{vezerlesi-folyamat/ciklomatikus-komplexitas}{A ciklomatikus komplexitás fogalmai. $E$: élek (narancssárga), $N$ csomópontok (kék)}{\folyamatmodellscale}
 
 \begin{megjegyzes}
-	A ciklomatikus komplexitással a \szofttech tárgy is foglalkozik.
+	A ciklomatikus komplexitással bővebben a \szofttech{} tárgy foglalkozik.
+	A kiszámítására használt formula pedig ismerős lehet a \bszketto{} tárgyból (v.ö. összefüggő, síkbarajzolható gráfokra vonatkozó Euler-formula).
 \end{megjegyzes}
 
-\subsection{Példa: $n!$ meghatározása}
+\subsubsection{Példa: $n!$ meghatározása}
 
 Vizsgáljuk meg az alábbi programkódot, ami egy szám faktoriálisát határozza meg!
 
@@ -431,7 +491,7 @@ int fact(int n) {
 	\simplefigscale{faktorialis}{\folyamatmodellscale}
 \end{minipage}
 
-\subsection{Példa: $n \choose k$ meghatározása}
+\subsubsection{Példa: $n \choose k$ meghatározása}
 
 Az alábbi rekurzív függvény meghatározza $n \choose k$ értékét. A számításhoz felhasználjuk, hogy ${0 \choose 0} = 1$ és ${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$.
 
@@ -458,10 +518,8 @@ int choose(int n, int k) {
 
 
 
-\section{Folyamatmodellek használata}
-
 \subsection{Modellezés több aspektus szerint}\label{sec:folyamatmodell-tobb-aspektusbol}
-TODO Autógyáras-futószalagos példa.\label{exmpl:autogyaros-pelda}
+\todo {Autógyáras-futószalagos példa.\label{exmpl:autogyaros-pelda}}
 
 \subsection{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
@@ -490,7 +548,7 @@ Egy teljes folyamatmodell jólstrukturált, ha egyetlen belépési pontja (\emph
 
 Amint az a definícióból látszik, egy teljes folyamat lehet úgy jólstrukturált, hogy pl. egy egyszerű elemi tevékenység, egy fork-join blokk és egy ciklus szekvenciájából áll, de csak ha a fork-join blokk és a ciklus maga is kisebb jólstrukturált blokkokból van felépítve.
 
-A jólstrukturáltság célja, hogy áttekinthetőbbé tegye a folyamatot, és hogy bizonyos hibalehetőségeket (pl. holtpont) eleve kizárjon. A folyamatmodellekre jellemző hibamintákról később lesz szó; ezek egy része jólstrukturált modellnél elő sem fordulhat. Ha a folyamat nem jólstrukturált, akkor külön ellenőrzési eljárásokkal kell kizárni a hibalehetőségeket. Mindemellett nem csak a jólstrukturált folyamatmodellek lehetnek értelmesek; előadáson volt példa nem jólstrukturált, de értelmes folyamatra (ld. ,,Jólstrukturált folyamatok'' c. dia); illetve hasonló esetet láthattunk \aref{sec:folyamatmodell-tobb-aspektusbol}. szakaszban is, amikor az autógyár teljes működését egyetlen nagy folyamaton tüntettük fel.
+A jólstrukturáltság célja, hogy áttekinthetőbbé tegye a folyamatot, és hogy bizonyos hibalehetőségeket (pl. holtpont) eleve kizárjon. A folyamatmodellekre jellemző hibamintákról később lesz szó; ezek egy része jólstrukturált modellnél elő sem fordulhat. Ha a folyamat nem jólstrukturált, akkor külön ellenőrzési eljárásokkal kell kizárni a hibalehetőségeket. Mindemellett megjegyzendő, hogy nem csak a jólstrukturált folyamatmodellek lehetnek értelmesek vagy hasznosak. %; előadáson volt példa nem jólstrukturált, de értelmes folyamatra (ld. ,,Jólstrukturált folyamatok'' c. dia); illetve hasonló esetet láthattunk \aref{sec:folyamatmodell-tobb-aspektusbol}. szakaszban is, amikor az autógyár teljes működését egyetlen nagy folyamaton tüntettük fel.
 
 Léteznek olyan folyamatmodellezési nyelvek is, amelyek nem engedik tetszőleges gráfként megalkotni a vezérlési folyamot, hanem kizárólag jólstrukturált blokkokat lehet létrehozni és más jólstrukturált blokkokból felépíteni. Ilyen nyelv pl. a \rovidites{BPEL} (alap jelkészlete), vagy a programozásoktatásból ismerős Nassi-Shneiderman-féle \fogalom{struktogram}. Ezeken a nyelveken a megkötések miatt bizonyos folyamatokat csak körülményesebben lehet megfogalmazni; cserébe az adott nyelven készített összes folyamatról külön ellenőrzés nélkül tudható, hogy rendelkezik a jólstrukturáltság fent tárgyalt összes előnyével.
 
