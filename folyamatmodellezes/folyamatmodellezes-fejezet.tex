@@ -90,12 +90,17 @@ Ahogy a fenti példa is illusztrálja, minden elemi tevékenység önmagában eg
 \end{megjegyzes}
 
 \subsection{Szekvencia}
-Ha a modelljeink csak egymástól izolált elemi tevékenységeket tartalmaznának, nem sok hasznos tudást fejeznének ki. A folyamatmodellek igazi erőssége, hogy a tevékenységekből \fogalomragozva{folyamat}{folyamatot} építenek fel, amely azt fejezi ki, hogy az egyes tevékenységek egymáshoz viszonyítva mikor hajthatóak végre. A legegyszerűbb ilyen konstrukció a \fogalom{szekvencia}.
+Ha a modelljeink csak egymástól izolált elemi tevékenységeket tartalmaznának, nem sok hasznos tudást fejeznének ki. A folyamatmodellek igazi erőssége, hogy a tevékenységekből \fogalomragozva{folyamat}{folyamatot} építenek fel, amely azt fejezi ki, hogy az egyes tevékenységek egymáshoz viszonyítva mikor hajthatóak végre. A legegyszerűbb ilyen konstrukció a \fogalom{szekvencia}, ahol a tevékenységeket úgynevezett \fogalomragozva{vezerlesi-el}{vezérlési élek (vezérlésifolyam-élek)} kötik össze.
 
 \begin{pelda}
 Az ipari gyakorlatban egy C program forráskódja tipikusan nem csak egyetlen fájlból áll. Miután egy C forrásfájlt tárgykóddá fordítunk, utána össze kell \emph{linkelni} más tárgykódokkal (korábban lefordított forrásállományok, függvénykönyvtárak), hogy végül megkapjuk a futtatható állományt. Így tehát a következő folyamatot kell elvégezni: először a fordítás elemi tevékenységet kell végrehajtani, majd annak befejezte után kezdhető meg a linkelés. \Aref{fig:szintaxis/szekvencia}. ábrán ennek a \fogalomragozva{szekvencia}{szekvenciának} a jelölését látjuk; a szaggatott nyíl rákövetkezést jelöl, tehát hogy a \emph{Compile} tevékenység vége után kezdhető meg a \emph{Link}.
 \end{pelda}
 \remofigscalefixed{szintaxis/szekvencia}{Szekvencia grafikus szintaxisa}{\folyamatmodellscale}
+
+\begin{megjegyzes}
+Ahogy az ábrán is látható, a vezérlési éleket jelen jegyzetben egységesen szaggatott nyíllal jelöljük, de más forrásokban, különböző modellezési nyelvek szabványaiban gyakran jelölik folytonos nyíllal. 
+\end{megjegyzes}
+
 
 A következőkben több külön módszerrel értelmezzük a \fogalom{szekvencia} szemantikáját. Bár ez a vizsgálat feleslegesen alaposnak és szájbarágósnak tűnhet (``ágyúval verébre''), de a később előkerülő összetettebb folyamatmodell-konstrukciók megértését nagymértékben segíti.
 
@@ -180,6 +185,8 @@ Előfordulhat olyan folyamat, amelyben nincs előírva két tevékenység (vagy 
 
 \begin{pelda}
 \Aref{fig:szintaxis/fork-join}. ábra olyan folyamatot mutat be, ahol két forrásfájlt is lefordítunk, azonban a sorrendjük nincs meghatározva. Fordítható az 1-es számú állomány a 2-es előtt, vagy fordított sorrendben. Ha többmagos processzorunk van, érdemes lehet a két fájl fordításával egyszerre is megpróbálkozni.
+
+Ezt a folyamatmodellt a következőképpen szimulálhatjuk: először természetesen a bal szélről belépő vezérlési élen van a token. A következő lépésben 
 \end{pelda}
 
 \remofigscalefixed{szintaxis/fork-join}{Fork és join}{\folyamatmodellscale}
