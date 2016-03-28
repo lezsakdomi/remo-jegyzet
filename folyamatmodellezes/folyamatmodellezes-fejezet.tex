@@ -16,7 +16,7 @@
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/04-folyamatmodellezes.pdf
 % - https://inf.mit.bme.hu/sites/default/files/materials/category/kateg%C3%B3ria/oktat%C3%A1s/bsc-t%C3%A1rgyak/rendszermodellez%C3%A9s/15/05-bpmn-dfn.pdf
 
-Az informatikában és azon kívül is számos esetben találkozunk olyan viselkedéssel, amikor megadott tevékenységek megadott sorrendben zajlanak. Például egy autómegosztó szolgáltatásban egy fuvar rendeléséhez, banki ügyintézés esetén a hitelbírálathoz, egyetemi környezetben egy tárgy felvételéhez egy jól meghatározott \fogalom{folyamat} tartozik. Amennyiben ezeket digitálisan szeretnénk végezni, fontos, hogy a folyamatokat precízen definiáljuk.
+Az informatikában és azon kívül is számos esetben találkozunk olyan viselkedéssel, amikor megadott tevékenységek megadott sorrendben zajlanak. Például egy autómegosztó szolgáltatásban egy fuvar rendeléséhez, banki ügyintézés esetén a hitelbírálathoz, egyetemi környezetben egy tárgy felvételéhez egy jól meghatározott folyamat tartozik. Amennyiben ezeket digitálisan szeretnénk végezni, fontos, hogy a folyamatokat precízen definiáljuk.
 
 A folyamatmodelleket széleskörűen használják, többek között az informatikában rendszerek működtetésére, protokollok specifikációjára, adatelemzési folyamatok specifikálására. Látni fogjuk, hogy a szoftverek programkódjának elemzése is folyamatmodellre vezet.
 
@@ -29,26 +29,26 @@ A \fogalomragozva{viselkedes-alapu-modellezes}{viselkedési modellek} a rendszer
 	\item Ezzel szemben a \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer. A tevékenységeknek időbeli kiterjedést tulajdonítunk (ahelyett, hogy pillanatszerűvé egyszerűsítenénk őket), és azt vizsgáljuk, hogy mely tevékenységek végezhetőek el más tevékenységek előtt vagy után, esetleg velük átlapolódva. Ugyan a rendszer állapotainak jellemzése (adott időpontban mely tevékenységek vannak folyamatban, fejeződtek már be stb.) implicit módon kikövetkeztethető a folyamatmodellből, de ez mintegy másodlagos; a modell a folyamatot alkotó tevékenységeknek ad nevet, és ezek viszonyának megadását várjuk el a modellezőtől.
 \end{itemize}
 
-\begin{megjegyzes}
-A folyamatmodellezés történeti előzményei:
-
-\begin{itemize}
-	\item Programok vezérlési szerkezete
-	\item Ütemezés (pl. Gantt diagramok): tevékenységek állapota, időzítése, és függőségei
-	\item Gyártási/irodai folyamatok modellezése
-	\item IDEF-0: 1980-as évek, US AirForce: logikai függőségek (adatfüggőség és végrehajtási logika nem)
-	\item Logisztikai folyamatok leírása
-	\item Üzemeltetés: ,,runbook''
-\end{itemize}
+%\begin{megjegyzes}
+%A folyamatmodellezés történeti előzményei:
+%
+%\begin{itemize}
+%	\item Programok vezérlési szerkezete
+%	\item Ütemezés (pl. Gantt diagramok): tevékenységek állapota, időzítése, és függőségei
+%	\item Gyártási/irodai folyamatok modellezése
+%	\item IDEF-0: 1980-as évek, US AirForce: logikai függőségek (adatfüggőség és végrehajtási logika nem)
+%	\item Logisztikai folyamatok leírása
+%	\item Üzemeltetés: ,,runbook''
+%\end{itemize}
 
 % http://ocw.mit.edu/courses/aeronautics-and-astronautics/16-885j-aircraft-systems-engineering-fall-2005/readings/sefguide_01_01.pdf
 % Figure 5-7. IDEF0 Diagram Example
 % http://ocw.mit.edu/terms/
+%
+%\remofigscale{GanttChartAnatomy}{Gantt diagram~\cite{wiki:Gantt}}{0.46}
+%\end{megjegyzes}
 
-\remofigscale{GanttChartAnatomy}{Gantt diagram~\cite{wiki:Gantt}}{0.46}
-\end{megjegyzes}
-
-A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jellemezzük.
+A folyamatmodellezés célja tehát, hogy a rendszer folyamatát leírja.
 
 \begin{definicio}
 	A \fogalom{folyamat} tevékenységek összessége, melyek adott rendben történő végrehajtása valamilyen célra vezet.
@@ -57,7 +57,6 @@ A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jell
 \section{A folyamatmodellek építőkövei}
 
 Az alábbiakban bemutatjuk a folyamatmodellek építőköveinek nevét, grafikus jelölését és szemantikáját.
-
 
 \subsection{Elemi tevékenység}
 
@@ -518,8 +517,8 @@ int choose(int n, int k) {
 
 
 
-\subsection{Modellezés több aspektus szerint}\label{sec:folyamatmodell-tobb-aspektusbol}
-\todo {Autógyáras-futószalagos példa.\label{exmpl:autogyaros-pelda}}
+%\subsection{Modellezés több aspektus szerint}\label{sec:folyamatmodell-tobb-aspektusbol}
+%\todo {Autógyáras-futószalagos példa.\label{exmpl:autogyaros-pelda}}
 
 \subsection{Jólstrukturált folyamatok}\label{sec:jolstrukturalt-folyamatok}
 
@@ -573,17 +572,17 @@ A tanultak szerint az imperatív programnyelvek vezérlésifolyam-gráfja is fol
 % adatfolyam csomópont: $n = (I_n, O_n, S_n, s_n^0, R_n, M_n)$
 
 
-\section{Szabványos formalizmusok\kieg}
-
-Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
-
-\rovidites{UML}~\cite{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
-
-\rovidites{BPMN}~\cite{omg2011bpmn}
+%\section{Szabványos formalizmusok\kieg}
+%
+%Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
+%
+%\rovidites{UML}~\cite{UML} \fogalom{aktivitas-diagram} (\fogalomangolul{aktivitas-diagram})
+%
+%\rovidites{BPMN}~\cite{omg2011bpmn}
 
 %\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
 
-\section{Kitekintés}
+\section{Kitekintés\kieg}
 
 %\subsection{Döntési diagramok}
 %
@@ -602,7 +601,7 @@ Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
 %
 %\rovidites{BPEL}
 
-\subsection{Technológiák\kieg}
+\subsection{Technológiák}
 
 \subsubsection{Adatelemzés}
 
