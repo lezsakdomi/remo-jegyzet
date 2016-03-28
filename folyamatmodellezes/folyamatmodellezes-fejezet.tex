@@ -34,22 +34,18 @@ A folyamatmodellezés történeti előzményei:
 
 \begin{itemize}
 	\item Programok vezérlési szerkezete
-	\item Ütemezés (pl. GANTT diagramok): tevékenységek állapota, időzítése, és függőségei
+	\item Ütemezés (pl. Gantt diagramok): tevékenységek állapota, időzítése, és függőségei
 	\item Gyártási/irodai folyamatok modellezése
 	\item IDEF-0: 1980-as évek, US AirForce: logikai függőségek (adatfüggőség és végrehajtási logika nem)
 	\item Logisztikai folyamatok leírása
 	\item Üzemeltetés: ,,runbook''
 \end{itemize}
 
-TODO: IDEF-0 ábra
-
 % http://ocw.mit.edu/courses/aeronautics-and-astronautics/16-885j-aircraft-systems-engineering-fall-2005/readings/sefguide_01_01.pdf
 % Figure 5-7. IDEF0 Diagram Example
 % http://ocw.mit.edu/terms/
 
-\remofigscale{GanttChartAnatomy}{GANTT diagram}{0.46}
-
-\footnote{\url{https://commons.wikimedia.org/wiki/File:GanttChartAnatomy.svg}}
+\remofigscale{GanttChartAnatomy}{Gantt diagram~\cite{wiki:Gantt}}{0.46}
 \end{megjegyzes}
 
 A folyamatmodellezés esetén a rendszerünk viselkedését egy folyamattal jellemezzük.
@@ -134,7 +130,7 @@ Azt is ki lehet fejezni megfelelő folyamatmodellel, ha nem minden lefutás ugya
 \end{definicio}
 
 \begin{pelda}
-Bizonyos fájlokra a C fordítót, másokra a C++ fordítót kell meghívni. Ezt \aref{fig:szintaxis/elagazas-natur}. ábrán látható folyamatmodell fejezi ki, ahol a rombusz jelképezi a \fogalomragozva{decision-node}{döntési csomópontot (elágazást)}. Ennek a folyamatmodellnek az is érvényes lefutása, ha az egyik fordítót hívjuk meg, és az is, ha a másikat.
+Bizonyos fájlokra a C fordítót, másokra a \cpp fordítót kell meghívni. Ezt \aref{fig:szintaxis/elagazas-natur}. ábrán látható folyamatmodell fejezi ki, ahol a rombusz jelképezi a \fogalomragozva{decision-node}{döntési csomópontot (elágazást)}. Ennek a folyamatmodellnek az is érvényes lefutása, ha az egyik fordítót hívjuk meg, és az is, ha a másikat.
 
 A folyamat szimulációja során először a bal oldalról belépő vezérlési élre helyezzük a tokent; ezek után szabadon választhatunk, hogy a döntési csomópontból kilépő élek közül melyikre rakjuk át. A folytatás már a jól ismert módon történik: a tokent először a választott elemi tevékenységre, majd a továbblépő vezérlési élre helyezzük. 
 \end{pelda}
@@ -155,6 +151,7 @@ Elérhető az \code{ext} karakterlánc, amely a fodítandó forrásfájl kiterje
 A korábban bevezetett fogalmaknak megfelelően akkor determinisztikus a folyamatmodell, ha minden egyes elágazás minden végrehajtásánál kizárják egymást az őrfeltételek; és akkor teljesen specifikált, ha minden egyes elágazás minden végrehajtásánál az őrfeltételek legalább egyike mindig teljesül. Ha nincsenek őrfeltételek megadva, az úgy tekintendő, mintha az állandó ``[igaz]'' őrfeltételt alkalmaztuk volna.
 
 Összefoglalásként tehát ezt a definíciót alkothatjuk:
+
 \begin{definicio}
 	A \fogalom{decision-node} olyan csomópont a folyamatban, amely a belé érkező egyetlen vezérlési él hatására a belőle kiinduló \fogalomragozva{ag}{ágak} (vezérlési élek) közül pontosan egyet választ ki végrehajtásra, az esetleges \fogalomragozva{orfeltetel}{őrfeltételekkel} összhangban.
 \end{definicio}
@@ -164,7 +161,7 @@ A korábban bevezetett fogalmaknak megfelelően akkor determinisztikus a folyama
 Gyakran egy elágazás különböző \fogalomragozva{ag}{ágai} egy adott ponton túl egyformán folytatódnak. Ennek kifejezésére szolgál egy újabb vezérlési elem, a \fogalom{merge-node}. Sajnos nem terjedt el rá frappáns magyar név, így leggyakrabban az angol merge szót használjuk.
 
 \begin{pelda}
-Akár C, akár C++ nyelvű forrásfájt fordítottunk le, utána mindenképp a linkelés következik. \Aref{fig:szintaxis/elagazas-orfeltetel-merge}. ábrán feltüntetett merge csomópont (rajzjele egyezik a döntési csomópontéval) éppen ezt fejezi ki. A modell szimulációjakor, miután az egyik fordítási tevékenységet végrehajtottuk, a token a merge csomópontba mutató nyilak egyikén áll; ezután egyszerűen átmozgathatjuk a merge csomópont túloldalára, hogy utána már a \emph{Link} tevékenység végrehajtása következhessen. Akármelyik ágról is érkezik a token, a merge csomópont után ugyanazon kimenő vezérlési élre kerül; ez ahhoz hasonlatos, mint amikor a közúti forgalomban egy közlekedési sáv megszűnésekor két járműoszlopból is ugyanabba a sávba sorolódnak be a járművek. \Aref{fig:szintaxis/elagazas-orfeltetel-merge-ido}. ábra idődiagramon mutat be két eltérő lefutást.  
+Akár C, akár \cpp nyelvű forrásfájt fordítottunk le, utána mindenképp a linkelés következik. \Aref{fig:szintaxis/elagazas-orfeltetel-merge}. ábrán feltüntetett merge csomópont (rajzjele egyezik a döntési csomópontéval) éppen ezt fejezi ki. A modell szimulációjakor, miután az egyik fordítási tevékenységet végrehajtottuk, a token a merge csomópontba mutató nyilak egyikén áll; ezután egyszerűen átmozgathatjuk a merge csomópont túloldalára, hogy utána már a \emph{Link} tevékenység végrehajtása következhessen. Akármelyik ágról is érkezik a token, a merge csomópont után ugyanazon kimenő vezérlési élre kerül; ez ahhoz hasonlatos, mint amikor a közúti forgalomban egy közlekedési sáv megszűnésekor két járműoszlopból is ugyanabba a sávba sorolódnak be a járművek. \Aref{fig:szintaxis/elagazas-orfeltetel-merge-ido}. ábra idődiagramon mutat be két eltérő lefutást.  
 \end{pelda}
 
 \remofigscalefixed{szintaxis/elagazas-orfeltetel-merge}{Elágazás és merge (besorolódás) grafikus szintaxisa}{\folyamatmodellscale}
@@ -293,10 +290,10 @@ Ha egy folyamatmodellt szimulálunk (például a korábban bemutatott manuális 
 	  \item a folyamat vége.
 	\end{itemize}
 \end{definicio}
+
 \begin{megjegyzes}
 Egy folyamatnak több folyamatpéldánya lehet; sőt, több olyan példánya is, amely ugyanolan eseményeket tartalmaz ugyanolyan sorrendben.
 \end{megjegyzes}
-
 
 A folyamatmodellek és folyamatpéldányok közti viszony nyilván akkor lesz izgalmas, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, egymás után vagy akár részben átlapolódva. Az egyszerre végrehajtott folyamatpéldányokat úgy lehet szimulálni, hogy minden folyamatpéldányhoz egy-egy tokent rendelünk, amelyik a példány pillanatnyi állapotát jellemzi; ezután az összes tokent felrakjuk a folyamat diagramjára, és külön-külön léptetgetjük őket. 
 
@@ -316,7 +313,7 @@ A több folyamatpéldány reprezentálására szolgáló tokensokaság nem kever
 \subsection{Programok vezérlési folyama}
 
 \subsubsection{Alapismeretek}
-Bizonyára észrvetettük, hogy a legtöbb programozási nyelven (pl. C, C++ stb.) készült eljárások, függvények, metódusok, szkriptek sokban hasonlítanak a folyamatmodellekhez: egymás után elvégzendő lépések szekvenciáját határozzák meg, bizonyos esetekben elágazásokkal, más kódrészletek hívásával. Sőt, egyes programozási nyelvek nyelvi elemként tartalmaznak fork ill. join jellegű primitíveket is.  
+Bizonyára észrvetettük, hogy a legtöbb programozási nyelven (pl. C, \cpp stb.) készült eljárások, függvények, metódusok, szkriptek sokban hasonlítanak a folyamatmodellekhez: egymás után elvégzendő lépések szekvenciáját határozzák meg, bizonyos esetekben elágazásokkal, más kódrészletek hívásával. Sőt, egyes programozási nyelvek nyelvi elemként tartalmaznak fork ill. join jellegű primitíveket is.  
 
 \begin{definicio}
 Egy program által meghatározott folyamatmodellt, amely az elvégzendő lépéseket ill. a végrehajtásukra előírt sorrendet írja le, a program \fogalomragozva{vezerlesi-folyam}{vezérlési folyamának} (\fogalomangolul{vezerlesi-folyam}) nevezzük. 
@@ -325,6 +322,7 @@ Egy program által meghatározott folyamatmodellt, amely az elvégzendő lépés
 \begin{definicio}
 Azon programokat, amelyek vezérlési folyamot határoznak meg, \fogalom{imperativ} programnak nevezzük.  
 \end{definicio}
+
 \begin{megjegyzes}
 	Bár a kezdő programozók általában az imperatív programokkal kezdik tanulmányaikat, léteznek ettől eltérő programozási paradigmák is, ahol a program a végrehajtási lépéssort nem határozza meg követlenül. Egyetemünkön a \deklapo című tárgy foglalkozik a funkcionális ill. a logikai programozás világába való bevezetéssel.
 \end{megjegyzes}
@@ -451,7 +449,7 @@ Lépésenként átalakítva:
 A vezérlési folyamok ismeretének egyik létjogosultsága, hogy segítségükkel a programok könnyebben elemezhetőek. Bár a programok elemzése túlmutat jelen tárgy keretein, maradjon itt illusztrációnak egy egyszerű elemzési mód, amely arra próbál választ adni, hogy egy programkód mennyire szövevényes, nehezen átlátható. 
 
 \begin{definicio}
-A vezérlési folyamhoz tartozó \fogalom{ciklomatikus-komplexitas}: $M$ = $E$ - $N$ + 2, ahol $E$ a vezérlési élek, $N$ a vezérlési csomópontok és tevékenységek száma.
+A vezérlési folyamhoz tartozó \fogalom{ciklomatikus-komplexitas}: $M$ = $E - N + 2$, ahol $E$ a vezérlési élek, $N$ a vezérlési csomópontok és tevékenységek száma.
 \end{definicio}
 
 \remofigscale{vezerlesi-folyamat/ciklomatikus-komplexitas}{A ciklomatikus komplexitás fogalmai. $E$: élek (narancssárga), $N$ csomópontok (kék)}{\folyamatmodellscale}
@@ -583,26 +581,24 @@ Az \rovidites{OMG} (\roviditesangolulkifejtve{OMG}) két szabványa:
 
 %\fogalom{folyamatmodell} \fogalom{vegrehajthato-modell}
 
-
-
 \section{Kitekintés}
 
-\subsection{Döntési diagramok}
-
-\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
-
-\fogalom{dontesi-diagram} (\fogalomangolul{dontesi-diagram})
-
-\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
-
-\subsection{PERT\kieg}
-
-
-\rovidites{PERT} (nem tud elágazást ábrázolni)
-
-\subsection{Szabványok\kieg}
-
-\rovidites{BPEL}
+%\subsection{Döntési diagramok}
+%
+%\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
+%
+%\fogalom{dontesi-diagram} (\fogalomangolul{dontesi-diagram})
+%
+%\fogalom{folyamatabra} (\fogalomangolul{folyamatabra})
+%
+%\subsection{PERT\kieg}
+%
+%
+%\rovidites{PERT} (nem tud elágazást ábrázolni)
+%
+%\subsection{Szabványok\kieg}
+%
+%\rovidites{BPEL}
 
 \subsection{Technológiák\kieg}
 
@@ -616,5 +612,4 @@ Kepler\footnote{\url{https://kepler-project.org/}} és a Taverna\footnote{\url{h
 \subsubsection{Üzleti folyamatmodellek}
 
 Az üzleti folyamatok modellezésére használt szoftverek manapság tipikusan a BPMN 2.0 szabványt valósítják meg.\footnote{\url{https://en.wikipedia.org/wiki/List_of_BPMN_2.0_engines}}
-
 Ilyen eszközök pédául a jBPM\footnote{\url{http://www.jbpm.org/}}, a Bonita BPM\footnote{\url{http://www.bonitasoft.com/}}, Camunda\footnote{\url{https://camunda.org/}} és az Eclipse Stardust\footnote{\url{https://www.eclipse.org/stardust/}}.
