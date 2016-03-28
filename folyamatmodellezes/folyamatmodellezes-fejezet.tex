@@ -192,7 +192,8 @@ Ha már megismertük a döntés és merge vezérlési elemeket, akkor építhet�
 
 \begin{definicio}
 	A \fogalom{ciklus} olyan folyamatmodell (részlet), amelyben egy elágazás valamelyik ágán az elágazást \emph{megelőző} merge csomópontba jutunk vissza.
-\end{definicio} 
+\end{definicio}
+
 Nem nehéz végiggondolni, hogy ciklikus folyamatok futásakor ezek a vezérlési csomópontok többször is érinthetőek. Próbáljuk ezt a fenti példán a tokenes kézi szimuláció módszerével kipróbálni!
 
 \subsection{Konkurrens viselkedés}
@@ -244,7 +245,8 @@ A \fogalom{flow-end} a folyamat befejezését jelentő elem, melynek pontosan eg
 Egészen idáig elemi tevékenységeket használtunk a folyamatainkban. Azonban lehetőségünk van összetett tevékenységek modellezésére is, ahol a tevékenység belső lépéseit egy külön folyamatmodell írja le. Egyfelől a hierarchikus modellezés elvét követve egy alfolyamat beágyazható tevékenységként egy főfolyamatba; másrészt elkülönítetten definiált folyamatokra is hivatkozhat egy tevékenység.  
 
 \begin{pelda}
-\Aref{szintaxis/hierarchia-teljes}. ábra az alfolyamattá részletezett tevékenység használatát mutatja be, míg \aref{fig:szintaxis/hivas-natur}. ábra az előzővel azonos jelentésű folyamatot épít fel úgy, hogy a folyamat első tevékenysége hivatkozza (hívja) \aref{fig:szintaxis/flow-begin-end-szekvencia}. ábrán látható, korábban definiált folyamatot.
+
+\Aref{fig:szintaxis/hierarchia-teljes}. ábra az alfolyamattá részletezett tevékenység használatát mutatja be, míg \aref{fig:szintaxis/hivas-natur}. ábra az előzővel azonos jelentésű folyamatot épít fel úgy, hogy a folyamat első tevékenysége hivatkozza (hívja) \aref{fig:szintaxis/flow-begin-end-szekvencia}. ábrán látható, korábban definiált folyamatot.
 \end{pelda}
 
 \remofigscalefixed{szintaxis/hierarchia-teljes}{Hierarchia grafikus szintaxisa}{\folyamatmodellscale}
@@ -449,14 +451,14 @@ Lépésenként átalakítva:
 A vezérlési folyamok ismeretének egyik létjogosultsága, hogy segítségükkel a programok könnyebben elemezhetőek. Bár a programok elemzése túlmutat jelen tárgy keretein, maradjon itt illusztrációnak egy egyszerű elemzési mód, amely arra próbál választ adni, hogy egy programkód mennyire szövevényes, nehezen átlátható. 
 
 \begin{definicio}
-A vezérlési folyamhoz tartozó \fogalom{ciklomatikus-komplexitas}: $M$ = $E - N + 2$, ahol $E$ a vezérlési élek, $N$ a vezérlési csomópontok és tevékenységek száma.
+A vezérlési folyamhoz tartozó \fogalom{ciklomatikus-komplexitas}: $M = E - N + 2$, ahol $E$ a vezérlési élek, $N$ a vezérlési csomópontok és tevékenységek száma.
 \end{definicio}
 
 \remofigscale{vezerlesi-folyamat/ciklomatikus-komplexitas}{A ciklomatikus komplexitás fogalmai. $E$: élek (narancssárga), $N$ csomópontok (kék)}{\folyamatmodellscale}
 
 \begin{megjegyzes}
-	A ciklomatikus komplexitással bővebben a \szofttech{} tárgy foglalkozik.
-	A kiszámítására használt formula pedig ismerős lehet a \bszketto{} tárgyból (v.ö. összefüggő, síkbarajzolható gráfokra vonatkozó Euler-formula).
+	A ciklomatikus komplexitással bővebben a \szofttech tárgy foglalkozik.
+	A kiszámítására használt formula pedig ismerős lehet a \bszketto tárgyból (v.ö. összefüggő, síkbarajzolható gráfokra vonatkozó Euler-formula).
 \end{megjegyzes}
 
 \subsubsection{Példa: $n!$ meghatározása}
