@@ -73,7 +73,7 @@ Szoftverünk C nyelvű forráskódjából futtatható programot szeretnénk elő
 \remofigscalefixed{szintaxis/elemi-tevekenyseg}{Elemi tevékenység grafikus szintaxisa}{\folyamatmodellscale}
 
 \begin{pelda}
-Mit is értünk azalatt, hogy a fordítóprogram futtatása időbeli kiterjedéssel bír? Ahogy \aref{fig:szintaxis/elemi-tevekenyseg-ido}. ábrán látható idődiagram is illusztrálja, kezdetben a tevékenység nem fut. Valamikor a működés során eljön a tevékenység kezdete - ezt egy pillatanszerű eseményként modellezzük; utána úgy tekinthető, hogy a fordítás tevékenység \emph{folyamatban van}. Később eljön az az idő, amikor a fordítás befejeződik; ez egy újabb pillanatszerű esemény, amely után az elemi tevékenység már nincs folyamatban, befejezettnek tekinthető.
+Mit is értünk azalatt, hogy a fordítóprogram futtatása időbeli kiterjedéssel bír? Ahogy \aref{fig:szintaxis/elemi-tevekenyseg-ido}. ábrán látható idődiagram is illusztrálja, kezdetben a tevékenység nem fut. Valamikor a működés során eljön a tevékenység kezdete - ezt egy pillanatszerű eseményként modellezzük; utána úgy tekinthető, hogy a fordítás tevékenység \emph{folyamatban van}. Később eljön az az idő, amikor a fordítás befejeződik; ez egy újabb pillanatszerű esemény, amely után az elemi tevékenység már nincs folyamatban, befejezettnek tekinthető.
 \end{pelda}
 
 \remofigscalefixed{szintaxis/elemi-tevekenyseg-ido}{Elemi tevékenység időbeli lefutása idődiagramon}{\folyamatmodellscale}
@@ -106,7 +106,7 @@ A következőkben több külön módszerrel értelmezzük a \fogalom{szekvencia}
 
 \begin{pelda}
 Hogyan szimulálhatjuk a szekvenciánk működését? Ha \aref{fig:szintaxis/szekvencia}. ábrán látható folyamatdiagramot kinyomtatjuk, és a papírra helyezünk egy régi egyforintost (vagy csavaranyát, vagy bármely egyéb jelölőt, amelyet a továbbiakban a \fogalom{token} névvel illetjük), akkor az ábra alapján könnyen követhetjük a folyamat működését. \begin{itemize}
-  \item Helyezzük kezdetben a tokent az ábra bal szélén belépő szaggatott nyílra! Mivel a token nem tevékenységen áll, ezért ez úgy értelmezzük, hogy nem fut jelenleg egyik feltüntetett elemi tevékenység se.
+  \item Helyezzük kezdetben a tokent az ábra bal szélén belépő szaggatott nyílra! Mivel a token nem tevékenységen áll, ezért ezt úgy értelmezzük, hogy nem fut jelenleg egyik feltüntetett elemi tevékenység se.
   \item Csúsztassuk ujjunkkal kissé arrébb a tokent. Kövessük nyilat, tehát kerüljön a token a \emph{Compile} tevékenységre! Amíg a tevékenység rajzjelén áll a token, úgy tekintjük, hogy a tevékenység folyamatban van.
   \item Amikor a nyilak irányában ismét továbbmozgatjuk, a token a két tevékenység közötti szaggatott nyílszakaszra kerül. Ekkor az első tevékenység már nem fut, tehát befejeződött; ugyanakkor a második tevékenység még nem kezdődött el.
   \item Harmadszor is mozgatva a tokent, elkezdhetjük a \emph{Link} tevékenységet.
@@ -142,7 +142,7 @@ Az elágazási pontnál bármelyik \fogalomragozva{ag}{ágat} is választjuk, a 
 Gyakran esetekben azonban a rendszermodellünkben elérhető olyan információ, amely meghatározza, hogy a folyamat végrehajtása melyik ágon történhet, determinisztikussá téve a választást. Más modelleknél erről nincs szó, de a rendelkezésre álló információ alapján legalább időnként csökkenthető a választási lehetőségek száma. Mindkét esetben a szoros értelemben vett folyamatmodellen kívüli tudás alapján kizárjuk a döntés után előálló ágak némelyikét; erre pedig (az állapotgépekhez hasonló módon) az ún. \fogalom{orfeltetel} szolgál. 
 
 \begin{pelda}
-Elérhető az \code{ext} karakterlánc, amely a fodítandó forrásfájl kiterjesztését adja meg. Ez alapján minden esetben eldönthető, hogy melyik nyelv fordítóprogramját kell végrehajtani. \Aref{fig:szintaxis/elagazas-orfeltetel}. ábrán látható folyamatmodell őrfeltételekkel fejezi ezt ki.
+Elérhető az \code{ext} karakterlánc, amely a fordítandó forrásfájl kiterjesztését adja meg. Ez alapján minden esetben eldönthető, hogy melyik nyelv fordítóprogramját kell végrehajtani. \Aref{fig:szintaxis/elagazas-orfeltetel}. ábrán látható folyamatmodell őrfeltételekkel fejezi ezt ki.
 \end{pelda}
 
 \remofigscalefixed{szintaxis/elagazas-orfeltetel}{Elágazás grafikus szintaxisa őrfeltételekkel}{\folyamatmodellscale}
@@ -195,11 +195,11 @@ Ha már megismertük a döntés és merge vezérlési elemeket, akkor építhet�
 
 Nem nehéz végiggondolni, hogy ciklikus folyamatok futásakor ezek a vezérlési csomópontok többször is érinthetőek. Próbáljuk ezt a fenti példán a tokenes kézi szimuláció módszerével kipróbálni!
 
-\subsection{Konkurrens viselkedés}
+\subsection{Konkurens viselkedés}
 Előfordulhat olyan folyamat, amelyben nincs előírva két tevékenység (vagy részfolyamat) egymáshoz képesti sorrendje, csak hogy mindkettőnek meg kell történnie. A szóban forgó két tevékenység közül történhet az egyik a másik előtt, vagy fordítva; sőt, futhatnak (részben) egyszerre is. Ilyen viselkedést fejez ki a \fogalom{fork-node} és a \fogalom{join-node} párosa (itt ismét nincsenek általánosan elfogadott magyar fordítások).
 
 \begin{definicio}
-Két bekövetkező tevékenység vagy esemény \fogalom{konkurrens}, ha a bekövetkezési sorrendjükre nézve nincs megkötés.
+Két bekövetkező tevékenység vagy esemény \fogalom{konkurens}, ha a bekövetkezési sorrendjükre nézve nincs megkötés.
 \end{definicio} 
 
 \begin{pelda}
@@ -284,7 +284,8 @@ Vegyük példának \aref{fig:szintaxis/flow-begin-end-szekvencia}. ábrán láth
 Ha egy folyamatmodellt szimulálunk (például a korábban bemutatott manuális módszerrel, token mozgatásával), akkor a folyamat egy konkrét lefutását kapjuk. A folyamat konkrét lefutásait a folyamatmodell \fogalomragozva{folyamat-peldany}{folyamatpéldányainak} nevezzük. A folyamatpéldány olyan események sorozata, amelyek a folyamatot alkotó elemi tevékenységek kezdetét és befejezését jelzik, illetve az egész folyamat kezdetét és befejezését. A folyamatmodell szemantikája voltaképp az, hogy ezen eseményeket azonosítja, és lehetséges sorrendjükre tesz megkötéseket.
 
 \begin{definicio}
-	Egy folyamatmodellhez tartozó \fogalom{folyamat-peldany} olyan diszkrét eseménysor, amelyet a következő jellegű események alkotják, a folyamatmodell által megszabott időrendben: 	\begin{itemize}
+	Egy folyamatmodellhez tartozó \fogalom{folyamat-peldany} olyan diszkrét eseménysor, amelyet a következő jellegű események alkotják, a folyamatmodell által megszabott időrendben:
+	\begin{itemize}
 	  \item a folyamat kezdete,
 	  \item a folyamatot alkotó egyik tevékenység kezdete, 
 	  \item a folyamatot alkotó egyik tevékenység vége, 
@@ -293,13 +294,13 @@ Ha egy folyamatmodellt szimulálunk (például a korábban bemutatott manuális 
 \end{definicio}
 
 \begin{megjegyzes}
-Egy folyamatnak több folyamatpéldánya lehet; sőt, több olyan példánya is, amely ugyanolan eseményeket tartalmaz ugyanolyan sorrendben.
+Egy folyamatnak több folyamatpéldánya lehet; sőt, több olyan példánya is, amely ugyanolyan eseményeket tartalmaz ugyanolyan sorrendben.
 \end{megjegyzes}
 
 A folyamatmodellek és folyamatpéldányok közti viszony nyilván akkor lesz izgalmas, ha egy folyamatot nem csak egyszer hajtunk végre, hanem többször, egymás után vagy akár részben átlapolódva. Az egyszerre végrehajtott folyamatpéldányokat úgy lehet szimulálni, hogy minden folyamatpéldányhoz egy-egy tokent rendelünk, amelyik a példány pillanatnyi állapotát jellemzi; ezután az összes tokent felrakjuk a folyamat diagramjára, és külön-külön léptetgetjük őket. 
 
 \begin{megjegyzes}
-A több folyamatpéldány reprezentálására szolgáló tokensokaság nem keverendő össze azzal az esettel, amikor egy \fogalom{fork-node} hatására töbszörözzük egyetlen folyamatpéldány tokenjét.  A megkülönböztetést az indokolja, hogy a join csomópontnál természetesen továbbra is csak egyazon folyamatpéldányhoz tartozó szétvált tokenek egyesülnek. Így biztosítható, hogy minden egyes folyamatpéldány önmagában értelmes, a folyamatmodellel konform eseménysor. Szimuláció közben célszerű úgy felfogni, hogy minden folyamatpéldánynak különböző színű tokenje van, és a fork ill. join csomópontok csak egyszínű tokeneket vágnak szét ill. egyesítenek. 
+A több folyamatpéldány reprezentálására szolgáló tokensokaság nem keverendő össze azzal az esettel, amikor egy \fogalom{fork-node} hatására többszörözzük egyetlen folyamatpéldány tokenjét.  A megkülönböztetést az indokolja, hogy a join csomópontnál természetesen továbbra is csak egyazon folyamatpéldányhoz tartozó szétvált tokenek egyesülnek. Így biztosítható, hogy minden egyes folyamatpéldány önmagában értelmes, a folyamatmodellel konform eseménysor. Szimuláció közben célszerű úgy felfogni, hogy minden folyamatpéldánynak különböző színű tokenje van, és a fork, ill. join csomópontok csak egyszínű tokeneket vágnak szét, ill. egyesítenek. 
 \end{megjegyzes}
 
 \iflabeldef{cha:teljesitmenymodellezes}{\Aref{cha:teljesitmenymodellezes}.}{A \emph{Teljesítménymodellezés}} fejezetben kifejezetten azzal az esettel foglalkozunk majd, amikor ugyanaz a folyamat egyszerre nagyon sok példányban fut. Ilyen esetben a szimuláció során nem is érdemes a tokenekkel egyenként vesződni; csak azt tartjuk számon, hogy hány token tartózkodik éppen a diagram egy adott pontján.
@@ -314,10 +315,10 @@ A több folyamatpéldány reprezentálására szolgáló tokensokaság nem kever
 \subsection{Programok vezérlési folyama}
 
 \subsubsection{Alapismeretek}
-Bizonyára észrvetettük, hogy a legtöbb programozási nyelven (pl. C, \cpp stb.) készült eljárások, függvények, metódusok, szkriptek sokban hasonlítanak a folyamatmodellekhez: egymás után elvégzendő lépések szekvenciáját határozzák meg, bizonyos esetekben elágazásokkal, más kódrészletek hívásával. Sőt, egyes programozási nyelvek nyelvi elemként tartalmaznak fork ill. join jellegű primitíveket is.  
+Bizonyára észrevetettük, hogy a legtöbb programozási nyelven (pl. C, \cpp stb.) készült eljárások, függvények, metódusok, szkriptek sokban hasonlítanak a folyamatmodellekhez: egymás után elvégzendő lépések szekvenciáját határozzák meg, bizonyos esetekben elágazásokkal, más kódrészletek hívásával. Sőt, egyes programozási nyelvek nyelvi elemként tartalmaznak fork, ill. join jellegű primitíveket is.  
 
 \begin{definicio}
-Egy program által meghatározott folyamatmodellt, amely az elvégzendő lépéseket ill. a végrehajtásukra előírt sorrendet írja le, a program \fogalomragozva{vezerlesi-folyam}{vezérlési folyamának} (\fogalomangolul{vezerlesi-folyam}) nevezzük. 
+Egy program által meghatározott folyamatmodellt, amely az elvégzendő lépéseket, ill. a végrehajtásukra előírt sorrendet írja le, a program \fogalomragozva{vezerlesi-folyam}{vezérlési folyamának} (\fogalomangolul{vezerlesi-folyam}) nevezzük. 
 \end{definicio}
 
 \begin{definicio}
@@ -325,7 +326,7 @@ Azon programokat, amelyek vezérlési folyamot határoznak meg, \fogalom{imperat
 \end{definicio}
 
 \begin{megjegyzes}
-	Bár a kezdő programozók általában az imperatív programokkal kezdik tanulmányaikat, léteznek ettől eltérő programozási paradigmák is, ahol a program a végrehajtási lépéssort nem határozza meg követlenül. Egyetemünkön a \deklapo című tárgy foglalkozik a funkcionális ill. a logikai programozás világába való bevezetéssel.
+	Bár a kezdő programozók általában az imperatív programokkal kezdik tanulmányaikat, léteznek ettől eltérő programozási paradigmák is, ahol a program a végrehajtási lépéssort nem határozza meg követlenül. Egyetemünkön a \deklapo című tárgy foglalkozik a funkcionális, ill. a logikai programozás világába való bevezetéssel.
 \end{megjegyzes}
 
 
@@ -524,7 +525,7 @@ int choose(int n, int k) {
 
 Eddig semmilyen megszorítást nem tettünk arra, hogy a vezérlési élek mely csomópontokat melyekkel köthetik össze; így pedig sok értelmetlen vagy helytelenül működő folyamatmodell építhető. Ráadásul az egyébként értelmes folyamatmodellek is gyakran átláthatatlanok, nehezen érthetőek lehetnek. Az átláthatóság egyik fő akadálya, ha egy bonyolult részfolyamatba több ponton is be lehet lépni, és több ponton is ki lehet lépni belőle.
 
-Ezért szokás a folyamatmodelleknek az alábbiakban definiált "biztonságos" részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak.
+Ezért szokás a folyamatmodelleknek az alábbiakban definiált ,,biztonságos'' részhalmazát elkülöníteni, amely megengedett blokkokból építkezik csak.
 
 % \begin{definicio}
 % 	Egy \fogalom{reszfolyamat} akkor \fogalom{jolstrukturalt}, ha egyféleképpen kezdődik el és egyféleképpen fejeződik be; továbbá összetett (több elemből álló) részfolyamatok esetén annak alkotórészei hasonlóan jólstrukturáltak, és megengedett módon vannak összekapcsolva. Egy \fogalom{folyamat} akkor jólstrukturált, ha az egész ilyen módon épül fel.
@@ -538,9 +539,9 @@ A következő (egy belépési és egy kilépési pontú) részfolyamatokat tekin
 \item egyetlen folyamathivatkozás/hívás (máshol definiált folyamatmodell újrafelhasználása);
 \item üres vezérlési élszakasz;
 \item ,,soros kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok szekvenciája (egyszerű vezérlési éllel egymás után kötve őket);
-\item ,,\emph{Fork-Join} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Fork} és egy $n$ ágú \emph{Join} közé zárva;
-\item ,,\emph{Decision-Merge} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{Decision} és egy $n$ ágú \emph{Merge} közé zárva;
-\item ,,Ciklus": egy kétágú \emph{Merge} csomóponttal kezdődik, amely után egy jólstrukturált $P_1$ blokk következik, majd egy kétágú \emph{Decision}, melynek egyik ága a részfolyamat vége, a másik a $P_2$ jólstrukturált blokkokon keresztül az előbbi \emph{Merge}-be tér vissza.
+\item ,,\emph{fork-join} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{fork} és egy $n$ ágú \emph{join} közé zárva;
+\item ,,\emph{decision-merge} kapcsolás": a $P_1$, $P_2$, ..., $P_n$ jólstrukturált blokkok egy $n$ ágú \emph{decision} és egy $n$ ágú \emph{merge} közé zárva;
+\item ,,Ciklus": egy kétágú \emph{merge} csomóponttal kezdődik, amely után egy jólstrukturált $P_1$ blokk következik, majd egy kétágú \emph{decision}, melynek egyik ága a részfolyamat vége, a másik a $P_2$ jólstrukturált blokkokon keresztül az előbbi \emph{merge}-be tér vissza.
 \end{itemize}
 Egy teljes folyamatmodell jólstrukturált, ha egyetlen belépési pontja (\emph{Flow begin}) és kilépési pontja (\emph{Flow end}) egy jólstrukturált blokkot zár közre.
 \end{definicio}
