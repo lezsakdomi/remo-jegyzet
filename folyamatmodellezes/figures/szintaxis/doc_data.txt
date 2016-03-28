@@ -1,0 +1,118 @@
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20160328140333+02'00'
+InfoBegin
+InfoKey: PTEX.Fullbanner
+InfoValue: This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) kpathsea version 6.2.1
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20160328140333+02'00'
+InfoBegin
+InfoKey: Creator
+InfoValue: TeX
+InfoBegin
+InfoKey: Producer
+InfoValue: pdfTeX-1.40.16
+PdfID0: 12c680fee770c8ac134973ef9952345c
+PdfID1: 12c680fee770c8ac134973ef9952345c
+NumberOfPages: 20
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 140 51
+PageMediaDimensions: 140 51
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 720 152
+PageMediaDimensions: 720 152
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 433 51
+PageMediaDimensions: 433 51
+PageMediaBegin
+PageMediaNumber: 4
+PageMediaRotation: 0
+PageMediaRect: 0 0 720 131
+PageMediaDimensions: 720 131
+PageMediaBegin
+PageMediaNumber: 5
+PageMediaRotation: 0
+PageMediaRect: 0 0 372 139
+PageMediaDimensions: 372 139
+PageMediaBegin
+PageMediaNumber: 6
+PageMediaRotation: 0
+PageMediaRect: 0 0 372 153
+PageMediaDimensions: 372 153
+PageMediaBegin
+PageMediaNumber: 7
+PageMediaRotation: 0
+PageMediaRect: 0 0 691 153
+PageMediaDimensions: 691 153
+PageMediaBegin
+PageMediaNumber: 8
+PageMediaRotation: 0
+PageMediaRect: 0 0 721 248
+PageMediaDimensions: 721 248
+PageMediaBegin
+PageMediaNumber: 9
+PageMediaRotation: 0
+PageMediaRect: 0 0 500 172
+PageMediaDimensions: 500 172
+PageMediaBegin
+PageMediaNumber: 10
+PageMediaRotation: 0
+PageMediaRect: 0 0 554 133
+PageMediaDimensions: 554 133
+PageMediaBegin
+PageMediaNumber: 11
+PageMediaRotation: 0
+PageMediaRect: 0 0 452 174
+PageMediaDimensions: 452 174
+PageMediaBegin
+PageMediaNumber: 12
+PageMediaRotation: 0
+PageMediaRect: 0 0 722 435
+PageMediaDimensions: 722 435
+PageMediaBegin
+PageMediaNumber: 13
+PageMediaRotation: 0
+PageMediaRect: 0 0 303 51
+PageMediaDimensions: 303 51
+PageMediaBegin
+PageMediaNumber: 14
+PageMediaRotation: 0
+PageMediaRect: 0 0 766 142
+PageMediaDimensions: 766 142
+PageMediaBegin
+PageMediaNumber: 15
+PageMediaRotation: 0
+PageMediaRect: 0 0 720 150
+PageMediaDimensions: 720 150
+PageMediaBegin
+PageMediaNumber: 16
+PageMediaRotation: 0
+PageMediaRect: 0 0 526 226
+PageMediaDimensions: 526 226
+PageMediaBegin
+PageMediaNumber: 17
+PageMediaRotation: 0
+PageMediaRect: 0 0 720 150
+PageMediaDimensions: 720 150
+PageMediaBegin
+PageMediaNumber: 18
+PageMediaRotation: 0
+PageMediaRect: 0 0 483 51
+PageMediaDimensions: 483 51
+PageMediaBegin
+PageMediaNumber: 19
+PageMediaRotation: 0
+PageMediaRect: 0 0 526 142
+PageMediaDimensions: 526 142
+PageMediaBegin
+PageMediaNumber: 20
+PageMediaRotation: 0
+PageMediaRect: 0 0 720 150
+PageMediaDimensions: 720 150

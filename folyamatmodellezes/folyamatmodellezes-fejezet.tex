@@ -26,7 +26,7 @@ A \fogalomragozva{viselkedes-alapu-modellezes}{viselkedési modellek} a rendszer
 
 \begin{itemize}
 	\item Az \fogalomragozva{allapot-alapu-modellezes}{állapot alapú modellek} esetén a rendszereket az \fogalomragozva{allapot}{állapotukkal} jellemezzük. Az állapotgép alapú viselkedésmodell arra válaszol, hogy ,,miként változhat'' a rendszer. Másként fogalmazva: a modell elsődlegesen arra összpontosít, hogy milyen állapotokban lelhető fel a rendszer (és nevekkel látja el az állapotokat), ill. milyen hatásokra mely állapotból mely állapotokba léphet át. Az másodlagosnak tekinthető, hogy ez a változás részletesebben megvizsgálva hogyan zajlik le, ezért a modell azt az egyszerűsítést alkalmazza, hogy az állapotátmenetek pillanatszerű események. Ilyen állapot alapú modellekkel bővebben  \iflabeldef{sec:allapot-alapu-modellezes}{\aref{sec:allapot-alapu-modellezes}.}{\emph{Állapot alapú modellezés}} fejezetben foglalkoztunk.
-	\item Ezzel szemben a \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer. A tevékenységeknek időbeli kiterjedést tulajdonítunk (ahelyett, hogy pillanatszerűvé egyszerűsítenénk őket), és azt vizsgáljuk, hogy mely tevékenységek végezhetőek el más tevékenységek előtt vagy után, esetleg velük átlapolódva. Ugyan a rendszer állapotainak jellemzése (adott időpontban mely tevékenységek vannak folyamatban, fejeződtek már be, stb.) implicit módon kikövetkeztethető a folyamatmodellből, de ez mintegy másodlagos; a modell a folyamatot alkotó tevékenységeknek ad nevet, és ezek viszonyának megadását várjuk el a modellezőtől.
+	\item Ezzel szemben a \fogalomragozva{folyamatmodell}{folyamatmodellek} fókusza az, hogy ,,mit csinál'' egy rendszer. A tevékenységeknek időbeli kiterjedést tulajdonítunk (ahelyett, hogy pillanatszerűvé egyszerűsítenénk őket), és azt vizsgáljuk, hogy mely tevékenységek végezhetőek el más tevékenységek előtt vagy után, esetleg velük átlapolódva. Ugyan a rendszer állapotainak jellemzése (adott időpontban mely tevékenységek vannak folyamatban, fejeződtek már be stb.) implicit módon kikövetkeztethető a folyamatmodellből, de ez mintegy másodlagos; a modell a folyamatot alkotó tevékenységeknek ad nevet, és ezek viszonyának megadását várjuk el a modellezőtől.
 \end{itemize}
 
 \begin{megjegyzes}
@@ -136,7 +136,7 @@ A folyamat szimulációja során először a bal oldalról belépő vezérlési 
 \end{pelda}
 \remofigscalefixed{szintaxis/elagazas-natur}{Elágazás grafikus szintaxisa}{\folyamatmodellscale}
 
-Természetesen 2 helyett 3, 4, stb. \fogalomragozva{ag}{ágú} döntési csomópont is elképzelhető.
+Természetesen 2 helyett 3, 4 stb. \fogalomragozva{ag}{ágú} döntési csomópont is elképzelhető.
 
 Az elágazási pontnál bármelyik \fogalomragozva{ag}{ágat} is választjuk, a folyamatmodell egy érvényes lefutását kapjuk. Másképpen szólva: a modell nem fejezi ki azt az információt, hogy mi alapján dönthető el, melyik esetben melyik lehetőség fog megtörténni. A korábban tanult szóhasználattal élve \fogalomragozva{nemdeterminizmus}{nemdeterminizmust} mutat a modell. Gyakran hasznos így modellezni, pl. ha emberi döntéstől függ a választás; vagy bármilyen egyéb esetben, ha vagy nincs rálátásunk a döntést meghatározó tényezőkre, vagy a modellezés jelenlegi absztrakciós szintjén a szükséges részleteket el akarjuk hanyagolni. 
 
