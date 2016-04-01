@@ -15,10 +15,8 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 * [Modellezés és metamodellezés](modellezes-es-metamodellezes.pdf) ([A5](modellezes-es-metamodellezes-mobile.pdf))
 * [Struktúra alapú modellezés](struktura-alapu-modellezes.pdf) ([A5](struktura-alapu-modellezes-mobile.pdf))
 * [Állapot alapú modellezés](allapot-alapu-modellezes.pdf) ([A5](allapot-alapu-modellezes-mobile.pdf))
-<!--* Folyamatmodellezés-->
 * [Folyamatmodellezés](folyamatmodellezes.pdf) ([A5](folyamatmodellezes-mobile.pdf))
-* Teljesítménymodellezés
-<!--* [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](teljesitmenymodellezes-mobile.pdf))-->
+* [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](teljesitmenymodellezes-mobile.pdf))
 * Modellek fejlesztése
 <!--* [Modellek fejlesztése](modellek-fejlesztese.pdf) ([A5](modellek-fejlesztese-mobile.pdf))-->
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
