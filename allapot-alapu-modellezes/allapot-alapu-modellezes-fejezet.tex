@@ -394,6 +394,22 @@ Mivel a különböző interfészeknek lehetne azonos nevű eseménye ill. állap
 %
 %absztrakt modellek szerepe, nemdeterminizmus, állapotmentes vs. állapotos stb.
 
+\section{Kooperáló állapotgépek szinkronizációja\kieg}
+
+\begin{definicio}
+Állapotgépek \fogalomragozva{szinkronizacio}{szinkronizációján} (más néven randevú, esetenként handshake, vagy programnyelvek esetén barrier) azt értjük, hogy két kooperáló állapotgépben bizonyos állapotátmenetek csak egyszerre történhetnek meg. A szinkronizálandó tranzíciókat szinkronizációs címkével jelöljük meg. Jelölése az állapotátmeneten: \textit{trigger} <\textit{szinkronizáció}> [\textit{őrfeltétel}] / \textit{akció}.
+\end{definicio}
+
+A szinkronizációval leírható, hogy a két állapotgépben megjelölt állapotátmenetek valójában a teljes rendszer egyetlen (összetett) állapotátmenetének vetületei, külön-külön nem, csak egyszerre végrehajthatók. A címke az összetett állapotátmenetre utal, így több helyen is előfordulhat ugyanaz a szinkronizációs címke, valamint többféle címke is használható.
+
+\begin{megjegyzes}
+	A szinkronizáció két állapotgép között működik, vagyis szintaktikailag is csak akkor helyes, ha legalább két állapotgépet tekintünk. Ha a kooperáló állapotgépek közül csak egyet vizsgálunk, a szinkronizált átmenetek spontán átmenetté válnak. Mivel ilyenkor elveszítjük azt az információt, hogy az adott átmenet mikor hajtható végre, absztrakció történik. Ugyanakkor itt is megfigyelhető, hogy finomítással (ebben az esetben au állapotgép-hálózat többi tagjának ábrázolásával) feloldható a nemdeterminizmus, jelen esetben a spontán átmenet(ek) megszüntetésével.
+\end{megjegyzes}
+
+\begin{pelda}
+	A kooperáló állapotgépek közötti szinkronizáció (és egyéb interakciók) illusztrációjáért lásd a Folyamatmodellezés gyakorlati feladatsor 4/\textit{e)} feladatának megoldását.
+\end{pelda}
+
 \section*{Felhasznált irodalom}
 
 \begin{itemize}
