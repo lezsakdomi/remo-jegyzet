@@ -16,7 +16,7 @@ Egy rendszert sokszor alrendszerek együtteseként modellezünk (ilyen alrendsze
 \section{Rendszerszintű tulajdonságok és a Little-törvény}
 
 \begin{definicio}
-	Fogalmak:
+	Fogalmak (lásd \ref{fig:system}. ábra):
 
 	\begin{itemize}
 		\item \Fogalom{erkezesi-rata} (jele: $\lambda$): A vizsgált rendszer határához egységnyi idő alatt \emph{érkező} felhasználói kérések átlagos száma.\footnote{A felhasználói kérés itt lehet tranzakció vagy kérés is, attól függ, honnan nézzük. Ennek megfelelően a darab, mint mértékegység is specializálandó az adott esetnek megfelelően.} Mértékegysége: db/s.
@@ -30,7 +30,25 @@ Azt mondjuk, hogy egy rendszer \fogalomragozva{egyensulyi-allapot}{egyensúlyi �
 
 $$N = X \cdot R$$
 
-Szavakkal, a rendszerben tartózkodó kérések átlagos száma megegyezik az átbocsátás és az átlagos rendszerben töltött idő szorzatával. A rendszert például egy futószalagként elképzelve ez azt jelenti, hogy ha a szalagon $R$ ideig tart végighaladni, de $1/X = 1/\lambda$ időnként ráteszünk egy-egy újabb elemet, akkor $R$ idő múlva az első elem levételének pillanatában $R/(1/X) = R \cdot X$ elem lesz a szalagon, vagyis a rendszer határain belül.
+Szavakkal, a rendszerben tartózkodó kérések átlagos száma megegyezik az átbocsátás és az átlagos rendszerben töltött idő szorzatával. A rendszert például egy futószalagként (\ref{fig:little}. ábra) elképzelve ez azt jelenti, hogy ha a szalagon $R$ ideig tart végighaladni, de $1/X = 1/\lambda$ időnként ráteszünk egy-egy újabb elemet, akkor $R$ idő múlva az első elem levételének pillanatában $R/(1/X) = R \cdot X$ elem lesz a szalagon, vagyis a rendszer határain belül.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{7cm}
+		\centering
+		\def\svgwidth{6cm}
+		\input{./teljesitmenymodellezes/figures/abstractsystem.pdf_tex}
+		\caption{Rendszerszintű tulajdonságok.}
+		\label{fig:system}
+	\end{minipage}
+	\hspace{1cm}
+	\begin{minipage}{7cm}
+		\centering
+		\input{./teljesitmenymodellezes/figures/little.pdf_tex}
+		\caption{A Little-törvény szemléltetése.}
+		\label{fig:little}
+	\end{minipage}
+\end{figure}
 
 \section{Erőforrások tulajdonságai}
 
@@ -43,6 +61,14 @@ Az egyes alrendszerek és erőforrások teljesítményjellemzőit a következő 
 \begin{definicio}
 \Fogalom{latogatasok-atlagos-szama} (jele: $V_i$, mint "visits"): Megadja, hogy egy tranzakció átlagosan hány kérést generál az $i.$ alrendszer (erőforrás) felé. Mértékegysége: k/tr (kérés/tranzakció).
 \end{definicio}
+
+\begin{figure}[H]
+	\hspace{1.5cm}
+	\centering
+	\input{./teljesitmenymodellezes/figures/subsystems.pdf_tex}
+	\caption{Rendszer és alrendszereinek kapcsolata.}
+	\label{fig:subsystems}
+\end{figure}
 
 \subsection{Felhasználói kérések szolgáltatásigénye}
 
@@ -61,7 +87,7 @@ Látható, hogy a két fogalom gyakorlatilag ugyanazt takarja, de az egyik a ren
 
 $$D_i = V_i \cdot S_i$$
 
-Látható, hogy itt sem történik semmi meglepő -- ha egy kérés átlagosan $S_i$ ideig foglalja az erőforrást, egy tranzakció pedig átlagosan $V_i$ kérést generál, akkor a tranzakció átlagosan $D_i$ ideig fogja használni az erőforrást, tehát az erőforrásra vonatkozó szolgáltatásigénye $D_i$.
+Látható, hogy itt sem történik semmi meglepő -- ha egy kérés átlagosan $S_i$ ideig foglalja az erőforrást, egy tranzakció pedig átlagosan $V_i$ kérést generál, akkor a tranzakció átlagosan $D_i$ ideig fogja használni az erőforrást, tehát az erőforrásra vonatkozó szolgáltatásigénye $D_i$. Ez az összefüggés látható a \ref{fig:subsystems}. ábrán is.
 
 \subsection{Erőforrások kihasználtásga}
 

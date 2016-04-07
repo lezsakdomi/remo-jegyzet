@@ -1,0 +1,70 @@
+%% Creator: Inkscape 0.48.5, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'subsystems.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{313.47830545bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.36082669)%
+    \put(0,0){\includegraphics[width=\unitlength]{subsystems.pdf}}%
+    \put(0.6793882,0.15175334){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\footnotesize{Alrendszer $n$}}}}%
+    \put(0.28824397,0.15175334){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\footnotesize{Alrendszer $2$}}}}%
+    \put(0.01751317,0.15175334){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\footnotesize{Alrendszer $1$}}}}%
+    \put(0.38327991,0.30752958){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Rendszer}}}%
+    \put(0.04068535,0.06990656){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$S_1$}}}%
+    \put(0.10850436,0.06990656){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$S_1$}}}%
+    \put(0.0768553,0.01112996){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$D_1$}}}%
+    \put(0.16275976,0.21458731){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$V_1=2$}}}%
+    \put(0.45212221,0.21458731){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$V_2=3$}}}%
+    \put(0.84547297,0.21458731){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$V_n=1$}}}%
+    \put(0.30020651,0.0708288){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$S_2$}}}%
+    \put(0.35265445,0.07171498){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$S_2$}}}%
+    \put(0.35039273,0.01112996){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$D_2$}}}%
+    \put(0.40691017,0.07442777){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$S_2$}}}%
+    \put(0.74600522,0.0708288){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$S_n$}}}%
+    \put(0.74600522,0.01205213){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$D_n$}}}%
+  \end{picture}%
+\endgroup%
