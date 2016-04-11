@@ -22,8 +22,8 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
 * Felderítő adatelemzés
 <!--* [Felderítő adatelemzés](felderito-adatelemzes.pdf) ([A5](felderito-adatelemzes-mobile.pdf))-->
-* Szimuláció
-<!--* [Szimuláció](szimulacio.pdf) ([A5](szimulacio-mobile.pdf))-->
+* Benchmarking
+<!--* [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))-->
 * Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
 

@@ -22,8 +22,8 @@ DOCUMENTS = \
 	modellek-ellenorzese-mobile \
 	felderito-adatelemzes \
 	felderito-adatelemzes-mobile \
-	szimulacio \
-	szimulacio-mobile \
+	benchmarking \
+	benchmarking-mobile \
 	kodgeneralas \
 	kodgeneralas-mobile
 
