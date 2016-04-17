@@ -8,38 +8,63 @@
 \section{Alapfogalmak}
 
 Motiváció
- Szoftver/hardver eszközök teljesítményének 
-összehasonlítása
+
+ Szoftver/hardver eszközök teljesítményének összehasonlítása
+
  Döntéstámogatás 
+
 o Melyiket előnyösebb megvenni/telepíteni?
+
 o Mekkora terhelésre elég a meglévő rendszer?
+
  Teljesítménytesztelés 
+
 o Kell‐e még a teljesítményen javítani és hol 
 (fejlesztésnél)?
+
 o Optimális‐e egy konkrét beállítás?
+
 o Van‐e egy beállításnak teljesítményre gyakorolt hatása 
 (érzékenység vizsgálat)?
 
 Fejlesztés alatt lévő rendszer
+
  Teljesítmény felmérése
+
 o Modell alapján becsült értékek
+
 o Megvalósított rendszer értékei „éles” helyzetben
+
  Tervezői és menedzsment döntések
+
 o Melyik részébe fektessünk több energiát (≈ pénzt)? 
+
  Mi alapján döntsünk?
+
 o Jelenlegi erősségek és gyengeségek
+
  Mi számít erősségnek vagy gyengeségnek?
+
 o Mire képesek a hasonló rendszerek, versenytársak?
 
 Elkészített rendszer
+
  Versenyképesség felmérése
+
 o Versenytársak eredményei
+
  Marketing stratégiák
+
 o Miért minket válasszanak?
+
  Milyen adatokra hivatkozzunk?
+
 o A miénk a legjobb rendszer egy esettanulmány szerint
+
 • És a többi esetben?
+
 o Ki rangsorolta az elérhető rendszereket?
+
 o Mi alapján?
 
 \begin{definicio}
@@ -58,27 +83,28 @@ A Wikipédia definíciója~\cite{wiki:benchmark} (kiemelések a jegyzet szerzői
 \end{quote}
 
 Elvárások
- Ismételhetőség (Repeatability)
-o Egy elemen többször megismételt mérés/művelet
-eredményeinek változékonysága (szóródási faktor)
- Reprodukálhatóság (Reproducibility)
-o A mérési rendszer változékonysága, amelyet a 
-műveletek viselkedéseinek különbsége okoz
- Általánosított felhasználói eset
+
+\begin{itemize}
+	\item \fogalom{ismetelhetoseg} (\fogalomangolul{ismetelhetoseg})
+	o Egy elemen többször megismételt mérés/művelet eredményeinek változékonysága (szóródási faktor)
+	\item \fogalom{reprodukalhatosag} (\fogalomangolul{reprodukalhatosag})
+	o A mérési rendszer változékonysága, amelyet a műveletek viselkedéseinek különbsége okoz
+\end{itemize}
+
+Általánosított felhasználói eset
+
 o Átlag felhasználó számára értelmezhető legyen az
 eredmény
 Szabványok/megállapodások betartása
- Relevancia
+\fogalom{relevancia} (\fogalomangolul{relevancia})
 o Tényleg azt az alkalmazást mérjük, amit kell
-o Terhelésgenerálás jellege közelítse a valódi terhelést
+o Terhelésgenerálás jellege közelítse a \fogalom{valodi} terhelést
 o Minimalizáljuk a zavaró tényezőket
 • Memória cache tartalma
 • Betöltött/kilapozott memória területek
 • Diszk cache tartalma
 
-
 ~\cite{DBLP:books/mk/Gray93}
-
 
 
 \section{Benchmarkok\kieg}
