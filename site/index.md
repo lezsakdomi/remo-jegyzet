@@ -22,7 +22,7 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
 * Modellek fejlesztése
 <!--* [Modellek fejlesztése](modellek-fejlesztese.pdf) ([A5](modellek-fejlesztese-mobile.pdf))-->
-* [Felderítő adatelemzés](EDA.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/index.php?page=konyvek&book_id=2046) c. könyv 5. fejezete)
+* [Felderítő adatelemzés](felderito-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
 <!--* [Felderítő adatelemzés](felderito-adatelemzes.pdf) ([A5](felderito-adatelemzes-mobile.pdf))-->
 * Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
