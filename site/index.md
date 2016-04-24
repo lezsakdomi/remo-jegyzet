@@ -20,7 +20,7 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 * Benchmarking
 <!--* [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))-->
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
-* Modellek fejlesztése
+<!--* Modellek fejlesztése-->
 <!--* [Modellek fejlesztése](modellek-fejlesztese.pdf) ([A5](modellek-fejlesztese-mobile.pdf))-->
 * [Felderítő adatelemzés](felderito-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
 <!--* [Felderítő adatelemzés](felderito-adatelemzes.pdf) ([A5](felderito-adatelemzes-mobile.pdf))-->
