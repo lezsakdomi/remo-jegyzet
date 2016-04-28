@@ -6,7 +6,7 @@
 		\caption{#2}
 		\label{fig:#1}
 	\end{figure}}
-	
+
 \newcommand{\remofigscalefixed}[3]{
 	\begin{figure}[H]
 		\centering
@@ -33,12 +33,14 @@
 
 \newenvironment{pelda}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white,linecolor=orange] \textbf{Példa.}}{\end{mdframed}\end{minipage}}
 
+\newenvironment{figyelmeztetes}{\begin{minipage}{\textwidth}\begin{mdframed}[backgroundcolor=white,linecolor=red] \textbf{Figyelem!}}{\end{mdframed}\end{minipage}}
+
 \newenvironment{megjegyzes}{\footnotesize \textbf{Megjegyzés.}}{}
 
 
 \newcommand{\kieg}{\textsuperscript{$\ast$}}
 \newcommand{\kiegeszitoanyag}{\textsuperscript{($\ast$)}} %lábjegyzetek, "bónusz bekezdések" végére  %
-	
+
 \newcommand{\halalfejes}{$\skull$}
 \newcommand{\allapot}[1]{\textsf{#1}}
 \newcommand{\esemeny}[1]{\textsf{#1}}
