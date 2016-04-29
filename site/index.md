@@ -31,4 +31,4 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 
 ### Házi feladat segédlet
 
-[Házi feladat segédlet](hf.pdf) ([A5](hf-a5.pdf))
+[Házi feladat segédlet](hf.pdf) ([A5](hf-mobile.pdf))
