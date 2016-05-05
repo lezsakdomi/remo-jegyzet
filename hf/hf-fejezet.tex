@@ -161,6 +161,7 @@ A szerkesztőeszköz részletesebb ismertetésére ezen a helyen nincs mód, de 
 
 A videóból nem feltétlenül látszik, de hasznos tudnivaló, hogy a szöveges beviteli helyeken (pl. állapotátmeneti szabályok címkézése) gépelés közben a \textbf{Ctrl + szóköz} billentyűkombinációval kódkiegészítéseket (\emph{Code completion}) javasol nekünk a Yakindu; ezzel nagymértékben gyorsítható a munka. További hasznos tipp, hogy a modellezés kezdetekor növeljük meg a \emph{main region} nevű területet, mivel szinte biztos, hogy több helyre lesz szükségünk; a \textbf{Ctrl + görgő} kombinációval tudunk kényelmesen nagyítani, illetve kicsinyíteni.
 
+\begin{figyelmeztetes}
 A Yakindu természetesen jóval szélesebb körű felhasználásra alkalmas, mint a Rendszermodellezés házi feladat. Így vannak olyan modellezési elemei, amelyeket más felhasználási esetkere szántak, a házi feladat szempontjából értelmetlenek, és így használatukat nem engedjük meg. (Konkrétabban: a Rendszermodellezés házi feladat kontextusában, a \emph{Digitális technika} tárgyból tanult szinkron áramkörökkel ellentétben, nincs meghatározott \emph{órajel} fogalom, így a kifejezetten erre építő Yakindu nyelvi elemek a szimulációban és tesztelés közben nem fognak helyesen működni.) Ezen \textbf{tiltott elemek}:
 
 \begin{itemize}
@@ -168,6 +169,7 @@ A Yakindu természetesen jóval szélesebb körű felhasználásra alkalmas, min
 	\item \code{oncycle}
 	\item Kiváltó esemény nélküli állapotátmenet (a Yakindu a fentiekkel ekvivalensen értelmezi)
 \end{itemize}
+\end{figyelmeztetes}
 
 \begin{comment}
 A \emph{default} ablakrészben tudjuk megadni az interface-eket, illetve a modellezéshez szükséges alapokat. A jobb oldali eszköztárral tudunk hozzáadni az ábrához újabb állapotokat, illetve onnan érünk el mindent, ami a modellezéshez szükséges.
