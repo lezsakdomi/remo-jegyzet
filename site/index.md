@@ -26,7 +26,6 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 <!--* [Felderítő adatelemzés](felderito-adatelemzes.pdf) ([A5](felderito-adatelemzes-mobile.pdf))-->
 * Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
-* Modellszintézis
 <!--* [Modellszintézs](modellszintezis.pdf) ([A5](modellszintezis-mobile.pdf))-->
 
 ### Házi feladat segédlet
