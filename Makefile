@@ -1,4 +1,5 @@
 DOCUMENTS = \
+	szorgalmi-hf \
 	rendszermodellezes \
 	rendszermodellezes-mobile \
 	sablon \

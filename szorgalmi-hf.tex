@@ -1,0 +1,67 @@
+% !TeX spellcheck = hu_HU
+% !TeX encoding = UTF-8
+\documentclass[a4paper]{article}
+
+\usepackage{ifxetex}
+\ifxetex
+	\usepackage{fontspec}
+\else
+	\usepackage[T1]{fontenc}
+	\usepackage[utf8]{inputenc}
+	\usepackage[lighttt]{lmodern}
+\fi
+\usepackage[magyar]{babel}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\frenchspacing
+
+\title{Tesztfedettség számítása}
+\author{Rendszermodellezés szorgalmi feladat}
+\date{2016. tavaszi félév}
+
+\pagenumbering{gobble}
+
+\begin{document}
+	
+\maketitle
+
+\section{Áttekintő}
+
+A szorgalmi feladat a tárgy során elkészített házi feladathoz kapcsolódik. A házi feladat során elkészült
+a sakkóra állapot alapú modellje, amelyre a kiadott tesztesetek hibamentesen futottak. 
+A szorgalmi feladat során a tesztkészlet fedettségét fogjuk meghatározni és szükség esetén bővíteni.
+A feladat megoldásához szükséges mind az elkészült Yakindu állapotgépmodell, 
+mind az ellenőrzésére kiadott tesztkészlet.
+
+\section{Elvégzendő feladatok}
+
+A ,,Modellek ellenőrzése és tesztelése'' című gyakorlaton tanult (állapotgépekre vonatkozó) tesztfedettségi metrikákat fogjuk a szorgalmi feladatban használni. Ezek a következők:
+
+\begin{itemize}
+	\item Állapot lefedettség
+	\item Átmenet lefedettség
+\end{itemize}
+
+A tesztfedettség fogalmáról bővebb információ olvasható a tárgyhonlapon publikált segédanyagok között, a ,,Modellek ellenőrzése'' c. előadásban.
+
+\subsection{Fedettség számítása}
+Számítsa ki a kiadott tesztkészlet által megvalósított (állapot, átmenet) fedettséget! Válaszát indokolja! Mely állapotok 
+és átmenetek nem kerültek fedésre? Mik azok az állapotok, amelyeket több teszt is lefed?
+
+\subsection{Tesztkészlet bővítése}
+A kiadott tesztkészletet bővítse úgy, hogy teljes, azaz 100\%-os állapot és átmenet lefedettséget érjünk el. A tesztekhez definiálja a következőket (táblázatos formában):
+
+\begin{itemize}
+	\item Tesztbemenet (a házi feladat kiírásban kiadotthoz hasonló formában: akciók sorozata)
+	\item Elvárt kimenet (az állapotváltozók értékei időbeli sorrend szerint)
+\end{itemize}
+
+Igazolja a tesztfedés teljességét! Az értékelés során figyelembe vesszük, hogy milyen ,,kompakt'' tesztesetek készültek el (azaz minél kevesebb input felhasználásával javuljon a fedettség.)
+
+%Vizsgálja meg az elkészült teszt szekvenciá(ka)t méret szempontjából: lehetne-e a fedettséget növelni kevesebb/rövidebb tesztek felhasználásával? Válaszát indokolja!
+
+\section{Dokumentáció}
+A feladat megoldását dokumentálja szövegesen, a döntések indoklásával! A tesztkészlet bővítésekor elég szövegesen leírni a kigondolt újabb teszteket, nem kell őket megvalósítani a házi feladat projektben. A dokumentáció viszont legyen olyan részletességű, hogy az alapján egy fejlesztő elkészíthesse a tesztek implementációját. 
+
+\end{document}
