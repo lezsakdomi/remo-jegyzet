@@ -54,13 +54,19 @@ A benchmarkokkal szemben többféle elvárást támasztunk. Nyilvánvalóan nem 
 	\Fogalom{relevancia} (\fogalomangolul{relevancia}): a benchmarkban megvalósított terhelési profil hasonlít arra a valós terhelésre, amely alatt a rendszer teljesítményéről információt szeretnénk kapni.
 \end{definicio}
 
-Érdeklődőknek javasolt olvasmány a \emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93} 1.~fejezete.
+A relevancia biztosításához fontos, hogy:
 
 \begin{itemize}
-	\item Tényleg azt az alkalmazást mérjük, amit kell
-	\item Terhelésgenerálás jellege közelítse a \fogalom{valodi} terhelést
-	\item Minimalizáljuk a zavaró tényezőket, pl. megfelelően ürítjük a \fogalomragozva{gyorsitotar}{gyorsítótárak} (pl. diszk cache, CPU cache) tartalmát és az operációs rendszeren futó többi felhasználói folyamatot leállítjuk.
+	\item tényleg azt az alkalmazást mérjük, amit kell,
+	\item terhelésgenerálás jellege közelítse a \fogalom{valodi} terhelést, valamint
+	\item minimalizáljuk a zavaró tényezőket, pl. megfelelően ürítjük a \fogalomragozva{gyorsitotar}{gyorsítótárak} (pl. diszk cache, CPU cache) tartalmát és az operációs rendszeren futó többi felhasználói folyamatot leállítjuk.
 \end{itemize}
+
+
+\begin{megjegyzes}
+Érdeklődőknek javasolt olvasmány a \emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93} 1.~fejezete.
+\end{megjegyzes}	
+
 
 \section{Példa benchmarkok\kieg}
 
