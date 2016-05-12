@@ -3,16 +3,14 @@
 
 \graphicspath{ {./benchmarking/figures/} }
 
-%\todo[inline]{ez a fejezet elég jó, leginkább ábra kellene bele}
+Melyik a legjobb ár-érték arányú processzort egy PC-be? Melyik a leggyorsabb relációs adatbázis-kezelő? Melyik kollekciókat kezelő függvénykönyvtár használja a legkevesebb memóriát? Gyakran szükséges, hogy ezekhez hasonló kérdésekre megbízható választ adjunk.
 
 \section{Alapfogalmak}
 
 \begin{megjegyzes}
-	Az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít, kiforratlan alapelvekkel. Ennek egyik jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, a legjobb operációs rendszer vagy a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak. Ezeket érdemes távolról elkerülni.
+	Az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít. Ennek egyik fő jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, melyik a legjobb operációs rendszer vagy melyik a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak.\footnote{Érdekes olvasmány a témában Luis Solano ,,Why Does Programming Suck?'' c. cikke: \url{https://medium.com/@luisobo/why-does-programming-suck-6b253ebfc607}} Ezeket érdemes távolról elkerülni.
 	
-	Az elmúlt több mint 50 év intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma.
-	
-	A műszaki projektek iránt érdeklődőknek javasolt ,,klasszikus''-nak számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{Mythical Man Month}~\cite{brooks1995mythical}.
+	Az elmúlt több mint 50 év intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma~\cite{HBR:ITProjects}. A műszaki projektek iránt érdeklődőknek javasoljuk a mára ,,klasszikusnak'' számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{The Mythical Man-Month}~\cite{brooks1995mythical}.
 	
 %	No wonder in this field there are holy wars about the most insignificant things
 \end{megjegyzes}
@@ -95,9 +93,12 @@ A Wikipédia definíciója~\cite{wiki:benchmark} (kiemelések a jegyzet szerzői
 Elvárások
 
 \begin{itemize}
-	\item \fogalom{ismetelhetoseg} (\fogalomangolul{ismetelhetoseg})
+	\item \fogalom{megismetelhetoseg} (\fogalomangolul{megismetelhetoseg})
+	
 	o Egy elemen többször megismételt mérés/művelet eredményeinek változékonysága (szóródási faktor)
+	
 	\item \fogalom{reprodukalhatosag} (\fogalomangolul{reprodukalhatosag})
+	
 	o A mérési rendszer változékonysága, amelyet a műveletek viselkedéseinek különbsége okoz
 \end{itemize}
 
@@ -106,23 +107,48 @@ Elvárások
 o Átlag felhasználó számára értelmezhető legyen az
 eredmény
 Szabványok/megállapodások betartása
+
 \fogalom{relevancia} (\fogalomangolul{relevancia})
+
 o Tényleg azt az alkalmazást mérjük, amit kell
+
 o Terhelésgenerálás jellege közelítse a \fogalom{valodi} terhelést
+
 o Minimalizáljuk a zavaró tényezőket
+
 • Memória cache tartalma
+
 • Betöltött/kilapozott memória területek
+
 • Diszk cache tartalma
 
-~\cite{DBLP:books/mk/Gray93}
+\emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93}
 
 
-\section{Benchmarkok\kieg}
+\section{Példa benchmarkok\kieg}
 
-PassMark
+\subsection{Hardver benchmarkok}
 
-\rovidites{SPEC} (\roviditesangolulkifejtve{SPEC})
+PassMark\footnote{\url{https://www.passmark.com/}}
 
-\rovidites{TPC} (\roviditesangolulkifejtve{TPC})
+PassMark CPU benchmark\footnote{\url{https://www.cpubenchmark.net/}}
+
+Böngészőmotorok: Octane\footnote{\url{https://developers.google.com/octane/}},
+Kraken\footnote{\url{http://krakenbenchmark.mozilla.org/}}.
+
+Okostelefonok: Antutu\footnote{\url{http://www.antutu.com/en/index.shtml}}
+
+\roviditesangolulkifejtve{SPEC}
+
+\subsection{Szoftver benchmarkok}
+
+\roviditesangolulkifejtve{TPC}
 
 \rovidites{TPCC}
+
+
+
+\subsection{Gráftranszformáció benchmarkok}
+
+A kutatócsoportunkban készült el az egyik első gráftranszformációk teljesítményét vizsgáló benchmark~\cite{vlhcc05_vsv}. A területen azóta is aktív kutatási munkát végzünk~\cite{DBLP:conf/staf/SzarnyasSRV15}.
+
