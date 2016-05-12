@@ -1,0 +1,58 @@
+% !TeX spellcheck = hu_HU
+\topic{Vizuális adatelemzés}
+
+%\section{Jegyzet}
+
+Jegyzetként kérjük használják az ,,Intelligens adatelemzés'' c. könyv 5. fejezetét (\emph{Vizuális analízis}). Elérhető a \url{http://docs.inf.mit.bme.hu/remo-jegyzet/vizualis-adatelemzes-konyvfejezet.pdf} címen, ill. ingyenesen megvásárolható a \url{http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes} címen.
+
+%\section{Kiegészítő anyagok\kieg}
+%
+%\subsection{Valószínűségszámítási alapfogalmak}
+%
+%\begin{definicio}
+%	\begin{itemize}
+%		\item \Fogalom{valoszinusegi-valtozo} (\fogalom{valoszinusegi-valtozo}): $X$
+%		\item \Fogalom{varhato-ertek}, \fogalom{atlag} (\fogalomangolul{varhato-ertek}, \fogalomangolul{atlag}):
+%		$$\mu = \mathbb{E}X = \sum_{i=1}^{n} p_i x_i$$
+%
+%		\item \Fogalom{szorasnegyzet} (\fogalomangolul{szorasnegyzet}):
+%
+%		$$\sigma^2 = \mathbb{E}\left(X-\mu\right)^2 = \sum_{i=1}^{n} p_i (x_i - \mu)^2$$
+%
+%		\item \Fogalom{szoras} (\fogalomangolul{szoras}):
+%
+%		$$\sigma = \sqrt{\mathbb{E}\left(X-\mu\right)^2} = \sqrt{\sum_{i=1}^{n} p_i (x_i - \mu)^2}$$
+%	\end{itemize}
+%\end{definicio}
+%
+%\subsection{Statisztikai alapfogalmak}
+%
+%\begin{definicio}
+%	\begin{itemize}
+%		\item \fogalomragozva{megfigyeles}{Megfigyelések}: $t$ darab, $x_1, \dots, x_t$
+%		\item \Fogalom{tapasztalati-atlag} (\fogalomangolul{tapasztalati-atlag}):
+%
+%		$$m = \bar{x} = \frac{x_1 + \dots + x_t}{t}$$
+%
+%		\item \Fogalom{korrigalt-tapasztalati-szoras} (\fogalomangolul{korrigalt-tapasztalati-szoras}):
+%
+%		$$s = \sqrt\frac{\left(x_1-m\right)^2 + \dots + \left(x_t-m\right)^2}{t-1} = \sqrt\frac{\sum_{i=1}^{t}\left(x_i - m\right)^2}{t-1}$$
+%
+%		Figyeljük meg, hogy a korrigált tapasztalati értékeknél $t$ helyett $(t-1)$-gyel osztunk. Ennek oka, hogy $t$-vel osztva a kapott érték általában alábecsli a teljes populáció szórását. Belátható, hogy $(t-1)$-gyel osztva a valódi szórást jobban közelítő értéket kapunk. Ezt nevezzük Bessel-féle korrekciónak (\url{https://en.wikipedia.org/wiki/Bessel's\_correction}).
+%	\end{itemize}
+%\end{definicio}
+%
+%\subsection{Kísérlettervezés}
+%
+%A \fogalomragozva{CLT}{centrális határeloszlás-tételből} (\roviditesangolul{CLT}) következőik, hogy tetszőleges eloszlású jellemző (véges $m$ várható értékkel és $s$ szórással) tapasztalati átlaga $t \rightarrow \infty$ esetén normális eloszlású, $\mu = m$ várható értékkel és $\sigma = \frac{s}{\sqrt{t}}$ szórással.
+%
+%Ökölszabály: ismert szórásnál $t > 30$, ismeretlen szórásnál $t > 100$ után kezd elfogadható lenni a közelítés.
+%
+%A normális eloszlású változó
+%\begin{itemize}
+%	\item az esetek 68\%-ában legfeljebb $1\sigma$ messze kerül $\mu$-től,
+%	\item az esetek 95\%-ában legfeljebb $2\sigma$ messze kerül $\mu$-től,
+%	\item az esetek 99,7\%-ában legfeljebb $3\sigma$ messze kerül $\mu$-től.
+%\end{itemize}
+%
+%\remofigscale{felderito-adatelemzes/gaussian-distribution}{Konfidenciaintervallumok}{0.3}

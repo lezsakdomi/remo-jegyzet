@@ -7,7 +7,9 @@ title:
 
 A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten olvasásra az A5-ös változatokat javasoljuk.
 
-[Teljes jegyzet](rendszermodellezes.pdf) ([A5](rendszermodellezes-mobile.pdf)) &ndash; Fejlesztés alatt. Kinyomtatását nem javasoljuk.
+[Teljes jegyzet](rendszermodellezes.pdf) ([A5](rendszermodellezes-mobile.pdf)) <!--&ndash; Fejlesztés alatt. Kinyomtatását nem javasoljuk.-->
+
+A jegyzet nem fedi le 100%-ban a Rendszermodellezés tantárgy anyagát. Minden anyagrésznél javasolt az előadás diasorának a tanulmányozása is, különösen a _Követelményanalízis_ és a _Vizuális adatelemzés_ területén.
 
 ### Anyagrészek
 
@@ -17,16 +19,11 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 * [Állapot alapú modellezés](allapot-alapu-modellezes.pdf) ([A5](allapot-alapu-modellezes-mobile.pdf))
 * [Folyamatmodellezés](folyamatmodellezes.pdf) ([A5](folyamatmodellezes-mobile.pdf))
 * [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](teljesitmenymodellezes-mobile.pdf))
-* Benchmarking
-<!--* [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))-->
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
-<!--* Modellek fejlesztése-->
-<!--* [Modellek fejlesztése](modellek-fejlesztese.pdf) ([A5](modellek-fejlesztese-mobile.pdf))-->
-* [Felderítő adatelemzés](felderito-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
-<!--* [Felderítő adatelemzés](felderito-adatelemzes.pdf) ([A5](felderito-adatelemzes-mobile.pdf))-->
+* [Vizuális adatelemzés](vizualis-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
+* [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))
 * Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
-<!--* [Modellszintézs](modellszintezis.pdf) ([A5](modellszintezis-mobile.pdf))-->
 
 ### Házi feladat segédlet
 
