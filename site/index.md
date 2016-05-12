@@ -20,7 +20,7 @@ A jegyzet nem fedi le 100%-ban a Rendszermodellezés tantárgy anyagát. Minden 
 * [Folyamatmodellezés](folyamatmodellezes.pdf) ([A5](folyamatmodellezes-mobile.pdf))
 * [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](teljesitmenymodellezes-mobile.pdf))
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
-* [Vizuális adatelemzés](felderito-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
+* [Vizuális adatelemzés](vizualis-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
 * [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))
 * Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
