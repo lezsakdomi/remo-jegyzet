@@ -10,7 +10,7 @@ Melyik a legjobb ár-érték arányú processzort egy PC-be? Melyik a leggyorsab
 \begin{megjegyzes}
 	Az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít. Ennek egyik fő jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, melyik a legjobb operációs rendszer vagy melyik a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak.\footnote{Érdekes olvasmány a témában Luis Solano ,,Why Does Programming Suck?'' c. cikke: \url{https://medium.com/@luisobo/why-does-programming-suck-6b253ebfc607}} Ezeket érdemes távolról elkerülni.
 	
-	Az elmúlt több mint 50 év intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma~\cite{HBR:ITProjects}. A műszaki projektek iránt érdeklődőknek javasoljuk a mára ,,klasszikusnak'' számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{The Mythical Man-Month}~\cite{brooks1995mythical}.
+	Az elmúlt több mint 50 év intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma~\cite{HBR:ITProjects}. Az informatikai projektek menedzsment háttere iránt érdeklődőknek javasoljuk a mára ,,klasszikusnak'' számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{The Mythical Man-Month}~\cite{brooks1995mythical}.
 	
 %	No wonder in this field there are holy wars about the most insignificant things
 \end{megjegyzes}
@@ -90,22 +90,20 @@ A Wikipédia definíciója~\cite{wiki:benchmark} (kiemelések a jegyzet szerzői
 	In \textbf{computing}, a benchmark is the \textbf{act of running} a computer program, a set of programs, or other operations, in order to \textbf{assess the relative performance} of an object, normally by running a number of \textbf{standard tests} and trials against it.
 \end{quote}
 
-Elvárások
+A benchmarkokkal szemben többféle elvárást támasztunk:
 
-\begin{itemize}
-	\item \fogalom{megismetelhetoseg} (\fogalomangolul{megismetelhetoseg})
-	
-	o Egy elemen többször megismételt mérés/művelet eredményeinek változékonysága (szóródási faktor)
-	
-	\item \fogalom{reprodukalhatosag} (\fogalomangolul{reprodukalhatosag})
-	
-	o A mérési rendszer változékonysága, amelyet a műveletek viselkedéseinek különbsége okoz
-\end{itemize}
+\begin{definicio}
+	\Fogalom{ismetelhetoseg} (\fogalomangolul{ismetelhetoseg}): egy elemen többször megismételt mérés/művelet eredményeinek változékonysága (szóródási faktor).
+\end{definicio}
 
-Általánosított felhasználói eset
+\begin{definicio}
+	\Fogalom{reprodukalhatosag} (\fogalomangolul{reprodukalhatosag}): a mérési rendszer változékonysága, amelyet a műveletek viselkedéseinek különbsége okoz.
+\end{definicio}
 
-o Átlag felhasználó számára értelmezhető legyen az
-eredmény
+\begin{definicio}
+	\Fogalom{erthetoseg} (\fogalomangolul{erthetoseg}): átlag felhasználó számára értelmezhető legyen az eredmény
+\end{definicio}
+
 Szabványok/megállapodások betartása
 
 \fogalom{relevancia} (\fogalomangolul{relevancia})
@@ -122,10 +120,12 @@ o Minimalizáljuk a zavaró tényezőket
 
 • Diszk cache tartalma
 
-\emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93}
+A \emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93}.
 
 
 \section{Példa benchmarkok\kieg}
+
+\roviditesangolulkifejtve{SPEC}\footnote{\url{https://www.spec.org/benchmarks.html}}
 
 \subsection{Hardver benchmarkok}
 
@@ -138,15 +138,10 @@ Kraken\footnote{\url{http://krakenbenchmark.mozilla.org/}}.
 
 Okostelefonok: Antutu\footnote{\url{http://www.antutu.com/en/index.shtml}}
 
-\roviditesangolulkifejtve{SPEC}
 
 \subsection{Szoftver benchmarkok}
 
-\roviditesangolulkifejtve{TPC}
-
-\rovidites{TPCC}
-
-
+Relációs adatbázis-kezelő rendszerek teljesítményének méréséhez a \roviditesangolulkifejtve{TPC} szervezet definiált különféle benchmarkokat. Például a \rovidites{TPCC}\footnote{\url{http://www.tpc.org/tpcc/}} célja tranzakciós  rendszerek teljesítménymérése.
 
 \subsection{Gráftranszformáció benchmarkok}
 
