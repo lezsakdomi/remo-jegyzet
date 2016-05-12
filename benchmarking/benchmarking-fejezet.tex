@@ -3,17 +3,22 @@
 
 \graphicspath{ {./benchmarking/figures/} }
 
-Melyik a legjobb ár-érték arányú processzort egy PC-be? Melyik a leggyorsabb relációs adatbázis-kezelő? Melyik kollekciókat kezelő függvénykönyvtár használja a legkevesebb memóriát? Gyakran szükséges, hogy ezekhez hasonló kérdésekre megbízható választ adjunk.
-
-\section{Alapfogalmak}
+Melyik a legjobb ár-érték arányú processzort egy PC-be? Melyik a leggyorsabb relációs adatbázis-kezelő? Melyik kollekciókat kezelő függvénykönyvtár használja a legkevesebb memóriát? Gyakran szükséges, hogy ezekhez hasonló kérdésekre megbízható választ adjunk. A kérdések megválaszolásában általában komoly segítséget nyújt valamilyen metrika vizsgálata. Például számítsuk ki a másodpercenként elvégzett lebegőpontos utasítások számának és az árnak a hányadosát, mérjünk le adott mennyiségű lekérdezéshez szükséges időt egy előre definiált adathalmazon, vagy hozzunk létre egy megadott kollekciót különböző függvénykönyvtárakkal és vizsgáljuk meg a memóriafogyasztásukat. Megfelelő mérések elvégzésével jó képet kaphatunk egy rendszer adott jellemzőiről.
 
 \begin{megjegyzes}
-	Az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít. Ennek egyik fő jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, melyik a legjobb operációs rendszer vagy melyik a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak.\footnote{Érdekes olvasmány a témában Luis Solano ,,Why Does Programming Suck?'' c. cikke: \url{https://medium.com/@luisobo/why-does-programming-suck-6b253ebfc607}} Ezeket érdemes távolról elkerülni.
+	Benchmarkokat abban az esetben érdemes alkalmazni, ha egy rendszer objektív jellemzőire vagyunk kíváncsiak. Szubjektív jellemzők esetén (pl. mennyire használható egy programozási nyelv, mennyire alkalmas egy adatmodell bizonyos feladatokra) a kérdés megválaszolása jóval összetettebb lehet. Ezekben az esetekben általában \fogalomragozva{felhasznaloi-tanulmany}{felhasználói tanulmányok} (\fogalomangolul{felhasznaloi-tanulmany}) végzése célravezető.
 	
-	Az elmúlt több mint 50 év intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma~\cite{HBR:ITProjects}. Az informatikai projektek menedzsment háttere iránt érdeklődőknek javasoljuk a mára ,,klasszikusnak'' számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{The Mythical Man-Month}~\cite{brooks1995mythical}.
+	Az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít. Ennek egyik fő jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, melyik a legjobb operációs rendszer vagy melyik a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak.\footnote{Érdekes olvasmány a témában Luis Solano ,,Why Does Programming Suck?'' c. cikke: \url{https://medium.com/@luisobo/why-does-programming-suck-6b253ebfc607}} Ezeket érdemes elkerülni.
+	
+	Az elmúlt évtizedek intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma~\cite{HBR:ITProjects}. Az informatikai projektek menedzsment háttere iránt érdeklődőknek javasoljuk a mára ,,klasszikusnak'' számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{The Mythical Man-Month}~\cite{brooks1995mythical}.
 	
 %	No wonder in this field there are holy wars about the most insignificant things
 \end{megjegyzes}
+
+
+
+\section{Alapfogalmak}
+
 
 Motiváció
 
@@ -122,6 +127,13 @@ o Minimalizáljuk a zavaró tényezőket
 
 A \emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93}.
 
+
+
+\roviditesangolulkifejtve{OLTP}
+
+\begin{megjegyzes}
+Az OLTP rendszerekkel szemben az \roviditesangolulkifejtve{OLAP} rendszerekben (általában) nagyobb mennyiségű adaton összetettebb, analitikus jellegű lekérdezéseket futtatnak. \rovidites{OLAP} rendszerek teljesítménymérésére tervezték a \mbox{TPC-DS} benchmarkot.
+\end{megjegyzes}
 
 \section{Példa benchmarkok\kieg}
 
