@@ -6,79 +6,18 @@
 Melyik a legjobb ár-érték arányú processzort egy PC-be? Melyik a leggyorsabb relációs adatbázis-kezelő? Melyik kollekciókat kezelő függvénykönyvtár használja a legkevesebb memóriát? Gyakran szükséges, hogy ezekhez hasonló kérdésekre megbízható választ adjunk. A kérdések megválaszolásában általában komoly segítséget nyújt valamilyen metrika vizsgálata. Például számítsuk ki a másodpercenként elvégzett lebegőpontos utasítások számának és az árnak a hányadosát, mérjünk le adott mennyiségű lekérdezéshez szükséges időt egy előre definiált adathalmazon, vagy hozzunk létre egy megadott kollekciót különböző függvénykönyvtárakkal és vizsgáljuk meg a memóriafogyasztásukat. Megfelelő mérések elvégzésével jó képet kaphatunk egy rendszer adott jellemzőiről.
 
 \begin{megjegyzes}
-	Benchmarkokat abban az esetben érdemes alkalmazni, ha egy rendszer objektív jellemzőire vagyunk kíváncsiak. Szubjektív jellemzők esetén (pl. mennyire használható egy programozási nyelv, mennyire alkalmas egy adatmodell bizonyos feladatokra) a kérdés megválaszolása jóval összetettebb lehet. Ezekben az esetekben általában \fogalomragozva{felhasznaloi-tanulmany}{felhasználói tanulmányok} (\fogalomangolul{felhasznaloi-tanulmany}) végzése célravezető.
+	Benchmarkokat abban az esetben érdemes alkalmazni, ha egy rendszer objektív jellemzőire vagyunk kíváncsiak. Szubjektív jellemzők esetén (pl. mennyire használható egy programozási nyelv, mennyire alkalmas egy adatmodell bizonyos feladatokra) a kérdés megválaszolása jóval összetettebb lehet. Ezekben az esetekben általában \fogalomragozva{felhasznaloi-tanulmany}{felhasználói tanulmányok} (\fogalomangolul{felhasznaloi-tanulmany}) végzése célravezető. Utóbbiak elvégzése azonban rendkívül idő- és költségigényes, ezért kevés tudományos eredmény áll rendelkezésre ezekben a kérdésekben.
 	
-	Az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít. Ennek egyik fő jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, melyik a legjobb operációs rendszer vagy melyik a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak.\footnote{Érdekes olvasmány a témában Luis Solano ,,Why Does Programming Suck?'' c. cikke: \url{https://medium.com/@luisobo/why-does-programming-suck-6b253ebfc607}} Ezeket érdemes elkerülni.
+	Fontos megemlíteni, hogy az informatika a klasszikus mérnöki tudományokkal -- pl. építészet, gépészet, vegyészet -- szemben még fiatal területnek számít. Ennek egyik fő jele, hogy gyakran szubjektív kérdésekről (melyik a legjobb programozási nyelv, melyik a legjobb operációs rendszer vagy melyik a legjobb adatmodell) is véget nem érő ,,vallási viták'' zajlanak.\footnote{Érdekes olvasmány a témában Luis Solano ,,Why Does Programming Suck?'' c. cikke: \url{https://medium.com/@luisobo/why-does-programming-suck-6b253ebfc607}} Ezeket érdemes messziről elkerülni.
 	
 	Az elmúlt évtizedek intenzív kutatómunkája ellenére az informatikai projektekben továbbra is kiemelkedően magas a sikertelen, elvetett (cancelled) vagy költségtervet túllépő (over budget) projektek száma~\cite{HBR:ITProjects}. Az informatikai projektek menedzsment háttere iránt érdeklődőknek javasoljuk a mára ,,klasszikusnak'' számító műveket, mint a \emph{Peopleware}~\cite{demarco2013peopleware} és a \emph{The Mythical Man-Month}~\cite{brooks1995mythical}.
 	
 %	No wonder in this field there are holy wars about the most insignificant things
 \end{megjegyzes}
 
-
-
 \section{Alapfogalmak}
 
-
-Motiváció
-
-- Szoftver/hardver eszközök teljesítményének összehasonlítása
-
-- Döntéstámogatás 
-
-o Melyiket előnyösebb megvenni/telepíteni?
-
-o Mekkora terhelésre elég a meglévő rendszer?
-
-- Teljesítménytesztelés 
-
-o Kell‐e még a teljesítményen javítani és hol 
-(fejlesztésnél)?
-
-o Optimális‐e egy konkrét beállítás?
-
-o Van‐e egy beállításnak teljesítményre gyakorolt hatása 
-(érzékenység vizsgálat)?
-
-Fejlesztés alatt lévő rendszer
-
-- Teljesítmény felmérése
-
-o Modell alapján becsült értékek
-
-o Megvalósított rendszer értékei „éles” helyzetben
-
-- Tervezői és menedzsment döntések
-
-o Melyik részébe fektessünk több energiát (≈ pénzt)? 
-
-- Mi alapján döntsünk?
-
-o Jelenlegi erősségek és gyengeségek
-
-- Mi számít erősségnek vagy gyengeségnek?
-
-o Mire képesek a hasonló rendszerek, versenytársak?
-
-Elkészített rendszer
-
-- Versenyképesség felmérése
-
-o Versenytársak eredményei
-
-- Marketing stratégiák
-
-o Miért minket válasszanak?
-
-- Milyen adatokra hivatkozzunk?
-
-o A miénk a legjobb rendszer egy esettanulmány szerint
-
-• És a többi esetben?
-
-o Ki rangsorolta az elérhető rendszereket?
-
-o Mi alapján?
+A benchmarkolás elsődleges célja egy rendszer teljesítményének mérése. A kapott eredmények felhasználása többféle lehet: hasonló célú rendszerek teljesítményének összehasonlítása,  egy rendszer teljesítményének felmérése, annak optimalizálása stb.
 
 \begin{definicio}
 	A \fogalom{benchmarkolas}
@@ -89,71 +28,61 @@ o Mi alapján?
 	\end{itemize}
 \end{definicio}
 
-A Wikipédia definíciója~\cite{wiki:benchmark} (kiemelések a jegyzet szerzőitől):
+\begin{megjegyzes}
+A definíció eredetije az angol Wikipédia definíciója szerint~\cite{wiki:benchmark} (kiemelések a jegyzet szerzőitől):
 
 \begin{quote}
-	In \textbf{computing}, a benchmark is the \textbf{act of running} a computer program, a set of programs, or other operations, in order to \textbf{assess the relative performance} of an object, normally by running a number of \textbf{standard tests} and trials against it.
+	In \emph{computing}, a benchmark is the \emph{act of running} a computer program, a set of programs, or other operations, in order to \emph{assess the relative performance} of an object, normally by running a number of \emph{standard tests} and trials against it.
 \end{quote}
+\end{megjegyzes}
 
-A benchmarkokkal szemben többféle elvárást támasztunk:
+A benchmarkokkal szemben többféle elvárást támasztunk. Nyilvánvalóan nem sokat ér egy olyan benchmark, amit csak egyszer tudunk lefuttatni vagy nem tudunk később (valamilyen pontossággal) reprodukálni.
 
 \begin{definicio}
-	\Fogalom{ismetelhetoseg} (\fogalomangolul{ismetelhetoseg}): egy elemen többször megismételt mérés/művelet eredményeinek változékonysága (szóródási faktor).
+	\Fogalom{ismetelhetoseg} (\fogalomangolul{ismetelhetoseg}): a benchmarkot lehessen egymás után többször futtatni, hogy a mérési eredmények szórása csökkenthető legyen.
 \end{definicio}
 
 \begin{definicio}
-	\Fogalom{reprodukalhatosag} (\fogalomangolul{reprodukalhatosag}): a mérési rendszer változékonysága, amelyet a műveletek viselkedéseinek különbsége okoz.
+	\Fogalom{reprodukalhatosag} (\fogalomangolul{reprodukalhatosag}): a benchmark legyen hasonló környezetben, hasonló eszközökkel megismételhető.
 \end{definicio}
 
 \begin{definicio}
-	\Fogalom{erthetoseg} (\fogalomangolul{erthetoseg}): átlag felhasználó számára értelmezhető legyen az eredmény
+	\Fogalom{erthetoseg} (\fogalomangolul{erthetoseg}): átlag felhasználó számára értelmezhető legyen az eredmény.
 \end{definicio}
 
-Szabványok/megállapodások betartása
+\begin{definicio}
+	\Fogalom{relevancia} (\fogalomangolul{relevancia}): a benchmarkban megvalósított terhelési profil hasonlít arra a valós terhelésre, amely alatt a rendszer teljesítményéről információt szeretnénk kapni.
+\end{definicio}
 
-\fogalom{relevancia} (\fogalomangolul{relevancia})
+Érdeklődőknek javasolt olvasmány a \emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93} 1.~fejezete.
 
-o Tényleg azt az alkalmazást mérjük, amit kell
+\begin{itemize}
+	\item Tényleg azt az alkalmazást mérjük, amit kell
+	\item Terhelésgenerálás jellege közelítse a \fogalom{valodi} terhelést
+	\item Minimalizáljuk a zavaró tényezőket, pl. megfelelően ürítjük a \fogalomragozva{gyorsitotar}{gyorsítótárak} (pl. diszk cache, CPU cache) tartalmát és az operációs rendszeren futó többi felhasználói folyamatot leállítjuk.
+\end{itemize}
 
-o Terhelésgenerálás jellege közelítse a \fogalom{valodi} terhelést
+\section{Példa benchmarkok\kieg}
 
-o Minimalizáljuk a zavaró tényezőket
+Többféle területen is specifikál benchmarkokat a \roviditesangolulkifejtve{SPEC}\footnote{\url{https://www.spec.org/benchmarks.html}}.
 
-• Memória cache tartalma
+\subsection{Hardver benchmarkok}
 
-• Betöltött/kilapozott memória területek
+A PassMark\footnote{\url{https://www.passmark.com/}} különböző benchmarkokat definiált, pl. processzorok teljesítményméréshez a PassMark CPU benchmarkot\footnote{\url{https://www.cpubenchmark.net/}}.
 
-• Diszk cache tartalma
+Böngészőmotorok teljesítményméréshez: Octane\footnote{\url{https://developers.google.com/octane/}},
+Kraken\footnote{\url{http://krakenbenchmark.mozilla.org/}}.
 
-A \emph{Benchmarking Handbook}~\cite{DBLP:books/mk/Gray93}.
+Okostelefonok teljesítményméréséhez: Antutu\footnote{\url{http://www.antutu.com/en/index.shtml}}
 
+\subsection{Szoftver benchmarkok}
 
-
-\roviditesangolulkifejtve{OLTP}
+Relációs adatbázis-kezelő rendszerek teljesítményének méréséhez a \roviditesangolulkifejtve{TPC} szervezet definiált különféle benchmarkokat. Például a \rovidites{TPCC}\footnote{\url{http://www.tpc.org/tpcc/}} célja tranzakciós rendszerek (\roviditesangolulkifejtve{OLTP}) teljesítménymérése.
 
 \begin{megjegyzes}
 Az OLTP rendszerekkel szemben az \roviditesangolulkifejtve{OLAP} rendszerekben (általában) nagyobb mennyiségű adaton összetettebb, analitikus jellegű lekérdezéseket futtatnak. \rovidites{OLAP} rendszerek teljesítménymérésére tervezték a \mbox{TPC-DS} benchmarkot.
 \end{megjegyzes}
 
-\section{Példa benchmarkok\kieg}
-
-\roviditesangolulkifejtve{SPEC}\footnote{\url{https://www.spec.org/benchmarks.html}}
-
-\subsection{Hardver benchmarkok}
-
-PassMark\footnote{\url{https://www.passmark.com/}}
-
-PassMark CPU benchmark\footnote{\url{https://www.cpubenchmark.net/}}
-
-Böngészőmotorok: Octane\footnote{\url{https://developers.google.com/octane/}},
-Kraken\footnote{\url{http://krakenbenchmark.mozilla.org/}}.
-
-Okostelefonok: Antutu\footnote{\url{http://www.antutu.com/en/index.shtml}}
-
-
-\subsection{Szoftver benchmarkok}
-
-Relációs adatbázis-kezelő rendszerek teljesítményének méréséhez a \roviditesangolulkifejtve{TPC} szervezet definiált különféle benchmarkokat. Például a \rovidites{TPCC}\footnote{\url{http://www.tpc.org/tpcc/}} célja tranzakciós  rendszerek teljesítménymérése.
 
 \subsection{Gráftranszformáció benchmarkok}
 

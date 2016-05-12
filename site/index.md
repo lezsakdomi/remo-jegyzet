@@ -17,8 +17,7 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 * [Állapot alapú modellezés](allapot-alapu-modellezes.pdf) ([A5](allapot-alapu-modellezes-mobile.pdf))
 * [Folyamatmodellezés](folyamatmodellezes.pdf) ([A5](folyamatmodellezes-mobile.pdf))
 * [Teljesítménymodellezés](teljesitmenymodellezes.pdf) ([A5](teljesitmenymodellezes-mobile.pdf))
-* Benchmarking
-<!--* [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))-->
+* [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
 <!--* Modellek fejlesztése-->
 <!--* [Modellek fejlesztése](modellek-fejlesztese.pdf) ([A5](modellek-fejlesztese-mobile.pdf))-->
