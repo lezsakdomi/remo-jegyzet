@@ -1,10 +1,22 @@
 % !TeX spellcheck = hu_HU
-\topic{Kódgenerálás}
+\topic{Modellező eszközök és kódgenerálási módszerek}
+\graphicspath{ {./kodgeneralas/figures/} }
 
-A \fogalom{kodgeneralas} célja \fogalomragozva{modell}{modellből} futtatható \fogalom{forraskod} generálása. ;-)
+A fejezet célja, hogy megismertessük a korszerű modellező eszközökkel és kódgenerálási technikákkal kapcsolatos fogalmakat, alapvető felépítésésüket és működési elvüket.
+A fejezet gyakorlatias megközelítésben tárgyalja a témát, minded pontban bemutatjuk, hogyan és mekkora munkával készíthetünk saját, vagy egészíthetünk ki meglévő modellező eszközt.
 
-\section{Fogalmak}
+\section{Modellező eszközök felépítése}
+Egy \emph{modelező eszközök} és a felhasználó \emph{tervező mérnök} közötti interakciókat az \aref{fig:modellezoeszkoz-felepites}.~ábra szemlélteti. A modellező eszköz alapvető feladata, hogy karbantartson egy \emph{modellt}, és különböző \emph{olvasási (bejárási, vagy lekérdezési)} és \emph{módosítási} műveletekkel láthatóvá és szerkeszthetővé tegye azt a \emph{tervezőmérnöknek}. Ezért a tervezőeszköz különböző \emph{nézeteket} \emph{származtat} a modellekből, amit a mérnök \emph{megjeleníthet} és meghatározott \emph{szerkesztési műveletekkel} változtathat. Egy modellhez több nézet is tartozhat, ami különböző részleteit emeli ki a modellnek. A modellező eszköz feladata, hogy ezeket a módosításokat visszavezesse a modellbe.
 
+\remofigscalefixed{modellezoeszkoz-felepites}{Modellező eszközökök alapvető felépítése}{0.45}
+
+\begin{pelda}
+Vegyünk egy a Yakindu tervező eszközből: 
+\end{pelda}
+
+\begin{pelda}TODO
+A séma elég álltalános ahhoz hogy egy számítógépes játékot is bemutassunk rajta: a modell célja, hogy tárolja a játékban szereplő objektumokat. A mögöttes modellt a játékprogram kezeli, menti és tölti be, és meghatározza azokat a műveleteket aminek mentén változhat. A játékos a játék során ezt a modellt szerkeszti. Hogy a játékos számára is játszható legyen a világ, a program különböző nézeteket készít
+\end{pelda}
 
 \begin{definicio}
 	Az \fogalom{absztrakt-szintaxis} ...
@@ -14,19 +26,22 @@ A \fogalom{kodgeneralas} célja \fogalomragozva{modell}{modellből} futtatható 
 	A \fogalom{konkret-szintaxis} ...
 \end{definicio}
 
-
+\section{Grafikus és szöveges nyelvek}
 
 \begin{definicio}
 	A \fogalom{nyelvtan} (\fogalomangolul{nyelvtan})...
 \end{definicio}
+
+\section{Kódgenerálási Módszerek}
+
+A \fogalom{kodgeneralas} célja \fogalomragozva{modell}{modellből} futtatható \fogalom{forraskod} generálása. ;-)
+
 
 \fogalomragozva{regularis-kifejezes}{reguláris kifejezések}
 
 \fogalom{fordito}
 
 \fogalom{nezeti-modell}
-
-
 
 \fogalom{sablon}
 
