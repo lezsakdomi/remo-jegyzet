@@ -3,56 +3,69 @@
 \graphicspath{ {./kodgeneralas/figures/} }
 
 A fejezet célja, hogy megismertessük a korszerű modellező eszközökkel és kódgenerálási technikákkal kapcsolatos fogalmakat, alapvető felépítésésüket és működési elvüket.
-A fejezet gyakorlatias megközelítésben tárgyalja a témát, minded pontban bemutatjuk, hogyan és mekkora munkával készíthetünk saját, vagy egészíthetünk ki meglévő modellező eszközt.
+A fejezet gyakorlatias megközelítésben tárgyalja a témát, minded pontban bemutatjuk, hogyan és munkával készíthetünk saját, vagy egészíthetünk ki meglévő modellező eszközt.
 
 \section{Modellező eszközök felépítése}
-Egy \emph{modelező eszközök} és a felhasználó \emph{tervező mérnök} közötti interakciókat az \aref{fig:modellezoeszkoz-felepites}.~ábra szemlélteti. A modellező eszköz alapvető feladata, hogy karbantartson egy \emph{modellt}, és különböző \emph{olvasási (bejárási, vagy lekérdezési)} és \emph{módosítási} műveletekkel láthatóvá és szerkeszthetővé tegye azt a \emph{tervezőmérnöknek}. Ezért a tervezőeszköz különböző \emph{nézeteket} \emph{származtat} a modellekből, amit a mérnök \emph{megjeleníthet} és meghatározott \emph{szerkesztési műveletekkel} változtathat. Egy modellhez több nézet is tartozhat, ami különböző részleteit emeli ki a modellnek. A modellező eszköz feladata, hogy ezeket a módosításokat visszavezesse a modellbe.
+A modellező eszközök célja, hogy különböző modellezési nyelvekhez szerkesztőfelületet nyújtson, és a modellekre épülő automatizált műveletekkel támogassa a fejlesztési folyamatot.
 
-\remofigscalefixed{modellezoeszkoz-felepites}{Modellező eszközökök alapvető felépítése}{0.45}
+A \emph{modelező eszköz} és a felhasználó \emph{tervező mérnök} közötti interakciókat az \aref{fig:modellezoeszkoz-felepites}.~ábra szemlélteti. A modellező eszköz alapvető feladata, hogy karbantartson egy \emph{modellt}, és \emph{lekérdezés (olvasási, vagy keresési)} és \emph{módosítási (beszúrás, törlés)} műveletekkel láthatóvá és szerkeszthetővé tegye azt a \emph{tervezőmérnöknek}. Ezért a tervezőeszköz különböző \emph{nézeteket} \emph{származtat} a modellekből, amit a mérnök \emph{megjeleníthet} és meghatározott \emph{szerkesztési műveletekkel} változtathat. A modellező eszköz feladata, hogy ezeket a módosításokat visszavezesse a modellbe.
+Egy modellhez több nézet is tartozhat, ami különböző részleteit emeli ki a modellnek. 
+\remofigscalefixed{modellezoeszkoz-felepites}{Modellező eszközökök alapvető 
+felépítése}{0.45}
+
+Az elészült vagy akár félkész modelleken a tervezőmérnök különböző \emph{automatizált műveleteket} kezdeményezhet (tervezési szabályok ellenőrzése, kódgenerálás, modell refactorálása) ami hatására \emph{automatikus transzformációk} hajtódnak végre a modellen. A transzformáció eredménye lehet jelentés (például hibajelentés a tervezési szabályok alapján), újonnan létrehozott dokumentum (például forráskód), vagy egy módosított modell.
+A modellezési műveleteket egy fejlett keretrendszernszer magától is elindíthatja fejlesztés közben (például minden mentéskor lefut a tervezési szabályok ellenőrzése), de érdemes ezeket külön meghívhatónak is meghagyni. 
 
 \begin{pelda}
-Vegyünk egy a Yakindu tervező eszközből: 
+Vegyünk egy a Yakindu tervezőeszközből: a tervezőeszközben megnyithatjuk a \code{.sct} kiterjesztésű fájlokat, melyeket beolvasva elkészíti a program a modell belső adatreprezentációját. Ezután az eszköz készít és megjelenít egy olyan nézetet, amelyben az állapotokat négyzetekkel, az állapotátmeneteket nyilakkal, a triggereket, őrfeltételeket és akciókat pedig szövegesen ábrázolja. A grafikus nézethez szerkesztőfelületet is tartozik, amin keresztül a tervezőmérnök módosíthatja a modellt. A Yakindu tervezőeszköz fontos tulajdonsága, hogy szigorúan ellenőrzi a modelleket és szabályozza modellmódosítások körét. Emiatt a fejlesztés során tipikusan helyes modelleket finomíthatunk egy újfent helyes modellé (ellentétben a forráskóddal, ahol nem ritka hogy órák után fordul újra a program).
+
+Egy yakindu modellből (egy \code{.sgen} kiterjesztésű generátor modell segítségével) kódot is generálhatunk, azaz a modellezésért cserébe komoly fejlesztési feladatokat automatikusan elvégezhetünk. Yakindu esetén egy 10 állapotból álló rendszer is 3000 sor java kódot eredményezhet.
 \end{pelda}
 
-\begin{pelda}TODO
-A séma elég álltalános ahhoz hogy egy számítógépes játékot is bemutassunk rajta: a modell célja, hogy tárolja a játékban szereplő objektumokat. A mögöttes modellt a játékprogram kezeli, menti és tölti be, és meghatározza azokat a műveleteket aminek mentén változhat. A játékos a játék során ezt a modellt szerkeszti. Hogy a játékos számára is játszható legyen a világ, a program különböző nézeteket készít
-\end{pelda}
-
-\begin{definicio}
-	Az \fogalom{absztrakt-szintaxis} ...
-\end{definicio}
-
-\begin{definicio}
-	A \fogalom{konkret-szintaxis} ...
-\end{definicio}
-
-\section{Grafikus és szöveges nyelvek}
-
-\begin{definicio}
-	A \fogalom{nyelvtan} (\fogalomangolul{nyelvtan})...
-\end{definicio}
-
-\section{Kódgenerálási Módszerek}
-
-A \fogalom{kodgeneralas} célja \fogalomragozva{modell}{modellből} futtatható \fogalom{forraskod} generálása. ;-)
-
-
-\fogalomragozva{regularis-kifejezes}{reguláris kifejezések}
-
-\fogalom{fordito}
-
-\fogalom{nezeti-modell}
-
-\fogalom{sablon}
-
-A reguláris kifejezésekkel és a nyelvtanok elméletével bővebben az \algel BSc és a \nyau MSc tárgyak foglalkoznak.
-
-\section{Eszközök\kieg}
-
-ANTLR eszköz~\cite{Parr:2013:DAR:2501720}
-
-Xtext~\cite{Xtext}
-
-\section{Összefoglalás}
-
-\fogalom{produktivitas}++
+% \section{Szintaxis és Szemantika}
+% 
+% \begin{definicio}
+% 	\fogalom{Modellez\'{e}si nyelvnek} nevezzük
+% \end{definicio}
+% 
+% A modelleket 
+% 
+% \begin{definicio}
+% 	\fogalom{Modellez\'{e}si nyelvnek} nevezzük
+% \end{definicio}
+% 
+% 
+% \begin{definicio}
+% 	A \fogalom{konkret-szintaxis} ...
+% \end{definicio}
+% 
+% \section{Grafikus és szöveges nyelvek}
+% 
+% \begin{definicio}
+% 	A \fogalom{nyelvtan} (\fogalomangolul{nyelvtan})...
+% \end{definicio}
+% 
+% \section{Kódgenerálási Módszerek}
+% 
+% A \fogalom{kodgeneralas} célja \fogalomragozva{modell}{modellből} futtatható \fogalom{forraskod} generálása. ;-)
+% 
+% 
+% \fogalomragozva{regularis-kifejezes}{reguláris kifejezések}
+% 
+% \fogalom{fordito}
+% 
+% \fogalom{nezeti-modell}
+% 
+% \fogalom{sablon}
+% 
+% A reguláris kifejezésekkel és a nyelvtanok elméletével bővebben az \algel BSc és a \nyau MSc tárgyak foglalkoznak.
+% 
+% \section{Eszközök\kieg}
+% 
+% ANTLR eszköz~\cite{Parr:2013:DAR:2501720}
+% 
+% Xtext~\cite{Xtext}
+% 
+% \section{Összefoglalás}
+% 
+% \fogalom{produktivitas}++
