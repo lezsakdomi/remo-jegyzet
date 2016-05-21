@@ -22,7 +22,40 @@ Vegyünk egy a Yakindu tervezőeszközből: a tervezőeszközben megnyithatjuk a
 Egy yakindu modellből (egy \code{.sgen} kiterjesztésű generátor modell segítségével) kódot is generálhatunk, azaz a modellezésért cserébe komoly fejlesztési feladatokat automatikusan elvégezhetünk. Yakindu esetén egy 10 állapotból álló rendszer is 3000 sor java kódot eredményezhet.
 \end{pelda}
 
-% \section{Szintaxis és Szemantika}
+\section{Modellek ellenőrzése és ábrázolása}
+Ahogy korábban említettük, a helyes modelleket szigorú tervezési szabályok határozzák meg: egy megszabott elemkészlet használva tehetjük össze a modelleket, miközben több szabály be kell tartaniuk: egy fejlett modellezési környezetben a véletlenszerűen összetett diagramok és szövegek szinte mindig hibássak lesznek. Ezeket a szabályokat \emph{szintaxisnak} nevezzük.
+
+\begin{definicio}
+\fogalomragozva{szintaxis}{Szintaxisnak} nevezzük a modellekkel szemben támasztott szabályokat. Ha egy modell teljesíti ezeket a szabályokat, akkor azt mondjuk rá hogy szintaktikailag helyes. Amikor modellekről beszélünk, általában szintaktikailag helyes modellekre gondolunk.
+\end{definicio}
+
+A modellek elemzése és szerkesztése során külön kezeljük a modellek megjelenítésével és nézeteivel kapcsolatos részleteket a mögöttes logikai felépítéstől. A konkrét ábrázolási módot érintő szabályokat (például állapotgép diagramokban az állapotokat négyzettel ábrázoljuk, a \code{var} kulcsszóval vezetünk be változókat, a szorzásnak magasabb a precedenciája mint az összeadásnak\ldots) \emph{konkrét szintaxisnak} fogjuk nevezni, míg a lényegi mögöttes logikai szerkezetet vizsgáló szabályokat (tranzíciók csak állapotok között mehetnek, tranzíciókon keresztül minden állapotnak elérhetőnek kell lennie) \emph{absztrakt szintaxisnak} mondjuk.
+
+\begin{definicio}
+\fogalomragozva{konkret-szintaxis}{Konkrét szintaxisnak} nevezzük a modell ábrázolásával kapcsolatos szabályokat (színek,  alakzatok, kulcsszavak, precedencia, kommentelési szabály). Megkülönböztetünk szöveges és és grafikus szintaxist.
+% Ezen kívül konkrét szintaxisnak nevezzük egy modell reprezentáciját magát is (a szöveges ábrázolást vagy a diagramot).
+\end{definicio}
+
+Amennyiben egy modell megfelel a konkrét szintaxisnak, a tervezőeszköz felépíti annak logikai strukturáját. A folyamat hasonlít arra, mint ha strukturálisan modelleznénk magukat a modelleket, elhagyván azokból a konkrét megjelenítésből fakadó részleteket (például a koordinátája a modellelemeknek). Ennek a folyamatnak a kimenetele egy olyan struktúramodell lesz, amiben a lényegi elemek szerepelnek.
+
+\begin{definicio}
+\fogalomragozva{absztrakt-szintaxis}{Absztrakt szintaxisnak} nevezzük a modellek logikai felépítésére vonatkozó szabályokat, melyek függetlenek minden megjelenítéssel kapcsolatos részlettől. Ezen kívül absztrakt szintaxis modellnek nevezzük magát a logikai vagy számítógépes reprezentációt is.
+\end{definicio}
+
+A definíciók szerint absztrakt szintaxis alatt egyaránt értjük a szabályokat és modelleket is. Ez azért van, mert a konkrét és absztrakt szintaxis ellenőrzésével együtt szokott előállni a mögöttes modell is. 
+
+\begin{pelda}
+Yakinduban 
+\end{pelda}
+
+\remofigscalefixed{concrete}{Állapotgép konkrét szintaxisok Yakindu tervezőeszközben}{0.45}
+
+\remofigscalefixed{abstract}{Kétállapotú állapotgép absztrakt szintaxisa}{0.45}
+
+% \begin{definicio}
+% \fogalomragozva{modellezesi-nyelv}{Modellezési nyelvnek} nevezzük az összes megengedett absztrakt szintaxis gráf halmazát.
+% \end{definicio}
+
 % 
 % \begin{definicio}
 % 	\fogalom{Modellez\'{e}si nyelvnek} nevezzük
