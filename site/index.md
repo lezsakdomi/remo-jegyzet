@@ -9,7 +9,7 @@ A jegyzet egyben és fejezetenként is letölthető. Mobiltelefonon és tableten
 
 [Teljes jegyzet](rendszermodellezes.pdf) ([A5](rendszermodellezes-mobile.pdf)) <!--&ndash; Fejlesztés alatt. Kinyomtatását nem javasoljuk.-->
 
-A jegyzet nem fedi le 100%-ban a Rendszermodellezés tantárgy anyagát. Minden anyagrésznél javasolt az előadás diasorának a tanulmányozása is, különösen a _Követelményanalízis_ és a _Vizuális adatelemzés_ területén.
+A jegyzet nem fedi le 100%-ban a Rendszermodellezés tantárgy anyagát. Minden anyagrésznél javasolt az előadás diasorának a tanulmányozása is, különösen a _Követelményanalízis_, a _Vizuális adatelemzés_ és a _Kódgenerálás_ témakörökben.
 
 ### Anyagrészek
 
@@ -22,7 +22,6 @@ A jegyzet nem fedi le 100%-ban a Rendszermodellezés tantárgy anyagát. Minden 
 * [Modellek ellenőrzése](modellek-ellenorzese.pdf) ([A5](modellek-ellenorzese-mobile.pdf))
 * [Vizuális adatelemzés](vizualis-adatelemzes-konyvfejezet.pdf) (az [Intelligens adatelemzés](http://www.interkonyv.hu/konyvek/antal_peter_intelligens_adatelemzes) c. könyv 5. fejezete)
 * [Benchmarking](benchmarking.pdf) ([A5](benchmarking-mobile.pdf))
-* Kódgenerálás
 <!--* [Kódgenerálás](kodgeneralas.pdf) ([A5](kodgeneralas-mobile.pdf))-->
 
 ### Házi feladat segédlet
