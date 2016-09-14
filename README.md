@@ -1,4 +1,4 @@
-# Rendszermodellezés 
+# Rendszermodellezés
 
 [![Build Status](https://travis-ci.org/FTSRG/remo-jegyzet.svg?branch=master)](https://travis-ci.org/FTSRG/remo-jegyzet) [![PDF Status](https://www.sharelatex.com/github/repos/FTSRG/remo-jegyzet/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/FTSRG/remo-jegyzet/builds/latest/output.pdf)
 
@@ -14,7 +14,7 @@ A jegyzet elérhető a <http://docs.inf.mit.bme.hu/remo-jegyzet/> címen.
 
 ### Windows
 
-* Fordításhoz: [MiKTeX](http://miktex.org/) [(mirror)](http://tug.ctan.org/systems/win32/miktex/setup/). A telepítéskor pipáljuk be, hogy a hiányzó csomagokat **on-the-fly** telepítse fel.
+* Fordításhoz: [MiKTeX](http://miktex.org/) 32 bites verziója [(mirror)](http://tug.ctan.org/systems/win32/miktex/setup/). A telepítéskor pipáljuk be, hogy a hiányzó csomagokat **on-the-fly** telepítse fel. _Fontos, hogy a 32 bites verziót használjuk, a 64 bites verzióval a fordítás bizonyos konfigurációkon elszáll._
 * Szerkesztéshez: [TeXstudio](http://texstudio.sourceforge.net/). Érdemes először a MiKTeX-et felrakni, utána a TeXstudiót.
 * Előnézethez: [Sumatra PDF](http://www.sumatrapdfreader.org/free-pdf-reader.html)
 * Tárgymutató generálásához:
@@ -56,4 +56,3 @@ A Xindy használata Linux alatt nincs külön teendőnk, Windows alatt viszont i
 
 * **Probléma:** Nem jelennek meg a képek a jegyzetben.
 * **Megoldás:** A PDF 1.4 és a PDF 1.5 szabvány közötti eltérések okozhatják a problémát. Ha nem tudunk egyszerűen PDF 1.4-es fájlt előállítani (pl. a yEd-nél nincs erre opció), akkor workaroundként a `pdfcrop` alkalmazással körbevágva a képet 1.4-es PDF-et kapunk. Ahol erre szükség lehet, ott a `figures` könyvtárakban található egy `crop.sh` szkript. Ez a szkript az adott könyvtár *összes* PDF fájlját felülírja a körbevágott változattal.
- 
