@@ -14,7 +14,7 @@ Irányítatlan gráffal ábrázolhatjuk emberek között az \emph{ismerőse} rel
 Irányított gráffal ábrázolhatjuk emberek között a \emph{követi} relációt, ilyen pl. a Twitter \emph{follows} relációja. Szintén irányított gráffal ábrázolhatók az interneten egymásra mutató weboldalak.
 \end{pelda}
 
-Természetesen irányítatlan gráfok ábrázolhatók irányítottként is, ha minden $\{v_1, v_2\}$ irányítatlan élet lecserélünk. (Érdekesség: megfelelő transzformációval irányított gráfok is ábrázolhatók irányítatlan gráfként~\cite{rodriguez2008mapping}.)
+Természetesen irányítatlan gráfok ábrázolhatók irányítottként is. Kétféle elterjedt megközelítés van: 1. minden $\{v_1, v_2\}$ irányítatlan élet lecserélünk egy $(v_1, v_2)$ és egy $(v_2, v_1)$ irányított élre 2. minden irányítatlan élet egy tetszőlegs irányú irányított élre cserélünk, de a gráf feldolgozása során az irányításokat nem vesszük figyelembe.\footnote{Érdekesség: megfelelő transzformációval irányított gráfok is ábrázolhatók irányítatlan gráfként~\cite{DBLP:journals/corr/abs-0804-0277}.}
 \begin{kisdefinicio}
 Egy $G = (V, E)$ gráfnak $G' = (V', E')$ \fogalomragozva{reszgraf}{részgráfja}, ha $G'$ megkapható úgy, hogy $G$-ből elhagyunk néhány csomópontot és azok éleit, ill. néhány további élet. Formálisan: ha $V' \subseteq V$ és $E' \subseteq V' \times V'$.
 \end{kisdefinicio}
