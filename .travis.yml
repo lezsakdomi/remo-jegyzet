@@ -8,8 +8,8 @@ branches:
   only:
     - master
 script:
-- sudo apt-get update
-- sudo apt-get install -y texlive-base texlive-science texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-hungarian texlive-fonts-extra xindy
+- sudo apt-get update -qq
+- sudo apt-get install -qq -y texlive-base texlive-science texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-hungarian texlive-fonts-extra xindy
 - ./use-xindy.sh
 - make
 - ./deploy.sh
