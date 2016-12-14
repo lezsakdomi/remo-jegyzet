@@ -1,5 +1,8 @@
 sudo: required
 dist: trusty
+cache:
+  directories:
+    - /usr/local/texlive/
 env:
   global:
   - GH_REF: github.com/FTSRG/remo-jegyzet.git
