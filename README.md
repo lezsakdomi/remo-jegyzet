@@ -1,5 +1,5 @@
 # Rendszermodellezés
-
+ 
 [![Build Status](https://travis-ci.org/FTSRG/remo-jegyzet.svg?branch=master)](https://travis-ci.org/FTSRG/remo-jegyzet)
 
 A jegyzet elérhető a <http://docs.inf.mit.bme.hu/remo-jegyzet/> címen.
