@@ -1,7 +1,7 @@
 # Site settings
 title: Rendszermodellezés jegyzet
 baseurl: "/remo-jegyzet/" # the subpath of your site, e.g. /blog/
-url: "http://docs.inf.mit.bme.hu" # the base hostname & protocol for your site
+url: "http://docs.inf.mit.bme.hu/" # the base hostname & protocol for your site
 
 markdown: kramdown
 
