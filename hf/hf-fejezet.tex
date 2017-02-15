@@ -8,7 +8,7 @@
 Jelen segédanyag a BME VIK elsőéves informatikus hallgatói számára készült a \emph{Méréstechnika és Információs Rendszerek Tanszéken} Lucz Soma és Farkas Rebeka munkájának felhasználásával, és a Rendszermodellezés (VIMIAA00) című tárgy kötelező házi feladatának elkészítésében segít. A Yakindu eszköz\footnote{\url{http://statecharts.org/}} egy állapot alapú modellezést, szimulációt és kódgenerálást támogató eszköz.
 
 \begin{figyelmeztetes}
-A szöveg a \emph{Yakindu} 2.5.0-ös verziójával van összhangban. Kérjük, hogy idén (2016-ban) a házi feladat elkészítéséhez is ezt a verziót használják.
+A szöveg a \emph{Yakindu} 2.9-es verziójával van összhangban. Kérjük, hogy idén (2017-ben) a házi feladat elkészítéséhez is ezt a verziót használják.
 \end{figyelmeztetes}
 
 \section{Alapismeretek}
@@ -17,7 +17,7 @@ A Yakindu modellező eszköz az Eclipse nevű fejlesztőkörnyezet egy kiterjesz
 
 \subsection{Eclipse bevezető}
 
-Az Eclipse egy ingyenes, nyílt forráskódú és többcélú fejlesztőkörnyezet, amely egy közös platformból és arra épülő \emph{plugin} (beépülő) modulokból áll. A megfelelő pluginek kiválasztásával ill. saját pluginek fejlesztésével az Eclipse képességei szabadon megválaszthatóak. A legtöbben Java fejlesztőkörnyezetként találkoznak vele, pedig többféle előre csomagolt változata is létezik (pl. C/\cpp fejlesztéshez, modell alapú szoftvertervezéshez stb.), melyek mindegyike a célnak megfelelő plugineket tartalmazza.
+Az Eclipse egy ingyenes, nyílt forráskódú és többcélú fejlesztőkörnyezet, amely egy közös platformból és arra épülő \emph{plugin} (beépülő) modulokból áll. A megfelelő pluginek kiválasztásával ill. saját pluginek fejlesztésével az Eclipse képességei szabadon megválaszthatóak. A legtöbben Java fejlesztőkörnyezetként találkoznak vele, pedig többféle előre csomagolt változata is létezik (pl. C/\cpp fejlesztéshez, webfejlesztéshez, modell alapú szoftvertervezéshez stb.), melyek mindegyike a célnak megfelelő plugineket tartalmazza.
 
 \subsection{Az Eclipse munkaterület}
 
@@ -51,18 +51,18 @@ Ahhoz, hogy az Eclipse alapú Yakindu, továbbá a házi feladathoz segítséget
 A JDK telepítőkészletet az Oracle honlapjáról\footnote{\url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}} lehet letölteni. Az oldalon a \textbf{Java SE Development Kit} feliratú szürke dobozban az \textbf{Accept License Agreement} lehetőséget kell kiválasztani, ekkor az alatta lévő listából letölthető a platformunknak megfelelő telepítőfájl. A telepítés \textbf{Next, Next, Finish} típusú, nem igényel különösebb fejtörést. Amennyiben valamilyen további reklámtermék (pl. Ask.com) telepítését is felajánlja, azt nem szükséges elfogadni.
 
 \begin{megjegyzes}
-Figyelem: a hivatalos Oracle JVM-et ajánljuk. OpenJDK-val maga a feladat megoldható, de nem tudjuk biztosítani hogy működni a kötelező házi feladat kipróbálását segítő grafikus felület (ld. \ref{sec:modellezo-eszkoz-telepitese}. szakasz).
+Figyelem: a hivatalos Oracle JVM-et ajánljuk. OpenJDK-val maga a feladat megoldható, de nem tudjuk biztosítani hogy működni az opcionális használatra szánt, a kötelező házi feladat kipróbálását segítő grafikus felület (ld. \ref{sec:modellezo-eszkoz-telepitese}. szakasz).
 \end{megjegyzes}
 
 \begin{comment}
-Telepítés után érdemes beállítani a \codeEsc{JAVA\_HOME} változót, valamint hozzáadni a Java elérési útját a PATH-hoz. Ehhez Windowson a követketzőt kell tenni.
+Telepítés után érdemes beállítani a \codeEsc{JAVA\_HOME} változót, valamint hozzáadni a Java elérési útját a PATH-hoz, ha ezeket a telepítő nem tette volna meg. Ehhez Windowson a következőt kell tenni.
 
 \begin{itemize}
 \item A számítógép ikonra jobb gombal kattintva válasszuk a \textbf{Properties} (Tulajdonságok) lehetőséget. (Elérhető a \textbf{Control Panel} | \textbf{System and Security} | \textbf{System} úton is.)
 \item A bal oldali menü lehetőségei közül kattintsunk az \\textbf{Advanced System Settings}-re.
 \item Itt nyomjunk rá az \textbf{Environment Variables} gombra.
-\item Ha még nincs \codeEsc{JAVA_HOME} változó, létre kell hozni. \codeEsc{JAVA_HOME} legyen a neve, az értéke pedig a frissen installált Java könyvtár elérési útja. Ha szóközöket tartalmaz, érdemes rövidítéseket használni, pl. \codeEsc{C:\Progra~1\Java\jdk1.8.0\_31}
-\item Jelöljük ki a \codeEsc{Path} változót, majd \textbf{Edit}. A változó jelenlegi értékét ne töröljük ki, csak írjunk a végére egy pontosvesszőt, majd a JDK-n belüli bin könyvtár elérési útját.
+\item Ha még nincs \codeEsc{JAVA_HOME} változó, létre kell hozni. \codeEsc{JAVA_HOME} legyen a neve, az értéke pedig a frissen installált Java könyvtár elérési útja. Ha szóközöket tartalmaz, érdemes rövidítéseket használni, pl. \codeEsc{C:\Progra~1\Java\jdk1.8.0\_121}
+\item Jelöljük ki a \codeEsc{Path} változót, majd \textbf{Edit}. A változó jelenlegi értékét ne töröljük ki, csak írjunk a végére egy pontosvesszőt, majd a JDK-n belüli \codeEsc{\bin} könyvtár elérési útját.
 \end{itemize}
 \end{comment}
 
@@ -75,9 +75,9 @@ A programot nem kell telepíteni -- letöltés és kicsomagolás után egy futta
 Első indításkor az Eclipse megkérdezi, melyik workspace-ben szeretnénk dolgozni. Adjunk meg neki egy mappát (ha nem létezik, majd az Eclipse létrehozza). Figyeljünk, hogy a mappa elérési útjában ne szerepeljenek ékezetes karakterek, vagy szóközök. Pipáljuk ki, hogy ne kérdezze meg minden indításkor (indulás után bármikor lehet workspace-t váltani).
 Ez a workspace lesz a későbbiekben a projektfájlok helye, ide fog dolgozni alapesetben a program.
 
-\begin{comment}
-Természetesen máshonnan is importálható projekt, illetve máshová is lehet menteni, de a workspace kényelmes megoldás arra, hogy egységes helyen tároljuk az aktuális munkáinkat.
-\end{comment}
+\begin{megjegyzes}
+Természetesen máshonnan is linkelhető projekt a workspace-be másolása nélkül, de a workspace könyvtár használata kényelmes megoldás arra, hogy egységes helyen tároljuk az aktuális munkáinkat.
+\end{megjegyzes}
 
 Amíg az új workspace-ben nincsenek projektjeink, az Eclipse megjelenít egy üdvözlőképernyő fület. Ezt nyugodtan bezárhatjuk.
 
@@ -86,7 +86,7 @@ Amíg az új workspace-ben nincsenek projektjeink, az Eclipse megjelenít egy ü
 \subsection{A projekt és modell létrehozása}
 Ahhoz, hogy a Yakinduval megkezdhessük a munkát, szükség van egy tetszőleges projektre az Eclipse workspace-ben. A házi feladat támogatására kiadunk megfelelően előkészített projektvázakat, amelyeket csak importálni kell (ld. \ref{sec:yakindu-projekt-importalasa}. szakasz). Az alábbiakban viszont leírjuk, hogyan kellene enélkül a projektváz nélkül a ,,nulláról'' elindulni.
 
-Ha Java kódot szeretnénk majd generálni (ami a házi feladat támogatására kiadott segédeszközöknek kelleni is fog), akkor \emph{Java Project} készítésére van szükség. Ehhez a \textbf{File} menü \textbf{New} menüpontján belüli \textbf{New Java Project} pontra kell kattintanunk. Itt megadhatjuk a projekt nevét, majd egészen nyugodtan nyomhatunk rögtön egy \textbf{Finish}-t (a további beállításokra most nem lesz szükségünk).
+Az új projekt létrehozásához a \textbf{File} menü \textbf{New} menüpontján belüli \textbf{Project...} pontra kell kattintanunk. Ha Java kódot szeretnénk majd generálni (ami a házi feladat támogatására kiadott segédeszközöknek kelleni is fog), akkor \emph{Java Project} készítésére van szükség, amely nem meglepő módon az \emph{Java} kategórián belül találaható; egyéb esetben a \emph{General} kategórián belüli sima \emph{Project} is megteszi. A projekttípus kiválasztása és a \emph{Next} gomb megnyomása után megadhatjuk a projekt nevét, majd egészen nyugodtan nyomhatunk rögtön egy \textbf{Finish}-t (a további beállításokra most nem lesz szükségünk).
 
 \begin{comment}
 a további beállításokra még Szoftlab 3-on sem lesz szükségünk.
@@ -116,6 +116,7 @@ A házi feladat elkészítése során a fenti lépések végrehajtására nem le
 	\item A \textbf{Finish} után a Project Explorerben láthatóvá válik az imént importált projektünk. Itt a mappát lenyitva, az \textbf{.sct} kiterjesztésű fájlra duplán kattintva elkezdhetünk dolgozni a házi feladattal.
 \end{itemize}
 
+\begin{comment}
 \begin{megjegyzes}
 Figyelem: A jelenlegi Yakinduban eltávolítottak néhány Java fejlesztéssel kapcsolatos kiterjesztést, ami a tesztelést támogatta. Így a korábbi verziójú tesztkörnyezet fordítása gondot okozhat, és \code{Assert can not be resolved.} jellegű hibaüzenetek jelennek meg. A problémát könnyen megoldhatjuk, ha az alábbi pontok valamelyikét elvégezzük:
 \begin{itemize}
@@ -123,6 +124,7 @@ Figyelem: A jelenlegi Yakinduban eltávolítottak néhány Java fejlesztéssel k
   \item Letöltjük a Java fejlesztőkörnyezetet a Yakinduba: \textbf{Help} menü  \textbf{Install new software} menüpontra felugró ablakban állítsuk be a \textbf{Working with: Eclipse Mars Repository}, és válasszuk ki a \textbf{Eclipse Java Developement tools} csomagot telepítésre.
 \end{itemize}
 \end{megjegyzes}
+\end{comment}
 
 
 \subsection{A modell megnyitása}
@@ -179,7 +181,7 @@ A \emph{default} ablakrészben tudjuk megadni az interface-eket, illetve a model
 \subsection{A modell működésének szimulálása}
 Ha már van egy részleges vagy teljes megoldásunk, nyilván szeretnénk meggyőződni annak helyességéről. Ennek egyik eszköze a Yakindu beépített szimulátora.
 
-A szimuláció elindításához válasszuk ki a bal oldali Project Explorerben látható Yakindu statechart fájlt (\codeEsc{.sct}) vagy az erre a célra készített \codeEsc{Simulation.launch} nevű ,,launch configurationt'' (indítási konfigurációs állományt), majd jobb gombbal kattintva a \textbf{Run As}, majd \textbf{Statechart Simulation} pontot válasszuk. Így megnyílik a \textbf{Simulation View} nézet, és a Yakindu elkezdi szimulálni a modellünket. Piros színnel ki lesz(nek) emelve az állapotkonfiguráció aktív állapota(i), a nagyobb összetett állapotoktól egészen a legszűkebb állapotig.
+A szimuláció elindításához válasszuk ki a bal oldali Project Explorerben látható Yakindu statechart fájlt (\codeEsc{.sct}) vagy a kiadott projektben erre a célra előkészített \codeEsc{Simulation.launch} nevű ,,launch configurationt'' (indítási konfigurációs állományt), majd jobb gombbal kattintva a \textbf{Run As}, majd \textbf{Statechart Simulation} pontot válasszuk. Így megnyílik a \textbf{Simulation View} nézet, és a Yakindu elkezdi szimulálni a modellünket. Piros színnel ki lesz(nek) emelve az állapotkonfiguráció aktív állapota(i), a nagyobb összetett állapotoktól egészen a legszűkebb állapotig.
 
 A jobb oldali \textbf{Simulation} fül alatt láthatóak az állapotgép interfészén definiált ,,változók'', illetve ,,események''. A házi feladat példáiban ezek gombok, kijelzők, illetve időesemények lesznek majd. A szimuláció indítása után a \emph{gombok} nyomkodása input eseményeknek felel meg, így ezekkel vezérelhetjük közvetlenül a szimulált állapotgép állapotátmeneteit. A szimulációt a felső eszköztárban lévő piros négyzettel, vagyis a \textbf{Terminate} gombbal állíthatjuk le.
 
@@ -244,13 +246,14 @@ A kiadott projektvázakban már konfigurálásra került a (Java nyelvű) kódge
 \section{Feladatkiadás és feladatbeadás}
 \label{sec:feladatkiadas-es-feladatbeadas}
 
-A Rendszermodellezés tágy honlapján\footnote{\url{https://inf.mit.bme.hu/edu/courses/remo}}, a bal oldalt fent látható navigációs fában a \textbf{Hírek} rovatra kattintva a tárggyal kapcsolatos aktuális oktatási hírek olvashatóak, amelyekre RSS olvasó segítségével fel is lehet iratkozni. Itt lesz közzétéve a házi feladatokhoz tartozó feladatkiírások és az előre összekészített Yakindu projektvázak letöltésének lehetősége.
+A Rendszermodellezés tágy honlapján\footnote{\url{https://inf.mit.bme.hu/edu/courses/remo}}, a bal oldalt fent látható navigációs fában a \textbf{Hírek} rovatra kattintva a tárggyal kapcsolatos aktuális oktatási hírek olvashatóak, amelyekre RSS olvasó segítségével fel is lehet iratkozni. Itt lesz közzétéve a házi feladatokhoz tartozó feladatkiírások és az előre összekészített Yakindu projektvázak letöltésének lehetősége; illetve a \textbf{Házi feladat} aloldalon is összegezzük a tudnivalókat.
 
 A megoldás feltöltése a feladatbeadó portálon\footnote{\url{https://inf.mit.bme.hu/user/grader}} lehetséges, kizárólag a határidőt megelőző időszakban. A határidőt szigorúan vesszük, a beadási űrlap a határidő elérésekor percre pontosan lezárul. A feladatbeadó portál használata nem bonyolult, de probléma esetén nyugodtan fordulhatunk a használati útmutatót.\footnote{\url{https://inf.mit.bme.hu/wiki/jegyzokonyv}}
 
 \begin{figyelmeztetes}
 A megoldás beadásakor egyetlen \codeEsc{.sct} fájl feltöltése szükséges.
-Vigyázzunk arra, hogy azt a modellt töltsük fel amit szerkesztettünk! (A \textbf{Copy project into workspace} opció hatására a workspace mappába másolódik a projekt. Ebben az esetben innen töltsük fel a megoldást. Részletes leírás \aref{sec:a-modell-kimentese}. szakaszban olvasható.)
+
+Vigyázzunk arra, hogy azt a modellt töltsük fel amit szerkesztettünk! A \textbf{Copy project into workspace} opció hatására a workspace mappába másolódik a projekt az eredeti letöltés helyéről. Ebben az esetben vagy a workspace-ből töltsük fel a megoldást, vagy másoljuk ki onnan (részletes leírás \aref{sec:a-modell-kimentese}. szakaszban olvasható); de semmiképp se az eredetileg letöltött fájlt töltsük fel változatlan formában. 
 \end{figyelmeztetes}
 
 Mivel mindenki egyénileg testreszabott házi feladatot kap, egyéni azonosítás szükséges a házi feladat elemeinek letöltésekor és a megoldás feltöltésekor egyaránt. Az azonosítást a BME Címtár\footnote{\url{https://login.bme.hu/admin/}} szolgáltatása végzi, ezért aki még nem tette meg, mielőbb regisztráljon magának címtár azonosítót. Ha a portál elérésekor nem történik meg automatikusan az azonosítás, akkor a ,,nincs jogosultság'' hibaüzenetet kaphatjuk; ebben az esetben a bal oldali sávban kattintsunk a \textbf{BME Címtár belépés} linkre.
