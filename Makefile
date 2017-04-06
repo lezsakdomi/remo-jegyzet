@@ -1,3 +1,4 @@
+MODE=-interaction=batchmode
 DOCUMENTS = \
 	szorgalmi-hf \
 	rendszermodellezes \
@@ -31,11 +32,11 @@ DOCUMENTS = \
 build:
 	@$(foreach DOCUMENT, $(DOCUMENTS),\
 		echo ============================== $(DOCUMENT) ==============================; \
-		xelatex -interaction=batchmode $(DOCUMENT); \
+		xelatex $(MODE) $(DOCUMENT); \
 		bibtex $(DOCUMENT); \
-		xelatex -interaction=batchmode $(DOCUMENT); \
+		xelatex $(MODE) $(DOCUMENT); \
 		makeglossaries $(DOCUMENT); \
-		xelatex -interaction=batchmode $(DOCUMENT); \
+		xelatex $(MODE) $(DOCUMENT); \
 		echo; \
 	)
 
