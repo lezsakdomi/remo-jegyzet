@@ -12,6 +12,7 @@ Egy rendszert sokszor alrendszerek együtteseként modellezünk (ilyen alrendsze
 Általában is fontos, hogy mindig pontosan definiáljuk az éppen vizsgált rendszert. A továbbiakban bemutatásra kerülő képletek szempontjából is fontos a \fogalomragozva{rendszer-hatara}{rendszer határa}. Egy rendszeren belül lehet várakozási sor, illetve feldolgozó egység, utóbbi állhat több alrendszerből is.\footnote{A rendszer részének tekinthetjük még a hálózati kapcsolatot, és bármi mást, ami késleltetést okozhat, de ettől ebben a segédletben most eltekintünk.} Ha egy rendszerben nincs átlapolódás, akkor minden pillanatban (tehát átlagosan is) legfeljebb egy tranzakció lehet a rendszerben. Ha van várakozási sor, vagy több feldolgozó egység is van, akkor definíció szerint van átlapolódás is.
 
 \section{Rendszerszintű tulajdonságok és a Little-törvény}
+\label{sec:little-torveny}
 
 \begin{definicio}
 	Fogalmak (lásd \ref{fig:system}. ábra):
@@ -87,11 +88,12 @@ $$D_i = V_i \cdot S_i$$
 
 Látható, hogy itt sem történik semmi meglepő -- ha egy kérés átlagosan $S_i$ ideig foglalja az erőforrást, egy tranzakció pedig átlagosan $V_i$ kérést generál, akkor a tranzakció átlagosan $D_i$ ideig fogja használni az erőforrást, tehát az erőforrásra vonatkozó szolgáltatásigénye $D_i$. Ez az összefüggés látható a \ref{fig:subsystems}. ábrán is.
 
-\subsection{Erőforrások kihasználtásga}
+\subsection{Erőforrások kihasználtsága}
+\label{sec:eroforrasok-kihasznaltsaga}
 
 Véges készletű erőforrások esetén a teljesítmény szempontjából fontos tulajdonság az erőforrások átlagos \fogalomragozva{kihasznaltsag}{kihasználtsága} (jele: $U$, mint \textbf{u}tilization), ugyanis ez mutatja meg, hogy a globális teljesítménykorlátoktól nagyjából milyen távol működik a rendszer.
 
-Vegyük észre, hogy az erőforrás, mint alrendszer önmagában is egy rendszert alkot, ezért \az+\autoref{}. szakaszban leírtak itt is alkalmazhatók. A felhasználói kérés ekkor a tranzakció által generált kérés, a kérés által a rendszerben töltött átlagos idő ($R$) pedig az erőforrásigénynek ($S_i$) felel meg. Az erőforrás, mint alrendszer átbocsátását az ún. \fogalom{forced-flow-torveny} segítségével számíthatjuk ki a teljes rendszer átbocsátásából:\footnote{Figyelem! A mértékegység az alrendszerek átbocsátása esetén k/s, a teljes rendszer esetén pedig tr/s!}
+Vegyük észre, hogy az erőforrás, mint alrendszer önmagában is egy rendszert alkot, ezért \az+\ref{sec:little-torveny}. szakaszban leírtak itt is alkalmazhatók. A felhasználói kérés ekkor a tranzakció által generált kérés, a kérés által a rendszerben töltött átlagos idő ($R$) pedig az erőforrásigénynek ($S_i$) felel meg. Az erőforrás, mint alrendszer átbocsátását az ún. \fogalom{forced-flow-torveny} segítségével számíthatjuk ki a teljes rendszer átbocsátásából:\footnote{Figyelem! A mértékegység az alrendszerek átbocsátása esetén k/s, a teljes rendszer esetén pedig tr/s!}
 
 $$X_i = V_i \cdot X_0$$
 
@@ -121,7 +123,7 @@ Az $n_i=1$ esetben ismét egyszerűbben:
 
 $$X_i^{max} = \frac{U_i^{max}}{S_i} = \frac{1}{S_i}$$
 
-Következő lépésként ki kellene számolnunk a teljes rendszer átbocsátását, de míg a teljes rendszerből az erőforrásra következtetni a többi erőforrástól függetlenül is tudtunk \az\autoref{sec-utilization} szakaszban, visszafelé ez most nem lesz igaz. Az egyes erőforrásokat a teljes rendszer ugyanis különböző mértékben használja, így csak az egyikük (esetleg néhányuk, nagyon ritkán mindegyik) korlátozza ténylegesen a rendszer tényleges átbocsátóképességét. Ezt az erőforrást nevezzük \fogalomragozva{szuk-keresztmetszet}{szűk keresztmetszetnek}.
+Következő lépésként ki kellene számolnunk a teljes rendszer átbocsátását, de míg a teljes rendszerből az erőforrásra következtetni a többi erőforrástól függetlenül is tudtunk \az+\ref{sec:eroforrasok-kihasznaltsaga} szakaszban, visszafelé ez most nem lesz igaz. Az egyes erőforrásokat a teljes rendszer ugyanis különböző mértékben használja, így csak az egyikük (esetleg néhányuk, nagyon ritkán mindegyik) korlátozza ténylegesen a rendszer tényleges átbocsátóképességét. Ezt az erőforrást nevezzük \fogalomragozva{szuk-keresztmetszet}{szűk keresztmetszetnek}.
 
 Ki kell tehát számolnunk az egyes erőforrások átbocsátásából a rendszer átbocsátásának elméleti maximumát, majd az így kapott értékek legkisebbikét kell kiválasztanunk, ez lesz a rendszer átbocsátóképessége, az értékhez tartozó erőforrás(ok) pedig a rendszer szűk keresztmetszete(i):
 
