@@ -13,7 +13,7 @@ Fontos megjegyezni, hogy a modellek ,,helyessége'' önmagában nem egy értelme
 
 \begin{pelda}
 	Gondoljunk a BKK alábbi egyszerűsített, sematikus metróhálózati térképére!
-	\remofigscalefixed{metrohev-terkep-reszlet}{Budapest metróhálózati térképe \cite{BKK:metro}}{0.8}
+	\remofigscalefixed{metrohev-terkep-reszlet}{Budapest metróhálózati térképe~\cite{BKK:metro}}{0.8}
 	% A szerzői jogról szóló 1999. évi LXXVI. törvény IV. fejezetében felsorolt főbb szabad felhasználási esetek a következők: ...
 	% átvétel: nyilvánosságra hozott irodalmi vagy zenei mű, film részlete, vagy kisebb terjedelmű ilyen önálló mű, továbbá képzőművészeti, építészeti, iparművészeti és ipari tervezőművészeti alkotás képe, valamint fotóművészeti alkotás szemléltetés érdekében iskolai oktatási célra, valamint tudományos kutatás céljára a forrás és az ott megjelölt szerző megnevezésével a cél által indokolt terjedelemben átvehető, feltéve, hogy az átvevő művet nem használják fel üzletszerűen. Átvételnek minősül a mű olyan mértékű felhasználása más műben, amely az idézést meghaladja. [Szjt. 35. § (2) bek.]
 
@@ -27,10 +27,10 @@ Ebben a fejezetben áttekintjük, milyen követelményeket támaszthatunk a mode
 Az egyik leggyakoribb felosztás a követelményeket aszerint különbözteti meg, hogy a rendszer elsődleges funkcióját írják le vagy sem.
 
 \begin{definicio}
-\fogalomragozva{funkcionalis-kovetelmeny}{Funkcionális követelményeknek} nevezzük azokat a követelményeket, amelyek egy rendszer(összetevő) által ellátandó funkciót definiálnak \cite{IEEE-24765}.
+\fogalomragozva{funkcionalis-kovetelmeny}{Funkcionális követelményeknek} nevezzük azokat a követelményeket, amelyek egy rendszer(összetevő) által ellátandó funkciót definiálnak~\cite{IEEE-24765}.
 \end{definicio}
 \begin{definicio}
-\fogalomragozva{nemfunkcionalis-kovetelmeny}{Nemfunkcionális követelményeknek} (vagy extrafunkcionális követelményeknek) nevezzük az ezeken kívül eső követelményeket, amelyek a rendszer minőségére vonatkoznak, például megbízhatóságra, teljesítményre vonatkozó kritériumok \cite{IEEE-24765}.
+\fogalomragozva{nemfunkcionalis-kovetelmeny}{Nemfunkcionális követelményeknek} (vagy extrafunkcionális követelményeknek) nevezzük az ezeken kívül eső követelményeket, amelyek a rendszer minőségére vonatkoznak, például megbízhatóságra, teljesítményre vonatkozó kritériumok~\cite{IEEE-24765}.
 \end{definicio}
 
 \begin{megjegyzes}
@@ -38,7 +38,7 @@ Tehát a \fogalomragozva{funkcionalis-kovetelmeny}{funkcionális követelmények
 \end{megjegyzes}
 
 \paragraph{Biztonsági és élőségi követelmények.}
-A követelmények egy másik klasszikus kategorizálása alapján biztonsági és élőségi követelményeket különböztetünk meg \cite{Lamport:1977}.
+A követelmények egy másik klasszikus kategorizálása alapján biztonsági és élőségi követelményeket különböztetünk meg~\cite{Lamport:1977}.
 
 \begin{definicio}
 A \fogalomragozva{biztonsagi-kovetelmeny}{biztonsági követelmények} a megengedett viselkedést definiálják: megadják, hogy milyen viselkedés engedélyezett és mely viselkedések tiltottak. Ezek univerzális követelmények, melyeknek a rendszerre minden időpillanatban teljesülniük kell.
@@ -162,7 +162,7 @@ Két egyszerűbb módszert ismertetünk itt a fenti hibák kivédése érdekébe
 \begin{itemize}
 	\item Ha azonosítottuk a fenti szituációk közül a leggyakrabban előfordulókat, \emph{hibamintákat} fogalmazhatunk meg rájuk. Ez után a statikus ellenőrző eszköz ezeket a hibamintákat keresi a modellben vagy a forráskódban. Például ha egy decision elem egy join elemmel áll párban egy folyamatmodell vagy a kódban egy \code{if (<változó> = <érték>)} minta található, erre felhívhatja a felhasználó figyelmét, aki ezután javíthatja a modellt vagy figyelmen kívül hagyhatja a jelzést.
 
-	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok\footnote{Az egyik leghíresebb kódolási szabálygyűjtemény a C nyelvhez a \emph{MISRA C}. Eredetileg közúti járművek beágyazott rendszereihez fejlesztették, de valójában bármilyen beágyazott rendszer esetén használható. Ilyen felhasználási területen a hibák komoly következményekkel járhatnak, ráadásul javításuk igen nehéz. Ezért olyan megkötéseket alkalmaznak a szoftverek fejlesztésekor, amelyek a kódot átláthatóbbá, egyértelműbbé teszik, amely írása közben nehezebb hibát véteni. Például a száznál több MISRA C szabály egyike megtiltja az \code{if (x == 0 \&\& ishigh)} kódrészlet használatát, helyette az \code{if ((x == 0) \&\& ishigh)} formátum használandó. Bár ez a két kódrészlet nyilvánvalóan ekvivalens, ha a logikai műveletek operandusai csak atomi kifejezések (pl. \code{ishigh}) vagy zárójelezett részkifejezések lehetnek, kisebb egy hibás precedencia feltételezésének valószínűsége \cite{Wong:2003}.\kiegeszitoanyag} (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag adott mintákból állítható elő: üres folyamat, elemi tevékenység, szekvencia, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
+	\item Lehetőségünk van ezeket a hibákat megelőzni, ha a modellezési vagy programozási nyelv szintaktikájánál önként erősebb megkötéseket alkalmazunk. Ilyen megkötések a kódolási szabályok\footnote{Az egyik leghíresebb kódolási szabálygyűjtemény a C nyelvhez a \emph{MISRA C}. Eredetileg közúti járművek beágyazott rendszereihez fejlesztették, de valójában bármilyen beágyazott rendszer esetén használható. Ilyen felhasználási területen a hibák komoly következményekkel járhatnak, ráadásul javításuk igen nehéz. Ezért olyan megkötéseket alkalmaznak a szoftverek fejlesztésekor, amelyek a kódot átláthatóbbá, egyértelműbbé teszik, amely írása közben nehezebb hibát véteni. Például a száznál több MISRA C szabály egyike megtiltja az \code{if (x == 0 \&\& ishigh)} kódrészlet használatát, helyette az \code{if ((x == 0) \&\& ishigh)} formátum használandó. Bár ez a két kódrészlet nyilvánvalóan ekvivalens, ha a logikai műveletek operandusai csak atomi kifejezések (pl. \code{ishigh}) vagy zárójelezett részkifejezések lehetnek, kisebb egy hibás precedencia feltételezésének valószínűsége~\cite{Wong:2003}.\kiegeszitoanyag} (például a mutatók használatának tiltása C-ben) vagy a jólstrukturált folyamatmodellek. \fogalomragozva{jolstrukturalt-folyamatmodell}{Jólstrukturált folyamatmodellek} esetén kikötjük, hogy a folyamatmodell kizárólag adott mintákból állítható elő: üres folyamat, elemi tevékenység, szekvencia, ciklus, döntés, párhuzamosság. Ezzel a szintaxist úgy kötjük meg, hogy a tipikus szemantikai hibák ne állhassanak elő. A jólstrukturált folyamatmodellekről bővebben \iflabeldef{sec:jolstrukturalt-folyamatok}{\aref{sec:jolstrukturalt-folyamatok}.~szakaszban}{a Folyamatmodellezés c. segédanyagban} szólunk.
 \end{itemize}
 
 %\begin{figure}[h]
@@ -221,7 +221,7 @@ Láthatjuk az első szembetűnő különbséget a tesztelés és a statikus elle
 Azt is érdemes megjegyezni, hogy a tesztelés és a ,,debugolás'' is két külön fogalom. Tesztelés esetén hibajelenségek meglétét vagy hiányát vizsgáljuk. \Fogalom{debugolas} esetén ismert egy bizonyos hibajelenség (pl. egy teszt kimutatta vagy egy felhasználó jelezte), a célunk pedig ennek a helyének, a kiváltó okának megkeresése, lokalizálása.
 
 \begin{megjegyzes}
-Érdemes megjegyezni, hogy a tesztelésre számos különböző definíció létezik. Az International Software Testing Qualifications Board (ISTQB) szervezet által adott definíció például beleérti a tesztelésbe az olyan statikus technikákat is, mint például a követelmények vagy a forráskód átolvasása, és a forráskód statikus ellenőrzése \cite{ISTQB_syllabus}. Jelen tárgy keretei közt mi a fenti definíciót használjuk és a tesztelést dinamikus technikának tekintjük.
+Érdemes megjegyezni, hogy a tesztelésre számos különböző definíció létezik. Az International Software Testing Qualifications Board (ISTQB) szervezet által adott definíció például beleérti a tesztelésbe az olyan statikus technikákat is, mint például a követelmények vagy a forráskód átolvasása, és a forráskód statikus ellenőrzése~\cite{ISTQB_syllabus}. Jelen tárgy keretei közt mi a fenti definíciót használjuk és a tesztelést dinamikus technikának tekintjük.
 \end{megjegyzes}
 
 \subsection{A tesztelés alapfogalmai}
@@ -239,17 +239,17 @@ Már a definíció alapján is látszik, hogy a teszteléshez nem elég önmagá
 
 
 \begin{definicio}
-\fogalomragozva{teszteset}{Tesztesetnek} hívjuk összefoglaló néven azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ,,bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek'' \cite{HTB-glossary,IEEE-24765}.
+\fogalomragozva{teszteset}{Tesztesetnek} hívjuk összefoglaló néven azon adatok összességét, amelyek egy adott teszt futtatásához és annak értékeléséhez szükségesek. Tehát a teszteset ,,bemeneti értékek, végrehajtási előfeltételek, elvárt eredmények (elfogadási kritérium) és végrehajtási utófeltételek halmaza, amelyeket egy konkrét célért vagy a tesztért fejlesztettek''~\cite{HTB-glossary,IEEE-24765}.
 \end{definicio}
 \begin{definicio}
 \fogalomragozva{tesztkeszlet}{Tesztkészletnek} hívjuk a tesztesetek egy adott halmazát.
 \end{definicio}
 
 \begin{definicio}
-\Fogalom{tesztfuttatas}: egy vagy több teszteset végrehajtása \cite{IEEE-24765}.
+\Fogalom{tesztfuttatas}: egy vagy több teszteset végrehajtása~\cite{IEEE-24765}.
 \end{definicio}
 
-A tesztfuttatás után \cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet \emph{sikeres} (pass), \emph{sikertelen} (fail) vagy \emph{hibás} (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni.
+A tesztfuttatás után~\cite{IEEE-24765} -- az orákulum segítségével -- megtudjuk a teszt eredményét, amely lehet \emph{sikeres} (pass), \emph{sikertelen} (fail) vagy \emph{hibás} (error). Utóbbi esetben a tesztről nem tudjuk eldönteni, hogy sikeres-e vagy sem. Ilyen lehet például, ha a tesztrendszerben történt hiba, emiatt a SUT helyességéről nem tudunk nyilatkozni.
 Általában a teszt eredménye a kapott és a tesztesetben megfogalmazott elvárt kimenetek összehasonlításával kapható meg, de származhat egy referenciaimplementációval összehasonlításból, vagy ellenőrizhetünk implicit elvárásokat, például azt, hogy a kód nem dob kivételt.
 
 A tesztelés általános elrendezése látható \aref{fig:teszteles-elrendezes-orakulum}.~ábrán.
@@ -304,10 +304,10 @@ Ezen a példán az is megfigyelhető, hogy a teszteseteket általában nem véle
 Tesztelést a szoftverfejlesztési életciklus számos fázisában használhatunk. Attól függően, hogy a rendszer mekkora részét vizsgáljuk, különböző tesztelési módszereket különböztethetünk meg.
 
 \begin{itemize}
-\item \fogalomragozva{modulteszt}{Modultesztnek} (másként \fogalom{komponensteszt} vagy \fogalom{egysegteszt}) nevezzük azt a tesztet, amely csak egyes izolált komponenseket tesztelnek \cite{HTB-glossary}.
+\item \fogalomragozva{modulteszt}{Modultesztnek} (másként \fogalom{komponensteszt} vagy \fogalom{egysegteszt}) nevezzük azt a tesztet, amely csak egyes izolált komponenseket tesztelnek~\cite{HTB-glossary}.
 \item \fogalomragozva{integracios-teszt}{Integrációs tesztnek} nevezzük azt a tesztet, ,,amelynek célja az integrált egységek közötti
-interfészekben, illetve kölcsönhatásokban lévő hibák megtalálása''  \cite{HTB-glossary}.
-\item \fogalomragozva{rendszerteszt}{Rendszertesztnek} hívjuk azt a tesztet, amelyben a teljes, integrált rendszert vizsgáljuk annak érdekében, hogy ellenőrizzük a követelményeknek való megfelelőséget \cite{HTB-glossary}.
+interfészekben, illetve kölcsönhatásokban lévő hibák megtalálása''~\cite{HTB-glossary}.
+\item \fogalomragozva{rendszerteszt}{Rendszertesztnek} hívjuk azt a tesztet, amelyben a teljes, integrált rendszert vizsgáljuk annak érdekében, hogy ellenőrizzük a követelményeknek való megfelelőséget~\cite{HTB-glossary}.
 \end{itemize}
 
 Ezek a különféle tesztelési módszerek általában egymást követik a fejlesztési ciklusban: először az egyes modulok tesztelése történik meg, később a modulok integrációja után az integrációs tesztek, majd végül a rendszerteszt kerül elvégzésre.
