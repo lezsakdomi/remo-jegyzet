@@ -12,7 +12,7 @@ script:
 - sudo apt-get install -qq -y texlive-base texlive-science texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-hungarian texlive-fonts-extra xindy
 - ./use-xindy.sh
 - make
-- ./deploy.sh
+- if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then ./deploy.sh; fi
 notifications:
   slack: ftsrg:BtaOO3xw6rmfcFhEFNj6XJ29
   on_success: change
